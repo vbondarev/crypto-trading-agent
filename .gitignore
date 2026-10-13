@@ -1,0 +1,18 @@
+# Секреты и приватные настройки
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+private/
+data/private/
+reports/private/
+
+# Локальные файлы
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
