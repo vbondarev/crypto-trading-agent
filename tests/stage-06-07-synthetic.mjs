@@ -2,10 +2,10 @@
 // Node.js >=18: node tests/stage-06-07-synthetic.mjs
 // All prices, money amounts, MMR and model evidence flags below are hypothetical.
 const mergeFixture = function mergeFixture(base,change){return {...base,...change,evidence:{...base.evidence,...(change.evidence||{})},portfolio:{...base.portfolio,...(change.portfolio||{})}}};
-const getOrderIdentity = function getOrderIdentity(o){return o.id===null?null:[o.account,o.symbol,o.slot,o.id].join("|");};
+const getOrderIdentity = function getOrderIdentity(o){return o.id==null||o.id===""?null:[o.account,o.symbol,o.slot,o.id].join("|");};
 const normalizeOrders = function normalizeOrders(rows){const ids=new Map(),items=[],issues=[];for(const o of rows){const k=getOrderIdentity(o);if(!k){issues.push("ORDER_ID_UNKNOWN");items.push(o);continue;}const old=ids.get(k);if(old){if(old.qty!==o.qty||old.state!==o.state||old.side!==o.side)issues.push("ORDER_ID_CONFLICT");continue;}ids.set(k,o);items.push(o);}return {items,issues};};
 const normalizePositions = function normalizePositions(rows){const ids=new Set(),items=[],issues=[];for(const p of rows){const k=[p.account,p.symbol,p.slot].join("|");if(ids.has(k)){issues.push("POSITION_SLOT_DUPLICATED");continue;}ids.add(k);items.push(p);}return {items,issues};};
-const stressPnl = function stressPnl(f,s,os){let profit=0;const fx=f.fxUsdPerQuote;for(const p of f.positions){if(!Object.hasOwn(s.marks,p.symbol))return null;profit+=(p.side==="Long"?1:-1)*p.qty*(s.marks[p.symbol]-p.mark)*fx;}for(const o of os){if(!s.fillIds.includes(o.id)||o.state==="CANCELLED_CONFIRMED")continue;if(!Object.hasOwn(s.marks,o.symbol))return null;profit+=(o.side==="Long"?1:-1)*o.qty*(s.marks[o.symbol]-o.price)*fx;}return {pnlUsd:profit,lossUsd:Math.max(0,-profit+s.extraCostsUsd)};};
+const stressPnl = function stressPnl(f,s,os){let profit=0;const fx=f.fxUsdPerQuote;for(const p of f.positions){if(!Object.hasOwn(s.marks,p.symbol))return null;profit+=(p.side==="Long"?1:-1)*p.qty*(s.marks[p.symbol]-p.mark)*fx;}for(const o of os){if(!s.fillIds.includes(o.id)||["CANCELLED_CONFIRMED","FILLED"].includes(o.state))continue;if(!Object.hasOwn(s.marks,o.symbol))return null;profit+=(o.side==="Long"?1:-1)*o.qty*(s.marks[o.symbol]-o.price)*fx;}return {pnlUsd:profit,lossUsd:Math.max(0,-profit+s.extraCostsUsd)};};
 const review = function review(f){
  const hard=[],unverified=[],missing=[],trace={};
  if(f.h04)hard.push("ACTIVE_H04");
@@ -23,11 +23,18 @@ const review = function review(f){
  const eq=f.portfolio?.equityUsd;
  trace.uniqueOrders=orders.items.length;
  trace.positionSlots=positions.items.filter(p=>p.qty>0).length;
- trace.requiredReserveUsd=orders.items.filter(o=>o.state!=="CANCELLED_CONFIRMED").reduce((n,o)=>n+o.imUsd,0)+f.portfolio.futureBufferUsd;
- trace.projectedMarginUsd=f.portfolio.initialMarginUsd+f.portfolio.marginBufferUsd+orders.items.filter(o=>o.state!=="CANCELLED_CONFIRMED"&&!o.accountedInBaseIm).reduce((n,o)=>n+o.imUsd,0);
+ // Unknown purpose is conservatively counted as a future opening commitment,
+ // while retaining UNVERIFIED status until the order can be classified.
+ const futureOpenOrders=orders.items.filter(o=>!["CANCELLED_CONFIRMED","FILLED"].includes(o.state)&&o.purpose!=="OUT");
+ const projectedKeys=new Set(positions.items.filter(p=>p.qty>0).map(p=>[p.account,p.symbol,p.slot].join("|")));
+ for(const o of futureOpenOrders) projectedKeys.add([o.account,o.symbol,o.slot].join("|"));
+ trace.projectedPositionSlots=projectedKeys.size;
+ if(orders.items.some(o=>!["IN","OUT"].includes(o.purpose)))unverified.push("UNKNOWN_ORDER_PURPOSE");
+ trace.requiredReserveUsd=orders.items.filter(o=>!["CANCELLED_CONFIRMED","FILLED"].includes(o.state)&&o.purpose!=="OUT").reduce((n,o)=>n+o.imUsd,0)+f.portfolio.futureBufferUsd;
+ trace.projectedMarginUsd=f.portfolio.initialMarginUsd+f.portfolio.marginBufferUsd+orders.items.filter(o=>!["CANCELLED_CONFIRMED","FILLED"].includes(o.state)&&o.purpose!=="OUT"&&!o.accountedInBaseIm).reduce((n,o)=>n+o.imUsd,0);
  trace.marginRatio=eq>0?trace.projectedMarginUsd/eq:null;
  if(f.leverage>5)hard.push("FR031_LEVERAGE_5X");
- if(trace.positionSlots>3)hard.push("FR033_POSITION_COUNT_3");
+ if(trace.projectedPositionSlots>3)hard.push("FR033_POSITION_COUNT_3");
  if(eq>0&&trace.marginRatio>.30+1e-9)hard.push("FR029_MARGIN_30_PERCENT");
  if(f.allocatedReserveUsd+1e-9<trace.requiredReserveUsd)hard.push("FR034_FUTURE_RESERVE");
  if(!f.evidence.ownership)unverified.push("OWNERSHIP_NOT_CONFIRMED");
@@ -94,6 +101,7 @@ const base = {
       "price": 110,
       "imUsd": 20,
       "state": "ACTIVE",
+      "purpose": "IN",
       "accountedInBaseIm": true
     },
     {
@@ -106,6 +114,7 @@ const base = {
       "price": 120,
       "imUsd": 20,
       "state": "VIRTUAL",
+      "purpose": "IN",
       "accountedInBaseIm": false
     }
   ],
@@ -1402,6 +1411,19 @@ const cases = [
     "contains": false
   }
 ];
+
+// Added at step 06.8 after independent regression review of the source.
+const regressionCases=[
+ {id:"R58",subject:"filled order is not future reserve",patch:{orders:[{...base.orders[0],state:"FILLED"}]},path:"trace.requiredReserveUsd",expected:10,contains:false},
+ {id:"R59",subject:"filled order not incremental IM",patch:{orders:[{...base.orders[1],state:"FILLED"}]},path:"trace.projectedMarginUsd",expected:110,contains:false},
+ {id:"R60",subject:"three new future symbols plus one present slot exceeds FR033",patch:{orders:[...base.orders,...["BBB","CCC","DDD"].map((x,i)=>({...base.orders[1],symbol:x+"USDT",id:"more"+i}))]},path:"hard",expected:"FR033_POSITION_COUNT_3",contains:true},
+ {id:"R61",subject:"future new symbol is projected",patch:{orders:[...base.orders,{...base.orders[1],symbol:"BBBUSDT",id:"new1"}]},path:"trace.projectedPositionSlots",expected:2,contains:false},
+ {id:"R62",subject:"undefined order id reported unverified",patch:{orders:[...base.orders,{...base.orders[1],id:undefined}]},path:"unverified",expected:"ORDER_ID_UNKNOWN",contains:true},
+ {id:"R63",subject:"OUT cannot count as new position",patch:{orders:[...base.orders,{...base.orders[1],symbol:"BBBUSDT",id:"out1",purpose:"OUT"}]},path:"trace.projectedPositionSlots",expected:1,contains:false},
+ {id:"R64",subject:"unknown order purpose is unverified",patch:{orders:[...base.orders,{...base.orders[1],id:"unknown1",purpose:undefined}]},path:"unverified",expected:"UNKNOWN_ORDER_PURPOSE",contains:true}
+];
+cases.push(...regressionCases);
+
 const results = cases.map(x=>testOne(base,x));
 const failures = results.filter(x=>!x.passed);
 for(const f of failures) console.error("FAIL",f.id,f.subject,JSON.stringify({expected:f.expected,actual:f.actual}));
