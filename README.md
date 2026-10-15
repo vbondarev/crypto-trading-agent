@@ -36,14 +36,15 @@
 | [`docs/stage-04-07-blind-run.md`](docs/stage-04-07-blind-run.md) | Журнал 8/8 выборочных ответов отдельного ChatGPT, с ограничением TV-01 |
 | [`docs/stage-04-08-review.md`](docs/stage-04-08-review.md) | Итоговая [приёмка шага 04.8 и этапа 04](docs/stage-04-08-review.md#7-формальная-приёмка-шага-048-и-завершение-этапа-04--15102026), с TV-01–TV-04 |
 | [`docs/stage-05-plan.md`](docs/stage-05-plan.md) | Утверждённый план этапа 05, шаги 05.1–05.8 |
-| [`docs/stage-06-plan.md`](docs/stage-06-plan.md) | Утверждённый план 06.1–06.8 (15.10.2026), 06.1 принят; 06.2 принят; 06.3 принят 16.10.2026; 06.4 принят 16.10.2026; 06.5 начат по отдельной команде |
+| [`docs/stage-06-plan.md`](docs/stage-06-plan.md) | Утверждённый план 06.1–06.8 (15.10.2026), 06.1 принят; 06.2 принят; 06.3 принят 16.10.2026; 06.4 принят; 06.5 документально выполнен и ожидает приёмки; 06.6 не начат |
 | [`docs/platforms/platform-validation.md`](docs/platforms/platform-validation.md) | Контракт P01/P02, реестр официальных источников, матрица C01–C14 и 28 нормативных сценариев шага 06.1 — принят 15.10.2026 |
 | [`docs/platform-06-01-validation.md`](docs/platform-06-01-validation.md) | Протокол и приёмка 06.1 (15.10.2026): 24/24 локальных синтетических проверок, без подтверждения реальной формы |
 | [`docs/platforms/veles.md`](docs/platforms/veles.md) | 06.2 принят; **06.3 принят 16.10.2026:** статусы Veles/Bybit, сетки, TP/SL/BE, ручная отмена и restart, 34 нормативных сценария |
 | [`docs/platform-06-02-validation.md`](docs/platform-06-02-validation.md) | Протокол и приёмка 06.2 (16.10.2026): 7 официальных источников, 30 нормативных сценариев и 32/32 локальных синтетических проверок |
 | [`docs/platform-06-03-validation.md`](docs/platform-06-03-validation.md) | **Шаг 06.3 (принят 16.10.2026):** 50/50 локальных тестов, 34 документальных сценария, восемь публичных справочных источников |
-| [`docs/platforms/ginarea.md`](docs/platforms/ginarea.md) | **06.4 принят 16.10.2026:** GinArea PRO, GD-01–GD-40, стратегии Default/Auto/Dynamic/Indicator/DCA, режимы Bybit, 36 нормативных сценариев |
+| [`docs/platforms/ginarea.md`](docs/platforms/ginarea.md) | **06.4 принят 16.10.2026; 06.5 документально выполнен, ожидает приёмки:** GinArea PRO, GD-01–GD-40, стратегии Default/Auto/Dynamic/Indicator/DCA, режимы Bybit, 36 нормативных сценариев |
 | [`docs/platform-06-04-validation.md`](docs/platform-06-04-validation.md) | Протокол GinArea PRO 06.4: **48/48 локальных синтетических проверок**, 14 официальных справочных источников |
+| [`docs/platform-06-05-validation.md`](docs/platform-06-05-validation.md) | **06.5 ожидает приёмки:** 66/66 локальных проверок, 40 нормативных сценариев, 18 переходов IN/OUT/Disable IN |
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
 | [`docs/risk-05-01-validation.md`](docs/risk-05-01-validation.md) | **Приёмка 05.1:** 12/12 механических проверок и 20 нормативных синтетических ожиданий (не внешние LLM-прогоны) |
 | [`docs/risk-05-02-validation.md`](docs/risk-05-02-validation.md) | **Приёмка 05.2 от 15.10.2026:** 24/24 локальных арифметических/логических проверки и 26 синтетических ожиданий |
