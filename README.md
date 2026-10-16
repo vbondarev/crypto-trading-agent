@@ -51,7 +51,10 @@
 | [`docs/platform-06-07-validation.md`](docs/platform-06-07-validation.md) | Протокол 06.7: **57/57 первоначально; после ревизии 06.8 — 64/64 локальных теста**, не реальные стресс-протоколы F/V/H/R |
 | [`tests/stage-06-07-synthetic.mjs`](tests/stage-06-07-synthetic.mjs) | Воспроизводимый синтетический JS-модуль: **64/64 PASS после 06.8**; не код торгового агента |
 | [`docs/stage-06-review.md`](docs/stage-06-review.md) | **06.8 и этап 06 приняты 16.10.2026:** ревизия FR-047–FR-053, исправления 7 регрессий, открытые RV/TV/F/V/H/R |
-| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **Этап 07: проект плана ждёт утверждения** — семь специализированных Skills, 07.1–07.9, реализация не начата |
+| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 будущих Skills; 07.1 выполнен, ожидает приёмки |
+| [`docs/stage-07-skills-contract.md`](docs/stage-07-skills-contract.md) | **07.1 ожидает приёмки:** контракт frontmatter, маршрутов R1/R2/R3, реестра семи Skills, 32 нормативных сценариев |
+| [`docs/stage-07-01-validation.md`](docs/stage-07-01-validation.md) | Протокол 07.1: **52/52 выполненных локальных проверок**, без фактического runtime Skills |
+| [`tests/stage-07-01-contract-synthetic.mjs`](tests/stage-07-01-contract-synthetic.mjs) | Воспроизводимая синтетическая проверка маршрутизатора и простого YAML-frontmatter; не реальный Skill |
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
 | [`docs/risk-05-01-validation.md`](docs/risk-05-01-validation.md) | **Приёмка 05.1:** 12/12 механических проверок и 20 нормативных синтетических ожиданий (не внешние LLM-прогоны) |
 | [`docs/risk-05-02-validation.md`](docs/risk-05-02-validation.md) | **Приёмка 05.2 от 15.10.2026:** 24/24 локальных арифметических/логических проверки и 26 синтетических ожиданий |
