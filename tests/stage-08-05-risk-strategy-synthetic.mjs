@@ -175,6 +175,40 @@ t("all norm links resolve",refs.every(x=>exists("docs/prompts/"+x)),true);
 t("correct pending result status",doc.includes(tick+"IMPLEMENTED / PENDING USER REVIEW"+tick),true);
 t("08.6 unstarted",doc.includes("08.6 "+tick+"NOT STARTED"+tick),true);
 t("RV/TV not closed",["RV-02","RV-03","RV-04","RV-06","TV-01–TV-04","FR-038"].every(x=>doc.includes(x)),true);
+// Self-review strengthening: guard actual FR threshold text, not only this script's model.
+function riskSourceRow(body,id){return body.split("\n").find(x=>x.startsWith("| **"+id+"** |"))||"";}
+const thresholdPins={
+ "FR-029":"≤30%",
+ "FR-030":"≤5%",
+ "FR-031":"≤5×",
+ "FR-032":"≥15%",
+ "FR-033":"≤3",
+ "FR-034":"100%",
+ "FR-035":"≥3%",
+ "FR-036":"≥15%",
+ "FR-037":"≥30",
+ "FR-038":"F/A/H/R",
+ "FR-040":"READY"
+};
+for(const [id,needle] of Object.entries(thresholdPins))
+ t("actual source strict threshold "+id,riskSourceRow(doc,id).includes(needle),true);
+const thresholdMutations=[
+ ["FR-029","≤30%","≤50%"],
+ ["FR-030","≤5%","≤10%"],
+ ["FR-031","≤5×","≤10×"],
+ ["FR-032","≥15%","≥5%"],
+ ["FR-033","≤3","≤5"],
+ ["FR-034","100%","50%"],
+ ["FR-035","≥3%","≥4%"],
+ ["FR-036","≥15%","≥20%"]
+];
+for(const [id,needle,malicious] of thresholdMutations){
+ const old=riskSourceRow(doc,id);
+ if(!old.includes(needle))throw Error("Missing mutation source threshold "+id);
+ const altered=doc.replace(old,old.replace(needle,malicious));
+ t("in-memory altered FR threshold rejected "+id,riskSourceRow(altered,id).includes(needle),false);
+}
+
 const bad=tests.filter(x=>!x.pass);
 for(const x of bad)console.error("FAIL",x.id,x.name,JSON.stringify({actual:x.actual,want:x.want}));
 console.log(JSON.stringify({kind:"STAGE_08_05_RISK_STRATEGY_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,normativeCases:40,copyablePrompts:6,mutations:mutations.length,independentLLMRuns:0,realNodeCheckoutVerified:false,liveBybit:false,tradeReady:false}));
