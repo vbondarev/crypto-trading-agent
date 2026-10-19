@@ -90,6 +90,6 @@ The paths below are **relative to this Skill directory**. Read their actual cont
 
 ## R3 handoff: mandatory final recheck
 
-Before final Veles/GinArea settings, request or validate a **new synchronized complete T02** (equity, cross/isolated, every position, every active/conditional order, all bots, projected IN and reserve), current **Bybit Mark** and P02 of the **one selected** platform, then hand them to portfolio/risk/platform Skills for S0–S3, FR-029–FR-040 and F/V/H/R. Historical data, public screenshots or this Skill cannot close open issues **RV-02/RV-03, RV-04/RV-06, TV-01–TV-04** or real-world FR-038 by themselves.
+Before final Veles/GinArea settings, request or validate a **new synchronized complete T02** (equity, cross/isolated, every position, every active/conditional order, all bots, projected IN and reserve), current **Bybit Mark** and P02 of the **one selected** platform, then hand them to portfolio/risk/platform Skills for S0–S3, FR-029–FR-040 and F/A/H/R. Historical data, public screenshots or this Skill cannot close open issues **RV-02/RV-03, RV-04/RV-06, TV-01–TV-04** or real-world FR-038 by themselves.
 
 **Never:** send trades, change leverage, publish keys or private account data to GitHub, present a stale snapshot as current, infer a precise Cross liquidation price or guaranteed maximum Short loss from a stop.
