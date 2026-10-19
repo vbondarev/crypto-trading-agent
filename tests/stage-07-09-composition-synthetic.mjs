@@ -105,7 +105,7 @@ t("AGENTS current rules use F/A/H/R; old notation only described historically",!
 t("FR-027-040 distinct risk standards",Array.from({length:14},(_,i)=>"FR-"+String(i+27).padStart(3,"0")).every(x=>doc.requirements.includes(x)),true);
 t("stages 07.1-07.9 planned",doc.plan.includes("07.1–07.9"),true);
 t("stage 07.8 formally approved",doc.stage08.includes("## 6. Формальная приёмка 07.8"),true);
-t("07.9 implemented but pending user approval",doc.plan.includes("07.9 реализован")&&doc.plan.includes("отдельной приёмки"),true);
+t("07.9 and stage 07 formally approved by user",doc.plan.includes("## 26. Финальная приёмка")&&doc.plan.includes("07.9 и этап 07 приняты"),true);
 const expected=[
  ["education",{},[]],
  ["market",{},["market-analysis"]],
