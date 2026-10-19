@@ -38,6 +38,15 @@ All relative paths below resolve **from this Skill folder**:
 
 A sibling link does not demonstrate that ChatGPT actually loaded or invoked that Skill. If inaccessible, follow the approved policy documents and disclose the missing integration. Do not change FR/RV/TV rules.
 
+## Traceability of approved strategy requirements
+
+- **FR-041:** record the actual user's goal, restrictions, direction, budget and horizon rather than inventing preferences.
+- **FR-042:** compare relevant WAIT/HOLD/NEW/ADD/REDUCE/CLOSE/RECOVER options and explain rejected alternatives.
+- **FR-043:** justify direction, strategy type, conditional entry/exit context and invalidation from sourced market facts; no profit promise.
+- **FR-044:** adapt to horizon, budget, existing exposure and strict risk limits; never soften FR-027–FR-040 for a preferred trade.
+- **FR-045:** calculate recovery only from the complete verified linked H01 net lifecycle including past losses, fees and funding.
+- **FR-046:** obtain the user's own strategy choice before moving to a platform-specific bot configuration; platform selection is independently required by FR-047.
+
 ## 1. Establish the user's *actual* choice and evidence mode
 
 Capture `goal` (new trade, existing position management, partial exit, series recovery, risk reduction), `asset / exact exchange-market`, horizon, intended direction **only if stated**, current position/owner, portfolio exposure, available budget and acceptable actions, and explicit user choice **if already made**.
