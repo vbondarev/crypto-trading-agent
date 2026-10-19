@@ -37,7 +37,9 @@ const cases=[
  ["GinArea auto-switch allowed","GINAREA_NO_SILENT_SWITCH",ginarea,s=>replaceOnce(s,"do not silently switch from Indicator Grid to Default","silently switch from Indicator Grid to Default")],
  ["Veles accepts foreign fields","VELES_ISOLATION",veles,s=>replaceOnce(s,"Do not insert GinArea-only fields","Insert GinArea-only fields")],
  ["portfolio risk route omitted","ROUTE_RT04",contract,s=>replaceOnce(s,"data-verification → portfolio-analysis → risk-assessment","data-verification → portfolio-analysis")],
- ["historical-only stress instead of four","STRESS_F_A_H_R",risk,s=>editRow(s,"038","A (**adaptive volatility","V (**adaptive volatility")]
+ ["historical-only stress instead of four","STRESS_F_A_H_R",risk,s=>editRow(s,"038","A (**adaptive volatility","V (**adaptive volatility")],
+ ["conflicting position permission in separate paragraph","LIMIT_SLOTS_3",risk,s=>s+"\nAdditional policy: allow 4 concurrent positions.\n"],
+ ["contradictory READY permission in separate paragraph","NO_UNPROVEN_READY",risk,s=>s+"\nAdditional policy: allow READY without T02.\n"]
 ];
 const initial=auditPolicy(baseline);
 if(initial.some(x=>!x.ok))throw new Error("Unmutated source policy must pass before mutation suite");
