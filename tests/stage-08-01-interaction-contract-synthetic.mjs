@@ -94,6 +94,46 @@ t("FR scope retained",agents.includes("FR-027–FR-040"),true);
 const links=[...body.matchAll(/\]\(([^)\s]+)\)/g)].map(x=>x[1]).filter(x=>!/^https?:/i.test(x)).map(x=>x.split("#")[0]).filter(Boolean);
 t("at least ten references",links.length>=10,true);
 t("all local references exist",links.every(x=>exists("docs/workflows/"+x)),true);
+// 08.1 self-review correction: source-bound routing guards (fixture routing alone is insufficient).
+function routeTableLine(text,id){return text.split("\n").find(line=>line.startsWith("| ")&&line.includes("| **"+id+"** |"))||"";}
+function routeRule(text,id,required=[],forbidden=[]){
+ const line=routeTableLine(text,id);
+ return !!line&&required.every(x=>line.includes(x))&&forbidden.every(x=>!line.includes(x));
+}
+const expectedRouteLines={
+ RT01:[["Skill не обязателен"],[]],
+ RT02:[["R1","market-analysis"],[]],
+ RT03:[["R2","data-verification","market-analysis","strategy-planning"],[]],
+ RT04:[["data-verification","portfolio-analysis","risk-assessment"],[]],
+ RT05:[["portfolio-analysis","risk-assessment","strategy-planning","H01/T05"],[]],
+ RT06:[["strategy-planning","P01"],["veles-configuration","ginarea-configuration"]],
+ RT07:[["R2","veles-configuration"],["ginarea-configuration"]],
+ RT08:[["R2","ginarea-configuration"],["veles-configuration"]],
+ RT09:[["R3","Veles ИЛИ GinArea Skill","T02/T03/T04"],[]],
+ RT10:[["RECHECK","READY"],[]]
+};
+for(const [routeId,[required,forbidden]] of Object.entries(expectedRouteLines)){
+ t("actual Markdown route content "+routeId,routeRule(body,routeId,required,forbidden),true);
+}
+t("route table exactly 10 rows",body.split("\n").filter(x=>/^\| .+\| \*\*RT\d{2}\*\* \|/.test(x)).length,10);
+const stateSentence=body.split("\n").find(x=>x.startsWith("**Переходы допустимы:**"))||"";
+for(const transition of ["ASK→ANALYZE/STOP","ANALYZE→ASK/CHOOSE/RECHECK/STOP","CHOOSE→RECHECK/STOP","RECHECK→ANALYZE/ASK/STOP"]){
+ t("actual allowed transitions "+transition,stateSentence.includes(transition),true);
+}
+t("STOP documented as terminal",stateSentence.includes("Новый запрос после"),true);
+t("document states READY is not dialog state",has(["READY","не состояние автомата"]),true);
+t("CHOOSE cannot directly authorize trade",has(["CHOOSE","не означает согласия"]),true);
+t("R3 no automatic READY on TTL",has(["не достаточное","READY"]),true);
+t("R1 no blanket portfolio",has(["**R1** не требует личных T02/T03/T04/P02"]),true);
+t("one question for missing mandatory data",has(["одним адресным вопросом"]),true);
+// In-memory mutations must be detected by source guards even if the JS router is unchanged.
+const badR3=body.replace("**Veles ИЛИ GinArea Skill**","**обе платформы одновременно**");
+t("mutation dual platform in R3 caught",routeRule(badR3,"RT09",expectedRouteLines.RT09[0]),false);
+const badR2=body.replace("data-verification → market-analysis → strategy-planning","market-analysis → strategy-planning");
+t("mutation missing data-verification in R2 caught",routeRule(badR2,"RT03",expectedRouteLines.RT03[0]),false);
+const badVeles=body.replace("**"+tick+"veles-configuration"+tick+"**","**"+tick+"ginarea-configuration"+tick+"**");
+t("mutation wrong config Skill caught",routeRule(badVeles,"RT07",expectedRouteLines.RT07[0]),false);
+
 const failures=cases.filter(x=>!x.pass);
 for(const f of failures)console.error("FAIL",f.id,f.name,JSON.stringify({actual:f.actual,expected:f.expected}));
 console.log(JSON.stringify({kind:"STAGE_08_01_LOCAL_DIALOG_SYNTHETIC",total:cases.length,passed:cases.length-failures.length,failed:failures.length,normativeCases:32,independentLLMTests:0,liveTrading:false,actualSkillRuntime:false}));
