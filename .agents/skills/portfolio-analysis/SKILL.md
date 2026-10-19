@@ -16,7 +16,7 @@ description: Reconcile the full Bybit USDT perpetual portfolio across account sn
 
 - Pure education, general `R1` coin overview or indicator-only `R2` market analysis without relevant positions: do not request the user's private portfolio unnecessarily.
 - Do **not** claim direct account/API access, issue/cancel orders, change leverage, maintain background monitoring, compute an assured Cross liquidation/Short worst-case loss, invent account balances or assign `READY`.
-- Do not replace `risk-assessment`, `strategy-planning`, `veles-configuration` or `ginarea-configuration`; those future modules may not exist yet. Provide a **verified-or-unverified portfolio handoff**, never a final bot risk permit.
+- Do not replace `risk-assessment`, `strategy-planning`, `veles-configuration` or `ginarea-configuration`; these modules exist in the feature branch but their runtime availability must be verified. Provide a **verified-or-unverified portfolio handoff**, never a final bot risk permit.
 
 ## Read approved references as needed
 
@@ -99,4 +99,4 @@ Return a structured, source-labelled portfolio report:
 
 **Output label (internal only):** `PORTFOLIO_SNAPSHOT_INCOMPLETE`, `PORTFOLIO_UNVERIFIED`, or `PORTFOLIO_EVIDENCE_COLLECTED_NOT_READY`. These are **not** new trading statuses; if the caller needs an actual final decision, approved statuses are `NEEDS_DATA`, `UNVERIFIED`, `REJECTED`, `READY` only after the full separate risk/platform verification.
 
-**Always preserve open blockers:** RV-02 (Cross/account MMR + adverse-path liquidation), RV-03 (strict upper Short loss), RV-04 (real platform P02), RV-06 (independent execution), TV-01–TV-04 and missing real F/V/H/R FR-038. No real `READY` based on a local synthetic check.
+**Always preserve open blockers:** RV-02 (Cross/account MMR + adverse-path liquidation), RV-03 (strict upper Short loss), RV-04 (real platform P02), RV-06 (independent execution), TV-01–TV-04 and missing real F/A/H/R FR-038. No real `READY` based on a local synthetic check.
