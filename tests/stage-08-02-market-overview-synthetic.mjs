@@ -61,7 +61,7 @@ check("MO14 R1 not T02",scope().requiresT02,false);
 check("MO15 4h unavailable must disclose",doc.includes("4h "+BT+"NOT_CHECKED"+BT),true);
 check("MO16 funding without unit",doc.includes("Funding указан без интервала и единицы"),true);
 check("MO17 one OI point not trend",doc.includes("OI текущая точка одна"),true);
-check("MO18 publication not event",doc.includes("не заявлять событие свершившимся"),true);
+check("MO18 publication not event",doc.includes("Не заявлять событие свершившимся"),true);
 check("MO19 third party heatmap not orders",doc.includes("third-party estimates"),true);
 check("MO20 trade config not R1",doc.includes("R1 не выдаёт торговый конфиг"),true);
 check("MO21 volatility invalidates TTL",evidence({exchange:"Bybit",category:"linear",kind:"Last",observedAt:"2026-10-20T11:59:00Z",event:true}),"RECHECK");
