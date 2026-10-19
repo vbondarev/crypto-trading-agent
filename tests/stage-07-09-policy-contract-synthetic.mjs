@@ -33,6 +33,11 @@ export function auditPolicy(files) {
  rule("031","LIMIT_LEVERAGE_5",/≤5×/);
  rule("032","LIMIT_LIQ_15",/≥15%/);
  rule("033","LIMIT_SLOTS_3",/At most \*\*3 concurrent potential exchange position slots\*\*/);
+ const allActiveSkills=SKILL_NAMES.map(skill).join("\n");
+ const slotGuard=checks.find(x=>x.id==="LIMIT_SLOTS_3");
+ // Also reject a *second permissive instruction* even when the canonical FR-033 table row survives unchanged.
+ slotGuard.ok=slotGuard.ok&&!/\b(?:allow|permit|may open|can open)\s+(?:up to\s+)?(?:[4-9]|\d{2,})\s+(?:concurrent\s+)?(?:positions|position slots)\b/i.test(allActiveSkills)
+  &&!/\b(?:разрешено|допустимо|можно)\s+(?:до\s+)?(?:[4-9]|\d{2,})\s+(?:активных\s+)?(?:позиций|позиции)\b/i.test(allActiveSkills);
  rule("034","LIMIT_RESERVE_100",/Full \*\*100% future averaging IM\*\*/);
  rule("035","LIMIT_DAY_3",/Daily loss \*\*≤3%\*\*/);
  rule("036","LIMIT_HWM_H04",/\*\*Known active H04 \/ H02 ≥15% \/ H03 ≥3%\*\* bars \*\*new risk\*\*/);
@@ -40,6 +45,8 @@ export function auditPolicy(files) {
  rule("038","STRESS_F_A_H_R",/F \(\*\*fixed shocks\*\*\), A \(\*\*adaptive volatility/);
  rule("039","MANUAL_ONLY",/manually considered/);
  rule("040","NO_UNPROVEN_READY",/Final R3 is \*\*not .READY.\*\* until all/);
+ const readyGuard=checks.find(x=>x.id==="NO_UNPROVEN_READY");
+ readyGuard.ok=readyGuard.ok&&!/\b(?:allow|permit|grant|declare|issue)\s+READY\s+without\s+(?:T02|P02|full risk|risk)\b/i.test(allActiveSkills);
  check("HISTORICAL_NO_HARD_VETO",risk.includes("Missing H02 →")&&risk.includes("NOT_CHECKED")&&risk.includes("H04 known active violation"),"History missing is NOT_CHECKED; known H04 vetoes");
  check("DATA_R3_FRESHNESS",skill("data-verification").includes("R3 handoff")&&skill("data-verification").includes("T02")&&skill("data-verification").includes("Mark")&&skill("data-verification").includes("P02"),"R3 evidence requires whole account and Mark");
  check("MARKET_NO_READY",skill("market-analysis").includes("Never assign")&&skill("market-analysis").includes("READY"),"Market analysis must not grant final READY");
