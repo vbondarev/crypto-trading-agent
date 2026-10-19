@@ -160,6 +160,12 @@ t("seconds epoch not silently treated as V5 ms",dataAge({responseTime:Math.floor
 t("epoch number outside response_time rejected",dataAge({snapshotAt:Date.parse("2026-10-19T09:59:00Z")},now).status,"TIME_UNVERIFIED");
 t("old instrument specification not valid R3",quality({metric:"instrument",mode:"R3",source:{value:"tick",observedAt:"2026-10-17T09:00:00Z"},now}),"STALE_TTL");
 t("funding R3 11 minute stale",quality({metric:"funding",mode:"R3",source:{value:0.01,observedAt:"2026-10-19T09:49:00Z"},now}),"STALE_TTL");
+const referenceLinks=[...skillText.matchAll(/\]\((\.\.\/\.\.\/\.\.\/[^)]+)\)/g)].map(m=>m[1]);
+t("ten verified internal policy references",referenceLinks.length,10);
+t("reference target paths exist on local checkout",referenceLinks.every(r=>existsSync(new URL(r,skillUrl))),true);
+t("required P01/P02 separation in Skill",skillText.includes("P01 does not prove P02"),true);
+t("R3 account data is mandatory in Skill",skillText.includes("Whole T02 account (R3)"),true);
+t("R1 does not require blanket T02",skillText.includes("No blanket requirement for account T02"),true);
 const failures=cases.filter(c=>!c.pass);
 for(const f of failures)console.error("FAIL",f.id,f.label,JSON.stringify({actual:f.actual,expected:f.expect}));
 console.log(JSON.stringify({kind:"SYNTHETIC_SKILL_LOGIC_AND_CONTENT",total:cases.length,passed:cases.length-failures.length,failed:failures.length,verifiedPrivateBybit:false,realChatGPTSkillInvoked:false,realReady:false}));
