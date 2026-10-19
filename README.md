@@ -76,10 +76,10 @@
 | [`.agents/skills/ginarea-configuration/SKILL.md`](.agents/skills/ginarea-configuration/SKILL.md) | **Седьмой Skill, 07.8 принят 19.10.2026:** GinArea PRO, Default/Auto/Dynamic/Indicator/DCA, UTA/Cross, IN/OUT/Instop/Disable IN, P02 и полный риск |
 | [`docs/stage-07-08-validation.md`](docs/stage-07-08-validation.md) | Протокол 07.8: **102/102 локальных синтетических проверок**, 36 нормативных сценариев и открытые реальные RV/TV |
 | [`tests/stage-07-08-ginarea-configuration-synthetic.mjs`](tests/stage-07-08-ginarea-configuration-synthetic.mjs) | Воспроизводимые синтетические тесты GinArea совместимости, размеров IN, Disable IN, Instop и учёта позиции |
-| [`docs/stage-07-review.md`](docs/stage-07-review.md) | **07.9 ожидает приёмки:** первоначально 796/796, после устранения SR-079-01–04 — 844/844 локальных assertions и 16/16 обнаруженных мутаций; без runtime/реального READY |
+| [`docs/stage-07-review.md`](docs/stage-07-review.md) | **07.9 ожидает приёмки:** первоначально 796/796, после устранения SR-079-01–04 — 844/844 локальных assertions и 18/18 обнаруженных мутаций; без runtime/реального READY |
 | [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **190/190 локальных композиционных assertions** (142 исходных + 48 прямых policy-guards), 17 route-вариантов; не независимый ChatGPT runtime |
 | [`tests/stage-07-09-policy-contract-synthetic.mjs`](tests/stage-07-09-policy-contract-synthetic.mjs) | **48/48 проверок по фактическому тексту 7 Skills/контракту**; тесты также встроены в композиционный модуль, не складывать дважды |
-| [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **16/16 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
+| [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **18/18 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
 
 
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
