@@ -51,7 +51,7 @@
 | [`docs/platform-06-07-validation.md`](docs/platform-06-07-validation.md) | Протокол 06.7: **57/57 первоначально; после ревизии 06.8 — 64/64 локальных теста**, не реальные стресс-протоколы F/V/H/R |
 | [`tests/stage-06-07-synthetic.mjs`](tests/stage-06-07-synthetic.mjs) | Воспроизводимый синтетический JS-модуль: **64/64 PASS после 06.8**; не код торгового агента |
 | [`docs/stage-06-review.md`](docs/stage-06-review.md) | **06.8 и этап 06 приняты 16.10.2026:** ревизия FR-047–FR-053, исправления 7 регрессий, открытые RV/TV/F/V/H/R |
-| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 планируемых Skills; 07.1–07.7 приняты, 07.8 создан и ждёт приёмки; 07.9 не начат |
+| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 планируемых Skills; 07.1–07.8 приняты, 07.9 ревизия готова и ждёт итоговой приёмки; этап 07 не закрыт |
 | [`docs/stage-07-skills-contract.md`](docs/stage-07-skills-contract.md) | **07.1 принят 19.10.2026:** контракт frontmatter, маршрутов R1/R2/R3, реестра семи Skills, 32 нормативных сценариев |
 | [`docs/stage-07-01-validation.md`](docs/stage-07-01-validation.md) | Протокол 07.1: **52/52 выполненных локальных проверок**, без фактического runtime Skills |
 | [`tests/stage-07-01-contract-synthetic.mjs`](tests/stage-07-01-contract-synthetic.mjs) | Воспроизводимая синтетическая проверка маршрутизатора и простого YAML-frontmatter; не реальный Skill |
@@ -73,9 +73,11 @@
 | [`.agents/skills/veles-configuration/SKILL.md`](.agents/skills/veles-configuration/SKILL.md) | **Шестой Skill, 07.7 принят 19.10.2026:** только Veles P01/P02, SIMPLE/CUSTOM/SIGNAL, полная сетка, TP/SL/BE, `POSITION -1`, остановка/отмена/закрытие |
 | [`docs/stage-07-07-validation.md`](docs/stage-07-07-validation.md) | Протокол 07.7: **92/92 локальных синтетических теста**, 36 нормативных сценариев, реальные P02/T02 и READY не подтверждены |
 | [`tests/stage-07-07-veles-configuration-synthetic.mjs`](tests/stage-07-07-veles-configuration-synthetic.mjs) | Воспроизводимые проверки Veles полей, будущих IN, SL/TP, Position −1, отказов при неполноте данных |
-| [`.agents/skills/ginarea-configuration/SKILL.md`](.agents/skills/ginarea-configuration/SKILL.md) | **Седьмой настоящий Skill, 07.8 ждёт приёмки:** GinArea PRO, Default/Auto/Dynamic/Indicator/DCA, UTA/Cross, IN/OUT/Instop/Disable IN, P02 и полный риск |
+| [`.agents/skills/ginarea-configuration/SKILL.md`](.agents/skills/ginarea-configuration/SKILL.md) | **Седьмой Skill, 07.8 принят 19.10.2026:** GinArea PRO, Default/Auto/Dynamic/Indicator/DCA, UTA/Cross, IN/OUT/Instop/Disable IN, P02 и полный риск |
 | [`docs/stage-07-08-validation.md`](docs/stage-07-08-validation.md) | Протокол 07.8: **102/102 локальных синтетических проверок**, 36 нормативных сценариев и открытые реальные RV/TV |
 | [`tests/stage-07-08-ginarea-configuration-synthetic.mjs`](tests/stage-07-08-ginarea-configuration-synthetic.mjs) | Воспроизводимые синтетические тесты GinArea совместимости, размеров IN, Disable IN, Instop и учёта позиции |
+| [`docs/stage-07-review.md`](docs/stage-07-review.md) | **07.9 ожидает приёмки:** итоговая маршрутизация 7 Skills, журнал исправлений/блокеров; 796/796 только локальная синтетика |
+| [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **142/142 композиционных теста** (17 route-вариантов), не установленный ChatGPT runtime и не реальная торговля |
 
 
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
