@@ -47,11 +47,11 @@
 | [`docs/platform-06-05-validation.md`](docs/platform-06-05-validation.md) | **06.5 принят 16.10.2026:** 66/66 локальных проверок, 40 нормативных сценариев, 18 переходов IN/OUT/Disable IN |
 | [`docs/platforms/configuration-contract.md`](docs/platforms/configuration-contract.md) | **06.6 принят 16.10.2026:** 24 сопоставления Veles/GinArea, typed money, Bybit quantity/price filters, P02/ownership и запрет ложного READY |
 | [`docs/platform-06-06-validation.md`](docs/platform-06-06-validation.md) | Протокол 06.6: 65/65 локальных JS-проверок, 32 нормативных сценария и 6 учебных примеров |
-| [`docs/platforms/platform-synthetic-tests.md`](docs/platforms/platform-synthetic-tests.md) | **06.7 принят 16.10.2026; 06.8 выполнен, ждёт приёмки:** 40 негативных эталонов, портфельные стресс-требования F/V/H/R и незакрытые риски |
-| [`docs/platform-06-07-validation.md`](docs/platform-06-07-validation.md) | Протокол 06.7: **57/57 первоначально; после ревизии 06.8 — 64/64 локальных теста**, не реальные стресс-протоколы F/V/H/R |
+| [`docs/platforms/platform-synthetic-tests.md`](docs/platforms/platform-synthetic-tests.md) | **06.7 и 06.8 приняты 16.10.2026:** 40 негативных эталонов, портфельные стресс-требования F/A/H/R и незакрытые риски |
+| [`docs/platform-06-07-validation.md`](docs/platform-06-07-validation.md) | Протокол 06.7: **57/57 первоначально; после ревизии 06.8 — 64/64 локальных теста**, не реальные стресс-протоколы F/A/H/R |
 | [`tests/stage-06-07-synthetic.mjs`](tests/stage-06-07-synthetic.mjs) | Воспроизводимый синтетический JS-модуль: **64/64 PASS после 06.8**; не код торгового агента |
-| [`docs/stage-06-review.md`](docs/stage-06-review.md) | **06.8 и этап 06 приняты 16.10.2026:** ревизия FR-047–FR-053, исправления 7 регрессий, открытые RV/TV/F/V/H/R |
-| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 планируемых Skills; 07.1–07.8 приняты, 07.9 ревизия готова и ждёт итоговой приёмки; этап 07 не закрыт |
+| [`docs/stage-06-review.md`](docs/stage-06-review.md) | **06.8 и этап 06 приняты 16.10.2026:** ревизия FR-047–FR-053, исправления 7 регрессий, открытые RV/TV/F/A/H/R |
+| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 созданных Skills; 07.1–07.8 приняты, 07.9 ревизия готова и ждёт итоговой приёмки; этап 07 не закрыт |
 | [`docs/stage-07-skills-contract.md`](docs/stage-07-skills-contract.md) | **07.1 принят 19.10.2026:** контракт frontmatter, маршрутов R1/R2/R3, реестра семи Skills, 32 нормативных сценариев |
 | [`docs/stage-07-01-validation.md`](docs/stage-07-01-validation.md) | Протокол 07.1: **52/52 выполненных локальных проверок**, без фактического runtime Skills |
 | [`tests/stage-07-01-contract-synthetic.mjs`](tests/stage-07-01-contract-synthetic.mjs) | Воспроизводимая синтетическая проверка маршрутизатора и простого YAML-frontmatter; не реальный Skill |
