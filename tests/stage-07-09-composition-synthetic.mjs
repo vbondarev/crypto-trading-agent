@@ -3,6 +3,7 @@
 //   node tests/stage-07-09-composition-synthetic.mjs
 // Does not invoke ChatGPT Skill runtime, Bybit, Veles, GinArea, live stress engines or exchange orders.
 import {readFileSync,existsSync} from "node:fs";
+import {auditPolicy,loadPolicyFiles} from "./stage-07-09-policy-contract-synthetic.mjs";
 import {fileURLToPath} from "node:url";
 import {dirname,resolve} from "node:path";
 const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),"..");
@@ -188,6 +189,10 @@ t("Short upper bound RV-03 not closed",skill["risk-assessment"].includes("RV-03"
 t("GinArea sticky Disable IN",skill["ginarea-configuration"].includes("sticky"),true);
 t("Veles POSITION -1 accounted",skill["veles-configuration"].includes("POSITION -1"),true);
 t("no tested Skill claims actual API access",slugs.every(x=>!/^.*(?:we executed live Bybit|we placed order)/im.test(skill[x])),true);
+// Source-contract checks complement (never replace) the existing deterministic route fixture.
+// A malicious edit to an actual SKILL.md must fail here even if the fixture router remains unchanged.
+const sourceContracts=auditPolicy(loadPolicyFiles(ROOT));
+for(const p of sourceContracts)t("actual source "+p.id,p.ok,true);
 const fails=checks.filter(x=>!x.pass);
 for(const f of fails)console.error("FAIL",f.id,f.name,JSON.stringify({actual:f.actual,expected:f.expected}));
 console.log(JSON.stringify({kind:"STAGE_07_09_LOCAL_COMPOSITION_SYNTHETIC",total:checks.length,passed:checks.length-fails.length,failed:fails.length,routes:expected.length,actualSkillAutoDiscovery:false,realBybit:false,realVelesP02:false,realGinAreaP02:false,independentLLMBlindRuns:0,tradeReady:false}));
