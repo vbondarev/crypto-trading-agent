@@ -101,7 +101,7 @@ t("R3 missing whole T02",inputGate({t02Age:3,markAge:1,full:false,p02:true}),"NE
 t("R3 6min T02 stale",inputGate({t02Age:6,markAge:1,full:true,p02:true}),"STALE");
 t("R3 3min Mark stale",inputGate({t02Age:1,markAge:3,full:true,p02:true}),"STALE");
 t("R3 fresh but fill invalidates",inputGate({t02Age:1,markAge:1,full:true,p02:true,event:true}),"INVALIDATED");
-t("coLoss Long and Short same price change",coLoss({longQty:1,shortQty:1,oldPrice:100,newPrice:90}),0);
+t("coLoss Long and Short same price change",Math.abs(coLoss({longQty:1,shortQty:1,oldPrice:100,newPrice:90})),0);
 t("coLoss Long 2 Short 1 down 10",coLoss({longQty:2,shortQty:1,oldPrice:100,newPrice:90}),-10);
 t("correlation n29 insufficient",corrQuality(29,1,1),"INSUFFICIENT");
 t("correlation constant series invalid",corrQuality(30,0,1),"INSUFFICIENT");
