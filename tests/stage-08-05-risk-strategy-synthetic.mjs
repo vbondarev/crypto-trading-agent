@@ -63,7 +63,7 @@ const F=fullRisk();
 t("RD01 market scope",route({intent:"market"}),"RT02_R1");
 t("RD02 incomplete portfolio RT04",route({intent:"risk",existing:true}),"RT04_RT05");
 t("RD03 no P02/T02 no READY",proof({isR3:true}),"NEEDS_DATA");
-t("RD04 user selection separate",has(doc,["выбор стратегии","выбранной одной","CHOOSE"]),true);
+t("RD04 user selection separate",has(doc,["выбор стратегии","одной платформы","CHOOSE"]),true);
 t("RD05 4 slots strict violation",gate({...F,slots:4}),"REJECTED");
 t("RD06 ADD to existing slot bound 3",gate({...F,action:"ADD",slots:3}),"LOCAL_NUMERIC_PASS_NOT_READY");
 t("RD07 leverage 8",gate({...F,lev:8}),"REJECTED");
