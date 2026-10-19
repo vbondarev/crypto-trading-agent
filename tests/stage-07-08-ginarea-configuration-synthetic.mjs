@@ -74,7 +74,7 @@ t("20 BASE IN qty unit distinct",typeAmount(20,"BASE",.1),"BASE_QTY_NEEDS_EXCHAN
 t("unknown USDT-to-BASE conversion",typeAmount(20,"USDT",null),"UNIT_OR_PRICE_UNKNOWN");
 t("invalid zero amount",typeAmount(0,"USDT",.1),"INVALID_AMOUNT");
 t("0.1 x1.5 capped .3 first",orderCap(.1,1.5,.3,4)[0],.1);
-t("0.1 x1.5 capped .3 second",orderCap(.1,1.5,.3,4)[1],.15);
+t("0.1 x1.5 capped .3 second",Math.round(orderCap(.1,1.5,.3,4)[1]*1000)/1000,.15);
 t("0.1 x1.5 capped .3 third",Math.round(orderCap(.1,1.5,.3,4)[2]*1000)/1000,.225);
 t("0.1 x1.5 capped .3 fourth",orderCap(.1,1.5,.3,4)[3],.3);
 t("size total > per order cap",gridSize(orderCap(.1,1.5,.3,4))>.3,true);
