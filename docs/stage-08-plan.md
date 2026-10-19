@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Текущий статус 20.10.2026 после приёмки 08.4:** 08.1–08.4 **`COMPLETED / APPROVED`**, [акт 08.4](stage-08-04-validation.md#6-формальная-приёмка-084-и-разрешение-085--20102026). **08.5 `IMPLEMENTED / PENDING USER REVIEW`** ([шесть промптов и 40 RD](prompts/risk-strategy-decision.md), [протокол](stage-08-05-validation.md)); **08.6 `NOT STARTED`**. Ранее добавленные статусы ниже представляют последовательную историческую хронологию, а не отменяют эту строку. PR #1 Open/Draft, реального READY нет.
+
 > **Актуально 20.10.2026 после приёмки 08.3:** 08.1–08.3 **`COMPLETED / APPROVED`** ([акт 08.3](stage-08-03-validation.md#6-формальная-приёмка-083-и-разрешение-084--20102026)); **08.4 `IMPLEMENTED / PENDING USER REVIEW`** ([промпты](prompts/portfolio-recovery.md), [протокол/self-review](stage-08-04-validation.md)); **08.5 `NOT STARTED`**. Прочие пометки ниже сохраняют историческую хронологию; PR #1 Open/Draft, реального READY нет.
 
 > **Актуально 20.10.2026 после прямого решения пользователя:** 08.1 и **08.2 `COMPLETED / APPROVED`** ([акт 08.2](stage-08-02-validation.md#6-формальная-приёмка-082-и-разрешение-083--20102026)); **08.3 `IMPLEMENTED / PENDING USER REVIEW`** ([промпты](prompts/technical-scenario.md), [протокол](stage-08-03-validation.md)); **08.4 `NOT STARTED`**. Предыдущие статусы ниже — история поэтапного исполнения. PR #1 Open/Draft, реального READY нет.
@@ -115,3 +117,11 @@
 Покрытие: RT04/RT05/RT10; T02/T03/T04/T05 по задачам; full account pages; One-Way/Hedge exchange slots по `positionIdx`; owner/confirmed orderId, partial `leavesQty`, FILLED и CANCELLED без повторного IN/IM; virtual future IN, S0–S3 и 100% reserve без фиктивной защиты Cross; net H01 (gross realized + current attributed uPnL − fee − funding) и различие `L_lifecycle/L_from_now`. Для R3 полная T02 ≤5m и Bybit Mark ≤2m **не достаточны** без остальных обязательных доказательств. Из точных GitHub-исходников локально выполнены **184/184 JS/V8 assertions PASS**, включая **8/8** targeted in-memory mutations (входят в 184); это не реальный Node checkout, независимый ChatGPT-runtime, Bybit account или торговый READY.
 
 **08.4 `IMPLEMENTED / PENDING USER REVIEW`; 08.5 `NOT STARTED`**. RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, real FR-038 F/A/H/R остаются открытыми, PR Open/Draft, не сливать.
+
+## 12. Реализация 08.5 — сравнение стратегий и риск-гейты (20.10.2026)
+
+Прямое «Принимаю. Дальше.» формально приняло 08.4 (с оговоркой о перенесённой общей регрессии) и разрешило начать **только 08.5**. Созданы [шесть копируемых P08-18–P08-23](prompts/risk-strategy-decision.md), 40 нормативных RD01–RD40, [синтетический JS-модуль](../tests/stage-08-05-risk-strategy-synthetic.mjs) и [журнал проверки и self-review](stage-08-05-validation.md).
+
+Сравнение WAIT/HOLD/NEW/ADD/REDUCE/CLOSE/RECOVER с отдельным пользовательским выбором CHOOSE, актуальными данными Bybit S0–S3, строгими **FR-027–FR-040** (14 отдельных строк), Day ≥3% по Москве / HWM ≥15% / известный H04 veto, R3-набором T02/T03/T04+Mark/P02/F/A/H/R; отсутствие H02/H03 → NOT_CHECKED, не ложный PASS. Выполнено **198/198** локальных JS/V8 assertions PASS, **18/18** targeted in-memory mutations включая подмены порогов (входят в 198). Отложенная общая регрессия **08.1–08.4 повторно выполнена: 570/570 PASS**. Реальный Node checkout/CI, независимый ChatGPT runtime, real Bybit и READY **не** проверены. Сохраняются RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, FR-038 historical Mark.
+
+**08.5 `IMPLEMENTED / PENDING USER REVIEW`, 08.6 `NOT STARTED`**. Не переходить дальше и не сливать PR без отдельной команды пользователя.
