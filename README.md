@@ -51,7 +51,7 @@
 | [`docs/platform-06-07-validation.md`](docs/platform-06-07-validation.md) | Протокол 06.7: **57/57 первоначально; после ревизии 06.8 — 64/64 локальных теста**, не реальные стресс-протоколы F/A/H/R |
 | [`tests/stage-06-07-synthetic.mjs`](tests/stage-06-07-synthetic.mjs) | Воспроизводимый синтетический JS-модуль: **64/64 PASS после 06.8**; не код торгового агента |
 | [`docs/stage-06-review.md`](docs/stage-06-review.md) | **06.8 и этап 06 приняты 16.10.2026:** ревизия FR-047–FR-053, исправления 7 регрессий, открытые RV/TV/F/A/H/R |
-| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 созданных Skills; 07.1–07.8 приняты, 07.9 ревизия готова и ждёт итоговой приёмки; этап 07 не закрыт |
+| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 созданных Skills; 07.1–07.9 и весь этап 07 приняты 19.10.2026 в документально-синтетических границах; 08 планируется |
 | [`docs/stage-07-skills-contract.md`](docs/stage-07-skills-contract.md) | **07.1 принят 19.10.2026:** контракт frontmatter, маршрутов R1/R2/R3, реестра семи Skills, 32 нормативных сценариев |
 | [`docs/stage-07-01-validation.md`](docs/stage-07-01-validation.md) | Протокол 07.1: **52/52 выполненных локальных проверок**, без фактического runtime Skills |
 | [`tests/stage-07-01-contract-synthetic.mjs`](tests/stage-07-01-contract-synthetic.mjs) | Воспроизводимая синтетическая проверка маршрутизатора и простого YAML-frontmatter; не реальный Skill |
@@ -76,10 +76,11 @@
 | [`.agents/skills/ginarea-configuration/SKILL.md`](.agents/skills/ginarea-configuration/SKILL.md) | **Седьмой Skill, 07.8 принят 19.10.2026:** GinArea PRO, Default/Auto/Dynamic/Indicator/DCA, UTA/Cross, IN/OUT/Instop/Disable IN, P02 и полный риск |
 | [`docs/stage-07-08-validation.md`](docs/stage-07-08-validation.md) | Протокол 07.8: **102/102 локальных синтетических проверок**, 36 нормативных сценариев и открытые реальные RV/TV |
 | [`tests/stage-07-08-ginarea-configuration-synthetic.mjs`](tests/stage-07-08-ginarea-configuration-synthetic.mjs) | Воспроизводимые синтетические тесты GinArea совместимости, размеров IN, Disable IN, Instop и учёта позиции |
-| [`docs/stage-07-review.md`](docs/stage-07-review.md) | **07.9 ожидает приёмки:** первоначально 796/796, после устранения SR-079-01–04 — 844/844 локальных assertions и 18/18 обнаруженных мутаций; без runtime/реального READY |
+| [`docs/stage-07-review.md`](docs/stage-07-review.md) | **07.9 и весь этап 07 приняты 19.10.2026:** первоначально 796/796, после устранения SR-079-01–04 — 844/844 локальных assertions и 18/18 обнаруженных мутаций; без runtime/реального READY |
 | [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **190/190 локальных композиционных assertions** (142 исходных + 48 прямых policy-guards), 17 route-вариантов; не независимый ChatGPT runtime |
 | [`tests/stage-07-09-policy-contract-synthetic.mjs`](tests/stage-07-09-policy-contract-synthetic.mjs) | **48/48 проверок по фактическому тексту 7 Skills/контракту**; тесты также встроены в композиционный модуль, не складывать дважды |
 | [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **18/18 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
+| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **Проект плана 08.1–08.9, ожидает согласования:** пошаговые пользовательские промпты, сценарии и отчёты; реализация ещё не начата |
 
 
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
