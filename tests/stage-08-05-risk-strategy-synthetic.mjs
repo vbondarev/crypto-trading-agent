@@ -211,5 +211,5 @@ for(const [id,needle,malicious] of thresholdMutations){
 
 const bad=tests.filter(x=>!x.pass);
 for(const x of bad)console.error("FAIL",x.id,x.name,JSON.stringify({actual:x.actual,want:x.want}));
-console.log(JSON.stringify({kind:"STAGE_08_05_RISK_STRATEGY_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,normativeCases:40,copyablePrompts:6,mutations:mutations.length,independentLLMRuns:0,realNodeCheckoutVerified:false,liveBybit:false,tradeReady:false}));
+console.log(JSON.stringify({kind:"STAGE_08_05_RISK_STRATEGY_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,normativeCases:40,copyablePrompts:6,mutations:mutations.length+thresholdMutations.length,independentLLMRuns:0,realNodeCheckoutVerified:false,liveBybit:false,tradeReady:false}));
 if(bad.length)process.exitCode=1;
