@@ -14,7 +14,7 @@ description: Analyze BTC and altcoin market context, multi-timeframe trend, clos
 ## When **not** to use
 
 - No market data are needed to explain basic crypto terminology: answer directly instead of creating fictitious indicators.
-- Do **not** audit full Bybit Equity, Cross liquidation, bot margin, cumulative position risk or future IN reserves; those belong to `portfolio-analysis` and `risk-assessment` (planned later).
+- Do **not** audit full Bybit Equity, Cross liquidation, bot margin, cumulative position risk or future IN reserves; those belong to `portfolio-analysis` and `risk-assessment` (present in this branch; actual loading must still be confirmed).
 - Do **not** present a final Veles/GinArea form, issue an order, select a platform for the user, grant `READY`, claim profit guarantees or schedule monitoring between messages.
 - Do **not** assume live Bybit/TradingView/Coinglass APIs, account keys, installed scripts, indicator libraries, or an automatically loaded Skill runtime.
 
@@ -89,8 +89,8 @@ When series are insufficient, explicitly list which numbers/periods cannot be ca
 1. Separate **FACT** (observed value with source/time), **DERIVED** (shown calculation), **HYPOTHESIS** (possible future path) and **MISSING/UNVERIFIED** (unknown or conflicting source).
 2. Provide **base scenario**, **alternative scenario**, and **invalidation triggers**, each tied to data actually available; state direction only conditionally. If levels are warranted, derive support/resistance from real candles or correctly labelled user data, state timeframe and uncertainty. If no verified series: no numerical levels.
 3. R1 output may contain high-level historical interpretation with clearly dated figures. R2 outputs may contain a **conditional preliminary market scenario** when evidence suffices, but do not give an unconditional entry/exit, P02 form, leverage or stop with guaranteed maximum loss.
-4. If active positions, recovery, averaging or final bot configuration are involved, hand off the market evidence to **portfolio-analysis → risk-assessment → strategy-planning → one chosen platform Skill** as appropriate. Those future Skills may not exist yet; if unavailable, use approved policy docs and explicitly state the missing integration. **Never assign `READY` here.**
-5. Hard rule breaches (`H04` / verified strict risk-limit breaches) belong to risk decision; market analysis must not override `REJECTED` with a bullish or bearish signal. When Cross MMR, strict Short upper bound, full F/V/H/R or personal P02/T02 are not proven, do not claim they are safe. Open RV-02/RV-03, RV-04/RV-06 and TV-01–TV-04 remain open.
+4. If active positions, recovery, averaging or final bot configuration are involved, hand off the market evidence to **portfolio-analysis → risk-assessment → strategy-planning → one chosen platform Skill** as appropriate. All seven Skill files now exist in this branch; actual runtime loading must be verified. If unavailable, use approved policy docs and explicitly state the missing integration. **Never assign `READY` here.**
+5. Hard rule breaches (`H04` / verified strict risk-limit breaches) belong to risk decision; market analysis must not override `REJECTED` with a bullish or bearish signal. When Cross MMR, strict Short upper bound, full F/A/H/R or personal P02/T02 are not proven, do not claim they are safe. Open RV-02/RV-03, RV-04/RV-06 and TV-01–TV-04 remain open.
 
 ## Output contract
 
