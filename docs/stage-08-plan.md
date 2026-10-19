@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Актуально 20.10.2026 после прямого решения пользователя:** 08.1 и **08.2 `COMPLETED / APPROVED`** ([акт 08.2](stage-08-02-validation.md#6-формальная-приёмка-082-и-разрешение-083--20102026)); **08.3 `IMPLEMENTED / PENDING USER REVIEW`** ([промпты](prompts/technical-scenario.md), [протокол](stage-08-03-validation.md)); **08.4 `NOT STARTED`**. Предыдущие статусы ниже — история поэтапного исполнения. PR #1 Open/Draft, реального READY нет.
+
 > **Актуальный статус 20.10.2026:** 08.1 **`COMPLETED / APPROVED`** по [акту приёмки](stage-08-01-validation.md#6-формальная-приёмка-081-и-разрешение-082--20102026); 08.2 **`IMPLEMENTED / PENDING USER REVIEW`** по [протоколу](stage-08-02-validation.md), 103/103 синтетических JS/V8 checks, 24 нормативных MO01–MO24. 08.3 **`NOT STARTED`**. Исторические даты и статусы ниже показывают, что было известно при утверждении плана и на момент начала 08.1.
 
 > **Статус: `PLANNED / APPROVED` (19.10.2026).** План **08.1–08.9 утверждён пользователем с уточнением открытых RV-02/RV-03/RV-04/RV-06** после приёмки этапа 07 в документально-синтетических границах. **Утверждение плана не является разрешением начать 08.1**; первый шаг `NOT STARTED` до отдельной команды пользователя. [Итоговая приёмка 07](stage-07-review.md#10-формальная-приёмка-079-и-этапа-07--19102026). [PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1) сохраняется **Open/Draft**, без слияния.
@@ -95,3 +97,11 @@
 Установлены границы RT01 vs RT02, краткий R1 без обязательных личных T02/P02, происхождение Bybit USDT Perpetual/Spot и типов Last/Mark, ограничение текущей R1-цены **≤15 мин** только при доказанном observed_at и с AD-009 invalidation, исключение открытых свечей/неподтверждённых индикаторов, честный fallback при HTTP403 и не загруженном Skill. Локальные синтетические предикаты исполнены на полученных из GitHub текстах в изолированном JS/V8 с файловым адаптером, **103/103 PASS**, **3/3 targeted in-memory mutation detections** (учтены в 103, не суммировать отдельно). Реальный Node CI и независимое ChatGPT-runtime/Bybit испытание не выполнялись.
 
 **08.2 `IMPLEMENTED / PENDING USER REVIEW`; 08.3 `NOT STARTED`**, проектный PR #1 остаётся Open/Draft. Реальные RV-02/RV-03/RV-04/RV-06, TV-01–TV-04 и F/A/H/R FR-038 не закрыты, реального торгового `READY` нет.
+
+## 10. Реализация R2 technical-scenario 08.3 — 20.10.2026
+
+По прямой команде пользователя «Принимаю. Дальше.» формально принят 08.2 (в документально-синтетическом объёме) и разрешено начать 08.3. Созданы [шесть коротких R2-промптов](prompts/technical-scenario.md), 36 нормативных сценариев TS01–TS36, [синтетический JS-модуль](../tests/stage-08-03-technical-scenario-synthetic.mjs) и [протокол самостоятельного self-review](stage-08-03-validation.md). Отдельная пользовательская приёмка 08.3 **не** получена.
+
+Охват: RT03 `data-verification → market-analysis → strategy-planning`, портфель/риск только по применимости, exact Bybit USDT Perpetual vs Spot и Mark/Last, R2 внутридневная цена `≤5 минут` и более ранняя invalidation AD-009, закрытые согласованные OHLCV на релевантных TF, EMA/RSI/ATR warm-up и явная методика, базовый Long/Short/WAIT, инвалидация/неблагоприятный путь и no numeric levels without real evidence. **156/156 локальных JS/V8 assertions PASS** (внутри общего числа **5/5** обнаруженных targeted in-memory mutations), не Node/CI, не independent LLM blind-run, не live Bybit/API и не торговый READY. Сохранены RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, реальный FR-038 F/A/H/R.
+
+**08.3 `IMPLEMENTED / PENDING USER REVIEW`**, **08.4 `NOT STARTED`** до нового прямого решения пользователя. PR #1 Open/Draft, merge не разрешён.
