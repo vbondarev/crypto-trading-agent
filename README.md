@@ -80,16 +80,19 @@
 | [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **190/190 локальных композиционных assertions** (142 исходных + 48 прямых policy-guards), 17 route-вариантов; не независимый ChatGPT runtime |
 | [`tests/stage-07-09-policy-contract-synthetic.mjs`](tests/stage-07-09-policy-contract-synthetic.mjs) | **48/48 проверок по фактическому тексту 7 Skills/контракту**; тесты также встроены в композиционный модуль, не складывать дважды |
 | [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **18/18 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
-| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **План 08.1–08.9 утверждён:** 08.1–08.2 приняты 20.10.2026; 08.3 реализован и ожидает приёмки; 08.4 не начат, RV-02/RV-03/RV-04/RV-06 OPEN |
+| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **План 08.1–08.9 утверждён:** 08.1–08.3 приняты 20.10.2026; 08.4 реализован, ожидает приёмки; 08.5 не начат, RV-02/RV-03/RV-04/RV-06 OPEN |
 | [`docs/workflows/interaction-contract.md`](docs/workflows/interaction-contract.md) | **08.1 — контракт диалогов:** R1/R2/R3, RT01–RT10, T01–T06, ASK/ANALYZE/CHOOSE/RECHECK/STOP, проверка фактической загрузки Skills и правила RECHECK |
 | [`docs/stage-08-01-validation.md`](docs/stage-08-01-validation.md) | **08.1 принят 20.10.2026:** 32 нормативных IC01–IC32 и 127/127 локальных синтетических проверок, без независимого LLM/runtime |
 | [`tests/stage-08-01-interaction-contract-synthetic.mjs`](tests/stage-08-01-interaction-contract-synthetic.mjs) | Воспроизводимый JS-модуль 08.1: маршруты, состояния и ключевые негативные условия; не исполняющий торговый агент |
 | [`docs/prompts/market-overview.md`](docs/prompts/market-overview.md) | **08.2 принят 20.10.2026:** 5 коротких запросов R1 P08-01–P08-05, 24 нормативных негативных MO01–MO24 и строгая проверка источников/свежести |
 | [`docs/stage-08-02-validation.md`](docs/stage-08-02-validation.md) | Протокол и self-review принятого 08.2: **103/103 локальных синтетических assertions** (в том числе 3 in-memory мутации), без независимого LLM/runtime |
 | [`tests/stage-08-02-market-overview-synthetic.mjs`](tests/stage-08-02-market-overview-synthetic.mjs) | JS проверки 08.2 R1: market identity, source/TTL, Bybit/Spot, OHLCV, 24 MO-cases; не live Bybit API |
-| [`docs/prompts/technical-scenario.md`](docs/prompts/technical-scenario.md) | **08.3 реализован, ожидает приёмки:** 6 коротких R2-промптов P08-06–P08-11, 36 TS01–TS36, условные Long/Short/WAIT и отмена идеи |
+| [`docs/prompts/technical-scenario.md`](docs/prompts/technical-scenario.md) | **08.3 принят 20.10.2026:** 6 коротких R2-промптов P08-06–P08-11, 36 TS01–TS36, условные Long/Short/WAIT и отмена идеи |
 | [`docs/stage-08-03-validation.md`](docs/stage-08-03-validation.md) | Протокол и self-review 08.3: **156/156** локальных синтетических JS/V8 проверок, в том числе 5/5 целевых in-memory мутаций; без live рынка и READY |
 | [`tests/stage-08-03-technical-scenario-synthetic.mjs`](tests/stage-08-03-technical-scenario-synthetic.mjs) | JS-проверки 08.3: закрытие OHLCV, сортировка, gap, indicator warm-up, TTL R2, source-contract и безопасная маршрутизация |
+| [`docs/prompts/portfolio-recovery.md`](docs/prompts/portfolio-recovery.md) | **08.4 реализован, ждёт приёмки:** 6 промптов P08-12–P08-17, whole Bybit T02, orderId/leavesQty/positionIdx, H01 net recovery, 36 PR01–PR36 |
+| [`docs/stage-08-04-validation.md`](docs/stage-08-04-validation.md) | Протокол self-review 08.4: **184/184 локальных JS/V8 assertions PASS**, включая 8 targeted mutations, без доказанного реального READY |
+| [`tests/stage-08-04-portfolio-recovery-synthetic.mjs`](tests/stage-08-04-portfolio-recovery-synthetic.mjs) | Синтетическая регрессия 08.4: Hedge/One-Way, partial fill, FILLED/Cancelled, future IN, H01 и R3 свежесть; не real Bybit |
 
 
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
