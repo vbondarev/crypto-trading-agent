@@ -99,7 +99,7 @@ t("strategy-planning rejects implicit platform",skill["strategy-planning"].inclu
 t("market R1 not demand private T02",skill["market-analysis"].includes("do not")||skill["market-analysis"].includes("Do not"),true);
 t("actual risk protocol F/A/H/R",doc.risk.includes("F/A/H/R"),true);
 t("corrected Skills contract F/A/H/R",doc.contract.includes("F/A/H/R"),true);
-t("no canonical F/V/H/R typo in current contract",!doc.contract.includes("F/V/H/R"),true);
+t("no outdated F/V/H/R in normative contract before erratum",!doc.contract.split("## 8. Уточнение 07.9")[0].includes("F/V/H/R"),true);
 t("AGENTS corrected F/A/H/R",!doc.agents.includes("F/V/H/R"),true);
 t("FR-027-040 distinct risk standards",Array.from({length:14},(_,i)=>"FR-"+String(i+27).padStart(3,"0")).every(x=>doc.requirements.includes(x)),true);
 t("stages 07.1-07.9 planned",doc.plan.includes("07.1–07.9"),true);
