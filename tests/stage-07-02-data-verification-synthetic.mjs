@@ -20,7 +20,12 @@ function frontmatter(s){
 function dataAge({observedAt=null,responseTime=null,retrievedAt=null,snapshotAt=null},now){
  const basis=observedAt||responseTime||snapshotAt;
  if(!basis)return {status:"TIME_UNVERIFIED",minutes:null,basis:null};
- const parsed=Date.parse(basis);
+ // Never interpret unzoned local strings as absolute UTC. Only V5 numeric milliseconds
+ // are allowed as a numeric proxy for response_time; all other numbers remain unverified.
+ if(typeof basis==="number" && (responseTime!==basis||!Number.isInteger(basis)||basis<1e12||basis>=1e14))return {status:"TIME_UNVERIFIED",minutes:null,basis:null};
+ if(typeof basis==="string" && !/(?:Z|[+-]\d{2}:\d{2})$/.test(basis))return {status:"TIME_UNVERIFIED",minutes:null,basis:null};
+ if(typeof basis!=="number" && typeof basis!=="string")return {status:"TIME_UNVERIFIED",minutes:null,basis:null};
+ const parsed=typeof basis==="number"?basis:Date.parse(basis);
  const n=Date.parse(now);
  if(!Number.isFinite(parsed)||!Number.isFinite(n))return {status:"TIME_UNVERIFIED",minutes:null,basis:null};
  if(parsed>n+30000)return {status:"CLOCK_CONFLICT",minutes:null,basis:"FUTURE"};
@@ -148,6 +153,13 @@ t("critical conflict outranks missing",classDecision({unverified:true,missing:tr
 t("missing required data",classDecision({missing:true}),"NEEDS_DATA");
 t("all synthetic evidence still no READY",normStatus(classDecision({allPass:true})),"NOT_FINAL_READY");
 t("optional data not blanket hard fail",quality({metric:"oi",mode:"R3",source:null,mandatory:false,now}),"OPTIONAL_NO_READY_IMPLICATION");
+t("timezone-less string cannot satisfy R3",dataAge({observedAt:"2026-10-19T09:59:00"},now).status,"TIME_UNVERIFIED");
+t("timezone offset explicitly converts",dataAge({observedAt:"2026-10-19T12:59:00+03:00"},now).minutes,1);
+t("V5 server ms accepted only as proxy",dataAge({responseTime:Date.parse("2026-10-19T09:59:00Z")},now).basis,"response_time_PROXY");
+t("seconds epoch not silently treated as V5 ms",dataAge({responseTime:Math.floor(Date.parse("2026-10-19T09:59:00Z")/1000)},now).status,"TIME_UNVERIFIED");
+t("epoch number outside response_time rejected",dataAge({snapshotAt:Date.parse("2026-10-19T09:59:00Z")},now).status,"TIME_UNVERIFIED");
+t("old instrument specification not valid R3",quality({metric:"instrument",mode:"R3",source:{value:"tick",observedAt:"2026-10-17T09:00:00Z"},now}),"STALE_TTL");
+t("funding R3 11 minute stale",quality({metric:"funding",mode:"R3",source:{value:0.01,observedAt:"2026-10-19T09:49:00Z"},now}),"STALE_TTL");
 const failures=cases.filter(c=>!c.pass);
 for(const f of failures)console.error("FAIL",f.id,f.label,JSON.stringify({actual:f.actual,expected:f.expect}));
 console.log(JSON.stringify({kind:"SYNTHETIC_SKILL_LOGIC_AND_CONTENT",total:cases.length,passed:cases.length-failures.length,failed:failures.length,verifiedPrivateBybit:false,realChatGPTSkillInvoked:false,realReady:false}));
