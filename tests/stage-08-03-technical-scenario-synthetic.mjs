@@ -97,7 +97,7 @@ t("TS28 Mark volume not traded",doc.includes("Mark-price Kline")&&doc.includes("
 t("TS29 funding unit",doc.includes("funding interval + unit"),true);
 t("TS30 OI single observation",doc.includes("OI timestamp + definition"),true);
 t("TS31 BTC matched windows",doc.includes("BTC сравнивают по разным окнам"),true);
-t("TS32 chosen Short not auto Long",doc.includes("не выдавать Long как автоматически выбранную сделку"),true);
+t("TS32 chosen Short not auto Long",doc.includes("Не выдавать Long как автоматически выбранную сделку"),true);
 t("TS33 known H04 veto",outcome({confirmedOHLCV:true,fresh:true,marketOk:true,knownH04:true,increasesRisk:true}),"REJECTED_NEW_RISK");
 t("TS34 no bot commands",doc.includes("Не совершать сделки/бота"),true);
 t("TS35 don't invent 1d",doc.includes("запрошенные/полученные TF"),true);
@@ -130,7 +130,7 @@ t("incorrect start alignment",candles({rows:[bar(base+1000),bar(base+ms)]}).stat
 t("valid series not numerical indicators",indicator({period:20,count:80,method:true,warmup:true}),"INPUT_ELIGIBLE_NO_DERIVED_VALUE");
 t("open bar invalid for EMA",indicator({period:20,count:100,method:true,warmup:true,closed:false}),"OPEN_BAR_NOT_ALLOWED");
 t("no excess T02",doc.includes("не требует автоматически полного приватного T02/P02"),true);
-t("no future bot configuration",doc.includes("не готовое торговое")||doc.includes("не торговый движок"),true);
+t("no future bot configuration",doc.includes("**не** торговый движок")||doc.includes("без допуска сделки"),true);
 // Hard source-bound row contracts: mutations must fail even when test fixture functions stay unchanged.
 function row(body,id){return body.split("\n").find(x=>x.startsWith("| "+id+" |"))||"";}
 const pinned={
