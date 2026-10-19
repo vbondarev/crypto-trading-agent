@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Актуально 20.10.2026 после приёмки 08.3:** 08.1–08.3 **`COMPLETED / APPROVED`** ([акт 08.3](stage-08-03-validation.md#6-формальная-приёмка-083-и-разрешение-084--20102026)); **08.4 `IMPLEMENTED / PENDING USER REVIEW`** ([промпты](prompts/portfolio-recovery.md), [протокол/self-review](stage-08-04-validation.md)); **08.5 `NOT STARTED`**. Прочие пометки ниже сохраняют историческую хронологию; PR #1 Open/Draft, реального READY нет.
+
 > **Актуально 20.10.2026 после прямого решения пользователя:** 08.1 и **08.2 `COMPLETED / APPROVED`** ([акт 08.2](stage-08-02-validation.md#6-формальная-приёмка-082-и-разрешение-083--20102026)); **08.3 `IMPLEMENTED / PENDING USER REVIEW`** ([промпты](prompts/technical-scenario.md), [протокол](stage-08-03-validation.md)); **08.4 `NOT STARTED`**. Предыдущие статусы ниже — история поэтапного исполнения. PR #1 Open/Draft, реального READY нет.
 
 > **Актуальный статус 20.10.2026:** 08.1 **`COMPLETED / APPROVED`** по [акту приёмки](stage-08-01-validation.md#6-формальная-приёмка-081-и-разрешение-082--20102026); 08.2 **`IMPLEMENTED / PENDING USER REVIEW`** по [протоколу](stage-08-02-validation.md), 103/103 синтетических JS/V8 checks, 24 нормативных MO01–MO24. 08.3 **`NOT STARTED`**. Исторические даты и статусы ниже показывают, что было известно при утверждении плана и на момент начала 08.1.
@@ -105,3 +107,11 @@
 Охват: RT03 `data-verification → market-analysis → strategy-planning`, портфель/риск только по применимости, exact Bybit USDT Perpetual vs Spot и Mark/Last, R2 внутридневная цена `≤5 минут` и более ранняя invalidation AD-009, закрытые согласованные OHLCV на релевантных TF, EMA/RSI/ATR warm-up и явная методика, базовый Long/Short/WAIT, инвалидация/неблагоприятный путь и no numeric levels without real evidence. **156/156 локальных JS/V8 assertions PASS** (внутри общего числа **5/5** обнаруженных targeted in-memory mutations), не Node/CI, не independent LLM blind-run, не live Bybit/API и не торговый READY. Сохранены RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, реальный FR-038 F/A/H/R.
 
 **08.3 `IMPLEMENTED / PENDING USER REVIEW`**, **08.4 `NOT STARTED`** до нового прямого решения пользователя. PR #1 Open/Draft, merge не разрешён.
+
+## 11. Реализация 08.4 — позиции, портфель и H01 recovery (20.10.2026)
+
+После [приёмки 08.3](stage-08-03-validation.md#6-формальная-приёмка-083-и-разрешение-084--20102026) по команде пользователя «Принимаю. Дальше.» реализованы [шесть пользовательских промптов P08-12–P08-17](prompts/portfolio-recovery.md), 36 нормативных PR01–PR36, [JS-синтетические проверки](../tests/stage-08-04-portfolio-recovery-synthetic.mjs) и [протокол/self-review](stage-08-04-validation.md).
+
+Покрытие: RT04/RT05/RT10; T02/T03/T04/T05 по задачам; full account pages; One-Way/Hedge exchange slots по `positionIdx`; owner/confirmed orderId, partial `leavesQty`, FILLED и CANCELLED без повторного IN/IM; virtual future IN, S0–S3 и 100% reserve без фиктивной защиты Cross; net H01 (gross realized + current attributed uPnL − fee − funding) и различие `L_lifecycle/L_from_now`. Для R3 полная T02 ≤5m и Bybit Mark ≤2m **не достаточны** без остальных обязательных доказательств. Из точных GitHub-исходников локально выполнены **184/184 JS/V8 assertions PASS**, включая **8/8** targeted in-memory mutations (входят в 184); это не реальный Node checkout, независимый ChatGPT-runtime, Bybit account или торговый READY.
+
+**08.4 `IMPLEMENTED / PENDING USER REVIEW`; 08.5 `NOT STARTED`**. RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, real FR-038 F/A/H/R остаются открытыми, PR Open/Draft, не сливать.
