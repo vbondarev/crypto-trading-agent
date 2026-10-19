@@ -80,7 +80,7 @@
 | [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **190/190 локальных композиционных assertions** (142 исходных + 48 прямых policy-guards), 17 route-вариантов; не независимый ChatGPT runtime |
 | [`tests/stage-07-09-policy-contract-synthetic.mjs`](tests/stage-07-09-policy-contract-synthetic.mjs) | **48/48 проверок по фактическому тексту 7 Skills/контракту**; тесты также встроены в композиционный модуль, не складывать дважды |
 | [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **18/18 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
-| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **Проект плана 08.1–08.9, ожидает согласования:** пошаговые пользовательские промпты, сценарии и отчёты; реализация ещё не начата |
+| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **План 08.1–08.9 утверждён 19.10.2026:** короткие промпты, сценарии и отчёты; RV-02/RV-03/RV-04/RV-06 остаются OPEN, 08.1 ещё не начат |
 
 
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
