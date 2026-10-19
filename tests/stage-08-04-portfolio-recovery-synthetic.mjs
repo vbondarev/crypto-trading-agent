@@ -174,16 +174,16 @@ for(const [name,source,needed] of [
 ])t("trace to "+name,has(source,needed),true);
 function row(body,id){return body.split("\n").find(x=>x.startsWith("| "+id+" |"))||"";}
 const pin={
- PR07:"Будущий IN=6",PR08:"не добавлять",PR09:"Один будущий остаток",
+ PR07:"Будущий IN=6",PR08:"Не добавлять",PR09:"Один будущий остаток",
  PR10:"Две независимые заявки",PR11:"POSSIBLE_DUPLICATE/OWNER_UNVERIFIED",
- PR14:"S2 reachable",PR17:"REJECTED",PR19:"не прибавлять",
+ PR14:"S2 reachable",PR17:"REJECTED",PR19:"Не прибавлять",
  PR26:"-8 USDT",PR28:"Не вычитать",PR29:"H01_INCOMPLETE",
  PR31:"NOT_CHECKED",PR32:"REJECTED",PR34:"Не считать автоматически"
 };
 for(const [id,phrase] of Object.entries(pin))t("source-bound "+id,row(doc,id).includes(phrase),true);
 const mutations=[
  ["PR07","Будущий IN=6","Будущий IN=10"],
- ["PR08","не добавлять","нужно добавлять"],
+ ["PR08","Не добавлять","Нужно добавлять"],
  ["PR09","Один будущий остаток","Два будущих остатка"],
  ["PR17","REJECTED","READY"],
  ["PR26","-8 USDT","+10 USDT"],
