@@ -140,7 +140,7 @@ t("Inconsistent partial qty requires verification",requiredFuture({...part,leave
 t("Unknown partial leavesQty not treated as zero",requiredFuture({...part,leavesQty:null}),null);
 t("Known cancelled partial still S0 qty",has(doc,["CANCELLED_CONFIRMED","ранее исполненная часть сохраняется"]),true);
 t("Virtual unreachable does not consume future IN",requiredFuture({exchangeState:"VIRTUAL",qty:5,reachable:false}),0);
-t("Same orderId conflicting values => contradiction",reconcileOrders([part,{...part,leavesQty:5}]).status,"CONFLICT");
+t("Same orderId conflicting values => contradiction",reconcileOrders([part,{...part,qty:9,leavesQty:5}]).status,"CONFLICT");
 t("Unknown future order purpose => UNVERIFIED",reachableSlots({positions:[btc],future:[{...btc,symbol:"SOLUSDT",canOpen:null}]}),"UNVERIFIED");
 t("Incomplete currency/owner cannot claim recovered",netSeries({...hypothetical,currencyOk:false}).state,"H01_INCOMPLETE");
 t("Net-realized costs not charged twice",netSeries({netRealized:5,unrealized:-2,realizedIncludesCosts:true,feeCost:99,fundingCost:99}).value,3);
