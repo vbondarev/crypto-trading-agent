@@ -138,7 +138,7 @@ t("missing account model blocks READY",gate({p02:true,t02:true,mark:true}),"UNVE
 for(let i=30;i<=35;i++){
  const id="P08-"+String(i).padStart(2,"0"),block=doc.split("### "+id+" —")[1]?.split("\n### ")[0]??"";
  t("copy-ready prompt "+id,block.includes("> ")&&block.length>110,true);
- t("route in prompt "+id,block.includes("**RT"),true);
+ t("route in prompt "+id,block.includes(i===35?"**RT09":"**RT08"),true);
 }
 for(let i=1;i<=40;i++){const id="GA"+String(i).padStart(2,"0");t("normative source case "+id,Boolean(line(doc,id)),true);}
 for(let i=1;i<=40;i++){const id="GD-"+String(i).padStart(2,"0");t("GinArea P01 catalogue "+id,catalogue.includes("| "+id+" |"),true);}
