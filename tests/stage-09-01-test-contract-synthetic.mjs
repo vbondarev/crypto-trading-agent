@@ -80,7 +80,7 @@ t("NOT_RUN sentinel is not sixth evidence type",contains(contract,["`evidence_ty
 t("old stage 08 accepted",status.slice(0,500).includes("весь этап 08 `COMPLETED / APPROVED`"),true);
 t("stage 09 approved plan",plan.includes("PLANNED / APPROVED"),true);
 t("09.1 accepted by user",plan.includes("09.1 `COMPLETED / APPROVED`")&&validation09_01.includes("## 6. Формальная приёмка 09.1"),true);
-t("09.2 implemented pending",plan.includes("09.2 `IMPLEMENTED / PENDING USER REVIEW`"),true);
+t("09.2 formally accepted",plan.includes("09.1–09.2 `COMPLETED / APPROVED`"),true);
 const base={evidence_type:"LLM_BLIND",execution_status:"EXECUTED",verdict:"PASS",raw_response_ref:"redacted/test-response-01",inputs_redacted_ref:"redacted/input-01",environment:"ChatGPT new session",commit_sha:"a".repeat(40),independent_session:true,agent_oracle_exposed:false,checks:[{code:"EV05",pass:true}]};
 for(const [name,modifier,expected] of [
  ["complete blind",{}, "PASS"],
