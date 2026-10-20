@@ -1,5 +1,7 @@
 # Шаг 09.3 — проверка тестовой среды, GitHub-источников и загрузки Skills
 
+> **Последующее решение 20.10.2026:** пользователь отдельно принял **09.3 `COMPLETED / APPROVED`** ([акт](stage-09-03-validation.md#5-формальная-приёмка-093-и-разрешение-094--20102026)) **в ограниченных source/runtime/documentary границах**. [09.4](stage-09-04-results.md) подготовлен, но **LLM_BLIND 0/12, PENDING INDEPENDENT EVIDENCE**. Auto Skill loader `NOT_VERIFIED`; 09.5–09.9 NOT STARTED. Предыдущая строка о pending 09.3 — история.
+
 > **Статус (20.10.2026): `IMPLEMENTED / PENDING USER REVIEW`.** [09.2 формально принят](stage-09-02-validation.md#6-формальная-приёмка-092-и-разрешение-выполнить-093--20102026). Исполняется **только** 09.3; 09.4–09.9 **NOT STARTED**. **`LLM_BLIND = 0`**, реальный Bybit / GinArea / Veles / `READY = NOT_VERIFIED`. PR #1 Open/Draft/unmerged.
 
 ## 1. Предмет проверки и пять отдельных утверждений
