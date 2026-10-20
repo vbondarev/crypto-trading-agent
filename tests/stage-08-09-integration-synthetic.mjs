@@ -186,6 +186,35 @@ for(const [id,correct,wrong] of mutations){
  const altered=review.replace(old,old.replace(correct,wrong));
  t("intentional W08 mutation rejected "+id,pinned(altered,id,[correct]),false);
 }
+// SR-089: source-bound numeric FR thresholds, not only a synthetic decision function.
+const riskLine=review.split("\n").find(x=>x.startsWith("**FR-029:**"))??"";
+const riskPins=[
+ ["IM ≤30% Equity E0","IM ≤50% Equity E0"],
+ ["≤5% E0","≤15% E0"],
+ ["плечо ≤5×","плечо ≤10×"],
+ ["Mark→liq ≥15%","Mark→liq ≥5%"],
+ ["slots ≤3","slots ≤5"],
+ ["100% будущей IM","50% будущей IM"],
+ ["убыток ≥3%","убыток ≥5%"],
+ ["HWM DD ≥15%","HWM DD ≥25%"]
+];
+for(const [strict,weak] of riskPins){
+ t("actual review strict risk source "+strict,riskLine.includes(strict),true);
+ if(!riskLine.includes(strict))throw Error("missing risk mutation anchor "+strict);
+ t("in-memory weakened FR threshold caught "+strict,!riskLine.replaceAll(strict,weak).includes(strict),true);
+}
+// Routing mutation catches exactly the historical RT07↔RT08 leak, not mere presence of RT.
+for(const [p,id,good,badRoute] of [
+ ["docs/prompts/ginarea-configuration.md",30,"**RT08","**RT07"],
+ ["docs/prompts/veles-configuration.md",24,"**RT07","**RT08"],
+ ["docs/prompts/ginarea-configuration.md",35,"**RT09","**RT07"]
+]){
+ const actual=promptBlock(get(p),id);
+ if(!actual.includes(good))throw Error("missing route mutation anchor "+id);
+ const changed=actual.replace(good,badRoute);
+ t("cross-platform route mutation caught P08-"+id,!changed.includes(good),true);
+}
+
 const reqLinks=[...review.matchAll(/\]\(([^)\s]+)\)/g)].map(x=>x[1].split("#")[0]).filter(Boolean).filter(x=>!/^https?:/i.test(x));
 t("integration links numerous",reqLinks.length>=20,true);
 t("all relative targets exist",reqLinks.every(x=>exists("docs/"+x)),true);
@@ -194,5 +223,5 @@ t("08.9 pending",review.includes("IMPLEMENTED / PENDING USER REVIEW"),true);
 t("09 not started",review.includes("09 NOT STARTED")||review.includes("09: NOT STARTED"),true);
 const bad=tests.filter(x=>!x.pass);
 for(const x of bad)console.error("FAIL",x.name,JSON.stringify({got:x.got,want:x.want}));
-console.log(JSON.stringify({kind:"STAGE_08_09_INTEGRATION_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,w08Cases:14,promptCount:41,routes:10,skills:7,mutations:mutations.length,independentLLMRuns:0,nodeCheckout:false,liveBybit:false,realP02:false,tradeReady:false}));
+console.log(JSON.stringify({kind:"STAGE_08_09_INTEGRATION_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,w08Cases:14,promptCount:41,routes:10,skills:7,mutations:mutations.length+riskPins.length+3,independentLLMRuns:0,nodeCheckout:false,liveBybit:false,realP02:false,tradeReady:false}));
 if(bad.length)process.exitCode=1;
