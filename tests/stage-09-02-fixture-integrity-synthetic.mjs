@@ -101,8 +101,8 @@ t("public oracle never created",has(catalog,["НЕТ закрытых oracle","�
 t("plan now approved 09",plan.includes("PLANNED / APPROVED"),true);
 t("09.1 accepted in act",has(validation09_01,["## 6. Формальная приёмка 09.1","COMPLETED / APPROVED"]),true);
 t("contract requires oracle separate",contract.includes("oracle нельзя публиковать"),true);
-t("09.2 status pending",catalog.includes("09.2 `IMPLEMENTED / PENDING USER REVIEW`"),true);
-t("09.3 not started",catalog.includes("09.3 `NOT STARTED`"),true);
+t("09.2 formally accepted",catalog.includes("09.2 `COMPLETED / APPROVED`"),true);
+t("09.3 awaiting separate review",plan.includes("09.3 `IMPLEMENTED / PENDING USER REVIEW`"),true);
 for(const path of ["docs/stage-09-plan.md","docs/stage-09-test-contract.md","docs/stage-09-01-validation.md","docs/stage-09-fixtures.md","tests/fixtures/stage-09/inputs.v1.json","tests/stage-09-02-export-agent-input.mjs"])t("existing file "+path,exists(path),true);
 // Negative in-memory mutations: ensure concrete invariants are sensitive; not independent LLM tests.
 const mut=[
