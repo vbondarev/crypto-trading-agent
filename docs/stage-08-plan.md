@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Текущий статус 20.10.2026 после приёмки 08.7:** 08.1–08.7 **`COMPLETED / APPROVED`** ([акт 08.7](stage-08-07-validation.md#5-формальная-приёмка-087-и-разрешение-088--20102026)); **08.8 `IMPLEMENTED / PENDING USER REVIEW`** ([шесть форматов и RECHECK](workflows/report-templates.md), [self-review/протокол](stage-08-08-validation.md)); **08.9 `NOT STARTED`**. Все прежние строки статуса ниже исторические и не отменяют эту актуальную. PR #1 Open/Draft, без реального торгового READY.
+
 > **Текущий статус 20.10.2026 после приёмки 08.6:** 08.1–08.6 **`COMPLETED / APPROVED`** ([акт 08.6](stage-08-06-validation.md#5-формальная-приёмка-086-и-разрешение-087--20102026)); **08.7 `IMPLEMENTED / PENDING USER REVIEW`** ([GinArea PRO handoff](prompts/ginarea-configuration.md), [протокол/self-review](stage-08-07-validation.md)); **08.8 `NOT STARTED`**. Исторические статусы ниже показывают ход разработки, а не отменяют это обновление; PR #1 Open/Draft, торгового READY нет.
 
 > **Текущий статус 20.10.2026 после приёмки 08.5:** 08.1–08.5 **`COMPLETED / APPROVED`** ([акт 08.5](stage-08-05-validation.md#5-формальная-приёмка-085-и-разрешение-086--20102026)); **08.6 `IMPLEMENTED / PENDING USER REVIEW`** ([Veles handoff](prompts/veles-configuration.md), [протокол](stage-08-06-validation.md)); **08.7 `NOT STARTED`**. Исторические строки статуса далее отражают предыдущие моменты приёмки. PR #1 Open/Draft, реального READY нет.
@@ -143,3 +145,11 @@
 Фактический локальный синтетический прогон: **268/268 JS/V8 assertions PASS**, включая **24/24 targeted in-memory mutations** (16 GA source cases + 8 FR thresholds) и 5 переходов stateful Disable-IN (все входят в общее число). Это не независимые ChatGPT диалоги, не реальная GinArea PRO P02/Bybit, не полноценный Node.js checkout/CI и не торговый READY. Открыты RV-02/RV-03/RV-04/RV-06, TV-01–TV-04 и реальные исторические Bybit Mark H из FR-038 F/A/H/R.
 
 **08.7 `IMPLEMENTED / PENDING USER REVIEW`**, **08.8 `NOT STARTED`**, PR #1 Open/Draft, merge и ордера не выполнять.
+
+## 15. Реализация 08.8 — отчёты и RECHECK (20.10.2026)
+
+По прямому решению пользователя «Пинимаю. Дальше.» принят [шаг 08.7](stage-08-07-validation.md#5-формальная-приёмка-087-и-разрешение-088--20102026) в документально-синтетических границах и разрешён только 08.8. Созданы [шесть копируемых P08-36–P08-41 и 40 нормативных RF01–RF40](workflows/report-templates.md), **10 dependency-записей RC01–RC10** для повторных проверок после AD-009, [синтетический JS-тест](../tests/stage-08-08-report-templates-synthetic.mjs) и [self-review протокол](stage-08-08-validation.md). Разделены `analysis_mode`, `dialogue_step` и `decision`, R1 без личного T02, R2 условный, полный R3 только при свежей P02, T02/T03/T04/Mark/FR; RECHECK не наследует старый READY, возвращение цены не снимает sticky Disable IN.
+
+**258/258 локальных JS/V8 assertions PASS**, включая 26/26 target in-memory mutations и 5 old-READY-event checks (всё входит в 258). Точный объем — только исходники GitHub в V8 с эмуляцией чтения; не Node CI, не independent LLM integration, не Bybit/API/Veles/GinArea и не реальный READY. OPEN RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, настоящие исторические Mark H в FR-038 F/A/H/R.
+
+**08.8 `IMPLEMENTED / PENDING USER REVIEW`, 08.9 `NOT STARTED`**, PR #1 Draft/Open, без merge и торговых действий.
