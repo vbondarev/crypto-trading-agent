@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Текущий статус 20.10.2026 после приёмки 08.6:** 08.1–08.6 **`COMPLETED / APPROVED`** ([акт 08.6](stage-08-06-validation.md#5-формальная-приёмка-086-и-разрешение-087--20102026)); **08.7 `IMPLEMENTED / PENDING USER REVIEW`** ([GinArea PRO handoff](prompts/ginarea-configuration.md), [протокол/self-review](stage-08-07-validation.md)); **08.8 `NOT STARTED`**. Исторические статусы ниже показывают ход разработки, а не отменяют это обновление; PR #1 Open/Draft, торгового READY нет.
+
 > **Текущий статус 20.10.2026 после приёмки 08.5:** 08.1–08.5 **`COMPLETED / APPROVED`** ([акт 08.5](stage-08-05-validation.md#5-формальная-приёмка-085-и-разрешение-086--20102026)); **08.6 `IMPLEMENTED / PENDING USER REVIEW`** ([Veles handoff](prompts/veles-configuration.md), [протокол](stage-08-06-validation.md)); **08.7 `NOT STARTED`**. Исторические строки статуса далее отражают предыдущие моменты приёмки. PR #1 Open/Draft, реального READY нет.
 
 > **Текущий статус 20.10.2026 после приёмки 08.4:** 08.1–08.4 **`COMPLETED / APPROVED`**, [акт 08.4](stage-08-04-validation.md#6-формальная-приёмка-084-и-разрешение-085--20102026). **08.5 `IMPLEMENTED / PENDING USER REVIEW`** ([шесть промптов и 40 RD](prompts/risk-strategy-decision.md), [протокол](stage-08-05-validation.md)); **08.6 `NOT STARTED`**. Ранее добавленные статусы ниже представляют последовательную историческую хронологию, а не отменяют эту строку. PR #1 Open/Draft, реального READY нет.
@@ -133,3 +135,11 @@
 После отдельной [приёмки 08.5](stage-08-05-validation.md#5-формальная-приёмка-085-и-разрешение-086--20102026) реализованы [шесть коротких промптов P08-24–P08-29](prompts/veles-configuration.md), **40 нормативных VH01–VH40**, [локальная JS регрессия](../tests/stage-08-06-veles-handoff-synthetic.mjs) и [self-review/валидация](stage-08-06-validation.md). Документ различает Veles SIMPLE/CUSTOM/SIGNAL, P01 справку и реальную P02, T02 whole-account, позицию `POSITION -1`, условия/тайминг SL/TP/BE, различия Stop/Cancel/Close/Restart, S0–S3 и жёсткий контроль рисков при R3. Не смешиваются GinArea поля и Veles-мартингейл/сетка. **220/220 локальных JS/V8 assertions PASS** на актуальных GitHub-текстах, включая **14/14** targeted in-memory mutations; это не Node checkout/CI, независимые LLM прогоны, реальная Veles P02 или Bybit, никакого `READY`.
 
 **08.6 `IMPLEMENTED / PENDING USER REVIEW`, 08.7 `NOT STARTED`**. RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, FR-038 real historical Mark F/A/H/R остаются открытыми. PR #1 Draft/Open, без merge.
+
+## 14. Реализация 08.7 — GinArea PRO handoff (20.10.2026)
+
+После формальной [приёмки 08.6](stage-08-06-validation.md#5-формальная-приёмка-086-и-разрешение-087--20102026) созданы [шесть коротких P08-30–P08-35 и 40 GA01–GA40](prompts/ginarea-configuration.md), [синтетический JS-модуль](../tests/stage-08-07-ginarea-handoff-synthetic.mjs), [протокол и self-review](stage-08-07-validation.md). Покрыты CHOOSE выбранных GinArea PRO/стратегии/пары; live P02 ≠ документация P01 ≠ полный Bybit T02, подтверждённые Default/Auto/Dynamic/Indicator/DCA режимы, UTA/Cross/One-Way и Default Hedge exception; запрет автопереключения Indicator Grid → Default; typed IN size/cap/multipliers, полные reachable циклы/Instop; OUT, sticky Disable IN, Pause/Failed/close, восстановление H01, риски R3/FR-027–FR-040.
+
+Фактический локальный синтетический прогон: **268/268 JS/V8 assertions PASS**, включая **24/24 targeted in-memory mutations** (16 GA source cases + 8 FR thresholds) и 5 переходов stateful Disable-IN (все входят в общее число). Это не независимые ChatGPT диалоги, не реальная GinArea PRO P02/Bybit, не полноценный Node.js checkout/CI и не торговый READY. Открыты RV-02/RV-03/RV-04/RV-06, TV-01–TV-04 и реальные исторические Bybit Mark H из FR-038 F/A/H/R.
+
+**08.7 `IMPLEMENTED / PENDING USER REVIEW`**, **08.8 `NOT STARTED`**, PR #1 Open/Draft, merge и ордера не выполнять.
