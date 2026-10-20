@@ -50,6 +50,10 @@
 
 **Private oracle до запуска не был сформирован/зафиксирован**; позднее пользователь уточнил: **S09-001 выполнялся в Temporary Chat**, поэтому тип сессии = `USER_ATTESTED_TEMPORARY_CHAT` (не технически подтверждённый session log). Фактическая модель, независимая проверка Project/Memory state и полноценный raw-export transcript не подтверждены. Поэтому `USER_REPORTED_CANDIDATES=1`, но **`FORMALLY_VERIFIED_LLM_BLIND=0/12`; `PASS=0`; `09.4 PARTIAL/PENDING INDEPENDENT EVIDENCE`**. Не менять исходные 12 `NOT_RUN` placeholders и не интерпретировать наблюдение как полноценный blind-run. Для повторной попытки сначала предзарегистрировать приватный oracle и проверить изоляцию.
 
+## Предрегистрация oracle для повторного теста S09-001-R02 — 20.10.2026
+
+До второго теста создан отдельный приватный evaluator-only `S09-001-R02_PRIVATE_ORACLE.json`; публично размещён **только SHA-256** в [commitments](stage-09-04-oracle-commitments.md). В качестве тестируемой политики сохранён фиксированный commit `ac06602ca73741077d9d6396e1a2172791bc7d88`, fixture v1, user-only input; oracle содержит приватный nonce и не передаётся агенту. **R02 ещё не запущен**, новых raw responses или PASS нет. Старый R01 остаётся лишь user-reported candidate; не приписывать его verdict новому oracle задним числом.
+
 ## 5. Постсинхронизационная регрессия всех локальных наборов 09.1–09.4 — 20.10.2026
 
 После фиксации формального принятия 09.3 и синхронизации `AGENTS.md`, `README.md`, `stage-09-plan.md`, `stage-09-runtime-validation.md`, `stage-09-fixtures.md`, `development-roadmap.md` **реально повторены** четыре существующих локальных JS-набора на актуальном содержимом GitHub в изолированной среде V8 с эмуляцией `read/exists`:
