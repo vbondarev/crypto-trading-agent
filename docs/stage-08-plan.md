@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Текущий статус 20.10.2026 после приёмки 08.5:** 08.1–08.5 **`COMPLETED / APPROVED`** ([акт 08.5](stage-08-05-validation.md#5-формальная-приёмка-085-и-разрешение-086--20102026)); **08.6 `IMPLEMENTED / PENDING USER REVIEW`** ([Veles handoff](prompts/veles-configuration.md), [протокол](stage-08-06-validation.md)); **08.7 `NOT STARTED`**. Исторические строки статуса далее отражают предыдущие моменты приёмки. PR #1 Open/Draft, реального READY нет.
+
 > **Текущий статус 20.10.2026 после приёмки 08.4:** 08.1–08.4 **`COMPLETED / APPROVED`**, [акт 08.4](stage-08-04-validation.md#6-формальная-приёмка-084-и-разрешение-085--20102026). **08.5 `IMPLEMENTED / PENDING USER REVIEW`** ([шесть промптов и 40 RD](prompts/risk-strategy-decision.md), [протокол](stage-08-05-validation.md)); **08.6 `NOT STARTED`**. Ранее добавленные статусы ниже представляют последовательную историческую хронологию, а не отменяют эту строку. PR #1 Open/Draft, реального READY нет.
 
 > **Актуально 20.10.2026 после приёмки 08.3:** 08.1–08.3 **`COMPLETED / APPROVED`** ([акт 08.3](stage-08-03-validation.md#6-формальная-приёмка-083-и-разрешение-084--20102026)); **08.4 `IMPLEMENTED / PENDING USER REVIEW`** ([промпты](prompts/portfolio-recovery.md), [протокол/self-review](stage-08-04-validation.md)); **08.5 `NOT STARTED`**. Прочие пометки ниже сохраняют историческую хронологию; PR #1 Open/Draft, реального READY нет.
@@ -125,3 +127,9 @@
 Сравнение WAIT/HOLD/NEW/ADD/REDUCE/CLOSE/RECOVER с отдельным пользовательским выбором CHOOSE, актуальными данными Bybit S0–S3, строгими **FR-027–FR-040** (14 отдельных строк), Day ≥3% по Москве / HWM ≥15% / известный H04 veto, R3-набором T02/T03/T04+Mark/P02/F/A/H/R; отсутствие H02/H03 → NOT_CHECKED, не ложный PASS. Выполнено **198/198** локальных JS/V8 assertions PASS, **18/18** targeted in-memory mutations включая подмены порогов (входят в 198). Отложенная общая регрессия **08.1–08.4 повторно выполнена: 570/570 PASS**. Реальный Node checkout/CI, независимый ChatGPT runtime, real Bybit и READY **не** проверены. Сохраняются RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, FR-038 historical Mark.
 
 **08.5 `IMPLEMENTED / PENDING USER REVIEW`, 08.6 `NOT STARTED`**. Не переходить дальше и не сливать PR без отдельной команды пользователя.
+
+## 13. Реализация 08.6 — Veles handoff (20.10.2026)
+
+После отдельной [приёмки 08.5](stage-08-05-validation.md#5-формальная-приёмка-085-и-разрешение-086--20102026) реализованы [шесть коротких промптов P08-24–P08-29](prompts/veles-configuration.md), **40 нормативных VH01–VH40**, [локальная JS регрессия](../tests/stage-08-06-veles-handoff-synthetic.mjs) и [self-review/валидация](stage-08-06-validation.md). Документ различает Veles SIMPLE/CUSTOM/SIGNAL, P01 справку и реальную P02, T02 whole-account, позицию `POSITION -1`, условия/тайминг SL/TP/BE, различия Stop/Cancel/Close/Restart, S0–S3 и жёсткий контроль рисков при R3. Не смешиваются GinArea поля и Veles-мартингейл/сетка. **220/220 локальных JS/V8 assertions PASS** на актуальных GitHub-текстах, включая **14/14** targeted in-memory mutations; это не Node checkout/CI, независимые LLM прогоны, реальная Veles P02 или Bybit, никакого `READY`.
+
+**08.6 `IMPLEMENTED / PENDING USER REVIEW`, 08.7 `NOT STARTED`**. RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, FR-038 real historical Mark F/A/H/R остаются открытыми. PR #1 Draft/Open, без merge.
