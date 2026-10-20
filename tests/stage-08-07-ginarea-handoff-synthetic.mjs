@@ -191,7 +191,41 @@ t("at least twelve source links",refs.length>=12,true);
 t("all local source target files exist",refs.every(x=>exists("docs/prompts/"+x)),true);
 t("08.7 pending",doc.includes(bt+"IMPLEMENTED / PENDING USER REVIEW"+bt),true);
 t("08.8 not started",doc.includes("08.8 "+bt+"NOT STARTED"+bt),true);
+// Independent self-review SR-087: stateful latch transition, not a one-shot ON flag.
+function latch(state,event){
+ if(event==="MANUAL_DISABLE")return "DISABLED";
+ if(event==="PRICE_OUTSIDE"&&(state==="ARMED"||state==="DISABLED"))return "DISABLED";
+ if(event==="PRICE_RETURNED_INSIDE")return state; // must remain DISABLED
+ if(event==="MANUAL_ENABLE")return "ARMED_RECHECK_REQUIRED";
+ if(event==="RISK_CHECK_CONFIRMED"&&state==="ARMED_RECHECK_REQUIRED")return "ARMED";
+ return state;
+}
+t("latch: boundary breach disables",latch("ARMED","PRICE_OUTSIDE"),"DISABLED");
+t("latch: re-enter range still disabled",latch(latch("ARMED","PRICE_OUTSIDE"),"PRICE_RETURNED_INSIDE"),"DISABLED");
+t("latch: manual enable triggers review",latch("DISABLED","MANUAL_ENABLE"),"ARMED_RECHECK_REQUIRED");
+t("latch: a new IN still gated until recheck",latch("ARMED_RECHECK_REQUIRED","PRICE_RETURNED_INSIDE"),"ARMED_RECHECK_REQUIRED");
+t("latch: explicit risk confirmation is separate",latch("ARMED_RECHECK_REQUIRED","RISK_CHECK_CONFIRMED"),"ARMED");
+// Direct normative threshold tests also catch weakening source Markdown while fixture math is unchanged.
+const frLine=doc.split("\n").find(x=>x.startsWith("**FR hard gates:**"))||"";
+const frPins=[
+ ["FR-029≤30% E0","FR-029≤50% E0"],
+ ["FR-030≤5% E0","FR-030≤15% E0"],
+ ["FR-031≤5×","FR-031≤10×"],
+ ["FR-032≥15%","FR-032≥5%"],
+ ["FR-033≤3","FR-033≤5"],
+ ["FR-034 100%","FR-034 50%"],
+ ["loss ≥3%","loss ≥5%"],
+ ["DD ≥15%","DD ≥25%"]
+];
+for(const [good,bad] of frPins){
+ t("actual FR threshold source "+good,frLine.includes(good),true);
+ if(!frLine.includes(good))throw Error("threshold mutation cannot be anchored "+good);
+ const forged=doc.replace(frLine,frLine.replace(good,bad));
+ const forgedLine=forged.split("\n").find(x=>x.startsWith("**FR hard gates:**"))||"";
+ t("in-memory FR threshold mutation rejected "+good,forgedLine.includes(good),false);
+}
+
 const failed=tests.filter(x=>!x.pass);
 for(const x of failed)console.error("FAIL",x.name,JSON.stringify({got:x.got,want:x.want}));
-console.log(JSON.stringify({kind:"STAGE_08_07_GINAREA_HANDOFF_SYNTHETIC",total:tests.length,passed:tests.length-failed.length,failed:failed.length,normativeCases:40,copyablePrompts:6,mutations:mutations.length,independentLLMTests:0,actualNodeCheckout:false,liveP02:false,liveBybit:false,tradeReady:false}));
+console.log(JSON.stringify({kind:"STAGE_08_07_GINAREA_HANDOFF_SYNTHETIC",total:tests.length,passed:tests.length-failed.length,failed:failed.length,normativeCases:40,copyablePrompts:6,mutations:mutations.length+frPins.length,independentLLMTests:0,actualNodeCheckout:false,liveP02:false,liveBybit:false,tradeReady:false}));
 if(failed.length)process.exitCode=1;
