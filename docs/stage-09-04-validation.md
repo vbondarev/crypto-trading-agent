@@ -41,3 +41,19 @@
 **Подготовительная часть 09.4 может быть принята**, но полная цель «независимо проверить R1/R2 в ChatGPT» пока **не достигнута**. В отличие от 09.1–09.3, для полноценного закрытия этой части обязательны реально проведённые независимые сеансы с raw transcript и закрытым от тестируемого агента oracle; в отсутствие выполненных 12 запусков `09.4 PARTIAL / PENDING INDEPENDENT EVIDENCE`.
 
 При согласовании результатов нужно различать `ACCEPT PREPARATION ONLY` и `COMPLETE STEP 09.4`: **не предлагать безоговорочное COMPLETED / APPROVED**, пока все обязательные LLM-кейсы не оценены. Никаких решений о реальной торговле, merge, 09.5–09.9, приватной P02/Bybit. RV-02/03/04/06, TV-01–TV-04, actual FR-038 historical Mark остаются OPEN.
+
+## 5. Постсинхронизационная регрессия всех локальных наборов 09.1–09.4 — 20.10.2026
+
+После фиксации формального принятия 09.3 и синхронизации `AGENTS.md`, `README.md`, `stage-09-plan.md`, `stage-09-runtime-validation.md`, `stage-09-fixtures.md`, `development-roadmap.md` **реально повторены** четыре существующих локальных JS-набора на актуальном содержимом GitHub в изолированной среде V8 с эмуляцией `read/exists`:
+
+| Набор | Итог `LOCAL_JS` | Мутации внутри общего числа |
+|---|---:|---:|
+| 09.1 независимый контракт | **144/144 PASS** | 7 |
+| 09.2 корпус 45 INPUT-only | **311/311 PASS** | 8 |
+| 09.3 source/runtime audit семи Skills | **128/128 PASS** | 7 |
+| 09.4 R1/R2 preparatory preflight | **166/166 PASS** | 10 |
+| **Всего** | **749/749 PASS; 0 FAIL** | **32** уже включены в 749 |
+
+Для 09.4 подтверждены **12 выбранных входов**, **12 уникальных `NOT_RUN` placeholders**, исходный blob SHA в manifest, 10 обнаруживаемых in-memory нарушений, защита от фиктивного `PASS`/транскрипта/auto-Skills/частного oracle; **8/8 относительных файловых целей** из `docs/stage-09-04-results.md` существуют по текущим путям PR. Это source/document/corpus tests, не фактически исполненные model responses; ни один из 749 assertions не переводить в счётчик `LLM_BLIND`.
+
+**Отдельное заключение self-review:** `PREPARATION LOCAL_JS: PASS`; `INDEPENDENT R1/R2 MODEL EVALUATION: NOT_RUN (0/12)`; `09.4: PARTIAL / PENDING INDEPENDENT EVIDENCE`; `09.5–09.9: NOT STARTED`. Отсутствующий raw transcript, отдельный evaluator и закрытый private oracle нельзя заменить ссылкой на GitHub, общим чатом или локальными тестами. Результат `COMPLETED / APPROVED` по всему шагу **не заявляется**.
