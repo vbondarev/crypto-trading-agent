@@ -182,11 +182,41 @@ check("source FR leverage mutation caught",riskLine.replaceAll("5×","10×").inc
 const dep=doc.split("\n").find(x=>x.startsWith("| **RC01** |"))??"";
 check("full S0-S3 dependency in source",includes(dep,["S0–S3","T02"]),true);
 check("source dependency downgrade caught",dep.replace("S0–S3","S0").includes("S0–S3"),false);
+// SR-088: protect ALL central risk source thresholds against accidental document edits.
+const thresholdGuards=[
+ ["FR-029","30% E0","50% E0"],
+ ["FR-030","5% E0","10% E0"],
+ ["FR-031","5×","10×"],
+ ["FR-032","15%","5%"],
+ ["FR-033","3","5"],
+ ["FR-034","100%","50%"],
+ ["FR-035/036","≥3%","≥5%"],
+ ["FR-035/036","≥15%","≥25%"]
+];
+for(const [id,correct,malicious] of thresholdGuards){
+ const source=doc.split("\n").find(x=>x.startsWith("| "+id+" |"))??"";
+ check("threshold source "+id+" "+correct,source.includes(correct),true);
+ if(!source.includes(correct))throw Error("risk threshold source anchor missing "+id+" "+correct);
+ const altered=source.replaceAll(correct,malicious);
+ check("source FR threshold mutation caught "+id+" "+correct,altered.includes(correct),false);
+}
+// Explicit event outranks TTL: older verification cannot be reused after an order/fill.
+function decisionAfterEvent({oldWasReady=false,event=false,t02AgeMin=1,markAgeMin=1,allReverified=false}={}){
+ if(event&&!allReverified)return "INVALIDATED_RECHECK";
+ if(t02AgeMin>5||markAgeMin>2)return "NEEDS_DATA";
+ return oldWasReady?"NO_INHERITED_READY":"NO_LIVE_READY";
+}
+check("old READY invalidated inside 1m TTL",decisionAfterEvent({oldWasReady:true,event:true,t02AgeMin:1,markAgeMin:1}),"INVALIDATED_RECHECK");
+check("even after recheck previous READY not automatically restored",decisionAfterEvent({oldWasReady:true,event:true,allReverified:true}),"NO_INHERITED_READY");
+check("stale T02 after recheck",decisionAfterEvent({oldWasReady:true,event:true,allReverified:true,t02AgeMin:6}),"NEEDS_DATA");
+check("stale Mark after recheck",decisionAfterEvent({oldWasReady:true,event:true,allReverified:true,markAgeMin:3}),"NEEDS_DATA");
+check("no event cannot assert READY from bare TTL",decisionAfterEvent({oldWasReady:false,event:false}),"NO_LIVE_READY");
+
 const refs=[...doc.matchAll(/\]\(([^)\s]+)\)/g)].map(x=>x[1]).filter(x=>!/^https?:/i.test(x)).map(x=>x.split("#")[0]).filter(Boolean);
 check("relative source count",refs.length>=12,true);
 check("all relative file targets exist",refs.every(x=>exists("docs/workflows/"+x)),true);
 check("08.8 pending user review",doc.includes(bt+"IMPLEMENTED / PENDING USER REVIEW"+bt),true);
 check("08.9 not started",doc.includes("08.9 "+bt+"NOT STARTED"+bt),true);
 const bad=tests.filter(x=>!x.ok);for(const x of bad)console.error("FAIL",x.label,JSON.stringify({got:x.got,expected:x.expected}));
-console.log(JSON.stringify({kind:"STAGE_08_08_REPORT_TEMPLATES_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,normativeCases:40,copyablePrompts:6,dependencyCases:10,mutations:mutations.length+2,independentLLMTests:0,realNodeCheckout:false,liveBybit:false,tradeReady:false}));
+console.log(JSON.stringify({kind:"STAGE_08_08_REPORT_TEMPLATES_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,normativeCases:40,copyablePrompts:6,dependencyCases:10,mutations:mutations.length+2+thresholdGuards.length,independentLLMTests:0,realNodeCheckout:false,liveBybit:false,tradeReady:false}));
 if(bad.length)process.exitCode=1;
