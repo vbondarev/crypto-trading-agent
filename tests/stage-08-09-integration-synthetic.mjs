@@ -219,7 +219,7 @@ const reqLinks=[...review.matchAll(/\]\(([^)\s]+)\)/g)].map(x=>x[1].split("#")[0
 t("integration links numerous",reqLinks.length>=20,true);
 t("all relative targets exist",reqLinks.every(x=>exists("docs/"+x)),true);
 t("stage pending user acceptance",review.includes("PENDING FORMAL STAGE ACCEPTANCE"),true);
-t("08.9 pending",review.includes("IMPLEMENTED / PENDING USER REVIEW"),true);
+t("08.9 accepted separately",review.includes("08.9: COMPLETED / APPROVED")&&review.includes("этап 08 PENDING FORMAL STAGE ACCEPTANCE"),true);
 t("09 not started",review.includes("09 NOT STARTED")||review.includes("09: NOT STARTED"),true);
 const bad=tests.filter(x=>!x.pass);
 for(const x of bad)console.error("FAIL",x.name,JSON.stringify({got:x.got,want:x.want}));
