@@ -41,7 +41,7 @@
 case_id: S09-EXAMPLE-001
 run_id: S09-EXAMPLE-001-R01
 fixture_version: 1
-evidence_type: NOT_RUN              # DOC | LOCAL_JS | LLM_IN_SESSION | LLM_BLIND | LIVE (LIVE out of scope)
+evidence_type: NOT_RUN              # служебное значение до вызова; после вызова: DOC | LOCAL_JS | LLM_IN_SESSION | LLM_BLIND; LIVE вне области
 execution_status: NOT_RUN           # NOT_RUN | EXECUTED | INCONCLUSIVE
 verdict: NOT_RUN                    # PASS | FAIL_CRITICAL | FAIL_MAJOR | FAIL_MINOR | INCONCLUSIVE | NOT_RUN
 runtime_verification: NOT_VERIFIED  # VERIFIED | PARTIAL | NOT_VERIFIED
@@ -73,7 +73,7 @@ issues: []
 next_action: NONE
 ```
 
-**Правила валидации записи:** `run_id` уникален в пределах test suite; `case_id` ссылается на неизменную версию сценария; `verdict=PASS` требует `execution_status=EXECUTED`, `raw_response_ref` и фактически проверенные рубрики. `evidence_type=LLM_BLIND` требует `independent_session=true` и `agent_oracle_exposed=false`, зафиксированного input/сырого ответа, политики/версионного pin и среды. `evidence_type=LIVE` запрещён для шага 09. Частичный runtime `NOT_VERIFIED` нельзя представлять как `skills_load=FULL`. Если нет source SHA — честное `UNKNOWN`, но это недоказанный runtime, а не полноценная проверка.
+**Правила валидации записи:** `evidence_type=NOT_RUN` допустим **только** как служебная запись ещё не исполненного сценария с `execution_status=NOT_RUN`, `verdict=NOT_RUN`, `independent_session=false`; **не** является шестым типом доказательств и не входит в `executed`/LLM-счётчики. `run_id` уникален в пределах test suite; `case_id` ссылается на неизменную версию сценария; `verdict=PASS` требует `execution_status=EXECUTED`, `raw_response_ref` и фактически проверенные рубрики. `evidence_type=LLM_BLIND` требует `independent_session=true` и `agent_oracle_exposed=false`, зафиксированного input/сырого ответа, политики/версионного pin и среды. `evidence_type=LIVE` запрещён для шага 09. Частичный runtime `NOT_VERIFIED` нельзя представлять как `skills_load=FULL`. Если нет source SHA — честное `UNKNOWN`, но это недоказанный runtime, а не полноценная проверка.
 
 **Счётчики:** `planned`, `executed`, `PASS`, `FAIL_CRITICAL`, `FAIL_MAJOR`, `FAIL_MINOR`, `INCONCLUSIVE`, `NOT_RUN` и `independent_sessions` — **отдельно** для DOC / LOCAL_JS / LLM_IN_SESSION / LLM_BLIND. Мутации уже внутри локального набора не прибавлять повторно. Ретесты отмечать `rerun_of`, новые независимые сессии считать как **дополнительные execution**, но не как новые уникальные `case_id`.
 
