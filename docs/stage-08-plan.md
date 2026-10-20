@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Текущий статус 20.10.2026 после приёмки 08.8:** шаги **08.1–08.8 `COMPLETED / APPROVED`** ([акт 08.8](stage-08-08-validation.md#5-формальная-приёмка-088-и-разрешение-089--20102026)). **08.9 `IMPLEMENTED / PENDING USER REVIEW`** ([интеграционная ревизия](stage-08-review.md), [валидация](stage-08-09-validation.md)). **Этап 08 `PENDING FORMAL STAGE ACCEPTANCE`, этап 09 `NOT STARTED`**. Исторические статусы далее — хронология. PR #1 Open/Draft/unmerged, реального торгового READY нет.
+
 > **Текущий статус 20.10.2026 после приёмки 08.7:** 08.1–08.7 **`COMPLETED / APPROVED`** ([акт 08.7](stage-08-07-validation.md#5-формальная-приёмка-087-и-разрешение-088--20102026)); **08.8 `IMPLEMENTED / PENDING USER REVIEW`** ([шесть форматов и RECHECK](workflows/report-templates.md), [self-review/протокол](stage-08-08-validation.md)); **08.9 `NOT STARTED`**. Все прежние строки статуса ниже исторические и не отменяют эту актуальную. PR #1 Open/Draft, без реального торгового READY.
 
 > **Текущий статус 20.10.2026 после приёмки 08.6:** 08.1–08.6 **`COMPLETED / APPROVED`** ([акт 08.6](stage-08-06-validation.md#5-формальная-приёмка-086-и-разрешение-087--20102026)); **08.7 `IMPLEMENTED / PENDING USER REVIEW`** ([GinArea PRO handoff](prompts/ginarea-configuration.md), [протокол/self-review](stage-08-07-validation.md)); **08.8 `NOT STARTED`**. Исторические статусы ниже показывают ход разработки, а не отменяют это обновление; PR #1 Open/Draft, торгового READY нет.
@@ -153,3 +155,9 @@
 **258/258 локальных JS/V8 assertions PASS**, включая 26/26 target in-memory mutations и 5 old-READY-event checks (всё входит в 258). Точный объем — только исходники GitHub в V8 с эмуляцией чтения; не Node CI, не independent LLM integration, не Bybit/API/Veles/GinArea и не реальный READY. OPEN RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, настоящие исторические Mark H в FR-038 F/A/H/R.
 
 **08.8 `IMPLEMENTED / PENDING USER REVIEW`, 08.9 `NOT STARTED`**, PR #1 Draft/Open, без merge и торговых действий.
+
+## 16. Реализация 08.9 — сквозная ревизия этапа 08 (20.10.2026)
+
+Пользователь отдельно принял 08.8 и разрешил только 08.9. Созданы [интеграционная карта всех 41 P08 промптов, RT01–RT10, рисков и 14 W08 сценариев](stage-08-review.md), [детерминированный JS integration suite](../tests/stage-08-09-integration-synthetic.mjs) и [протокол/self-review](stage-08-09-validation.md). **232/232** локальных JS/V8 assertions PASS, **21/21** in-memory mutations (10 W08 source, 8 FR threshold, 3 RT route), включая 14/14 локальных фикстур W08; **7/7 Skill bodies** отдельно прочитаны из правильной ветки через GitHub connector. Это **не** реальный Node checkout/CI, независимые blind-run ChatGPT tests, фактический Bybit/Veles/GinArea runtime и не READY.
+
+Открытые RV-02/RV-03/RV-04/RV-06, TV-01–TV-04 и реальные dated Bybit Mark H из FR-038 F/A/H/R сохраняются. **08.9 `IMPLEMENTED / PENDING USER REVIEW`; весь этап 08 `PENDING FORMAL STAGE ACCEPTANCE`; этап 09 `NOT STARTED`**. Потребуются отдельные решения пользователя о 08.9 и обо всём этапе 08. PR #1 Draft/Open, без merge.
