@@ -1,5 +1,7 @@
 # Этап 09 — проект плана независимых испытаний на обезличенных сценариях
 
+> **Актуальное решение 20.10.2026 после приёмки 09.2:** план 09.1–09.9 `PLANNED / APPROVED`; **09.1–09.2 `COMPLETED / APPROVED`** ([акт 09.2](stage-09-02-validation.md#6-формальная-приёмка-092-и-разрешение-выполнить-093--20102026)); **09.3 `IMPLEMENTED / PENDING USER REVIEW`** ([runtime-protocol](stage-09-runtime-validation.md), [self-review](stage-09-03-validation.md)); 09.4–09.9 `NOT STARTED`. Более ранние записи ниже — история; independent LLM_BLIND 0, auto-loader NOT_VERIFIED, PR #1 Open/Draft/unmerged.
+
 > **Актуальное состояние 20.10.2026 после приёмки 09.1:** утверждённый план 09.1–09.9 `PLANNED / APPROVED`; **09.1 `COMPLETED / APPROVED`** ([акт](stage-09-01-validation.md#6-формальная-приёмка-091-и-разрешение-092--20102026)); **09.2 `IMPLEMENTED / PENDING USER REVIEW`** ([каталог](stage-09-fixtures.md), [валидация](stage-09-02-validation.md), 311/311 локальных проверок); **09.3–09.9 `NOT STARTED`**. Более ранние строки статуса ниже — исторические. Independent LLM blind-runs: 0, PR Open/Draft/unmerged.
 
 > **Текущий статус после приёмки 09.1 (20.10.2026):** план 09.1–09.9 `PLANNED / APPROVED`; **09.1 `COMPLETED / APPROVED`** ([акт](stage-09-01-validation.md#6-формальная-приёмка-091-и-разрешение-092--20102026)); **09.2 разрешён и реализуется**, результат отдельно предъявляется пользователю; **09.3–09.9 NOT STARTED**. Все нижележащие ранние статусы — исторические. PR #1 Open/Draft/unmerged; никаких независимых LLM_BLIND/реальных ордеров/READY.
