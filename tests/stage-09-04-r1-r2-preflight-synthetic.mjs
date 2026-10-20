@@ -26,7 +26,7 @@ const allowedKeys=new Set(["case_id","prompt_id","fixture_version","execution_st
 const prohibited=/^(oracle|expected|golden|golden_answer|correct_answer|expected_route|expected_decision|expected_status|pass|evaluation_result|raw_response|transcript)$/i;
 const validateEntry=(r)=>{
  if(!r||typeof r!=="object")return false;
- if(!/^S09-\\d{3}$/.test(r.case_id)||!/^P08-\\d{2}$/.test(r.prompt_id)||r.fixture_version!==1)return false;
+ if(!/^S09-\d{3}$/.test(r.case_id)||!/^P08-\d{2}$/.test(r.prompt_id)||r.fixture_version!==1)return false;
  if(!Object.keys(r).every(k=>allowedKeys.has(k)&&!prohibited.test(k)))return false;
  return r.execution_status==="NOT_RUN"&&r.evidence_type==="NOT_RUN"&&r.verdict==="NOT_RUN"&&
  r.independent_session===false&&r.agent_oracle_exposed===false&&r.source_commit_sha===null&&
