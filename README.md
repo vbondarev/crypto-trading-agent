@@ -80,7 +80,7 @@
 | [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **190/190 локальных композиционных assertions** (142 исходных + 48 прямых policy-guards), 17 route-вариантов; не независимый ChatGPT runtime |
 | [`tests/stage-07-09-policy-contract-synthetic.mjs`](tests/stage-07-09-policy-contract-synthetic.mjs) | **48/48 проверок по фактическому тексту 7 Skills/контракту**; тесты также встроены в композиционный модуль, не складывать дважды |
 | [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **18/18 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
-| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **План 08.1–08.9 утверждён:** 08.1–08.6 приняты 20.10.2026; 08.7 реализован, ожидает приёмки; 08.8 не начат, RV-02/RV-03/RV-04/RV-06 OPEN |
+| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **План 08.1–08.9 утверждён:** 08.1–08.7 приняты 20.10.2026; 08.8 реализован, ожидает приёмки; 08.9 не начат, RV-02/RV-03/RV-04/RV-06 OPEN |
 | [`docs/workflows/interaction-contract.md`](docs/workflows/interaction-contract.md) | **08.1 — контракт диалогов:** R1/R2/R3, RT01–RT10, T01–T06, ASK/ANALYZE/CHOOSE/RECHECK/STOP, проверка фактической загрузки Skills и правила RECHECK |
 | [`docs/stage-08-01-validation.md`](docs/stage-08-01-validation.md) | **08.1 принят 20.10.2026:** 32 нормативных IC01–IC32 и 127/127 локальных синтетических проверок, без независимого LLM/runtime |
 | [`tests/stage-08-01-interaction-contract-synthetic.mjs`](tests/stage-08-01-interaction-contract-synthetic.mjs) | Воспроизводимый JS-модуль 08.1: маршруты, состояния и ключевые негативные условия; не исполняющий торговый агент |
@@ -99,9 +99,12 @@
 | [`docs/prompts/veles-configuration.md`](docs/prompts/veles-configuration.md) | **08.6 принят 20.10.2026:** 6 промптов P08-24–P08-29, 40 VH01–VH40, Veles SIMPLE/CUSTOM/SIGNAL, P01/P02/T02, POSITION −1, SL/TP и остановка/отмена/закрытие |
 | [`docs/stage-08-06-validation.md`](docs/stage-08-06-validation.md) | Self-review Veles 08.6: **220/220 локальных синтетических JS/V8 assertions**, в том числе 14/14 мутаций; без реальной Veles P02 и Bybit READY |
 | [`tests/stage-08-06-veles-handoff-synthetic.mjs`](tests/stage-08-06-veles-handoff-synthetic.mjs) | Проверки 08.6: Veles-only поля, user choice, 100% future IN, SL/TP timing, Position −1 и lifecycle/FR риск; без бота/API |
-| [`docs/prompts/ginarea-configuration.md`](docs/prompts/ginarea-configuration.md) | **08.7 реализован, ждёт приёмки:** 6 коротких GinArea PRO запросов P08-30–P08-35, 40 GA01–GA40, проверка стратегий, IN/OUT, Instop, Disable IN и P02 |
+| [`docs/prompts/ginarea-configuration.md`](docs/prompts/ginarea-configuration.md) | **08.7 принят 20.10.2026:** 6 коротких GinArea PRO запросов P08-30–P08-35, 40 GA01–GA40, проверка стратегий, IN/OUT, Instop, Disable IN и P02 |
 | [`docs/stage-08-07-validation.md`](docs/stage-08-07-validation.md) | Протокол/self-review 08.7: **268/268** локальных V8 checks, **24/24** targeted mutations, включая восемь FR-pins; без реального торгового READY |
 | [`tests/stage-08-07-ginarea-handoff-synthetic.mjs`](tests/stage-08-07-ginarea-handoff-synthetic.mjs) | Синтетические тесты GinArea: selector/Indicator vs Default, modes, typed size/cap, sticky Disable и риск-пороги |
+| [`docs/workflows/report-templates.md`](docs/workflows/report-templates.md) | **08.8 реализован, ожидает приёмки:** шесть шаблонов P08-36–P08-41, 40 RF01–RF40, десять зависимостей RC01–RC10 и AD-009 RECHECK; R1/R2/R3 разделены |
+| [`docs/stage-08-08-validation.md`](docs/stage-08-08-validation.md) | Реальный локальный JS/V8 self-review 08.8: **258/258 PASS**, включая 26/26 mutations, не real Bybit/LLM READY |
+| [`tests/stage-08-08-report-templates-synthetic.mjs`](tests/stage-08-08-report-templates-synthetic.mjs) | Синтетические проверки видов отчётов, смены снимков/RECHECK, приоритетов risk-статусов и source-bound FR порогов |
 
 
 | [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
