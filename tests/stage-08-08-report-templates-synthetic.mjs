@@ -78,7 +78,7 @@ check("RF07 unclosed candle rejected by source",rowHas(doc,"RF07",["Исключ
 check("RF08 insufficient indicator warmup",rowHas(doc,"RF08",["NEEDS_DATA"]),true);
 check("RF09 partial scope",rowHas(doc,"RF09",["PARTIAL_SCOPE"]),true);
 check("RF10 future leaves quantity 10−4",10-4,6);
-check("RF11 Veles virtual POSITION not slot",rowHas(doc,"RF11",["не","slot"]),true);
+check("RF11 Veles virtual POSITION not slot",rowHas(doc,"RF11",["Не","slot"]),true);
 check("RF12 GinArea net can be zero",rowHas(doc,"RF12",["future IN"]),true);
 check("RF13 H01 full net not recovered",net({grossRealized:-15,unrealized:10,fees:1,funding:2}),-8);
 check("RF14 already net realized cannot double fee",rowHas(doc,"RF14",["Не вычитать"]),true);
@@ -144,7 +144,7 @@ for(let i=1;i<=10;i++){const id="RC"+String(i).padStart(2,"0");check("RECHECK de
 for(const w of ["EDUCATIONAL","R1","R2","R3_AUDIT","ASK","ANALYZE","CHOOSE","RECHECK","STOP","REJECTED","UNVERIFIED","NEEDS_DATA","READY","NOT_CHECKED","NOT_LOADED","PARTIAL_SCOPE","CURRENT","STALE","MISSING","TIME_UNVERIFIED","CLOCK_CONFLICT","CONFLICT","INFERRED","S0","S1","S2","S3","observed_at","retrieved_at","snapshot_at","response_time","P02","T02","T03","T04","T05","F/A/H/R","H04","FR-029","FR-030","FR-031","FR-032","FR-033","FR-034","FR-035/036","RV-02","RV-03","RV-04","RV-06","TV-01–TV-04"])check("normative marker "+w,doc.includes(w),true);
 for(const [label,source,words] of [
  ["dialogue",routing,["RT01","RT02","RT03","RT04","RT05","RT06","RT07","RT08","RT09","RT10","RECHECK"]],
- ["data-freshness",freshness,["observed_at","retrieved_at","TIME_UNVERIFIED","NOT_CHECKED","RECHECK"]],
+ ["data-freshness",freshness,["observed_at","retrieved_at","TIME_UNVERIFIED","NOT_CHECKED","AD-009","инвалид"]],
  ["stage plan",plan,["**08.8 — отчёты и повторные проверки**","RECHECK"]],
  ["risk strategy",risk,["FR-029","FR-030","FR-031","FR-032","FR-033","FR-034","H04"]],
  ["portfolio/H01",recovery,["H01","L_lifecycle","L_from_now","leavesQty"]],
@@ -168,7 +168,7 @@ const mutations=[
  ["RF22","UNVERIFIED","READY"],["RF23","UNVERIFIED","READY"],
  ["RF26","RECHECK","READY"],["RF30","Sticky ON","OFF"],
  ["RF32","CHOOSE","AUTO_DEFAULT"],["RF38","REJECTED","NEEDS_DATA"],
- ["RF39","NOT_LOADED","LOADED"],["RF40","08.9","auto 08.9"]
+ ["RF39","NOT_LOADED","LOADED"],["RF40","08.9","следующий этап автоматически"]
 ];
 for(const [id,oldText,newText] of mutations){
  const original=row(doc,id);if(!original.includes(oldText))throw Error("missing mutation anchor "+id);
@@ -178,7 +178,7 @@ for(const [id,oldText,newText] of mutations){
 const riskLine=doc.split("\n").find(x=>x.startsWith("| FR-031 |"))??"";
 check("source risk threshold leverage",riskLine.includes("5×"),true);
 if(!riskLine.includes("5×"))throw Error("missing 5x threshold");
-check("source FR leverage mutation caught",riskLine.replace("5×","10×").includes("5×"),false);
+check("source FR leverage mutation caught",riskLine.replaceAll("5×","10×").includes("5×"),false);
 const dep=doc.split("\n").find(x=>x.startsWith("| **RC01** |"))??"";
 check("full S0-S3 dependency in source",includes(dep,["S0–S3","T02"]),true);
 check("source dependency downgrade caught",dep.replace("S0–S3","S0").includes("S0–S3"),false);
