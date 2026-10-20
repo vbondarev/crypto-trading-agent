@@ -107,14 +107,18 @@
 | [`tests/stage-08-08-report-templates-synthetic.mjs`](tests/stage-08-08-report-templates-synthetic.mjs) | Синтетические проверки видов отчётов, смены снимков/RECHECK, приоритетов risk-статусов и source-bound FR порогов |
 | [`docs/stage-08-review.md`](docs/stage-08-review.md) | **08.9 и весь этап 08 приняты:** интеграционная ревизия 41 P08, RT01–RT10, семи Skills, 14 W08 и границ R3 |
 | [`docs/stage-08-09-validation.md`](docs/stage-08-09-validation.md) | Self-review 08.9: **232/232** локальных JS/V8 assertions PASS и **21/21** targeted mutations, не live READY/LLM blind-run |
-| [`docs/stage-09-plan.md`](docs/stage-09-plan.md) | **План 09.1–09.9 утверждён**; 09.1–09.2 приняты; 09.3 реализован и ожидает приёмки (128/128 локальных проверок семи Skills); 09.4–09.9 не начаты; independent LLM blind-runs 0 |
+| [`docs/stage-09-plan.md`](docs/stage-09-plan.md) | **План 09.1–09.9 утверждён**; 09.1–09.3 приняты; 09.4 R1/R2 `PARTIAL / PENDING INDEPENDENT EVIDENCE` (12 синтетических NOT_RUN, preflight 166/166); 09.5–09.9 не начаты; independent LLM blind-runs 0 |
 | [`docs/stage-09-test-contract.md`](docs/stage-09-test-contract.md) | **09.1 независимый тестовый контракт:** доказательные классы, oracle isolation, журнал, оценка по EV01–EV08, запрет fake READY |
 | [`docs/stage-09-01-validation.md`](docs/stage-09-01-validation.md) | **Self-review 09.1:** 144/144 локальных JS/V8 assertions, 7 source-pin mutations включены; 0 independent LLM runs |
 | [`docs/stage-09-fixtures.md`](docs/stage-09-fixtures.md) | **09.2 каталог 45 synthetic inputs:** 41 P08, 8 семейств, T01–T06; публичный JSON без oracle |
 | [`docs/stage-09-02-validation.md`](docs/stage-09-02-validation.md) | **Self-review 09.2:** 311/311 локальных проверок, восемь in-memory mutations входят в число; 0 independent LLM runs |
 | [`docs/stage-09-runtime-validation.md`](docs/stage-09-runtime-validation.md) | **09.3 GitHub/Skills runtime audit:** 7/7 source bodies/SHAs, контур независимой сессии; auto-loader NOT_VERIFIED, git clone заблокирован DNS |
-| [`docs/stage-09-03-validation.md`](docs/stage-09-03-validation.md) | **Self-review 09.3:** 128/128 LOCAL_JS checks, 7 mutations, 0 LLM_BLIND; ждёт приёмки |
+| [`docs/stage-09-03-validation.md`](docs/stage-09-03-validation.md) | **Self-review 09.3:** 128/128 LOCAL_JS checks, 7 mutations, 0 LLM_BLIND; шаг принят |
 | [`tests/stage-09-03-runtime-audit-synthetic.mjs`](tests/stage-09-03-runtime-audit-synthetic.mjs) | Детерминированные проверки текстов Skills, ссылок и разделения source read от auto loader |
+| [`docs/stage-09-04-results.md`](docs/stage-09-04-results.md) | **09.4 частично подготовлен:** 12 INPUT-only R1/R2/RT01 сценариев, 0 LLM_BLIND, требуется новая изолированная сессия |
+| [`docs/stage-09-04-validation.md`](docs/stage-09-04-validation.md) | Preflight 166/166 LOCAL_JS, 10 targeted mutations внутри; `PENDING INDEPENDENT EVIDENCE` |
+| [`tests/fixtures/stage-09/r1-r2-run-ledger.v1.json`](tests/fixtures/stage-09/r1-r2-run-ledger.v1.json) | 12 честных NOT_RUN-записей без oracle, expected ответов или выдуманного результата |
+| [`tests/stage-09-04-r1-r2-preflight-synthetic.mjs`](tests/stage-09-04-r1-r2-preflight-synthetic.mjs) | Проверка целостности входов и доказательного статуса, не прогон ChatGPT |
 | [`tests/stage-09-02-fixture-integrity-synthetic.mjs`](tests/stage-09-02-fixture-integrity-synthetic.mjs) | Проверка структуры 45 inputs, закрытых свечей, времён, шаблонов и отсутствия oracle |
 | [`tests/stage-09-02-export-agent-input.mjs`](tests/stage-09-02-export-agent-input.mjs) | Экспорт без служебной метаинформации только пользовательского запроса и payload |
 
