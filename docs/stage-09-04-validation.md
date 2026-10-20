@@ -48,7 +48,7 @@
 
 Важное несоответствие самоотчёта: заявленные числа строк файлов не совпали с подсчитанными GitHub connector по точному pinned commit (см. [отдельный протокол наблюдения](stage-09-04-observations.md)). `SOURCE_BODY_COMPLETENESS=NOT_VERIFIED`.
 
-**Private oracle до запуска не был сформирован/зафиксирован**; модель/вид новой сессии, независимость от Project Memory и raw export transcript не подтверждены. Поэтому `USER_REPORTED_CANDIDATES=1`, но **`FORMALLY_VERIFIED_LLM_BLIND=0/12`; `PASS=0`; `09.4 PARTIAL/PENDING INDEPENDENT EVIDENCE`**. Не менять исходные 12 `NOT_RUN` placeholders и не интерпретировать наблюдение как полноценный blind-run. Для повторной попытки сначала предзарегистрировать приватный oracle и проверить изоляцию.
+**Private oracle до запуска не был сформирован/зафиксирован**; позднее пользователь уточнил: **S09-001 выполнялся в Temporary Chat**, поэтому тип сессии = `USER_ATTESTED_TEMPORARY_CHAT` (не технически подтверждённый session log). Фактическая модель, независимая проверка Project/Memory state и полноценный raw-export transcript не подтверждены. Поэтому `USER_REPORTED_CANDIDATES=1`, но **`FORMALLY_VERIFIED_LLM_BLIND=0/12`; `PASS=0`; `09.4 PARTIAL/PENDING INDEPENDENT EVIDENCE`**. Не менять исходные 12 `NOT_RUN` placeholders и не интерпретировать наблюдение как полноценный blind-run. Для повторной попытки сначала предзарегистрировать приватный oracle и проверить изоляцию.
 
 ## 5. Постсинхронизационная регрессия всех локальных наборов 09.1–09.4 — 20.10.2026
 
