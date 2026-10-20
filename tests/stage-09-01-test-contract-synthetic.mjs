@@ -49,7 +49,7 @@ for(let i=1;i<=7;i++)t("heading 09.1 "+i,hasSection(i),true);
 for(const id of ["DOC","LOCAL_JS","LLM_IN_SESSION","LLM_BLIND","LIVE"]){
  t("evidence type "+id,contract.includes("`"+id+"`"),true);
 }
-for(const term of ["NOT_RUN","INCONCLUSIVE","NOT_VERIFIED","oracle","agent_oracle_exposed","raw_response_ref","commit_sha","skills_read","independent_session","fixture_version","evaluator_independence","evidence_type","execution_status","verdict","run_id","case_id","SYNTHETIC","no live READY"]){
+for(const term of ["NOT_RUN","INCONCLUSIVE","NOT_VERIFIED","oracle","agent_oracle_exposed","raw_response_ref","commit_sha","skills_read","independent_session","fixture_version","evaluator_independence","evidence_type","execution_status","verdict","run_id","case_id","SYNTHETIC","реального `READY`"]){
  t("mandatory provenance "+term,contract.toLowerCase().includes(term.toLowerCase()),true);
 }
 for(const term of ["PREPARE","FREEZE","INVOKE","CAPTURE","EVALUATE","FIX/REGRESS"]){
@@ -110,11 +110,11 @@ for(const [args,want] of [
 // Source-bound mutations are counted within T, NOT additional real LLM tests.
 const pins=[
  ["**oracle нельзя публиковать","**oracle можно публиковать"],
- ["`LLM_BLIND` требует `independent_session=true`"," `LLM_BLIND` требует `independent_session=false`"],
+ ["`evidence_type=LLM_BLIND` требует `independent_session=true`","`evidence_type=LLM_BLIND` требует `independent_session=false`"],
  ["`agent_oracle_exposed=false`","`agent_oracle_exposed=true`"],
  ["**неотредактированный дословный ответ**","краткий пересказ"],
  ["`FAIL_CRITICAL` блокирует приёмку","FAIL_CRITICAL не блокирует приёмку"],
- ["**не** результат LLM-прогонов","является LLM-прогоном"],
+ ["**не результат LLM-прогонов**","**является LLM-прогоном**"],
  ["`evidence_type=LIVE` запрещён","LIVE по умолчанию допустим"],
  ["**не** подтверждают отдельный реальный Node.js checkout/CI","подтверждают Node.js CI"],
  ["`NOT_RUN` / `INCONCLUSIVE`","`PASS` / `PASS`"]
