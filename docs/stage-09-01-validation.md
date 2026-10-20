@@ -47,3 +47,9 @@ node tests/stage-09-01-test-contract-synthetic.mjs
 **OPEN:** RV-02 Cross account MMR; RV-03 strict Short worst loss; RV-04 actual user P02 Veles/GinArea; RV-06 independent ChatGPT Skill runtime; TV-01–TV-04; FR-038 real dated Bybit Mark F/A/H/R. Без реального доказательного комплекса нет торгового `READY`, автоматических биржевых действий или приватного портфеля в GitHub.
 
 **Итог:** 09.1 `IMPLEMENTED / PENDING USER REVIEW`, 09.2 `NOT STARTED`, этап 09 ещё не принят, PR #1 Open/Draft/unmerged. Следующее действие — **отдельная пользовательская приёмка 09.1**; только после неё отдельное разрешение для реализации 09.2 (каталог синтетических фикстур).
+
+## 5. Финальная постсинхронизационная перепроверка — 20.10.2026
+
+После изменения `docs/stage-09-plan.md`, `docs/development-roadmap.md`, `README.md` и `AGENTS.md` повторно получены актуальные GitHub-исходники контракта и скрипта. **Точно повторён локальный V8-модуль 09.1: 144/144 PASS, 0 FAIL**, включая **7 source-bound in-memory mutations внутри 144**. **11/11 относительных ссылок** контракта ведут к существующим файлам ветки по списку 103 изменённых PR-файлов + `LICENSE`. Изоляция тестового read/exists повторяет чтение файлов из GitHub, не настоящий Node checkout/CI.
+
+**Итог self-review:** в документально-синтетических пределах нет известных блокирующих замечаний к контракту. Однако независимые диалоги ChatGPT/Skills runtime **не запускались**, а `NOT_RUN` является лишь служебной записью. На приёмку: **09.1 `IMPLEMENTED / PENDING USER REVIEW`**; 09.2+ `NOT STARTED`; PR Open/Draft/unmerged; никакого реального `READY`.
