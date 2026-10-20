@@ -22,6 +22,7 @@ const normalize=p=>{
  return path.join("/");
 };
 function qualifyRun(r={}){
+ if(r.evidence_type==="NOT_RUN"&&r.execution_status!=="NOT_RUN")return "INCONCLUSIVE";
  if(r.evidence_type==="LIVE")return "OUT_OF_SCOPE";
  if(r.execution_status==="NOT_RUN")return "NOT_RUN";
  if(r.execution_status!=="EXECUTED"||!r.raw_response_ref||r.raw_response_ref==="NOT_CAPTURED")return "INCONCLUSIVE";
@@ -74,6 +75,7 @@ for(const code of ["RV-02","RV-03","RV-04","RV-06","TV-01–TV-04","FR-038","F/A
 for(const text of ["09.2–09.9 **NOT STARTED**","IMPLEMENTED / PENDING USER REVIEW","не являются запуском ChatGPT blind-run","**oracle нельзя публиковать","**неотредактированный дословный ответ**","не прибавлять","**Жёсткий release gate:**"]){
  t("hard control "+text,contract.includes(text),true);
 }
+t("NOT_RUN sentinel is not sixth evidence type",contains(contract,["`evidence_type=NOT_RUN` допустим","**не** является шестым типом доказательств"]),true);
 t("old stage 08 accepted",status.slice(0,500).includes("весь этап 08 `COMPLETED / APPROVED`"),true);
 t("stage 09 approved plan",plan.includes("PLANNED / APPROVED"),true);
 t("09.1 explicitly running",plan.includes("09.1 `IMPLEMENTED / PENDING USER REVIEW`"),true);
@@ -91,6 +93,8 @@ for(const [name,modifier,expected] of [
  ["empty checks",{checks:[]},"INCONCLUSIVE"],
  ["not run",{execution_status:"NOT_RUN",verdict:"NOT_RUN"},"NOT_RUN"],
  ["LIVE forbidden",{evidence_type:"LIVE"},"OUT_OF_SCOPE"],
+ ["NOT_RUN sentinel cannot masquerade as execution",{evidence_type:"NOT_RUN"},"INCONCLUSIVE"],
+ ["NOT_RUN sentinel is not a run",{evidence_type:"NOT_RUN",execution_status:"NOT_RUN",verdict:"NOT_RUN"},"NOT_RUN"],
  ["DOC not blind",{evidence_type:"DOC"},"PASS"]
 ])t("run qualifying "+name,qualifyRun({...base,...modifier}),expected);
 for(const [args,want] of [
