@@ -16,8 +16,12 @@
 | 06 | Описать Veles и GinArea | **Завершён и утверждён 16.10.2026 (06.1–06.8); RV/TV открыты** | [План этапа 06](stage-06-plan.md): подтверждённые поля, режимы и ограничения платформ |
 | 07 | Подготовить специализированные Skills | **COMPLETED / APPROVED (07.1–07.9, 19.10.2026); реальный READY не доказан** | [Проект плана](stage-07-plan.md): семь специализированных Skills и девять отдельных шагов |
 | 08 | Подготовить фиксированные пользовательские промпты и сценарии | **Этап 08 `COMPLETED / APPROVED` (все 08.1–08.9), 20.10.2026; документально-синтетические ограничения OPEN** | [План 08.1–08.9](stage-08-plan.md): пользовательские промпты, workflows и форматы результатов |
-| 09 | Проверить на обезличенных тестовых случаях | **09.1 `COMPLETED / APPROVED`; 09.2 `IMPLEMENTED / PENDING USER REVIEW` (311/311 LOCAL_JS); 09.3–09.9 NOT STARTED** | [План](stage-09-plan.md), [каталог 09.2](stage-09-fixtures.md), [валидация](stage-09-02-validation.md) |
+| 09 | Проверить на обезличенных тестовых случаях | **09.1–09.2 `COMPLETED / APPROVED`; 09.3 `IMPLEMENTED / PENDING USER REVIEW` (128/128 LOCAL_JS); 09.4–09.9 NOT STARTED** | [План](stage-09-plan.md), [runtime audit 09.3](stage-09-runtime-validation.md), [протокол](stage-09-03-validation.md) |
 | 10 | Провести испытание кейса TREEUSDT с Veles | Не начат | Отчёт в чате и исправления инструкций |
+
+## Последнее решение по этапу 09 — 20.10.2026
+
+Пользователь отдельно принял [09.2](stage-09-02-validation.md#6-формальная-приёмка-092-и-разрешение-выполнить-093--20102026) (**45 synthetic inputs, 311/311 локальных checks**) и разрешил **только 09.3**. Выполнена [ревизия runtime и семи GitHub Skills](stage-09-runtime-validation.md), подготовлен [локальный runtime/source audit](../tests/stage-09-03-runtime-audit-synthetic.mjs): **128/128 локальных проверок PASS**, в т.ч. 7 mutation source pins, все семь тел Skills прочитаны отдельно с blob SHA и относительными документальными ссылками. В локальном контейнере `node v22.16.0` доступен, но настоящий `git clone` блокируется DNS GitHub, поэтому Node checkout/CI не подтверждён. Auto Skill loader и независимая fresh-session ChatGPT ещё не проверены; **09.3 `IMPLEMENTED / PENDING USER REVIEW`, 09.4–09.9 NOT STARTED**. Сохранены RV-02/03/04/06, TV-01–TV-04, real Bybit F/A/H/R. Никаких реальных сделок/READY/merge; PR #1 Open/Draft.
 
 ## Актуальное решение после этапа 08 — 20.10.2026
 
