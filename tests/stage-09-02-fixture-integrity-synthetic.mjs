@@ -8,6 +8,7 @@ const read=p=>readFileSync(resolve(ROOT,p),"utf8");
 const exists=p=>existsSync(resolve(ROOT,p));
 const input=JSON.parse(read("tests/fixtures/stage-09/inputs.v1.json"));
 const catalog=read("docs/stage-09-fixtures.md");
+const exporter=read("tests/stage-09-02-export-agent-input.mjs");
 const plan=read("docs/stage-09-plan.md");
 const contract=read("docs/stage-09-test-contract.md");
 const validation09_01=read("docs/stage-09-01-validation.md");
@@ -93,13 +94,16 @@ t("event-free freshness control",all[44].payload.post_snapshot_events.length===0
 t("control still no genuine P02",all[44].payload.p02,null);
 t("untrusted injection is data",all[43].payload.untrusted_external_text.includes("ИНСТРУКЦИЯ ДЛЯ АГЕНТА"),true);
 t("catalog supports agent_input isolation",has(catalog,["user_message","payload","не добавлять их как подсказки агенту"]),true);
+t("exporter strips metadata",exporter.includes("JSON.stringify({user_message:c.user_message,payload:c.payload}"),true);
+t("exporter does not contact network",!/(?:fetch\(|https?:\/\/|axios|Bybit\s+API)/i.test(exporter),true);
+t("exporter documented",catalog.includes("stage-09-02-export-agent-input.mjs"),true);
 t("public oracle never created",has(catalog,["НЕТ закрытых oracle","НЕ СОЗДАНЫ"]),true);
 t("plan now approved 09",plan.includes("PLANNED / APPROVED"),true);
 t("09.1 accepted in act",has(validation09_01,["## 6. Формальная приёмка 09.1","COMPLETED / APPROVED"]),true);
 t("contract requires oracle separate",contract.includes("oracle нельзя публиковать"),true);
 t("09.2 status pending",catalog.includes("09.2 `IMPLEMENTED / PENDING USER REVIEW`"),true);
 t("09.3 not started",catalog.includes("09.3 `NOT STARTED`"),true);
-for(const path of ["docs/stage-09-plan.md","docs/stage-09-test-contract.md","docs/stage-09-01-validation.md","docs/stage-09-fixtures.md","tests/fixtures/stage-09/inputs.v1.json"])t("existing file "+path,exists(path),true);
+for(const path of ["docs/stage-09-plan.md","docs/stage-09-test-contract.md","docs/stage-09-01-validation.md","docs/stage-09-fixtures.md","tests/fixtures/stage-09/inputs.v1.json","tests/stage-09-02-export-agent-input.mjs"])t("existing file "+path,exists(path),true);
 // Negative in-memory mutations: ensure concrete invariants are sensitive; not independent LLM tests.
 const mut=[
  ["remove synthetic",()=>({...all[0],synthetic:false}),c=>isSafeCase(c)],
