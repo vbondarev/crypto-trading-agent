@@ -107,9 +107,14 @@
 | [`tests/stage-08-08-report-templates-synthetic.mjs`](tests/stage-08-08-report-templates-synthetic.mjs) | Синтетические проверки видов отчётов, смены снимков/RECHECK, приоритетов risk-статусов и source-bound FR порогов |
 | [`docs/stage-08-review.md`](docs/stage-08-review.md) | **08.9 и весь этап 08 приняты:** интеграционная ревизия 41 P08, RT01–RT10, семи Skills, 14 W08 и границ R3 |
 | [`docs/stage-08-09-validation.md`](docs/stage-08-09-validation.md) | Self-review 08.9: **232/232** локальных JS/V8 assertions PASS и **21/21** targeted mutations, не live READY/LLM blind-run |
-| [`docs/stage-09-plan.md`](docs/stage-09-plan.md) | **План 09.1–09.9 утверждён 20.10.2026**; 09.1 реализован и ожидает приёмки, остальные шаги не начаты; независимые LLM blind-runs ещё не проводились |
+| [`docs/stage-09-plan.md`](docs/stage-09-plan.md) | **План 09.1–09.9 утверждён**; 09.1 принят; 09.2 реализован, ожидает приёмки (45 synthetic cases, 311/311 проверок); 09.3–09.9 не начаты; independent LLM blind-runs 0 |
 | [`docs/stage-09-test-contract.md`](docs/stage-09-test-contract.md) | **09.1 независимый тестовый контракт:** доказательные классы, oracle isolation, журнал, оценка по EV01–EV08, запрет fake READY |
 | [`docs/stage-09-01-validation.md`](docs/stage-09-01-validation.md) | **Self-review 09.1:** 144/144 локальных JS/V8 assertions, 7 source-pin mutations включены; 0 independent LLM runs |
+| [`docs/stage-09-fixtures.md`](docs/stage-09-fixtures.md) | **09.2 каталог 45 synthetic inputs:** 41 P08, 8 семейств, T01–T06; публичный JSON без oracle |
+| [`docs/stage-09-02-validation.md`](docs/stage-09-02-validation.md) | **Self-review 09.2:** 311/311 локальных проверок, восемь in-memory mutations входят в число; 0 independent LLM runs |
+| [`tests/stage-09-02-fixture-integrity-synthetic.mjs`](tests/stage-09-02-fixture-integrity-synthetic.mjs) | Проверка структуры 45 inputs, закрытых свечей, времён, шаблонов и отсутствия oracle |
+| [`tests/stage-09-02-export-agent-input.mjs`](tests/stage-09-02-export-agent-input.mjs) | Экспорт без служебной метаинформации только пользовательского запроса и payload |
+
 | [`tests/stage-09-01-test-contract-synthetic.mjs`](tests/stage-09-01-test-contract-synthetic.mjs) | Локальные детерминированные проверки контракта и корректности evidence-ledger; не ChatGPT runtime |
 | [`tests/stage-08-09-integration-synthetic.mjs`](tests/stage-08-09-integration-synthetic.mjs) | Синтетические integration checks: W08-01–14, полные P08-01–41, RT07 Veles/RT08 GinArea/RT09 final, FR thresholds |
 
