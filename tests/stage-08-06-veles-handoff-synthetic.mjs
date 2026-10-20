@@ -101,7 +101,7 @@ t("VH36 leverage 8 rejected",riskGate({lev:8}),"REJECTED");
 t("VH37 known H04 blocks new risk",riskGate({h04:true}),"REJECTED");
 t("VH38 changed fill invalidates result",riskGate({changed:true}),"RECHECK");
 t("VH39 synthetic history not real H",riskGate({realH:false}),"UNVERIFIED");
-t("VH40 project acceptance not trade",pinned(doc,"VH40",["не считать","08.7"]),true);
+t("VH40 project acceptance not trade",pinned(doc,"VH40",["Не считать","08.7"]),true);
 // Fixture-specific edge cases.
 t("R2 without actual P02 still draft",route({platform:"Veles",mode:"SIMPLE"}).result,"R2_DOCUMENTARY");
 t("R3 with actual P02 still only evidence check",route({platform:"Veles",mode:"CUSTOM",p02:true,action:"final"}).result,"R3_EVIDENCE_CHECK");
@@ -141,7 +141,7 @@ const pins={
  VH20:["Нет доказанного биржевого SL"],VH23:["upper loss bound"],VH24:["account-wide MMR"],
  VH26:["не новый exchange slot"],VH29:["остаётся открытой"],VH32:["RECHECK"],
  VH35:["FR-029/FR-034"],VH36:["REJECTED"],VH37:["REJECTED"],VH38:["RECHECK"],
- VH39:["не доказана"],VH40:["не считать"]
+ VH39:["не доказана"],VH40:["Не считать"]
 };
 for(const [id,terms] of Object.entries(pins))t("actual source pinned "+id,pinned(doc,id,terms),true);
 const mutations=[
@@ -150,7 +150,7 @@ const mutations=[
  ["VH12","100% future reserve","30% future reserve"],
  ["VH13","UNVERIFIED","VERIFIED"],
  ["VH20","Нет доказанного биржевого SL","Есть доказанный биржевой SL"],
- ["VH23","upper loss bound","guaranteed upper loss bound"],
+ ["VH23","upper loss bound","guaranteed stop bound"],
  ["VH24","account-wide MMR","single liqPrice enough"],
  ["VH26","не новый exchange slot","новый exchange slot"],
  ["VH29","остаётся открытой","закрыта"],
