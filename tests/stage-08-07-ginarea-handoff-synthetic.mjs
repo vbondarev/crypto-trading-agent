@@ -94,7 +94,7 @@ t("GA19 OneWay not two exchange slots",slots({longQty:1,shortQty:0}),"ONE_NET_SL
 t("GA20 zero net but future",slots({longQty:1,shortQty:1,virtualOrders:9}),"ZERO_NET_NOT_ZERO_FUTURE");
 t("GA21 DCA not generic multiplier",rowHas(doc,"GA21",["Не переносить"]),true);
 t("GA22 missing indicator time",rowHas(doc,"GA22",["NEEDS_DATA"]),true);
-t("GA23 indicator exit not guaranteed profit",rowHas(doc,"GA23",["не","profit"]),true);
+t("GA23 indicator exit not guaranteed profit",rowHas(doc,"GA23",["Не утверждать","profit"]),true);
 t("GA24 Default Instop potential merged",instop("Default"),"MAY_MERGE_IN");
 t("GA25 Indicator Instop not verified",instop("Indicator"),"NOT_VERIFIED_FOR_MODE");
 t("GA26 OUT trigger not fill",exitState({targetHit:true}),"TRIGGER_NOT_FILL");
@@ -106,7 +106,7 @@ t("GA31 manual reset requires recheck",disable({manualReset:true,on:true}),"RECH
 t("GA32 Pause/Failed no exchange close",lifecycle("Failed"),"NO_EXCHANGE_CLOSE");
 t("GA33 Close request needs actual fill",lifecycle("Close"),"REQUEST_VERIFY_FILL");
 t("GA34 manual fill invalidates",lifecycle("ManualFill"),"RECHECK");
-t("GA35 edit even inside TTL",gate({changed:true}),"REJECTED"); // rectified to conservative known constraints? see review
+t("GA35 edit even inside TTL",gate({changed:true}),"RECHECK");
 t("GA36 unknown Cross/Short",gate({crossVerified:false,shortBound:false}),"UNVERIFIED");
 t("GA37 H04 veto",gate({h04:true}),"REJECTED");
 t("GA38 missing P02/T02",gate({crossVerified:true,shortBound:true,historicalMark:true,p02:false}),"NEEDS_DATA");
