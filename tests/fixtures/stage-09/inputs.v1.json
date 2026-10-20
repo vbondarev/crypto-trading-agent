@@ -2063,7 +2063,20 @@
       "payload": {
         "day_loss_pct": 3,
         "hwm_dd_pct": 15,
-        "baseline": "SYNTHETIC_VERIFIED"
+        "baseline": "SYNTHETIC_VERIFIED",
+        "t06": {
+          "origin": "SYNTHETIC_USER_GENERATED_HISTORY",
+          "snapshot_at": "2026-10-20T11:59:00+03:00",
+          "history_timestamps_msk": [
+            "2026-10-19T12:00:00+03:00",
+            "2026-10-20T00:00:00+03:00",
+            "2026-10-20T11:59:00+03:00"
+          ],
+          "moscow_day_baseline_provided": true,
+          "day_loss_pct": 3,
+          "hwm_drawdown_pct": 15,
+          "h04_active": true
+        }
       }
     },
     {
