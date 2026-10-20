@@ -15,7 +15,7 @@
 | 05 | Формализовать торговые правила и ограничения риска | **Завершён и утверждён 15.10.2026 (05.1–05.8); остаются ограничения RV/TV** | [План этапа 05](stage-05-plan.md): формулы рисков, маржа и ликвидация Cross/Isolated, проверка Short, стресс-сценарии |
 | 06 | Описать Veles и GinArea | **Завершён и утверждён 16.10.2026 (06.1–06.8); RV/TV открыты** | [План этапа 06](stage-06-plan.md): подтверждённые поля, режимы и ограничения платформ |
 | 07 | Подготовить специализированные Skills | **COMPLETED / APPROVED (07.1–07.9, 19.10.2026); реальный READY не доказан** | [Проект плана](stage-07-plan.md): семь специализированных Skills и девять отдельных шагов |
-| 08 | Подготовить фиксированные пользовательские промпты и сценарии | **08.1–08.5 приняты; 08.6 реализован и ждёт приёмки; 08.7 не начат (20.10.2026)** | [План 08.1–08.9](stage-08-plan.md): пользовательские промпты, workflows и форматы результатов |
+| 08 | Подготовить фиксированные пользовательские промпты и сценарии | **08.1–08.6 приняты; 08.7 реализован и ждёт приёмки; 08.8 не начат (20.10.2026)** | [План 08.1–08.9](stage-08-plan.md): пользовательские промпты, workflows и форматы результатов |
 | 09 | Проверить на обезличенных тестовых случаях | Не начат | Проверка качества инструкций |
 | 10 | Провести испытание кейса TREEUSDT с Veles | Не начат | Отчёт в чате и исправления инструкций |
 
@@ -301,3 +301,8 @@
 ### Шаг 08.6 — Veles configuration handoff (20.10.2026)
 
 После отдельной [приёмки 08.5](stage-08-05-validation.md#5-формальная-приёмка-085-и-разрешение-086--20102026) подготовлены [шесть P08-24–P08-29](prompts/veles-configuration.md), 40 нормативных VH01–VH40, [220/220 локальных синтетических проверок](../tests/stage-08-06-veles-handoff-synthetic.mjs), включая 14/14 targeted in-memory mutations, и [протокол/self-review](stage-08-06-validation.md). Сохраняется выбор пользователем Veles и конкретной SIMPLE/CUSTOM/SIGNAL, P01 ≠ actual P02 ≠ T02, только проверенные Veles поля, полный учёт IN и POSITION −1, TP/SL/BE timing, Stop/Cancel/Close/Restart, обязательный R3 со свежими снимками и FR risk. Прогон — в изолированном JS/V8 на GitHub-текстах с файловым адаптером, **не** Node/CI, независимый ChatGPT/Veles/Bybit runtime или реальный READY. RV-02/RV-03/RV-04/RV-06, TV-01–TV-04, FR-038 historical Mark остаются OPEN. **08.6 `IMPLEMENTED / PENDING USER REVIEW`, 08.7 `NOT STARTED`**, PR #1 Open/Draft, не сливать.
+
+
+### Шаг 08.7 — GinArea PRO handoff (20.10.2026)
+
+После [формальной приёмки 08.6](stage-08-06-validation.md#5-формальная-приёмка-086-и-разрешение-087--20102026) реализованы [P08-30–P08-35 и GA01–GA40](prompts/ginarea-configuration.md), [синтетический тест](../tests/stage-08-07-ginarea-handoff-synthetic.mjs), [self-review/протокол](stage-08-07-validation.md). Подтверждён документальный контракт Default/Auto/Dynamic/Indicator/DCA, P01 ≠ фактическая GinArea P02 ≠ T02, отдельный пользовательский выбор переключения Indicator → Default, UTA/Cross/One-Way и Default Hedge exception, typed size/cap/multiplier/Instop, полная сетка, sticky Disable IN/OUT/Pause/Failed/Close, H01 и FR gates. **268/268 локальных JS/V8 assertions PASS**, включая **24/24** source-bound in-memory mutations (16 нормативных и 8 FR thresholds). Это не реальный Node/CI, не независимый Skills runtime, не live Bybit/GinArea P02 и не торговый READY. RV-02/RV-03/RV-04/RV-06, TV-01–TV-04 и actual FR-038 Bybit Mark H остаются OPEN. **08.7 `IMPLEMENTED / PENDING USER REVIEW`, 08.8 `NOT STARTED`**, PR #1 Open/Draft, не сливать.
