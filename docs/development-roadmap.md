@@ -16,8 +16,12 @@
 | 06 | Описать Veles и GinArea | **Завершён и утверждён 16.10.2026 (06.1–06.8); RV/TV открыты** | [План этапа 06](stage-06-plan.md): подтверждённые поля, режимы и ограничения платформ |
 | 07 | Подготовить специализированные Skills | **COMPLETED / APPROVED (07.1–07.9, 19.10.2026); реальный READY не доказан** | [Проект плана](stage-07-plan.md): семь специализированных Skills и девять отдельных шагов |
 | 08 | Подготовить фиксированные пользовательские промпты и сценарии | **Этап 08 `COMPLETED / APPROVED` (все 08.1–08.9), 20.10.2026; документально-синтетические ограничения OPEN** | [План 08.1–08.9](stage-08-plan.md): пользовательские промпты, workflows и форматы результатов |
-| 09 | Проверить на обезличенных тестовых случаях | **09.1–09.2 `COMPLETED / APPROVED`; 09.3 `IMPLEMENTED / PENDING USER REVIEW` (128/128 LOCAL_JS); 09.4–09.9 NOT STARTED** | [План](stage-09-plan.md), [runtime audit 09.3](stage-09-runtime-validation.md), [протокол](stage-09-03-validation.md) |
+| 09 | Проверить на обезличенных тестовых случаях | **09.1–09.3 `COMPLETED / APPROVED`; 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE` (12 NOT_RUN, preflight 166/166); 09.5–09.9 NOT STARTED** | [План](stage-09-plan.md), [09.4 R1/R2](stage-09-04-results.md), [протокол](stage-09-04-validation.md) |
 | 10 | Провести испытание кейса TREEUSDT с Veles | Не начат | Отчёт в чате и исправления инструкций |
+
+## После приёмки 09.3 — подготовка R1/R2 и ограничение доказательности 09.4 (20.10.2026)
+
+Формально принят [09.3](stage-09-03-validation.md#5-формальная-приёмка-093-и-разрешение-094--20102026); пользователь разрешил только 09.4. Подготовлены [12 вымышленных R1/R2 и образовательный сценарий](stage-09-04-results.md), [публичный ledger 12 × NOT_RUN](../tests/fixtures/stage-09/r1-r2-run-ledger.v1.json) и [локальный preflight](../tests/stage-09-04-r1-r2-preflight-synthetic.mjs): **166/166 PASS**, 10 намеренных мутаций входят в итог. **Ни одного независимого LLM_BLIND запуска нет (0/12)**, private oracle и raw transcripts отсутствуют; пользовательская подготовка **не является завершением 09.4**, который остаётся `PARTIAL / PENDING INDEPENDENT EVIDENCE`. Auto Skills loader/RV-06 NOT_VERIFIED, Git checkout/Node CI не подтверждены. 09.5–09.9 не начинать; PR #1 Draft/Open, никаких real READY/ордеров/merge.
 
 ## Последнее решение по этапу 09 — 20.10.2026
 
