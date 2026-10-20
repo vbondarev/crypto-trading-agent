@@ -80,7 +80,7 @@
 | [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **190/190 локальных композиционных assertions** (142 исходных + 48 прямых policy-guards), 17 route-вариантов; не независимый ChatGPT runtime |
 | [`tests/stage-07-09-policy-contract-synthetic.mjs`](tests/stage-07-09-policy-contract-synthetic.mjs) | **48/48 проверок по фактическому тексту 7 Skills/контракту**; тесты также встроены в композиционный модуль, не складывать дважды |
 | [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **18/18 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
-| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **План 08.1–08.9 утверждён:** 08.1–08.8 приняты 20.10.2026; 08.9 реализован и ожидает приёмки; весь этап 08 пока не закрыт, 09 не начат, RV-02/RV-03/RV-04/RV-06 OPEN |
+| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **План 08.1–08.9 утверждён:** все шаги 08.1–08.9 приняты 20.10.2026 в документально-синтетических границах; весь этап 08 отдельно ожидает приёмки, 09 не начат, RV-02/RV-03/RV-04/RV-06 OPEN |
 | [`docs/workflows/interaction-contract.md`](docs/workflows/interaction-contract.md) | **08.1 — контракт диалогов:** R1/R2/R3, RT01–RT10, T01–T06, ASK/ANALYZE/CHOOSE/RECHECK/STOP, проверка фактической загрузки Skills и правила RECHECK |
 | [`docs/stage-08-01-validation.md`](docs/stage-08-01-validation.md) | **08.1 принят 20.10.2026:** 32 нормативных IC01–IC32 и 127/127 локальных синтетических проверок, без независимого LLM/runtime |
 | [`tests/stage-08-01-interaction-contract-synthetic.mjs`](tests/stage-08-01-interaction-contract-synthetic.mjs) | Воспроизводимый JS-модуль 08.1: маршруты, состояния и ключевые негативные условия; не исполняющий торговый агент |
@@ -105,7 +105,7 @@
 | [`docs/workflows/report-templates.md`](docs/workflows/report-templates.md) | **08.8 принят 20.10.2026:** шесть шаблонов P08-36–P08-41, 40 RF01–RF40, десять зависимостей RC01–RC10 и AD-009 RECHECK; R1/R2/R3 разделены |
 | [`docs/stage-08-08-validation.md`](docs/stage-08-08-validation.md) | Реальный локальный JS/V8 self-review 08.8: **258/258 PASS**, включая 26/26 mutations, не real Bybit/LLM READY |
 | [`tests/stage-08-08-report-templates-synthetic.mjs`](tests/stage-08-08-report-templates-synthetic.mjs) | Синтетические проверки видов отчётов, смены снимков/RECHECK, приоритетов risk-статусов и source-bound FR порогов |
-| [`docs/stage-08-review.md`](docs/stage-08-review.md) | **08.9 реализован, ожидает приёмки:** интеграционная ревизия 41 P08, RT01–RT10, семи Skills, 14 W08 и границ R3; этап 08 ещё не принят |
+| [`docs/stage-08-review.md`](docs/stage-08-review.md) | **08.9 принят отдельно:** интеграционная ревизия 41 P08, RT01–RT10, семи Skills, 14 W08 и границ R3; этап 08 ещё не принят |
 | [`docs/stage-08-09-validation.md`](docs/stage-08-09-validation.md) | Self-review 08.9: **232/232** локальных JS/V8 assertions PASS и **21/21** targeted mutations, не live READY/LLM blind-run |
 | [`tests/stage-08-09-integration-synthetic.mjs`](tests/stage-08-09-integration-synthetic.mjs) | Синтетические integration checks: W08-01–14, полные P08-01–41, RT07 Veles/RT08 GinArea/RT09 final, FR thresholds |
 
