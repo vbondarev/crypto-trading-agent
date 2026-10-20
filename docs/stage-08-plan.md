@@ -1,5 +1,7 @@
 # Этап 08 — утверждённый план пользовательских промптов, workflows и форматов отчёта
 
+> **Актуально 20.10.2026 после отдельной приёмки 08.9:** **08.1–08.9 `COMPLETED / APPROVED`** в документально-синтетическом объёме ([акт 08.9](stage-08-09-validation.md), [итоговый release-gate](stage-08-review.md)). **Весь этап 08 `PENDING FORMAL STAGE ACCEPTANCE`**, этап 09 `NOT STARTED`; предыдущие записи ниже — история. PR #1 Open/Draft/unmerged; RV-02/03/04/06, TV-01–TV-04 и реальные исторические F/A/H/R открыты, live READY не доказан.
+
 > **Текущий статус 20.10.2026 после приёмки 08.8:** шаги **08.1–08.8 `COMPLETED / APPROVED`** ([акт 08.8](stage-08-08-validation.md#5-формальная-приёмка-088-и-разрешение-089--20102026)). **08.9 `IMPLEMENTED / PENDING USER REVIEW`** ([интеграционная ревизия](stage-08-review.md), [валидация](stage-08-09-validation.md)). **Этап 08 `PENDING FORMAL STAGE ACCEPTANCE`, этап 09 `NOT STARTED`**. Исторические статусы далее — хронология. PR #1 Open/Draft/unmerged, реального торгового READY нет.
 
 > **Текущий статус 20.10.2026 после приёмки 08.7:** 08.1–08.7 **`COMPLETED / APPROVED`** ([акт 08.7](stage-08-07-validation.md#5-формальная-приёмка-087-и-разрешение-088--20102026)); **08.8 `IMPLEMENTED / PENDING USER REVIEW`** ([шесть форматов и RECHECK](workflows/report-templates.md), [self-review/протокол](stage-08-08-validation.md)); **08.9 `NOT STARTED`**. Все прежние строки статуса ниже исторические и не отменяют эту актуальную. PR #1 Open/Draft, без реального торгового READY.
