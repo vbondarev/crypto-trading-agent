@@ -9,6 +9,7 @@ const read=p=>readFileSync(resolve(ROOT,p),"utf8");
 const exists=p=>existsSync(resolve(ROOT,p));
 const contract=read("docs/stage-09-test-contract.md");
 const plan=read("docs/stage-09-plan.md");
+const validation09_01=read("docs/stage-09-01-validation.md");
 const risk=read("docs/risk-management.md");
 const routes=read("docs/workflows/interaction-contract.md");
 const status=read("docs/stage-08-review.md");
