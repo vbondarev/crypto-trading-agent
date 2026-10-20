@@ -218,9 +218,9 @@ for(const [p,id,good,badRoute] of [
 const reqLinks=[...review.matchAll(/\]\(([^)\s]+)\)/g)].map(x=>x[1].split("#")[0]).filter(Boolean).filter(x=>!/^https?:/i.test(x));
 t("integration links numerous",reqLinks.length>=20,true);
 t("all relative targets exist",reqLinks.every(x=>exists("docs/"+x)),true);
-t("stage pending user acceptance",review.includes("PENDING FORMAL STAGE ACCEPTANCE"),true);
-t("08.9 accepted separately",review.includes("08.9: COMPLETED / APPROVED")&&review.includes("этап 08 PENDING FORMAL STAGE ACCEPTANCE"),true);
-t("09 not started",review.includes("09 NOT STARTED")||review.includes("09: NOT STARTED"),true);
+t("stage 08 approved in latest header",review.slice(0,750).includes("весь этап 08 `COMPLETED / APPROVED`"),true);
+t("08.9 and all stage approved by user",review.slice(0,750).includes("шаги **08.1–08.9**"),true);
+t("09 plan exists, awaits approval, no 09.1",exists("docs/stage-09-plan.md")&&review.slice(0,750).includes("09.1 NOT STARTED"),true);
 const bad=tests.filter(x=>!x.pass);
 for(const x of bad)console.error("FAIL",x.name,JSON.stringify({got:x.got,want:x.want}));
 console.log(JSON.stringify({kind:"STAGE_08_09_INTEGRATION_SYNTHETIC",total:tests.length,passed:tests.length-bad.length,failed:bad.length,w08Cases:14,promptCount:41,routes:10,skills:7,mutations:mutations.length+riskPins.length+3,independentLLMRuns:0,nodeCheckout:false,liveBybit:false,realP02:false,tradeReady:false}));
