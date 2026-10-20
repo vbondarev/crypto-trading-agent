@@ -1,4 +1,6 @@
 # Этап 09 — проект плана независимых испытаний на обезличенных сценариях
+> **Последнее состояние 20.10.2026:** 09.1–09.3 `COMPLETED / APPROVED`; **09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`**, R1 [S09-001-R02](stage-09-04-r02-evaluation.md) оценён **9/9 content PASS, 1/12 LLM_BLIND user-attested** (без независимого UI/tool-log подтверждения). 11 иных кейсов ещё не выполнены; S09-002-R01 oracle SHA опубликован заранее в [commitments](stage-09-04-oracle-commitments.md), его тест `NOT_RUN`. 09.5–09.9 NOT STARTED. Более ранние статусы далее — история, PR #1 Open/Draft/unmerged.
+
 
 > **Актуальное решение 20.10.2026 после приёмки 09.3:** план 09.1–09.9 утверждён; **09.1–09.3 `COMPLETED / APPROVED`** (акт [09.3](stage-09-03-validation.md#5-формальная-приёмка-093-и-разрешение-094--20102026)). **09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`**: [12 R1/R2 и EDU случаев](stage-09-04-results.md), [preflight](stage-09-04-validation.md) **166/166 LOCAL_JS PASS**, **LLM_BLIND 0/12 NOT_RUN**; без закрытого oracle/дословных ответов полная приёмка 09.4 невозможна. **09.5–09.9 NOT STARTED**; PR #1 Open/Draft/unmerged, никакого live READY. Старые записи статуса далее — история.
 
