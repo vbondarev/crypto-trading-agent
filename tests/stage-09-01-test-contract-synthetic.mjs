@@ -71,7 +71,7 @@ for(let i=27;i<=40;i++){
 for(const code of ["RV-02","RV-03","RV-04","RV-06","TV-01–TV-04","FR-038","F/A/H/R","AD-009","H04","RECHECK"]){
  t("open/protected "+code,contract.includes(code),true);
 }
-for(const text of ["09.2–09.9 **NOT STARTED**","IMPLEMENTED / PENDING USER REVIEW","не является запуском ChatGPT blind-run","**oracle нельзя публиковать","**неотредактированный дословный ответ**","не считать","**Жёсткий release gate:**"]){
+for(const text of ["09.2–09.9 **NOT STARTED**","IMPLEMENTED / PENDING USER REVIEW","не являются запуском ChatGPT blind-run","**oracle нельзя публиковать","**неотредактированный дословный ответ**","не прибавлять","**Жёсткий release gate:**"]){
  t("hard control "+text,contract.includes(text),true);
 }
 t("old stage 08 accepted",status.slice(0,500).includes("весь этап 08 `COMPLETED / APPROVED`"),true);
