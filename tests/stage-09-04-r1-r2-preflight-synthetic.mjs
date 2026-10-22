@@ -63,7 +63,7 @@ t("no oracle body in manifest",!/(?:\"expected_status\"|\"golden_answer\"|\"corr
 // are recorded in a separate append-only, USER_ATTESTED evaluation log.
 t("actual runs journal schema",actualRuns.schema,"stage09.r1r2-user-reported-actual-runs.v1");
 t("actual runs stage",actualRuns.stage,"09.4");
-t("actual runs number",actualRuns.runs.length,1);
+t("actual runs number",actualRuns.runs.length,2);
 t("actual logs one case",actualRuns.runs[0]?.case_id,"S09-001");
 t("actual logs run identity",actualRuns.runs[0]?.run_id,"S09-001-R02");
 t("actual run belongs to v1 corpus",actualRuns.runs[0]?.fixture_version,1);
@@ -84,7 +84,24 @@ t("append-only source preserved",actualRuns.separate_from,"tests/fixtures/stage-
 t("baseline not mutated by actual run",ledger.runs[0]?.execution_status,"NOT_RUN");
 t("run evaluation report exists",exists(actualRuns.runs[0]?.evaluation_ref));
 t("next oracle confidential hash published",read("docs/stage-09-04-oracle-commitments.md").includes("6b6f46d14a89728752ca893c8cfbdd8dc38ce5c4c49b185ca6bd5318ea96dda9"),true);
-t("S09-002 not in executed results",!actualRuns.runs.some(r=>r.case_id==="S09-002"),true);
+
+const second=actualRuns.runs.find(r=>r.run_id==="S09-002-R02");
+t("S09-002 reported attempt recorded",!!second,true);
+t("S09-002 correct case ID",second?.case_id,"S09-002");
+t("S09-002 is run R02",second?.run_id,"S09-002-R02");
+t("S09-002 has real executed reply",second?.execution_status,"EXECUTED");
+t("S09-002 preregistered oracle digest",second?.oracle_sha256_public_commitment,"be2b785ede8ca3450a419e362ab2ca782d7eca7f7fdaa292c324b2cd2a12cffe");
+t("S09-002 private oracle digest checked",second?.oracle_sha256_verified_against_private_file,true);
+t("S09-002 content rubric count",second?.content_rubric_total,10);
+t("S09-002 content checks passed",second?.content_rubric_passed,10);
+t("S09-002 content success not fake formal PASS",second?.formal_case_accepted,false);
+t("S09-002 provenance open",second?.conditional_verdict,"INCONCLUSIVE_PENDING_USER_DISAMBIGUATION_OF_TWO_NONIDENTICAL_OUTPUTS");
+t("S09-002 record two conflicting texts",second?.observed_distinct_market_outputs,2);
+t("S09-002 evaluation doc exists",exists(second?.evaluation_ref),true);
+t("S09-002 still no verified technical session trace",second?.formal_independent_technical_attestation,false);
+t("case count with formal user-attested acceptance stays 1",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,1);
+t("S09-002 public source commitment is present",read("docs/stage-09-04-oracle-commitments.md").includes(second?.oracle_sha256_public_commitment),true);
+
 for(const r of ledger.runs){
  const item=selected.find(c=>c.case_id===r.case_id);
  t("linked source fixture "+r.case_id,!!item);
@@ -130,5 +147,5 @@ for(const [name,r] of mutations){
 }
 const bad=T.filter(x=>!x.pass);
 for(const x of bad)console.error("FAIL",x.name,JSON.stringify({got:x.got,want:x.want}));
-console.log(JSON.stringify({kind:"STAGE_09_04_R1_R2_PREFLIGHT_LOCAL_JS",total:T.length,passed:T.length-bad.length,failed:bad.length,plannedSyntheticCases:ledger.planned_case_count,plannedLedgerIndependentLLMRuns:0,actualUserAttestedBlindRuns:actualRuns.runs.length,scoredRunCount:actualRuns.runs.filter(r=>r.content_verdict==="PASS").length,formallyIndependentTechnicalAttestations:actualRuns.runs.filter(r=>r.formal_independent_technical_attestation===true).length,mutations:mutations.length,liveReady:false,stage09_04Complete:false}));
+console.log(JSON.stringify({kind:"STAGE_09_04_R1_R2_PREFLIGHT_LOCAL_JS",total:T.length,passed:T.length-bad.length,failed:bad.length,plannedSyntheticCases:ledger.planned_case_count,plannedLedgerIndependentLLMRuns:0,actualUserAttestedBlindRuns:actualRuns.runs.length,userAttestedAcceptedUniqueCases:actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,scoredRunCount:actualRuns.runs.filter(r=>r.content_verdict==="PASS").length,formallyIndependentTechnicalAttestations:actualRuns.runs.filter(r=>r.formal_independent_technical_attestation===true).length,mutations:mutations.length,liveReady:false,stage09_04Complete:false}));
 if(bad.length)process.exitCode=1;
