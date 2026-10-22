@@ -1,0 +1,87 @@
+# Шаг 09.4 — журнал подготовки R1/R2 и self-review независимых испытаний
+> **Актуально 22.10.2026:** `S09-002-R02` содержит **два несовпадающих рыночных ответа** из последовательных пользовательских сообщений. Каждый прошёл **10/10** заранее зафиксированных проверок, хеш закрытого oracle перепроверен `be2b785…cffe`. Последующий отчёт загрузки пяти файлов может относиться ко второму выводу, но без пользовательского уточнения принадлежности нельзя составить единый точный transcript R02. [Сводка/замечание](stage-09-04-s09-002-r02-evaluation.md): `CONTENT_PASS / FORMAL_INCONCLUSIVE (response-session linkage)`. Прежний S09-002-R01 по утраченной preimage oracle остаётся `INCONCLUSIVE`. Фактические записи теперь отдельно от 12 исторических `NOT_RUN` ([actual-runs](../tests/fixtures/stage-09/r1-r2-actual-runs.v1.json)); 2 scored-content runs, **1/12 принятых по user attestation**, 0 технически верифицированных session exports. Изолированная локальная source-backed JS preflight **204/204 PASS** (10 mutation checks внутри, не LLM). `09.4 PARTIAL / PENDING INDEPENDENT EVIDENCE`; 09.5–09.9 NOT STARTED. Ниже — исторический протокол на момент создания.
+
+
+
+> **Обновление 22.10.2026 (S09-002):** принят пользовательский текст двух ответов R01, предварительная техническая оценка без опасных ошибок, но один неверно выглядящий трендовый лейбл `NEUTRAL`. **Сверить объявленный pre-registered SHA-256 R01 с самим приватным oracle-файлом не удалось: оригинальная preimage отсутствует в текущем evaluator workspace.** `S09-002-R01=INCONCLUSIVE` по обязательному протоколу; [audit записи](stage-09-04-s09-002-r01-observation.md). **До следующего выполнения S09-002-R02** создан и фактически проверен новый 4114-байтовый evaluator-only oracle, его SHA-256 опубликован в [commitments](stage-09-04-oracle-commitments.md). `R02 NOT_RUN`; счётчик `LLM_BLIND PASS` остаётся **1/12 USER_ATTESTED (S09-001-R02)**. Никакой публичной утечки закрытых критериев, real Ready, сделки или запуска 09.5–09.9. Старые status-counters ниже относятся к более ранним состояниям.
+
+> **После подтверждения R02, 20.10.2026:** первый S09-001-R02 `LLM_BLIND / USER_ATTESTED` и **9/9 rubric PASS** (не machine-verified session trace), 11 других уникальных кейсов ещё не исполнены. В [отдельном журнале actual runs](../tests/fixtures/stage-09/r1-r2-actual-runs.v1.json) `1` выполненный и оценённый пользователем изолированный тест; исторические `12×NOT_RUN` в planning-ledger оставлены неизменными. [Oracle S09-002-R01](stage-09-04-oracle-commitments.md) зафиксирован до нового теста, сам новый run ещё `NOT_RUN`. После синхронизации аудит preflight **190/190 LOCAL_JS PASS**, внутри 10 targeted mutations; не считать эти числа LLM. **09.4 PARTIAL / PENDING INDEPENDENT EVIDENCE**, 09.5–09.9 NOT STARTED.
+
+> **Актуальное уточнение 20.10.2026:** пользователем отдельно подтверждено, что **S09-001-R02** выполнен в **новом Temporary Chat вне Crypto Project** без передачи закрытого oracle/документов оценки. По заранее зафиксированному SHA-256 oracle **9/9 PASS**; `LLM_BLIND=1/12 (USER_ATTESTED)`, технически подтверждённых session exports `0`, независимое автоматическое Skills loading **не подтверждено**. 11 уникальных кейсов ожидают исполнения; [append-only actual run journal](../tests/fixtures/stage-09/r1-r2-actual-runs.v1.json). [S09-002-R01 oracle SHA](stage-09-04-oracle-commitments.md) предзарегистрирован, но новый run ещё `NOT_RUN`. Историческая нижеследующая таблица 12 × `NOT_RUN` — состояние до получения R02, сохранено для аудита. Весь 09.4 **PARTIAL/PENDING INDEPENDENT EVIDENCE**, 09.5–09.9 NOT STARTED.
+
+
+> **20.10.2026: `PARTIAL / PENDING INDEPENDENT EVIDENCE`**. Пользователь принял 09.3 и разрешил только 09.4. Подготовлены [12 входов для RT01–RT03](stage-09-04-results.md), публичный [ledger с `NOT_RUN`](../tests/fixtures/stage-09/r1-r2-run-ledger.v1.json) и [локальный preflight](../tests/stage-09-04-r1-r2-preflight-synthetic.mjs), но **не было независимых ChatGPT запусков, закрытых oracle или raw response**. Это **не полное выполнение 09.4**; 09.5–09.9 NOT STARTED, PR #1 Open/Draft/unmerged.
+
+## 1. Учет результатов и provenance
+
+| Тип evidence | План | Фактически запущено | PASS | FAIL | Не выполнено |
+|---|---:|---:|---:|---:|---:|
+| **LLM_BLIND** (независимый новый ChatGPT диалог, oracle недоступен) | **12** | **0** | **0** | **0** | **12** |
+| **LLM_IN_SESSION** (с той же историей проекта) | 0 | 0 | 0 | 0 | 0 |
+| **LIVE** (реальные Bybit и ордера) | 0 | 0 | 0 | 0 | Вне области 09 |
+
+Для всех **S09-001–S09-011 и S09-036** `execution_status=NOT_RUN`, `evidence_type=NOT_RUN` (служебная отметка отсутствия evidence), `verdict=NOT_RUN`. `commit_sha`, модель, фактический runtime и raw response не выдуманы, поля текущего placeholder-журнала `null`. Файл [45 исходных входов](../tests/fixtures/stage-09/inputs.v1.json) имеет blob SHA `965c12afa0c4afc4c0b1698732e61c597d351b88`, зафиксированный по отдельному GitHub fetch. Тестовый JSON не содержит частного oracle, эталонных статусов/правильных ответов и приватных пользовательских данных.
+
+**Невыполненная зависимость:** прямой самостоятельный запуск другой ChatGPT-сессии в существующем интерактивном контексте недоступен; `LLM_BLIND` требует отсутствия истории разработки/Memory contamination и независимого закрытого oracle до вызова. При отсутствии проверенной среды нельзя объявлять `PASS`. Строки общего локального тестирования прошлых шагов (**144/144**, **311/311**, **128/128**) не относятся к LLM.
+
+## 2. Локальная проверка corpus/ledger (не модельный run)
+
+Исходники получены через GitHub connector из `feature/initial-agent-mvp`. [JS preflight](../tests/stage-09-04-r1-r2-preflight-synthetic.mjs) выполняется в локальной V8 эмуляции `readFileSync/existsSync` с фактически загруженными текстами и списком путей PR #1; это **не** настоящий Node.js checkout/CI.
+
+**История self-review первой проверки:** 164/166 локальных assertions PASS; два дефекта касались preflight-проверки: (1) относительная ссылка на этот протокол ещё не существовала, (2) валидатор `NOT_RUN` не проверял обязательное наличие корректного `case_id`. Исправлен валидатор, добавлена проверка immutable `case_id/prompt_id/fixture_version`, создан данный протокол. Нормативные R1/R2 данные не менялись.
+
+**Финальная локальная проверка:** после создания этого файла повторный запуск текущего `tests/stage-09-04-r1-r2-preflight-synthetic.mjs` через изолированный V8/read/exists adapter на актуальных GitHub-файлах дал **166/166 PASS, 0 FAIL**, включая **10 targeted in-memory mutations внутри 166**. 12/12 записей в публичном ledger остаются `NOT_RUN`; независимых LLM-прогонов и оценённых ответов **0**. Это не Git checkout/Node CI и не проверка модели.
+
+## 3. Self-review 09.4 — предварительная оценка
+
+| Код | Контроль | Статус |
+|---|---|---|
+| SR-094-01 | 11 P08 R1/R2 + образовательный P08-36, все 12 через существующий v1 JSON | PASS DOC |
+| SR-094-02 | Case/input metadata не раскрывают private oracle/expected verdict | PASS DOC / отсутствие запрещённых публичных полей в проверенных файлах, не гарантия против любых внешних утечек |
+| SR-094-03 | Нет симулированных независимых ответов: `0/12 LLM_BLIND`, `12 NOT_RUN` | PASS DOC |
+| SR-094-04 | source commit должен pin при живом run, пока `null` | PASS DOC |
+| SR-094-05 | Нельзя именовать явное прочтение GitHub Skill `AUTO_LOADED`; RV-06 всё ещё NOT_VERIFIED | PASS DOC |
+| SR-094-06 | Preflight 166/166 PASS после исправлений, 10 mutations; все относительные файловые ссылки присутствуют | **PASS LOCAL_JS/DOC**, не LLM |
+| SR-094-07 | 09.5–09.9 не начинать, PR Draft, live READY нет | PASS DOC |
+
+**Итог self-review локального слоя:** **166/166 PASS, 0 FAIL**; проверенные case identities, 12 `NOT_RUN` placeholders, защита от ложных PASS/рантайм-аттестаций, файловые ссылки. Ни один пункт не закрывает незапущенные LLM blind-runs.
+
+## 4. Вывод по шагу 09.4 и дальнейшее решение
+
+**Подготовительная часть 09.4 может быть принята**, но полная цель «независимо проверить R1/R2 в ChatGPT» пока **не достигнута**. В отличие от 09.1–09.3, для полноценного закрытия этой части обязательны реально проведённые независимые сеансы с raw transcript и закрытым от тестируемого агента oracle; в отсутствие выполненных 12 запусков `09.4 PARTIAL / PENDING INDEPENDENT EVIDENCE`.
+
+При согласовании результатов нужно различать `ACCEPT PREPARATION ONLY` и `COMPLETE STEP 09.4`: **не предлагать безоговорочное COMPLETED / APPROVED**, пока все обязательные LLM-кейсы не оценены. Никаких решений о реальной торговле, merge, 09.5–09.9, приватной P02/Bybit. RV-02/03/04/06, TV-01–TV-04, actual FR-038 historical Mark остаются OPEN.
+
+## Отдельное пользовательское наблюдение S09-001 — после первого тестового диалога, 20.10.2026
+
+Получен **один пользовательский отчёт** о запуске S09-001 в отдельном чате с двумя ответами: самоотчёт чтения 5 GitHub-файлов и R1 обзор на вымышленных данных. Предварительная содержательная оценка: данные Last/Mark/время и ограничения соблюдены, вычисление 10 USDT ≈0.0143% верно, нет выдуманной 24-часовой динамики или торговых инструкций; **замечание EV07** — использование глобальных торговых статусов `UNVERIFIED` и `NEEDS_DATA` для RT02/R1. Лишь кандидатный дефект, а не формальная oracle-оценка.
+
+Важное несоответствие самоотчёта: заявленные числа строк файлов не совпали с подсчитанными GitHub connector по точному pinned commit (см. [отдельный протокол наблюдения](stage-09-04-observations.md)). `SOURCE_BODY_COMPLETENESS=NOT_VERIFIED`.
+
+**Private oracle до запуска не был сформирован/зафиксирован**; позднее пользователь уточнил: **S09-001 выполнялся в Temporary Chat**, поэтому тип сессии = `USER_ATTESTED_TEMPORARY_CHAT` (не технически подтверждённый session log). Фактическая модель, независимая проверка Project/Memory state и полноценный raw-export transcript не подтверждены. Поэтому `USER_REPORTED_CANDIDATES=1`, но **`FORMALLY_VERIFIED_LLM_BLIND=0/12`; `PASS=0`; `09.4 PARTIAL/PENDING INDEPENDENT EVIDENCE`**. Не менять исходные 12 `NOT_RUN` placeholders и не интерпретировать наблюдение как полноценный blind-run. Для повторной попытки сначала предзарегистрировать приватный oracle и проверить изоляцию.
+
+## Предрегистрация oracle для повторного теста S09-001-R02 — 20.10.2026
+
+До второго теста создан отдельный приватный evaluator-only `S09-001-R02_PRIVATE_ORACLE.json`; публично размещён **только SHA-256** в [commitments](stage-09-04-oracle-commitments.md). В качестве тестируемой политики сохранён фиксированный commit `ac06602ca73741077d9d6396e1a2172791bc7d88`, fixture v1, user-only input; oracle содержит приватный nonce и не передаётся агенту. **R02 ещё не запущен**, новых raw responses или PASS нет. Старый R01 остаётся лишь user-reported candidate; не приписывать его verdict новому oracle задним числом.
+
+## S09-001-R02 — после предрегистрации получен ответ (20.10.2026)
+
+Вслед за опубликованным до вызова oracle SHA поступил **второй пользовательский R1 ответ** (две части: чтение GitHub и BTC summary). `sha256sum` существующего evaluator-only JSON совпал с публичным SHA-256 **`e233f619d132a49d63a19a33c7c60d406f5f130862575de44419c970b45e28fd`**. Оценка содержания по заранее замороженным критериям: **9/9 PASS**, включая EV07b: теперь нет общих торговых вердиктов R1. Детали: [R02 evidence / evaluation](stage-09-04-r02-evaluation.md).
+
+Нельзя засчитывать blind PASS без аттестации **именно R02**: подтверждение Temporary Chat было дано пользователем для R01; не известны тип второй сессии, модель и независимый неизменный export с tool traces. Вердикт **`CONTENT_PASS / FORMAL_LLM_BLIND_INCONCLUSIVE`** до отдельного подтверждения нового Temporary Chat вне проекта/без oracle. Не путать **2 пользовательских attempts** (R01 + R02) с подтверждёнными `LLM_BLIND` — пока 0. Прежние 11 иных кейсов не запущены, 09.5–09.9 NOT STARTED.
+
+## 5. Постсинхронизационная регрессия всех локальных наборов 09.1–09.4 — 20.10.2026
+
+После фиксации формального принятия 09.3 и синхронизации `AGENTS.md`, `README.md`, `stage-09-plan.md`, `stage-09-runtime-validation.md`, `stage-09-fixtures.md`, `development-roadmap.md` **реально повторены** четыре существующих локальных JS-набора на актуальном содержимом GitHub в изолированной среде V8 с эмуляцией `read/exists`:
+
+| Набор | Итог `LOCAL_JS` | Мутации внутри общего числа |
+|---|---:|---:|
+| 09.1 независимый контракт | **144/144 PASS** | 7 |
+| 09.2 корпус 45 INPUT-only | **311/311 PASS** | 8 |
+| 09.3 source/runtime audit семи Skills | **128/128 PASS** | 7 |
+| 09.4 R1/R2 preparatory preflight | **166/166 PASS** | 10 |
+| **Всего** | **749/749 PASS; 0 FAIL** | **32** уже включены в 749 |
+
+Для 09.4 подтверждены **12 выбранных входов**, **12 уникальных `NOT_RUN` placeholders**, исходный blob SHA в manifest, 10 обнаруживаемых in-memory нарушений, защита от фиктивного `PASS`/транскрипта/auto-Skills/частного oracle; **8/8 относительных файловых целей** из `docs/stage-09-04-results.md` существуют по текущим путям PR. Это source/document/corpus tests, не фактически исполненные model responses; ни один из 749 assertions не переводить в счётчик `LLM_BLIND`.
+
+**Отдельное заключение self-review:** `PREPARATION LOCAL_JS: PASS`; `INDEPENDENT R1/R2 MODEL EVALUATION: NOT_RUN (0/12)`; `09.4: PARTIAL / PENDING INDEPENDENT EVIDENCE`; `09.5–09.9: NOT STARTED`. Отсутствующий raw transcript, отдельный evaluator и закрытый private oracle нельзя заменить ссылкой на GitHub, общим чатом или локальными тестами. Результат `COMPLETED / APPROVED` по всему шагу **не заявляется**.

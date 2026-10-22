@@ -1,26 +1,161 @@
 # Crypto Trading Agent
 
-Персональный ИИ-помощник для анализа криптовалютного рынка, фьючерсного портфеля Bybit и подготовки торговых стратегий и конфигураций Veles / GinArea.
+> **Этап 09, последнее наблюдение 20.10.2026:** 09.1–09.3 приняты; 09.4 остаётся частично выполненным: **1/12** фактически оценённых `LLM_BLIND / USER_ATTESTED` (S09-001-R02, 9/9 content), отдельная локальная preflight-регрессия **190/190**; технический session trace и автоматический loader Skills не верифицированы. Сценарий S09-002-R01 подготовлен, закрытый oracle предварительно зафиксирован **только публичным SHA-256**. 09.5–09.9 NOT STARTED. Ни сделок, ни real READY, PR Draft/Open.
 
-## Подход к MVP
 
-- Основной интерфейс — чат ChatGPT с доступом к инструкциям в GitHub.
-- Репозиторий содержит текстовые правила, навыки (Skills), пользовательские промпты, сценарии и документацию.
-- Собственные серверы, бэкенд, API-клиенты, вычислительные библиотеки и автоматическое исполнение сделок в MVP не разрабатываются.
-- Торговые решения и настройка ботов выполняются пользователем вручную; штатное исполнение и мониторинг — в Veles / GinArea.
-- Отчёты по личному портфелю и история анализа остаются в чате ChatGPT, а не в Git.
+**Crypto Trading Agent** — персональный ИИ-аналитик криптовалютного рынка, фьючерсного портфеля Bybit и отдельных торговых позиций. Он исследует доступные внешние данные, определяет тренд, проводит технический анализ и риск-менеджмент, предлагает стратегию и готовит проверяемую конфигурацию **Veles или GinArea для ручного применения**.
 
-## Работа над проектом
+Если исходных данных недостаточно либо обязательные ограничения риска не соблюдены, результатом будет запрос недостающих сведений, предварительный анализ или аргументированный отказ.
 
-Первоначальная версия создаётся поэтапно в одной рабочей ветке `feature/initial-agent-mvp` и в одном Draft Pull Request.
+## Принцип работы
 
-План работ: [docs/development-roadmap.md](docs/development-roadmap.md).
+- **Интерфейс:** диалог с ChatGPT. Каждый шаг утверждённого многоэтапного сценария запускается пользователем.
+- **Инструкции:** публичный репозиторий GitHub с правилами и документацией.
+- **Рыночная информация:** действительно доступные публичные источники; время и происхождение значимых данных указываются при анализе.
+- **Портфель:** приватные сведения Bybit пользователь предоставляет в чате, если этого требует задача. Они не публикуются в GitHub.
+- **Результат:** аналитический отчёт, сценарии, стратегия и конфигурация Veles/GinArea либо обоснованный отказ.
+- **Исполнение:** пользователь самостоятельно применяет настройки в торговой платформе. MVP не требует собственной серверной или торговой инфраструктуры.
 
-> Проект находится на этапе начальной настройки. Инструкции и пользовательские сценарии будут согласованы и добавлены последовательно.
+Первый охват — Bybit USDT Perpetual: Long/Short, Cross/Isolated. Для обзора монеты данные личного портфеля не обязательны; для финального подтверждения конфигурации необходима проверка **всего фьючерсного портфеля** и строгих лимитов риска.
+
+## Документация
+
+| Документ | Назначение |
+|---|---|
+| [`AGENTS.md`](AGENTS.md) | Точка входа: правила загрузки документации и базовое поведение агента |
+| [`docs/mvp-scope.md`](docs/mvp-scope.md) | Утверждённые назначение и границы MVP — шаг 03.1 |
+| [`docs/requirements.md`](docs/requirements.md) | 53 функциональных требования FR-001–FR-053 — шаг 03.2 |
+| [`docs/agent-operating-rules.md`](docs/agent-operating-rules.md) | Общие правила анализа, данных, рисков и формирования конфигураций — шаг 03.3 |
+| [`docs/architecture-decisions.md`](docs/architecture-decisions.md) | 9 решений AD-001–AD-009 — шаг 03.4 |
+| [`docs/stage-03-review.md`](docs/stage-03-review.md) | Ревизия шага 03.5; RV-01 и RV-05 закрыты, RV-02–RV-04 и RV-06 остаются открытыми |
+| [`docs/development-roadmap.md`](docs/development-roadmap.md) | Дорожная карта и фактический прогресс |
+| [`docs/chatgpt-github-validation.md`](docs/chatgpt-github-validation.md) | Проверка чтения файлов через GitHub |
+| [`docs/stage-04-plan.md`](docs/stage-04-plan.md) | Согласованный план этапа 04 и последовательность шагов 04.1–04.8 |
+| [`docs/data-sources.md`](docs/data-sources.md) | 40 категорий данных, 20 групп источников и резервные маршруты — шаги 04.1–04.3 |
+| [`docs/data-validation.md`](docs/data-validation.md) | Испытания источников (04.3) и [приёмка 04.7](docs/data-validation.md#168-приёмка-шага-047--утверждено-пользователем-15102026) с TV-01–TV-04 |
+| [`docs/data-freshness.md`](docs/data-freshness.md) | Правила R1–R3 и свежести данных — шаг 04.4 утверждён, RV-05 закрыт |
+| [`docs/input-templates.md`](docs/input-templates.md) | Шесть шаблонов T01–T06 — шаг 04.5 завершён и утверждён пользователем |
+| [`docs/stage-04-07-synthetic-tests.md`](docs/stage-04-07-synthetic-tests.md) | 32 формализованных синтетических сценария, принятых на 04.7 |
+| [`docs/stage-04-07-blind-run.md`](docs/stage-04-07-blind-run.md) | Журнал 8/8 выборочных ответов отдельного ChatGPT, с ограничением TV-01 |
+| [`docs/stage-04-08-review.md`](docs/stage-04-08-review.md) | Итоговая [приёмка шага 04.8 и этапа 04](docs/stage-04-08-review.md#7-формальная-приёмка-шага-048-и-завершение-этапа-04--15102026), с TV-01–TV-04 |
+| [`docs/stage-05-plan.md`](docs/stage-05-plan.md) | Утверждённый план этапа 05, шаги 05.1–05.8 |
+| [`docs/stage-06-plan.md`](docs/stage-06-plan.md) | Утверждённый план 06.1–06.8 (15.10.2026), 06.1 принят; 06.2 принят; 06.3 принят 16.10.2026; 06.4 принят; 06.5 принят 16.10.2026; 06.1–06.8 и этап 06 приняты 16.10.2026; проект плана этапа 07 ожидает утверждения |
+| [`docs/platforms/platform-validation.md`](docs/platforms/platform-validation.md) | Контракт P01/P02, реестр официальных источников, матрица C01–C14 и 28 нормативных сценариев шага 06.1 — принят 15.10.2026 |
+| [`docs/platform-06-01-validation.md`](docs/platform-06-01-validation.md) | Протокол и приёмка 06.1 (15.10.2026): 24/24 локальных синтетических проверок, без подтверждения реальной формы |
+| [`docs/platforms/veles.md`](docs/platforms/veles.md) | 06.2 принят; **06.3 принят 16.10.2026:** статусы Veles/Bybit, сетки, TP/SL/BE, ручная отмена и restart, 34 нормативных сценария |
+| [`docs/platform-06-02-validation.md`](docs/platform-06-02-validation.md) | Протокол и приёмка 06.2 (16.10.2026): 7 официальных источников, 30 нормативных сценариев и 32/32 локальных синтетических проверок |
+| [`docs/platform-06-03-validation.md`](docs/platform-06-03-validation.md) | **Шаг 06.3 (принят 16.10.2026):** 50/50 локальных тестов, 34 документальных сценария, восемь публичных справочных источников |
+| [`docs/platforms/ginarea.md`](docs/platforms/ginarea.md) | **06.4 и 06.5 приняты 16.10.2026:** GinArea PRO, GD-01–GD-40, стратегии Default/Auto/Dynamic/Indicator/DCA, режимы Bybit, 36 нормативных сценариев |
+| [`docs/platform-06-04-validation.md`](docs/platform-06-04-validation.md) | Протокол GinArea PRO 06.4: **48/48 локальных синтетических проверок**, 14 официальных справочных источников |
+| [`docs/platform-06-05-validation.md`](docs/platform-06-05-validation.md) | **06.5 принят 16.10.2026:** 66/66 локальных проверок, 40 нормативных сценариев, 18 переходов IN/OUT/Disable IN |
+| [`docs/platforms/configuration-contract.md`](docs/platforms/configuration-contract.md) | **06.6 принят 16.10.2026:** 24 сопоставления Veles/GinArea, typed money, Bybit quantity/price filters, P02/ownership и запрет ложного READY |
+| [`docs/platform-06-06-validation.md`](docs/platform-06-06-validation.md) | Протокол 06.6: 65/65 локальных JS-проверок, 32 нормативных сценария и 6 учебных примеров |
+| [`docs/platforms/platform-synthetic-tests.md`](docs/platforms/platform-synthetic-tests.md) | **06.7 и 06.8 приняты 16.10.2026:** 40 негативных эталонов, портфельные стресс-требования F/A/H/R и незакрытые риски |
+| [`docs/platform-06-07-validation.md`](docs/platform-06-07-validation.md) | Протокол 06.7: **57/57 первоначально; после ревизии 06.8 — 64/64 локальных теста**, не реальные стресс-протоколы F/A/H/R |
+| [`tests/stage-06-07-synthetic.mjs`](tests/stage-06-07-synthetic.mjs) | Воспроизводимый синтетический JS-модуль: **64/64 PASS после 06.8**; не код торгового агента |
+| [`docs/stage-06-review.md`](docs/stage-06-review.md) | **06.8 и этап 06 приняты 16.10.2026:** ревизия FR-047–FR-053, исправления 7 регрессий, открытые RV/TV/F/A/H/R |
+| [`docs/stage-07-plan.md`](docs/stage-07-plan.md) | **План этапа 07 принят 16.10.2026** — 9 шагов, 7 созданных Skills; 07.1–07.9 и весь этап 07 приняты 19.10.2026 в документально-синтетических границах; 08 планируется |
+| [`docs/stage-07-skills-contract.md`](docs/stage-07-skills-contract.md) | **07.1 принят 19.10.2026:** контракт frontmatter, маршрутов R1/R2/R3, реестра семи Skills, 32 нормативных сценариев |
+| [`docs/stage-07-01-validation.md`](docs/stage-07-01-validation.md) | Протокол 07.1: **52/52 выполненных локальных проверок**, без фактического runtime Skills |
+| [`tests/stage-07-01-contract-synthetic.mjs`](tests/stage-07-01-contract-synthetic.mjs) | Воспроизводимая синтетическая проверка маршрутизатора и простого YAML-frontmatter; не реальный Skill |
+| [`.agents/skills/data-verification/SKILL.md`](.agents/skills/data-verification/SKILL.md) | **Первый Skill, 07.2 принят 19.10.2026** — проверка источников и актуальности для R1/R2/R3 |
+| [`docs/stage-07-02-validation.md`](docs/stage-07-02-validation.md) | **07.2 принят: 80/80 локальных проверок**, 32 нормативных сценария, реальная загрузка в ChatGPT не проверена |
+| [`tests/stage-07-02-data-verification-synthetic.mjs`](tests/stage-07-02-data-verification-synthetic.mjs) | Воспроизводимая синтетическая проверка входных данных и тела первого Skill, без реального Bybit API |
+| [`.agents/skills/market-analysis/SKILL.md`](.agents/skills/market-analysis/SKILL.md) | **Второй Skill, шаг 07.3 принят 19.10.2026:** BTC/альткоины, OHLCV, EMA/SMA/RSI/ATR, OI/funding, сценарии R1/R2 |
+| [`docs/stage-07-03-validation.md`](docs/stage-07-03-validation.md) | Протокол 07.3: **61/61 локальных синтетических проверок**, 32 документальных ожидания, не live Bybit |
+| [`tests/stage-07-03-market-analysis-synthetic.mjs`](tests/stage-07-03-market-analysis-synthetic.mjs) | Воспроизводимый учебный тест Skill/свечей/индикаторов без реальных сделок |
+| [`.agents/skills/portfolio-analysis/SKILL.md`](.agents/skills/portfolio-analysis/SKILL.md) | **Третий Skill, шаг 07.4 принят 19.10.2026:** полный T02/T03/T04, реальные слоты Bybit, все IN/OUT, боты, Cross/Isolated, H01 |
+| [`docs/stage-07-04-validation.md`](docs/stage-07-04-validation.md) | Протокол 07.4: **77/77 локальных синтетических тестов**, 34 нормативных случая и все недоказанные границы |
+| [`tests/stage-07-04-portfolio-analysis-synthetic.mjs`](tests/stage-07-04-portfolio-analysis-synthetic.mjs) | Воспроизводимый синтетический модуль по текущим/будущим позициям, дедуп и H01, не настоящий Bybit API |
+| [`.agents/skills/risk-assessment/SKILL.md`](.agents/skills/risk-assessment/SKILL.md) | **Четвёртый Skill, 07.5 принят 19.10.2026:** FR-027–040, full margin, Cross/Short bounds и F/A/H/R без ложного READY |
+| [`docs/stage-07-05-validation.md`](docs/stage-07-05-validation.md) | Протокол 07.5: **91/91 локальный синтетический тест**, 36 нормативных случаев, real FR-038/RV открыты |
+| [`tests/stage-07-05-risk-assessment-synthetic.mjs`](tests/stage-07-05-risk-assessment-synthetic.mjs) | Воспроизводимая синтетическая проверка лимитов/блокировок/порогов, не реальный risk engine |
+| [`.agents/skills/strategy-planning/SKILL.md`](.agents/skills/strategy-planning/SKILL.md) | **Пятый Skill, 07.6 принят 19.10.2026:** NEW/ADD/HOLD/WAIT/REDUCE/CLOSE/RECOVER, H01 net и пользовательский выбор до платформы |
+| [`docs/stage-07-06-validation.md`](docs/stage-07-06-validation.md) | Протокол 07.6: **99/99 локальных синтетических тестов**, 36 нормативных сценариев, никакого настоящего READY |
+| [`tests/stage-07-06-strategy-planning-synthetic.mjs`](tests/stage-07-06-strategy-planning-synthetic.mjs) | Воспроизводимые сценарии выбора, H01 recovery и запрета автоматического перехода к боту |
+| [`.agents/skills/veles-configuration/SKILL.md`](.agents/skills/veles-configuration/SKILL.md) | **Шестой Skill, 07.7 принят 19.10.2026:** только Veles P01/P02, SIMPLE/CUSTOM/SIGNAL, полная сетка, TP/SL/BE, `POSITION -1`, остановка/отмена/закрытие |
+| [`docs/stage-07-07-validation.md`](docs/stage-07-07-validation.md) | Протокол 07.7: **92/92 локальных синтетических теста**, 36 нормативных сценариев, реальные P02/T02 и READY не подтверждены |
+| [`tests/stage-07-07-veles-configuration-synthetic.mjs`](tests/stage-07-07-veles-configuration-synthetic.mjs) | Воспроизводимые проверки Veles полей, будущих IN, SL/TP, Position −1, отказов при неполноте данных |
+| [`.agents/skills/ginarea-configuration/SKILL.md`](.agents/skills/ginarea-configuration/SKILL.md) | **Седьмой Skill, 07.8 принят 19.10.2026:** GinArea PRO, Default/Auto/Dynamic/Indicator/DCA, UTA/Cross, IN/OUT/Instop/Disable IN, P02 и полный риск |
+| [`docs/stage-07-08-validation.md`](docs/stage-07-08-validation.md) | Протокол 07.8: **102/102 локальных синтетических проверок**, 36 нормативных сценариев и открытые реальные RV/TV |
+| [`tests/stage-07-08-ginarea-configuration-synthetic.mjs`](tests/stage-07-08-ginarea-configuration-synthetic.mjs) | Воспроизводимые синтетические тесты GinArea совместимости, размеров IN, Disable IN, Instop и учёта позиции |
+| [`docs/stage-07-review.md`](docs/stage-07-review.md) | **07.9 и весь этап 07 приняты 19.10.2026:** первоначально 796/796, после устранения SR-079-01–04 — 844/844 локальных assertions и 18/18 обнаруженных мутаций; без runtime/реального READY |
+| [`tests/stage-07-09-composition-synthetic.mjs`](tests/stage-07-09-composition-synthetic.mjs) | **190/190 локальных композиционных assertions** (142 исходных + 48 прямых policy-guards), 17 route-вариантов; не независимый ChatGPT runtime |
+| [`tests/stage-07-09-policy-contract-synthetic.mjs`](tests/stage-07-09-policy-contract-synthetic.mjs) | **48/48 проверок по фактическому тексту 7 Skills/контракту**; тесты также встроены в композиционный модуль, не складывать дважды |
+| [`tests/stage-07-09-mutation-synthetic.mjs`](tests/stage-07-09-mutation-synthetic.mjs) | **18/18 in-memory мутаций обнаружены**; ввод критических ошибок намеренно не записывался в репозиторий |
+| [`docs/stage-08-plan.md`](docs/stage-08-plan.md) | **Этап 08 завершён и принят:** все 08.1–08.9 и весь этап 08 утверждены 20.10.2026 в документально-синтетических границах; RV-02/RV-03/RV-04/RV-06 OPEN |
+| [`docs/workflows/interaction-contract.md`](docs/workflows/interaction-contract.md) | **08.1 — контракт диалогов:** R1/R2/R3, RT01–RT10, T01–T06, ASK/ANALYZE/CHOOSE/RECHECK/STOP, проверка фактической загрузки Skills и правила RECHECK |
+| [`docs/stage-08-01-validation.md`](docs/stage-08-01-validation.md) | **08.1 принят 20.10.2026:** 32 нормативных IC01–IC32 и 127/127 локальных синтетических проверок, без независимого LLM/runtime |
+| [`tests/stage-08-01-interaction-contract-synthetic.mjs`](tests/stage-08-01-interaction-contract-synthetic.mjs) | Воспроизводимый JS-модуль 08.1: маршруты, состояния и ключевые негативные условия; не исполняющий торговый агент |
+| [`docs/prompts/market-overview.md`](docs/prompts/market-overview.md) | **08.2 принят 20.10.2026:** 5 коротких запросов R1 P08-01–P08-05, 24 нормативных негативных MO01–MO24 и строгая проверка источников/свежести |
+| [`docs/stage-08-02-validation.md`](docs/stage-08-02-validation.md) | Протокол и self-review принятого 08.2: **103/103 локальных синтетических assertions** (в том числе 3 in-memory мутации), без независимого LLM/runtime |
+| [`tests/stage-08-02-market-overview-synthetic.mjs`](tests/stage-08-02-market-overview-synthetic.mjs) | JS проверки 08.2 R1: market identity, source/TTL, Bybit/Spot, OHLCV, 24 MO-cases; не live Bybit API |
+| [`docs/prompts/technical-scenario.md`](docs/prompts/technical-scenario.md) | **08.3 принят 20.10.2026:** 6 коротких R2-промптов P08-06–P08-11, 36 TS01–TS36, условные Long/Short/WAIT и отмена идеи |
+| [`docs/stage-08-03-validation.md`](docs/stage-08-03-validation.md) | Протокол и self-review 08.3: **156/156** локальных синтетических JS/V8 проверок, в том числе 5/5 целевых in-memory мутаций; без live рынка и READY |
+| [`tests/stage-08-03-technical-scenario-synthetic.mjs`](tests/stage-08-03-technical-scenario-synthetic.mjs) | JS-проверки 08.3: закрытие OHLCV, сортировка, gap, indicator warm-up, TTL R2, source-contract и безопасная маршрутизация |
+| [`docs/prompts/portfolio-recovery.md`](docs/prompts/portfolio-recovery.md) | **08.4 принят 20.10.2026:** 6 промптов P08-12–P08-17, whole Bybit T02, orderId/leavesQty/positionIdx, H01 net recovery, 36 PR01–PR36 |
+| [`docs/stage-08-04-validation.md`](docs/stage-08-04-validation.md) | Протокол self-review 08.4: **184/184 локальных JS/V8 assertions PASS**, включая 8 targeted mutations, без доказанного реального READY |
+| [`tests/stage-08-04-portfolio-recovery-synthetic.mjs`](tests/stage-08-04-portfolio-recovery-synthetic.mjs) | Синтетическая регрессия 08.4: Hedge/One-Way, partial fill, FILLED/Cancelled, future IN, H01 и R3 свежесть; не real Bybit |
+| [`docs/prompts/risk-strategy-decision.md`](docs/prompts/risk-strategy-decision.md) | **08.5 принят 20.10.2026:** 6 промптов P08-18–P08-23, 40 нормативных RD01–RD40, сравнение WAIT/HOLD/NEW/ADD/REDUCE/CLOSE/RECOVER и 14 строгих FR-027–040 |
+| [`docs/stage-08-05-validation.md`](docs/stage-08-05-validation.md) | Self-review 08.5: **198/198 локальных JS/V8 assertions, 18/18 targeted in-memory mutations**, а также повторная регрессия 08.1–08.4 **570/570**; без реальных ордеров/READY |
+| [`tests/stage-08-05-risk-strategy-synthetic.mjs`](tests/stage-08-05-risk-strategy-synthetic.mjs) | Детерминированные синтетические проверки пределов 30%/5%/5×/15%/3 slots, H04/дневных/исторических блокировок, user CHOOSE и source-bound FR thresholds |
+| [`docs/prompts/veles-configuration.md`](docs/prompts/veles-configuration.md) | **08.6 принят 20.10.2026:** 6 промптов P08-24–P08-29, 40 VH01–VH40, Veles SIMPLE/CUSTOM/SIGNAL, P01/P02/T02, POSITION −1, SL/TP и остановка/отмена/закрытие |
+| [`docs/stage-08-06-validation.md`](docs/stage-08-06-validation.md) | Self-review Veles 08.6: **220/220 локальных синтетических JS/V8 assertions**, в том числе 14/14 мутаций; без реальной Veles P02 и Bybit READY |
+| [`tests/stage-08-06-veles-handoff-synthetic.mjs`](tests/stage-08-06-veles-handoff-synthetic.mjs) | Проверки 08.6: Veles-only поля, user choice, 100% future IN, SL/TP timing, Position −1 и lifecycle/FR риск; без бота/API |
+| [`docs/prompts/ginarea-configuration.md`](docs/prompts/ginarea-configuration.md) | **08.7 принят 20.10.2026:** 6 коротких GinArea PRO запросов P08-30–P08-35, 40 GA01–GA40, проверка стратегий, IN/OUT, Instop, Disable IN и P02 |
+| [`docs/stage-08-07-validation.md`](docs/stage-08-07-validation.md) | Протокол/self-review 08.7: **268/268** локальных V8 checks, **24/24** targeted mutations, включая восемь FR-pins; без реального торгового READY |
+| [`tests/stage-08-07-ginarea-handoff-synthetic.mjs`](tests/stage-08-07-ginarea-handoff-synthetic.mjs) | Синтетические тесты GinArea: selector/Indicator vs Default, modes, typed size/cap, sticky Disable и риск-пороги |
+| [`docs/workflows/report-templates.md`](docs/workflows/report-templates.md) | **08.8 принят 20.10.2026:** шесть шаблонов P08-36–P08-41, 40 RF01–RF40, десять зависимостей RC01–RC10 и AD-009 RECHECK; R1/R2/R3 разделены |
+| [`docs/stage-08-08-validation.md`](docs/stage-08-08-validation.md) | Реальный локальный JS/V8 self-review 08.8: **258/258 PASS**, включая 26/26 mutations, не real Bybit/LLM READY |
+| [`tests/stage-08-08-report-templates-synthetic.mjs`](tests/stage-08-08-report-templates-synthetic.mjs) | Синтетические проверки видов отчётов, смены снимков/RECHECK, приоритетов risk-статусов и source-bound FR порогов |
+| [`docs/stage-08-review.md`](docs/stage-08-review.md) | **08.9 и весь этап 08 приняты:** интеграционная ревизия 41 P08, RT01–RT10, семи Skills, 14 W08 и границ R3 |
+| [`docs/stage-08-09-validation.md`](docs/stage-08-09-validation.md) | Self-review 08.9: **232/232** локальных JS/V8 assertions PASS и **21/21** targeted mutations, не live READY/LLM blind-run |
+| [`docs/stage-09-plan.md`](docs/stage-09-plan.md) | **План 09.1–09.9 утверждён**; 09.1–09.3 приняты; 09.4 R1/R2 `PARTIAL / PENDING INDEPENDENT EVIDENCE` (12 синтетических NOT_RUN, preflight 166/166); 09.5–09.9 не начаты; independent LLM blind-runs 0 |
+| [`docs/stage-09-test-contract.md`](docs/stage-09-test-contract.md) | **09.1 независимый тестовый контракт:** доказательные классы, oracle isolation, журнал, оценка по EV01–EV08, запрет fake READY |
+| [`docs/stage-09-01-validation.md`](docs/stage-09-01-validation.md) | **Self-review 09.1:** 144/144 локальных JS/V8 assertions, 7 source-pin mutations включены; 0 independent LLM runs |
+| [`docs/stage-09-fixtures.md`](docs/stage-09-fixtures.md) | **09.2 каталог 45 synthetic inputs:** 41 P08, 8 семейств, T01–T06; публичный JSON без oracle |
+| [`docs/stage-09-02-validation.md`](docs/stage-09-02-validation.md) | **Self-review 09.2:** 311/311 локальных проверок, восемь in-memory mutations входят в число; 0 independent LLM runs |
+| [`docs/stage-09-runtime-validation.md`](docs/stage-09-runtime-validation.md) | **09.3 GitHub/Skills runtime audit:** 7/7 source bodies/SHAs, контур независимой сессии; auto-loader NOT_VERIFIED, git clone заблокирован DNS |
+| [`docs/stage-09-03-validation.md`](docs/stage-09-03-validation.md) | **Self-review 09.3:** 128/128 LOCAL_JS checks, 7 mutations, 0 LLM_BLIND; шаг принят |
+| [`tests/stage-09-03-runtime-audit-synthetic.mjs`](tests/stage-09-03-runtime-audit-synthetic.mjs) | Детерминированные проверки текстов Skills, ссылок и разделения source read от auto loader |
+| [`docs/stage-09-04-results.md`](docs/stage-09-04-results.md) | **09.4 частично подготовлен:** 12 INPUT-only R1/R2/RT01 сценариев, 0 LLM_BLIND, требуется новая изолированная сессия |
+| [`docs/stage-09-04-validation.md`](docs/stage-09-04-validation.md) | Preflight 166/166 LOCAL_JS, 10 targeted mutations внутри; `PENDING INDEPENDENT EVIDENCE` |
+| [`tests/fixtures/stage-09/r1-r2-run-ledger.v1.json`](tests/fixtures/stage-09/r1-r2-run-ledger.v1.json) | 12 честных NOT_RUN-записей без oracle, expected ответов или выдуманного результата |
+| [`tests/stage-09-04-r1-r2-preflight-synthetic.mjs`](tests/stage-09-04-r1-r2-preflight-synthetic.mjs) | Проверка целостности входов и доказательного статуса, не прогон ChatGPT |
+| [`tests/stage-09-02-fixture-integrity-synthetic.mjs`](tests/stage-09-02-fixture-integrity-synthetic.mjs) | Проверка структуры 45 inputs, закрытых свечей, времён, шаблонов и отсутствия oracle |
+| [`tests/stage-09-02-export-agent-input.mjs`](tests/stage-09-02-export-agent-input.mjs) | Экспорт без служебной метаинформации только пользовательского запроса и payload |
+
+| [`tests/stage-09-01-test-contract-synthetic.mjs`](tests/stage-09-01-test-contract-synthetic.mjs) | Локальные детерминированные проверки контракта и корректности evidence-ledger; не ChatGPT runtime |
+| [`tests/stage-08-09-integration-synthetic.mjs`](tests/stage-08-09-integration-synthetic.mjs) | Синтетические integration checks: W08-01–14, полные P08-01–41, RT07 Veles/RT08 GinArea/RT09 final, FR thresholds |
+
+
+| [`docs/risk-management.md`](docs/risk-management.md) | **Этап 05 (05.1–05.8) принят 15.10.2026:** контракт данных, IM/сетки, Isolated (§6–§7), Cross (§8–§9), убыток бота (§10–§11), стрессы (§12–§13), HWM (§14–§15), сквозная ревизия FR-027–FR-040 |
+| [`docs/risk-05-01-validation.md`](docs/risk-05-01-validation.md) | **Приёмка 05.1:** 12/12 механических проверок и 20 нормативных синтетических ожиданий (не внешние LLM-прогоны) |
+| [`docs/risk-05-02-validation.md`](docs/risk-05-02-validation.md) | **Приёмка 05.2 от 15.10.2026:** 24/24 локальных арифметических/логических проверки и 26 синтетических ожиданий |
+| [`docs/risk-05-03-validation.md`](docs/risk-05-03-validation.md) | **Шаг 05.3 принят 15.10.2026:** методика Isolated Long/Short, 28/28 локальных проверок и 24 нормативных случая |
+| [`docs/risk-05-04-validation.md`](docs/risk-05-04-validation.md) | **Шаг 05.4 принят 15.10.2026:** UTA Cross Account MMR/IMR, 28/28 механических и 28 нормативных проверок; **RV-02 OPEN** |
+| [`docs/risk-05-05-validation.md`](docs/risk-05-05-validation.md) | **Шаг 05.5 принят 15.10.2026:** сценарный убыток и предел FR-030, 36/36 проверок Python Decimal и 30 нормативных случаев; **RV-03 OPEN** |
+| [`docs/risk-05-06-validation.md`](docs/risk-05-06-validation.md) | **Приёмка 05.6 от 15.10.2026:** корреляция и четыре стресса, 47/47 локальных проверок, 36 нормативных ожиданий; реальные Mark-эпизоды не проверены |
+| [`docs/risk-05-07-validation.md`](docs/risk-05-07-validation.md) | **Шаг 05.7 принят 15.10.2026:** HWM, дневные 3%, H04, 48/48 локальных проверок и 34 нормативных эталона |
+| [`docs/risk-validation.md`](docs/risk-validation.md) | **Шаг 05.8:** интеграционная ревизия 14/14 FR-027–FR-040 и 109/109 локальных синтетических проверок, **принят с этапом 05 15.10.2026**; реальные Cross/Short остаются открытыми |
+
+**Этапы 03 и 04 завершены. План этапа 05 утверждён; шаг 05.1 принят пользователем 15.10.2026:** шаги 04.1–04.6 завершены и утверждены (14.10.2026); приняты [правила неполноты данных](docs/data-freshness.md#118-приёмка-046--утверждено-пользователем) и [запросы по шаблонам](docs/input-templates.md#144-приёмка-дополнения-046). **04.7 утверждён пользователем 15.10.2026** ([решение о приёмке](docs/data-validation.md#168-приёмка-шага-047--утверждено-пользователем-15102026)) с ограничениями **TV-01–TV-04**: [32 синтетических кейса](docs/stage-04-07-synthetic-tests.md), 32/32 совпадений формализованных решений, 12/12 механических проверок и [8/8 PASS ответов отдельного ChatGPT](docs/stage-04-07-blind-run.md). Фактическое чтение всех GitHub-инструкций в отдельном тестовом чате независимо не доказано (TV-01), реальные модели риска и готовность бота не подтверждены. **04.8 и весь этап 04 утверждены пользователем 15.10.2026** ([запись о приёмке](docs/stage-04-08-review.md#7-формальная-приёмка-шага-048-и-завершение-этапа-04--15102026)) с TV-01–TV-04. [План этапа 05](docs/stage-05-plan.md#7-приёмка-плана-этапа-05--утверждено-пользователем-15102026) утверждён пользователем 15.10.2026; [шаг 05.1](docs/risk-management.md) выполнен и [официально принят](docs/risk-05-01-validation.md#6-приёмка-шага-051--утверждено-пользователем-15102026); [Шаг 05.2](docs/risk-management.md#4-экспозиция-маржинальная-загрузка-и-число-позиций-шаг-052) **принят 15.10.2026** ([акт приёмки](docs/risk-05-02-validation.md#6-приёмка-шага-052--утверждено-пользователем-15102026)); **05.3 принят пользователем** ([акт](docs/risk-05-03-validation.md#5-формальная-приёмка-шага-053--15102026)); **05.4 утверждён пользователем** ([акт](docs/risk-05-04-validation.md#6-приёмка-054--утверждено-пользователем-15102026)), **RV-02 OPEN**; **05.5 принят пользователем** ([акт](docs/risk-05-05-validation.md#6-приёмка-шага-055--решение-пользователя-от-15102026)), **RV-03 OPEN**; **05.6 утверждён пользователем** ([акт](docs/risk-05-06-validation.md#6-формальная-приёмка-шага-056--15102026)); **05.7 утверждён пользователем** ([акт](docs/risk-05-07-validation.md#6-формальная-приёмка-шага-057--15102026)); **05.8 и весь этап 05 приняты 15.10.2026** ([акт](docs/risk-validation.md#7-формальная-приёмка-058-и-завершение-этапа-05--15102026)), документально, без подтверждения реального READY. RV-02/RV-03 открыты, PR #1 Draft. TV-01–TV-04 остаются действующими. PR #1 остаётся Draft. RV-01 и RV-05 закрыты на уровне согласованных правил. Следующие этапы включают методики оценки рисков, подтверждение интерфейсов Veles/GinArea, Skills, пользовательские сценарии и испытания. Спецификация описывает **целевой MVP**; документы не доказывают доступность всех источников или готовность реальной торговой конфигурации.
+
+## Как начать работу с инструкциями
+
+При запуске нового сценария укажи репозиторий, актуальную ветку и задачу. Во время разработки используется ветка `feature/initial-agent-mvp` в рамках [Draft PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1); до слияния изменения могут отсутствовать в `main`.
+
+> Открой через подключение GitHub репозиторий `vbondarev/crypto-trading-agent`, ветка `feature/initial-agent-mvp`. Прочитай `AGENTS.md` и необходимые для моей задачи утверждённые документы. Назови реально прочитанные файлы и ветку. Не считай отсутствующие инструкции существующими и не переходи к следующему шагу без моего запроса.
+
+Наличие `AGENTS.md` и созданных Skills в GitHub **не гарантирует автоматического применения** их содержимого ChatGPT. Требуется фактическое чтение актуальных файлов.
+
+## Разработка и испытания
+
+Первоначальная версия создаётся в одном Draft PR по [дорожной карте](docs/development-roadmap.md). Следующие этапы согласуются отдельно. Первым практическим кейсом будет анализ убыточной позиции TREEUSDT и возможных действий через Veles, без обещания выхода в прибыль.
 
 ## Важно
 
-ИИ-агент не гарантирует прибыль, корректность биржевых расчётов или непрерывную защиту портфеля. Без подтверждённых входных данных обязательная проверка риска не считается пройденной. Никогда не помещайте API-ключи, секреты и личные снимки портфеля в репозиторий.
+Агент не гарантирует прибыль или защиту от ликвидации. `READY` допустим лишь при достаточных свежих данных всего портфеля, проверенных расчётах текущего и прогнозируемого риска, соблюдении действующих обязательных ограничений и подтверждённых параметрах платформы. **Полная история Equity не обязательна**: историческую просадку 15% и дневной убыток 3% проверяем только при достоверных данных; если их нет, обе проверки помечаются `NOT_CHECKED` и сами по себе не блокируют `READY`. Доказанное превышение этих лимитов блокирует увеличение риска. Не помещай API-ключи, пароли, снимки счёта и реальные торговые отчёты в публичный GitHub.
 
 ## Лицензия
 
