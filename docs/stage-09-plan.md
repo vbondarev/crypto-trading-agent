@@ -1,4 +1,7 @@
 # Этап 09 — проект плана независимых испытаний на обезличенных сценариях
+
+> **Актуальное состояние 22.10.2026:** 09.1–09.3 `COMPLETED / APPROVED`, **09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`**. S09-001-R02 — 1/12 user-attested oracle-evaluated R1 PASS; S09-002-R01 — [content-review / formal INCONCLUSIVE](stage-09-04-s09-002-r01-observation.md) из-за недоступной приватной preimage ранее объявленного oracle; **S09-002-R02 `NOT_RUN`**, новый приватный oracle сохранён и его SHA-256 заранее [опубликован](stage-09-04-oracle-commitments.md). 09.5–09.9 NOT STARTED, PR #1 Open/Draft/unmerged. Ниже исторические статусы этапа.
+
 > **Последнее состояние 20.10.2026:** 09.1–09.3 `COMPLETED / APPROVED`; **09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`**, R1 [S09-001-R02](stage-09-04-r02-evaluation.md) оценён **9/9 content PASS, 1/12 LLM_BLIND user-attested** (без независимого UI/tool-log подтверждения). 11 иных кейсов ещё не выполнены; S09-002-R01 oracle SHA опубликован заранее в [commitments](stage-09-04-oracle-commitments.md), его тест `NOT_RUN`. 09.5–09.9 NOT STARTED. Более ранние статусы далее — история, PR #1 Open/Draft/unmerged.
 
 
