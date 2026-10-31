@@ -63,7 +63,7 @@ t("no oracle body in manifest",!/(?:\"expected_status\"|\"golden_answer\"|\"corr
 // are recorded in a separate append-only, USER_ATTESTED evaluation log.
 t("actual runs journal schema",actualRuns.schema,"stage09.r1r2-user-reported-actual-runs.v1");
 t("actual runs stage",actualRuns.stage,"09.4");
-t("actual runs number",actualRuns.runs.length,2);
+t("actual runs number",actualRuns.runs.length,3);
 t("actual logs one case",actualRuns.runs[0]?.case_id,"S09-001");
 t("actual logs run identity",actualRuns.runs[0]?.run_id,"S09-001-R02");
 t("actual run belongs to v1 corpus",actualRuns.runs[0]?.fixture_version,1);
@@ -105,7 +105,24 @@ t("historical oracle hash provenance marked honestly",second?.oracle_sha256_veri
 t("case count after attestation exactly 2",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,2);
 t("S09-002 public source commitment is present",read("docs/stage-09-04-oracle-commitments.md").includes(second?.oracle_sha256_public_commitment),true);
 t("next S09-003 oracle digest committed",read("docs/stage-09-04-oracle-commitments.md").includes("42154dec9538dfdb4855c36b97c1a4829d5f8e1d46934a0edc4fce2cf03de843"),true);
-t("S09-003 not yet recorded executed",!actualRuns.runs.some(r=>r.case_id==="S09-003"),true);
+const third=actualRuns.runs.find(r=>r.run_id==="S09-003-R01");
+t("S09-003 user-provided response recorded",!!third,true);
+t("S09-003 R01 case id",third?.case_id,"S09-003");
+t("S09-003 R01 executed",third?.execution_status,"EXECUTED");
+t("S09-003 same pinned corpus",third?.fixture_blob_sha,ledger.fixture_sha);
+t("S09-003 R01 public oracle SHA",third?.oracle_sha256_public_commitment,"42154dec9538dfdb4855c36b97c1a4829d5f8e1d46934a0edc4fce2cf03de843");
+t("S09-003 R01 hash verified",third?.oracle_sha256_verified_against_private_file,true);
+t("S09-003 R01 9 checks passed",third?.content_rubric_passed,9);
+t("S09-003 R01 10 mandatory",third?.content_rubric_total,10);
+t("S09-003 R01 specific failure E09",third?.failed_rubric_ids?.join(","),"E09");
+t("S09-003 FAIL_MINOR not mislabeled PASS",third?.content_verdict,"FAIL_MINOR");
+t("S09-003 formal acceptance blocked",third?.formal_case_accepted,false);
+t("S09-003 session isolation not self-invented",third?.independent_session,false);
+t("S09-003 no automatic skills claim",third?.skill_auto_loading,"NOT_VERIFIED");
+t("S09-003 evaluation document exists",exists(third?.evaluation_ref),true);
+t("two accepted cases still exactly",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,2);
+t("S09-003 R02 repeat private oracle digest published",read("docs/stage-09-04-oracle-commitments.md").includes("1188c7f5b300b11fb92f9d920a28fd7a7617c9446ba7184b2b384e310766d2e7"),true);
+t("S09-003 R02 not claimed executed",!actualRuns.runs.some(r=>r.run_id==="S09-003-R02"),true);
 
 for(const r of ledger.runs){
  const item=selected.find(c=>c.case_id===r.case_id);
