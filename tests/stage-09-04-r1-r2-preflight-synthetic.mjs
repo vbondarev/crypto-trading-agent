@@ -63,7 +63,7 @@ t("no oracle body in manifest",!/(?:\"expected_status\"|\"golden_answer\"|\"corr
 // are recorded in a separate append-only, USER_ATTESTED evaluation log.
 t("actual runs journal schema",actualRuns.schema,"stage09.r1r2-user-reported-actual-runs.v1");
 t("actual runs stage",actualRuns.stage,"09.4");
-t("actual runs number",actualRuns.runs.length,3);
+t("actual runs number",actualRuns.runs.length,4);
 t("actual logs one case",actualRuns.runs[0]?.case_id,"S09-001");
 t("actual logs run identity",actualRuns.runs[0]?.run_id,"S09-001-R02");
 t("actual run belongs to v1 corpus",actualRuns.runs[0]?.fixture_version,1);
@@ -122,7 +122,19 @@ t("S09-003 no automatic skills claim",third?.skill_auto_loading,"NOT_VERIFIED");
 t("S09-003 evaluation document exists",exists(third?.evaluation_ref),true);
 t("two accepted cases still exactly",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,2);
 t("S09-003 R02 repeat private oracle digest published",read("docs/stage-09-04-oracle-commitments.md").includes("1188c7f5b300b11fb92f9d920a28fd7a7617c9446ba7184b2b384e310766d2e7"),true);
-t("S09-003 R02 not claimed executed",!actualRuns.runs.some(r=>r.run_id==="S09-003-R02"),true);
+const thirdRepeat=actualRuns.runs.find(r=>r.run_id==="S09-003-R02");
+t("S09-003 R02 historical response recorded",!!thirdRepeat,true);
+t("S09-003 R02 same immutable source",thirdRepeat?.policy_commit_sha,"ac06602ca73741077d9d6396e1a2172791bc7d88");
+t("S09-003 R02 completed",thirdRepeat?.execution_status,"EXECUTED");
+t("S09-003 R02 9 checks passed",thirdRepeat?.content_rubric_passed,9);
+t("S09-003 R02 10 mandatory",thirdRepeat?.content_rubric_total,10);
+t("S09-003 R02 failure E09 preserved",thirdRepeat?.failed_rubric_ids?.join(","),"E09");
+t("S09-003 R02 FAIL_MINOR not upgraded",thirdRepeat?.content_verdict,"FAIL_MINOR");
+t("S09-003 R02 not accepted",thirdRepeat?.formal_case_accepted,false);
+t("S09-003 R02 precommitted oracle matches",thirdRepeat?.oracle_sha256_public_commitment,"1188c7f5b300b11fb92f9d920a28fd7a7617c9446ba7184b2b384e310766d2e7");
+t("S09-003 R02 evidence report exists",exists(thirdRepeat?.evaluation_ref),true);
+t("S09-003 R02 no claimed auto loader",thirdRepeat?.skill_auto_loading,"NOT_VERIFIED");
+t("accepted independent user-attested cases remain 2",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,2);
 
 for(const r of ledger.runs){
  const item=selected.find(c=>c.case_id===r.case_id);
