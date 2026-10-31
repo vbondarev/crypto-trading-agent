@@ -1,5 +1,8 @@
 # Дорожная карта разработки
 
+> **Актуально 31.10.2026:** 09.1–09.3 `COMPLETED/APPROVED`; 09.4 `PARTIAL/PENDING INDEPENDENT EVIDENCE`. **2/12 `LLM_BLIND/USER_ATTESTED`** уникальных кейсов приняты: S09-001 9/9 и S09-002 10/10. Регенерации SOL были в одном Temporary Chat и не удваивают счётчик. `209/209` source-backed LOCAL_JS preflight, 10 mutations входят в число 209. Приватный исходник старого SOL oracle недоступен для rehash; следующий S09-003-R01 pre-registered SHA/backup есть, но `NOT_RUN`. 09.5–09.9 `NOT STARTED`, no live READY/trading.
+
+
 > **Актуально на 20.10.2026:** 09.1–09.3 `COMPLETED / APPROVED`; 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE` — **S09-001-R02 9/9 oracle content PASS / user-attested Temporary Chat**, ещё 11 кейсов не проверены; `190/190` локальных preflight assertions и 10 mutations внутри. S09-002-R01 oracle SHA опубликован **до** теста, запуск ещё `NOT_RUN`. Следующие 09.5–09.9 не начаты. Старые строки ниже документируют историю развития.
 
 
