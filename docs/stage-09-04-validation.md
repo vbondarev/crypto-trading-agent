@@ -1,5 +1,8 @@
 # Шаг 09.4 — журнал подготовки R1/R2 и self-review независимых испытаний
 
+> **31.10.2026 / S09-003-R02:** повторное содержательное испытание завершилось **9/10 PASS, итог FAIL_MINOR (EV07/E09)**, поскольку итоговый статус информационного обзора R1 вновь `NEEDS_DATA`. Приватный эталон R02 заново хеширован и совпал с предварительной GitHub фиксацией. Исторический источник `ac06602ca73741077d9d6396e1a2172791bc7d88` не изменён. Принято 2/12 уникальных кейсов; S09-003 не принят. Версионированная коррекция Market Analysis Skill предложена, но изменение защищённых инструкций и append-only journal пока не сохранено из-за ограничений инструмента; не объявлять исправление выполненным. 09.4 PARTIAL, 09.5–09.9 NOT STARTED.
+
+
 > **Source-bound preflight после S09-003-R01 (31.10.2026):** скрипт `tests/stage-09-04-r1-r2-preflight-synthetic.mjs` повторно оценён на **фактически полученных исходных текстах текущего GitHub PR** посредством изолированного JS с `fs` adapter (не Node checkout/CI): **225/225 LOCAL_JS PASS, 0 FAIL**; 10 targeted in-memory mutations уже включены в 225. Проверены 3 фактические user-reported attempts, **2 user-attested accepted cases**, S09-003-R01 `content=FAIL_MINOR (9/10, E09)`, неизменённый baseline 12 `NOT_RUN` planning entries и опубликованный до запуска хеш закрытого S09-003-R02. `LLM_BLIND` не следует выводить из числа 225. **09.4 PARTIAL / PENDING INDEPENDENT EVIDENCE**, 09.5–09.9 NOT STARTED.
 
 
