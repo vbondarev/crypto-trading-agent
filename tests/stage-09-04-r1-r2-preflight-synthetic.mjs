@@ -94,13 +94,18 @@ t("S09-002 preregistered oracle digest",second?.oracle_sha256_public_commitment,
 t("S09-002 private oracle digest checked",second?.oracle_sha256_verified_against_private_file,true);
 t("S09-002 content rubric count",second?.content_rubric_total,10);
 t("S09-002 content checks passed",second?.content_rubric_passed,10);
-t("S09-002 content success not fake formal PASS",second?.formal_case_accepted,false);
-t("S09-002 provenance open",second?.conditional_verdict,"INCONCLUSIVE_PENDING_USER_DISAMBIGUATION_OF_TWO_NONIDENTICAL_OUTPUTS");
+t("S09-002 user-confirmed formal case acceptance",second?.formal_case_accepted,true);
+t("S09-002 user-attested verdict",second?.conditional_verdict,"PASS_WITH_USER_ATTESTED_BLIND_SESSION_AND_HISTORICAL_ORACLE_EVIDENCE_LIMITATIONS");
 t("S09-002 record two conflicting texts",second?.observed_distinct_market_outputs,2);
 t("S09-002 evaluation doc exists",exists(second?.evaluation_ref),true);
 t("S09-002 still no verified technical session trace",second?.formal_independent_technical_attestation,false);
-t("case count with formal user-attested acceptance stays 1",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,1);
+t("two R02 replies confirmed one Temporary Chat",second?.session_linkage,"USER_CONFIRMED_SAME_TEMPORARY_CHAT_WITH_REGENERATION_OR_REPROMPT");
+t("archival private oracle currently not present",second?.oracle_private_file_available_for_current_recheck,false);
+t("historical oracle hash provenance marked honestly",second?.oracle_sha256_verification_scope,"HISTORICAL_EVALUATOR_REPORT_FROM_2026-10-22_NOT_REVERIFIED_2026-10-31");
+t("case count after attestation exactly 2",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,2);
 t("S09-002 public source commitment is present",read("docs/stage-09-04-oracle-commitments.md").includes(second?.oracle_sha256_public_commitment),true);
+t("next S09-003 oracle digest committed",read("docs/stage-09-04-oracle-commitments.md").includes("42154dec9538dfdb4855c36b97c1a4829d5f8e1d46934a0edc4fce2cf03de843"),true);
+t("S09-003 not yet recorded executed",!actualRuns.runs.some(r=>r.case_id==="S09-003"),true);
 
 for(const r of ledger.runs){
  const item=selected.find(c=>c.case_id===r.case_id);
