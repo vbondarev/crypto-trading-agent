@@ -102,6 +102,8 @@ Provide a concise report covering:
 - **Indicators:** time, period, smoothing/source and bar count; omit numbers not computed/observed.
 - **Volatility/liquidity/derivatives and verifiable catalysts**, with category-specific limitations.
 - **Base / alternative / invalidation**, risks, unknowns and minimum missing data to advance.
-- **Status of analysis:** `R1_CONTEXT`, `R2_PRELIMINARY`, `NEEDS_DATA` or `UNVERIFIED` as *analytical labels only*. These are **not** `READY/REJECTED` classifications of a portfolio or a trade.
+- **R1 conclusion/status:** For RT02/R1 use descriptive labels `R1_CONTEXT`, `LIMITED_DATA`, `HISTORICAL_ONLY` or `INSUFFICIENT_DATA`, or use a natural-language conclusion without a status label. Missing 24h history, OHLCV, or provenance must be explained as missing facts, not a trade verdict. Do not output `NEEDS_DATA`, `UNVERIFIED`, `REJECTED` or `READY` as a final R1 status or per-metric status column. In particular, do not write `R1_CONTEXT / NEEDS_DATA` or `Итоговый статус: NEEDS_DATA` for a market overview.
+- **Internal verification vs public answer:** An internal `decision_impact=NEEDS_DATA` from data-verification means more input is needed for that calculation; translate it to ordinary R1 text such as "недостаточно исторических данных для сравнения". `INSUFFICIENT_DATA` is an evidence/trend description, not an assessment of trade readiness.
+- **R2 and downstream decisions:** `R2_PRELIMINARY` indicates a conditional scenario, not execution approval. When a user explicitly requests strategy/risk/configuration readiness, the relevant approved workflow may report `NEEDS_DATA`, `UNVERIFIED` or `REJECTED` with its decision scope and evidence. This Skill cannot grant `READY`.
 
 **End boundary:** this Skill can only improve the *market evidence component* of the user's decision. It never silently selects a trade, creates a bot, executes orders or watches the market after the response.
