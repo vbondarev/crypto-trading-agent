@@ -1,5 +1,8 @@
 # AGENTS.md
 
+> **Этап 09, 31.10.2026:** 09.1–09.3 `COMPLETED/APPROVED`. Текущий 09.4 `PARTIAL/PENDING INDEPENDENT EVIDENCE`: **2/12** уникальных R1 кейсов `LLM_BLIND/USER_ATTESTED PASS` (S09-001-R02 9/9; S09-002-R02 10/10 по прежнему предзарегистрированному oracle). Две разные SOL-формулировки получены **в одном Temporary Chat** и считаются одним run, не двумя. Приватная oracle-preimage SOL недоступна для повторной SHA проверки сейчас; предыдущая проверка отражена только исторически. Preflight `209/209 LOCAL_JS PASS`, `AUTO_LOADED Skills=NOT_VERIFIED`. S09-003-R01 ещё `NOT_RUN`, oracle SHA публично зафиксирован, private backup отдельно. 09.5–09.9 `NOT STARTED`; PR Draft/Open, no live READY/orders.
+
+
 > **Этап 09, актуальное уточнение 20.10.2026:** 09.1–09.3 `COMPLETED / APPROVED`; 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`: S09-001-R02 в новом Temporary Chat вне Crypto Project подтверждён пользователем, по запечатанному oracle **9/9 content PASS**; `1/12` оценённых `LLM_BLIND / USER_ATTESTED`, `0` независимо подтверждённых технических session traces; preflight `190/190` PASS. S09-002-R01 публичный хеш oracle зафиксирован до следующего теста, нового model run ещё нет. 09.5–09.9 NOT STARTED, нет live READY/сделок.
 
 ## Назначение
