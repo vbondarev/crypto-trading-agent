@@ -45,9 +45,9 @@
       "fixture_blob_sha": "965c12afa0c4afc4c0b1698732e61c597d351b88",
       "execution_status": "EXECUTED",
       "evidence_type": "LLM_BLIND",
-      "session_isolation": "FIRST_MARKET_OUTPUT_USER_ATTESTED_NEW_TEMPORARY_CHAT;_SECOND_MARKET_OUTPUT_RELATION_UNKNOWN",
-      "independent_session": "USER_ATTESTED_FIRST_OUTPUT_ONLY",
-      "oracle_hidden_from_test_agent": "USER_INSTRUCTED_NOT_TO_SHARE;NO_LEAK_OBSERVED",
+      "session_isolation": "NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED;TWO_NONIDENTICAL_REPLIES_ONE_TEMPORARY_CHAT_REGENERATION_OR_REPROMPT",
+      "independent_session": true,
+      "oracle_hidden_from_test_agent": "USER_ATTESTED_NEW_TEMPORARY_CHAT;NO_ORACLE_LEAK_OBSERVED",
       "agent_oracle_exposed": false,
       "oracle_sha256_public_commitment": "be2b785ede8ca3450a419e362ab2ca782d7eca7f7fdaa292c324b2cd2a12cffe",
       "oracle_sha256_verified_against_private_file": true,
@@ -56,7 +56,7 @@
       "skill_auto_loading": "NOT_VERIFIED",
       "source_body_completeness": "NOT_VERIFIED",
       "raw_transcript_ref": "Two consecutive messages in development conversation; first contains one market output; second contains init-report plus a distinct market output",
-      "raw_transcript_capture": "USER_PASTED_TWO_DIFFERENT_OUTPUTS_SESSION_LINKAGE_AMBIGUOUS",
+      "raw_transcript_capture": "USER_PASTED_INIT_REPORT_PLUS_TWO_NONIDENTICAL_MARKET_REPLIES_FROM_ONE_TEMPORARY_CHAT",
       "observed_distinct_market_outputs": 2,
       "evaluator": "ASSISTANT_IN_DEVELOPMENT_CONVERSATION",
       "evaluator_independence": "LIMITED",
@@ -64,10 +64,15 @@
       "content_rubric_passed": 10,
       "content_rubric_total": 10,
       "content_verdict": "PASS",
-      "conditional_verdict": "INCONCLUSIVE_PENDING_USER_DISAMBIGUATION_OF_TWO_NONIDENTICAL_OUTPUTS",
+      "conditional_verdict": "PASS_WITH_USER_ATTESTED_BLIND_SESSION_AND_HISTORICAL_ORACLE_EVIDENCE_LIMITATIONS",
       "formal_independent_technical_attestation": false,
-      "formal_case_accepted": false,
-      "notes": "Both pasted market answers pass 10/10 predefined content checks, but cannot claim a complete source+answer transcript from one specific session until user clarifies regeneration or two separate Temporary Chats."
+      "formal_case_accepted": true,
+      "notes": "One Temporary Chat provided two answer variants via regeneration/re-prompt, confirmed by user. Two answer variants are NOT two independent test cases or runs. Historical 10/10 preregistered content evaluation accepted at USER_ATTESTED level; 2026-10-31 source preimage unavailable for current SHA recheck; session and runtime tool log remain unverified.",
+      "session_linkage": "USER_CONFIRMED_SAME_TEMPORARY_CHAT_WITH_REGENERATION_OR_REPROMPT",
+      "oracle_sha256_verification_scope": "HISTORICAL_EVALUATOR_REPORT_FROM_2026-10-22_NOT_REVERIFIED_2026-10-31",
+      "oracle_private_file_available_for_current_recheck": false,
+      "oracle_reproducibility_limitation": "Original R02 private preimage missing in active evaluator filesystem 2026-10-31; earlier recorded hash verification and rubric evaluation retained as historical evidence, not independently repeated.",
+      "accepted_at_utc": "2026-10-31"
     }
   ]
 }
