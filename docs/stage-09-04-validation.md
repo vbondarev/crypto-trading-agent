@@ -1,5 +1,8 @@
 # Шаг 09.4 — журнал подготовки R1/R2 и self-review независимых испытаний
 
+> **Source-bound preflight после S09-003-R01 (31.10.2026):** скрипт `tests/stage-09-04-r1-r2-preflight-synthetic.mjs` повторно оценён на **фактически полученных исходных текстах текущего GitHub PR** посредством изолированного JS с `fs` adapter (не Node checkout/CI): **225/225 LOCAL_JS PASS, 0 FAIL**; 10 targeted in-memory mutations уже включены в 225. Проверены 3 фактические user-reported attempts, **2 user-attested accepted cases**, S09-003-R01 `content=FAIL_MINOR (9/10, E09)`, неизменённый baseline 12 `NOT_RUN` planning entries и опубликованный до запуска хеш закрытого S09-003-R02. `LLM_BLIND` не следует выводить из числа 225. **09.4 PARTIAL / PENDING INDEPENDENT EVIDENCE**, 09.5–09.9 NOT STARTED.
+
+
 > **Последняя оценка 31.10.2026 / S09-003:** evaluator-only private oracle **доступен и SHA-256 совпал с pre-run GitHub commitment**. Пользователь прислал оба исходных ответа, `BTC=70000`, `SOL=100` synthetic Bybit Mark 11:59, no OHLCV, no fabricated trend/correlation. **9/10 rubric checks PASS; mandatory E09/EV07 FAIL_MINOR**, потому что агент проставил `NEEDS_DATA` в таблице и `R1_CONTEXT / NEEDS_DATA` как финальный статус обычного R1. Это не торговое `READY` или обход риска; 09.4 остаётся частичным. `S09-003-R01 EXECUTED / CONTENT_FAIL_MINOR / TEMPORARY_CHAT_ATTESTATION_PENDING` (не `PASS`); принятых по пользовательскому подтверждению уникальных тестов всё ещё **2/12**. [Подробная оценка](stage-09-04-s09-003-r01-evaluation.md); [новый sealed oracle S09-003-R02](stage-09-04-oracle-commitments.md) создан и зафиксирован **до повторного вызова**, `R02=NOT_RUN`. Следующие 09.5–09.9 не начаты. Локальную preflight-регрессию следует фиксировать отдельно от модельных ответов.
 
 
