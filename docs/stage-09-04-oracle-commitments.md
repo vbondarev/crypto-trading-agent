@@ -78,3 +78,23 @@
 
 **Run order:** commit only this digest before the separate new Temporary Chat invocation; run the unchanged S09-003 user input with 2026-10-20 12:00 MSK synthetic test clock; paste full unedited init-report and market answer; check private file SHA-256 against this committed digest **before opening/checking rubric**. Distinguish user-attested isolation from technically authenticated runtime and do not count response regeneration as multiple independent runs. Prior S09-002 R02 private preimage is absent from the current evaluator environment; its historical SHA check is not reconducted or implied by this S09-003 commitment.
 
+
+
+## S09-003-R02 — repeat after R01 EV07 `FAIL_MINOR`, 31.10.2026
+
+**Only sealed SHA-256 metadata is public; do not give the private oracle, previous result, defect, or explicit expectations to test agent.** The prior R01 was received and scored as [`FAIL_MINOR`](stage-09-04-s09-003-r01-evaluation.md). The R02 fixture, original policy commit and all 10 scoring checks are unchanged; private random nonce is newly generated.
+
+| Field | Sealed value |
+|---|---|
+| `case_id`, `run_id` | `S09-003`, `S09-003-R02` |
+| Pinned policy source | `ac06602ca73741077d9d6396e1a2172791bc7d88` |
+| Synthetic fixture JSON blob | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
+| Evaluator-only file | `/mnt/data/S09-003-R02_PRIVATE_ORACLE.json` (do not commit or give to agent) |
+| Exact JSON UTF-8 bytes | **4459** |
+| `sealed_at_utc` | `2026-10-31T19:58:19.792308+00:00` |
+| Cryptographic nonce | fresh 32-byte secret, included in digest |
+| SHA-256 of exact private bytes | **`1188c7f5b300b11fb92f9d920a28fd7a7617c9446ba7184b2b384e310766d2e7`** |
+| Status at publication | **`NOT_RUN`**; result and session isolation unknown until separate Temporary Chat |
+| Procedure | New Temporary Chat outside Crypto Project, exact original input with test clock, user copies complete init+answer, evaluator verifies original file hash before scoring |
+
+The private preimage was explicitly created in the active evaluator container **before** this commitment and should be backed up outside the test chat for repeatability. The previous R01 outcome remains `FAIL_MINOR` and cannot be reclassified retroactively by the R02 grade. No live trading and no change to PR Draft status.
