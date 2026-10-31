@@ -56,3 +56,25 @@
 | Public note R01 | [S09-002-R01 evidence gap](stage-09-04-s09-002-r01-observation.md) — у предыдущего preimage не обнаружена, вердикт R01 `INCONCLUSIVE` |
 
 Новый запуск разрешён **только после публикации этой записи**, в новом Temporary Chat вне Crypto Project с той же pinned policy. Сохранить оба ответа дословно, после выполнения проверить SHA-256 всё того же evaluator-only файла перед оценкой. **Не переписывать** старый `S09-002-R01` oracle и не применять новую карточку ретроактивно. Состояние 09.4 остаётся `PARTIAL / PENDING INDEPENDENT EVIDENCE`, 09.5–09.9 NOT STARTED, без live торговых операций.
+
+
+## S09-003-R01 — pre-registered oracle for BTC/SOL comparison (31.10.2026)
+
+**Only a SHA-256 commitment is published; the oracle body and evaluation rubric remain private.**
+
+| Field | Pre-registered value |
+|---|---|
+| `case_id` / `run_id` | `S09-003` / `S09-003-R01` |
+| `prompt_id` / fixture | `P08-03` / fixture v1 |
+| Fixed policy source commit | `ac06602ca73741077d9d6396e1a2172791bc7d88` |
+| Public synthetic fixture JSON blob | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
+| Private oracle filename | `S09-003-R01_PRIVATE_ORACLE.json`; evaluator-only, **not** part of GitHub repository |
+| Exact byte length | `4379` UTF-8 bytes |
+| Private nonce | 32 securely generated random bytes, included in hashed source (not disclosed) |
+| sealed_at_utc | `2026-10-31T19:20:59+00:00` |
+| SHA-256 **commitment** | **`42154dec9538dfdb4855c36b97c1a4829d5f8e1d46934a0edc4fce2cf03de843`** |
+| Repeatability | Evaluator keeps private file; user should separately retain a private copy if file durability is uncertain; **never** send private oracle to tested agent |
+| Execution state when committed | `NOT_RUN`; no output or verdict can be inferred from the hash |
+
+**Run order:** commit only this digest before the separate new Temporary Chat invocation; run the unchanged S09-003 user input with 2026-10-20 12:00 MSK synthetic test clock; paste full unedited init-report and market answer; check private file SHA-256 against this committed digest **before opening/checking rubric**. Distinguish user-attested isolation from technically authenticated runtime and do not count response regeneration as multiple independent runs. Prior S09-002 R02 private preimage is absent from the current evaluator environment; its historical SHA check is not reconducted or implied by this S09-003 commitment.
+
