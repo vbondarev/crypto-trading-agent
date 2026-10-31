@@ -1,5 +1,8 @@
 # Шаг 09.4 — журнал подготовки R1/R2 и self-review независимых испытаний
 
+> **Последняя оценка 31.10.2026 / S09-003:** evaluator-only private oracle **доступен и SHA-256 совпал с pre-run GitHub commitment**. Пользователь прислал оба исходных ответа, `BTC=70000`, `SOL=100` synthetic Bybit Mark 11:59, no OHLCV, no fabricated trend/correlation. **9/10 rubric checks PASS; mandatory E09/EV07 FAIL_MINOR**, потому что агент проставил `NEEDS_DATA` в таблице и `R1_CONTEXT / NEEDS_DATA` как финальный статус обычного R1. Это не торговое `READY` или обход риска; 09.4 остаётся частичным. `S09-003-R01 EXECUTED / CONTENT_FAIL_MINOR / TEMPORARY_CHAT_ATTESTATION_PENDING` (не `PASS`); принятых по пользовательскому подтверждению уникальных тестов всё ещё **2/12**. [Подробная оценка](stage-09-04-s09-003-r01-evaluation.md); [новый sealed oracle S09-003-R02](stage-09-04-oracle-commitments.md) создан и зафиксирован **до повторного вызова**, `R02=NOT_RUN`. Следующие 09.5–09.9 не начаты. Локальную preflight-регрессию следует фиксировать отдельно от модельных ответов.
+
+
 > **Self-review 31.10.2026 после приёмки S09-002:** source-bound LOCAL_JS preflight на фактически скачанных текстах GitHub и in-memory `fs` adapter — **209/209 PASS, 0 FAIL**, включая 10 уже входящих в число assertions targeted mutations. Это **не CI/Node checkout и не 209 LLM-runs**. Проверены: 2 фактически учтённых `LLM_BLIND/USER_ATTESTED` сценария; обе рыночные оценки 9/9, 10/10; R02 две регенерации одного Temporary Chat; source `ac066...`, оба fixture links, отдельный append-only ledger; отсутствие архивной preimage S09-002 помечено честно; SHA-256 следующего S09-003 опубликован до запуска. **09.4 PARTIAL/PENDING INDEPENDENT EVIDENCE**, 09.5–09.9 NOT STARTED. История предыдущих self-review ниже.
 
 
