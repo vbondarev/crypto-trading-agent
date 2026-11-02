@@ -63,7 +63,7 @@ t("no oracle body in manifest",!/(?:\"expected_status\"|\"golden_answer\"|\"corr
 // are recorded in a separate append-only, USER_ATTESTED evaluation log.
 t("actual runs journal schema",actualRuns.schema,"stage09.r1r2-user-reported-actual-runs.v1");
 t("actual runs stage",actualRuns.stage,"09.4");
-t("actual runs number",actualRuns.runs.length,5);
+t("actual runs number",actualRuns.runs.length,6);
 t("actual logs one case",actualRuns.runs[0]?.case_id,"S09-001");
 t("actual logs run identity",actualRuns.runs[0]?.run_id,"S09-001-R02");
 t("actual run belongs to v1 corpus",actualRuns.runs[0]?.fixture_version,1);
@@ -148,7 +148,23 @@ t("S09-003 R03 evaluation record exists",exists(thirdFixed?.evaluation_ref),true
 t("S09-003 R03 published private-oracle commitment",read("docs/stage-09-04-oracle-commitments.md").includes("175a20c135382dccafff45360e4d3477d1f346cbfd34d0bbe9d2ec7f007ba7df"),true);
 t("S09-003 R03 fixed source commit declared",read("docs/stage-09-04-oracle-commitments.md").includes("39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13"),true);
 t("S09-004 R01 oracle hash already committed",read("docs/stage-09-04-oracle-commitments.md").includes("509987294553263b447adad19a90aac136979c4ca71ea94cd9912c896970b242"),true);
-t("S09-004 R01 not run",!actualRuns.runs.some(r=>r.run_id==="S09-004-R01"),true);
+const fourth=actualRuns.runs.find(r=>r.run_id==="S09-004-R01");
+t("S09-004 R01 executed user-reported content",!!fourth,true);
+t("S09-004 R01 correct case",fourth?.case_id,"S09-004");
+t("S09-004 R01 correct immutable source",fourth?.policy_commit_sha,"39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13");
+t("S09-004 R01 matches fixture SHA",fourth?.fixture_blob_sha,ledger.fixture_sha);
+t("S09-004 R01 executed",fourth?.execution_status,"EXECUTED");
+t("S09-004 R01 scored content",fourth?.content_rubric_passed,10);
+t("S09-004 R01 all ten criteria",fourth?.content_rubric_total,10);
+t("S09-004 R01 content PASS",fourth?.content_verdict,"PASS");
+t("S09-004 R01 not formally accepted without user attestation",fourth?.formal_case_accepted,false);
+t("S09-004 R01 user attestation pending",fourth?.independent_session,false);
+t("S09-004 R01 public oracle hash",fourth?.oracle_sha256_public_commitment,"509987294553263b447adad19a90aac136979c4ca71ea94cd9912c896970b242");
+t("S09-004 R01 private oracle hash verified",fourth?.oracle_sha256_verified_against_private_file,true);
+t("S09-004 R01 technical session trace unverified",fourth?.formal_independent_technical_attestation,false);
+t("S09-004 R01 automatic Skills not verified",fourth?.skill_auto_loading,"NOT_VERIFIED");
+t("S09-004 R01 report exists",exists(fourth?.evaluation_ref),true);
+t("S09-004 R01 doesn't alter 3 accepted unique cases",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,3);
 
 
 for(const r of ledger.runs){
