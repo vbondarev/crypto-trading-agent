@@ -138,3 +138,24 @@ The private preimage was explicitly created in the active evaluator container **
 | Start state | **NOT_RUN**. Public commitment is not evidence of execution, model PASS or confirmed Skill autoload. |
 
 **Procedure:** Save a private backup of the original oracle outside the test chat. Conduct S09-004 in a **new Temporary Chat outside Crypto Project** with only the five permitted source Markdown documents from the tested commit, without stage-09 reports/oracle. Then send the unchanged P08-04 fixture and copy both complete model responses. Upon receiving them, verify the original oracle SHA against this public precommit **before reading the private criteria to evaluate**. Explicitly attest separate-session isolation and no oracle leakage. Do not edit S09-003-R01/R02 historical FAIL_MINOR or S09-003-R03 user-attested PASS. All market inputs are fictional; no live orders. 09.4 remains PARTIAL, 09.5–09.9 NOT STARTED.
+
+
+## S09-005-R01 — pre-registered oracle for Bybit V5 403 / Binance Spot / undated screenshot (02.11.2026)
+
+> **PRE-REGISTERED / NOT_RUN.** This SHA-256 commitment was recorded **before** invoking the next independent model run. Private content, grading rubric, and random nonce remain outside GitHub and must never be given to the tested agent.
+
+| Item | Sealed value |
+|---|---|
+| Run | `S09-005-R01` |
+| Case / prompt / fixture | `S09-005` / `P08-05` / v1 |
+| Tested source commit | **`39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`** (fixed policy source; do not use moving HEAD) |
+| INPUT-only fixture Git blob SHA | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
+| Fixed synthetic test time | `2026-10-20T12:00:00+03:00` Moscow time |
+| Private evaluator-only file | `/mnt/data/S09-005-R01_PRIVATE_ORACLE.json` |
+| Bytes | **4629 UTF-8 bytes** (including private random 256-bit nonce) |
+| sealed_at_utc | `2026-11-02T16:56:31.743710+00:00` |
+| **SHA-256 of exact private file bytes** | **`8a9cd64a7da4b30bcef36deb96eac90e552b06ece37e249b9851633bee84c5dc`** |
+| Mandatory checks | 10; their contents are withheld |
+| Status at commitment | **`NOT_RUN`**, no observed answer/grade/session evidence |
+
+**Blind protocol:** user opens a NEW Temporary Chat outside Crypto Project, sends no stage-09 documents, old evaluation results or private oracle, explicitly loads only five designated policy Markdown files from the **fixed source commit**. Then sends the original S09-005 input. Capture the full initialization and R1 source-failure response, user attests separate isolated Temporary Chat; evaluator rehashes original private JSON byte-for-byte before evaluating the content. Do not retroactively edit earlier run outcomes. All inputs are fictional, no real market API calls or trades. 09.4 `PARTIAL`; 09.5–09.9 `NOT_STARTED`.
