@@ -1,5 +1,8 @@
 # Шаг 09.4 — журнал подготовки R1/R2 и self-review независимых испытаний
 
+> **Итоговая подготовительная проверка R03, 02.11.2026:** публичный commitment SHA-256 `175a20c135382dccafff45360e4d3477d1f346cbfd34d0bbe9d2ec7f007ba7df` опубликован **до** нового Temporary Chat; приватный оригинал `/mnt/data/S09-003-R03_PRIVATE_ORACLE.json` **повторно проверен**, 5998 bytes и SHA совпадают. Тестируется **только исправленный source commit `39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`**, не последующий HEAD протоколов. Source-bound 09.4 preflight **239/239 LOCAL_JS PASS**, отдельный R1-status regression **10/10 LOCAL_JS PASS**, не LLM; исходный план и история S09-003-R01/R02 `FAIL_MINOR` неизменны. `S09-003-R03 NOT_RUN`, 2/12 принятых unique cases, независимый runtime/session blind ещё не подтверждён, 09.4 PARTIAL/PENDING, 09.5–09.9 NOT STARTED. Приватный oracle не публиковать в GitHub и не передавать тестируемому агенту.
+
+
 > **Self-review, 02.11.2026 — S09-003-R03 setup:** Source fix frozen at `39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13` (different from later doc-only HEAD), `P08-03` fixture v1 unchanged at Git blob `965c12afa0c4afc4c0b1698732e61c597d351b88`. Private oracle **5998-byte UTF-8 file exists**, precommitted SHA-256 `175a20c135382dccafff45360e4d3477d1f346cbfd34d0bbe9d2ec7f007ba7df` recorded [before the test](stage-09-04-oracle-commitments.md). 10 mandatory criteria are **private**, not in GitHub or test prompt; evaluator independence `LIMITED`. New Temporary Chat evidence and model answers **NOT_RUN**. Previous R01/R02 scores are immutable; **2/12** accepted unique R1/R2 tests, 09.4 still PARTIAL. No real trading or runtime auto-loader evidence.
 
 
