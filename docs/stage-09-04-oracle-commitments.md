@@ -159,3 +159,25 @@ The private preimage was explicitly created in the active evaluator container **
 | Status at commitment | **`NOT_RUN`**, no observed answer/grade/session evidence |
 
 **Blind protocol:** user opens a NEW Temporary Chat outside Crypto Project, sends no stage-09 documents, old evaluation results or private oracle, explicitly loads only five designated policy Markdown files from the **fixed source commit**. Then sends the original S09-005 input. Capture the full initialization and R1 source-failure response, user attests separate isolated Temporary Chat; evaluator rehashes original private JSON byte-for-byte before evaluating the content. Do not retroactively edit earlier run outcomes. All inputs are fictional, no real market API calls or trades. 09.4 `PARTIAL`; 09.5–09.9 `NOT_STARTED`.
+
+
+## S09-006-R01 — pre-registered closed 1h/4h OHLCV evaluation (02.11.2026)
+
+> **NOT_RUN / PRECOMMITTED.** The evaluator generated the private 10-criterion oracle on local disk and computed its SHA-256 **before the tested model is invoked**. Publish the commitment only, never the private rubric or nonce.
+
+| Item | Immutable pre-registered value |
+|---|---|
+| Case / run / prompt | `S09-006` / `S09-006-R01` / `P08-06` (fixture v1) |
+| Original immutable source commit | **`39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`** (fixed instructions; NOT moving Git branch HEAD) |
+| Canonical fixture Git blob | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
+| Public input-only one-case blob | `cd2257345742bb28bc1352c304dc3226eeefab6d` (file: `tests/public-inputs/S09-006.v1.json`, created before this precommit) |
+| Public input-only file source commit | `672cbe20afec65d9fd9e1a1edb37b48e07af6031` (input-only resource pinned separately from agent instructions) |
+| Synthetic test clock | `2026-10-20T12:00:00+03:00` Moscow time |
+| Private oracle original filename | `/mnt/data/S09-006-R01_PRIVATE_ORACLE.json` (evaluator-only, not in GitHub) |
+| Private oracle exact bytes | **6176 bytes** UTF-8 JSON including a fresh secret 256-bit random nonce |
+| sealed_at_utc | `2026-11-02T17:42:53.258289+00:00` |
+| **SHA-256 exact original private file** | **`feb8d8e2470e4e691e164fb04256bc4f4172f2b4534e3fcfcfd0464f34f86769`** |
+| Mandatory frozen checks | 10; contents withheld from test agent and public repository |
+| Status at SHA publication | **`NOT_RUN`**; no model output or grade yet |
+
+**Isolation procedure:** Open a new Temporary Chat outside Crypto Project and explicitly load only five policy Markdown documents from the fixed **source commit** above. Do not read stage-09 evaluator/rubric files or previous tests. The one-case **PUBLIC INPUT-ONLY** file above is explicitly permitted as scenario data (not a policy/rubric document); provide all its original fields and both complete OHLCV arrays unmodified (via attached downloaded file or a pinned URL to this exact file). Do not ask the agent to read the larger stage-09 fixture corpus. No real market lookups or trades. Capture the full init report and analysis, then user attests separate-session isolation without oracle leak. The evaluator must rehash the original private oracle from disk before grading. The existing S09-005-R01 `PASS/USER_ATTESTED` remains accepted; 09.4 still PARTIAL, 09.5–09.9 NOT STARTED.
