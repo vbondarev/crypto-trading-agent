@@ -119,3 +119,22 @@ The private preimage was explicitly created in the active evaluator container **
 | Evaluator/source limits | The same assistant prepared and will evaluate oracle: `evaluator_independence=LIMITED`. Actual new Temporary Chat / runtime still must be separately attested. |
 
 **Protocol:** retain the original private oracle outside the test chat (the user may store a backup); open a **fresh Temporary Chat outside Crypto Project**; ask it to explicitly read only the five normative GitHub Markdown documents at **the exact source commit above**, not documents containing stage-09 scoring/results; send the unchanged S09-003 synthetic prompt; copy full responses. **After** receiving the model reply, recompute the original private oracle file's SHA-256 and compare to this precommit, *then* evaluate. Do not change the original pinned inputs or reclassify S09-003-R01/R02 historical `FAIL_MINOR`. This is a content/synthetic test, not live-trading authorisation. 09.4 still `PARTIAL / PENDING INDEPENDENT EVIDENCE`; 09.5–09.9 `NOT STARTED`.
+
+
+## S09-004-R01 — pre-registered sealed oracle (02.11.2026)
+
+> **NOT_RUN at time of publication.** Only the SHA-256 commitment is published here before the test. The independent test agent must never receive the evaluator-only private oracle, criteria or previous evaluation results.
+
+| Property | Pre-registered immutable value |
+|---|---|
+| Case / run / prompt | `S09-004` / `S09-004-R01` / `P08-04`, fixture version 1 |
+| Tested source commit | **`39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`** (fixed post-R1-status-correction source; do NOT substitute branch HEAD) |
+| Input fixture JSON Git blob | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
+| Private original file | `/mnt/data/S09-004-R01_PRIVATE_ORACLE.json` (evaluator-only; NEVER commit or send to tested agent) |
+| Exact private JSON bytes | **5880 UTF-8 bytes**, secret 32-byte random nonce included |
+| Sealed at UTC | `2026-11-02T16:24:54.746881+00:00` |
+| SHA-256 of exact private bytes | **`509987294553263b447adad19a90aac136979c4ca71ea94cd9912c896970b242`** |
+| Scoring | 10 frozen mandatory private criteria, not published here |
+| Start state | **NOT_RUN**. Public commitment is not evidence of execution, model PASS or confirmed Skill autoload. |
+
+**Procedure:** Save a private backup of the original oracle outside the test chat. Conduct S09-004 in a **new Temporary Chat outside Crypto Project** with only the five permitted source Markdown documents from the tested commit, without stage-09 reports/oracle. Then send the unchanged P08-04 fixture and copy both complete model responses. Upon receiving them, verify the original oracle SHA against this public precommit **before reading the private criteria to evaluate**. Explicitly attest separate-session isolation and no oracle leakage. Do not edit S09-003-R01/R02 historical FAIL_MINOR or S09-003-R03 user-attested PASS. All market inputs are fictional; no live orders. 09.4 remains PARTIAL, 09.5–09.9 NOT STARTED.
