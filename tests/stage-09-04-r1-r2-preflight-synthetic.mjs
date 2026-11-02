@@ -135,6 +135,10 @@ t("S09-003 R02 precommitted oracle matches",thirdRepeat?.oracle_sha256_public_co
 t("S09-003 R02 evidence report exists",exists(thirdRepeat?.evaluation_ref),true);
 t("S09-003 R02 no claimed auto loader",thirdRepeat?.skill_auto_loading,"NOT_VERIFIED");
 t("accepted independent user-attested cases remain 2",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,2);
+t("S09-003 R03 future run not yet recorded",!actualRuns.runs.some(r=>r.run_id==="S09-003-R03"),true);
+t("S09-003 R03 published private-oracle commitment",read("docs/stage-09-04-oracle-commitments.md").includes("175a20c135382dccafff45360e4d3477d1f346cbfd34d0bbe9d2ec7f007ba7df"),true);
+t("S09-003 R03 fixed source commit declared",read("docs/stage-09-04-oracle-commitments.md").includes("39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13"),true);
+
 
 for(const r of ledger.runs){
  const item=selected.find(c=>c.case_id===r.case_id);
