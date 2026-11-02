@@ -102,7 +102,7 @@ t("S09-002 still no verified technical session trace",second?.formal_independent
 t("two R02 replies confirmed one Temporary Chat",second?.session_linkage,"USER_CONFIRMED_SAME_TEMPORARY_CHAT_WITH_REGENERATION_OR_REPROMPT");
 t("archival private oracle currently not present",second?.oracle_private_file_available_for_current_recheck,false);
 t("historical oracle hash provenance marked honestly",second?.oracle_sha256_verification_scope,"HISTORICAL_EVALUATOR_REPORT_FROM_2026-10-22_NOT_REVERIFIED_2026-10-31");
-t("case count after S09-003 attestation exactly 3",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,3);
+t("case count after S09-004 attestation exactly 4",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,4);
 t("S09-002 public source commitment is present",read("docs/stage-09-04-oracle-commitments.md").includes(second?.oracle_sha256_public_commitment),true);
 t("next S09-003 oracle digest committed",read("docs/stage-09-04-oracle-commitments.md").includes("42154dec9538dfdb4855c36b97c1a4829d5f8e1d46934a0edc4fce2cf03de843"),true);
 const third=actualRuns.runs.find(r=>r.run_id==="S09-003-R01");
@@ -120,7 +120,7 @@ t("S09-003 formal acceptance blocked",third?.formal_case_accepted,false);
 t("S09-003 session isolation not self-invented",third?.independent_session,false);
 t("S09-003 no automatic skills claim",third?.skill_auto_loading,"NOT_VERIFIED");
 t("S09-003 evaluation document exists",exists(third?.evaluation_ref),true);
-t("three accepted cases counted",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,3);
+t("four accepted cases counted",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,4);
 t("S09-003 R02 repeat private oracle digest published",read("docs/stage-09-04-oracle-commitments.md").includes("1188c7f5b300b11fb92f9d920a28fd7a7617c9446ba7184b2b384e310766d2e7"),true);
 const thirdRepeat=actualRuns.runs.find(r=>r.run_id==="S09-003-R02");
 t("S09-003 R02 historical response recorded",!!thirdRepeat,true);
@@ -134,7 +134,7 @@ t("S09-003 R02 not accepted",thirdRepeat?.formal_case_accepted,false);
 t("S09-003 R02 precommitted oracle matches",thirdRepeat?.oracle_sha256_public_commitment,"1188c7f5b300b11fb92f9d920a28fd7a7617c9446ba7184b2b384e310766d2e7");
 t("S09-003 R02 evidence report exists",exists(thirdRepeat?.evaluation_ref),true);
 t("S09-003 R02 no claimed auto loader",thirdRepeat?.skill_auto_loading,"NOT_VERIFIED");
-t("accepted independent user-attested cases now 3",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,3);
+t("accepted independent user-attested cases now 4",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,4);
 const thirdFixed=actualRuns.runs.find(r=>r.run_id==="S09-003-R03");
 t("S09-003 R03 attested run recorded",!!thirdFixed,true);
 t("S09-003 R03 fixed source",thirdFixed?.policy_commit_sha,"39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13");
@@ -157,14 +157,18 @@ t("S09-004 R01 executed",fourth?.execution_status,"EXECUTED");
 t("S09-004 R01 scored content",fourth?.content_rubric_passed,10);
 t("S09-004 R01 all ten criteria",fourth?.content_rubric_total,10);
 t("S09-004 R01 content PASS",fourth?.content_verdict,"PASS");
-t("S09-004 R01 not formally accepted without user attestation",fourth?.formal_case_accepted,false);
-t("S09-004 R01 user attestation pending",fourth?.independent_session,false);
+t("S09-004 R01 formally accepted with user attestation",fourth?.formal_case_accepted,true);
+t("S09-004 R01 user attestation obtained",fourth?.independent_session,true);
 t("S09-004 R01 public oracle hash",fourth?.oracle_sha256_public_commitment,"509987294553263b447adad19a90aac136979c4ca71ea94cd9912c896970b242");
 t("S09-004 R01 private oracle hash verified",fourth?.oracle_sha256_verified_against_private_file,true);
 t("S09-004 R01 technical session trace unverified",fourth?.formal_independent_technical_attestation,false);
 t("S09-004 R01 automatic Skills not verified",fourth?.skill_auto_loading,"NOT_VERIFIED");
 t("S09-004 R01 report exists",exists(fourth?.evaluation_ref),true);
-t("S09-004 R01 doesn't alter 3 accepted unique cases",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,3);
+t("S09-004 R01 makes four accepted unique cases",actualRuns.runs.filter(r=>r.run_id==="S09-001-R02" || r.formal_case_accepted===true).length,4);
+t("S09-004 user session provenance",fourth?.session_isolation,"NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED");
+t("S09-005 precommitted oracle SHA",read("docs/stage-09-04-oracle-commitments.md").includes("8a9cd64a7da4b30bcef36deb96eac90e552b06ece37e249b9851633bee84c5dc"),true);
+t("S09-005 oracle commit names immutable source",read("docs/stage-09-04-oracle-commitments.md").includes("S09-005-R01 — pre-registered oracle"),true);
+t("S09-005 not yet run",!actualRuns.runs.some(r=>r.run_id==="S09-005-R01"),true);
 
 
 for(const r of ledger.runs){
