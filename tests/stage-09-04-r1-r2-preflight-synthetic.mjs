@@ -181,6 +181,18 @@ t("S09-005 R01 oracle SHA precommitted",fifth?.oracle_sha256_public_commitment,"
 t("S09-005 R01 no technical session export",fifth?.formal_independent_technical_attestation,false);
 t("S09-005 R01 evaluation file present",exists(fifth?.evaluation_ref),true);
 
+const nextCase=fixture.cases.find(r=>r.case_id==="S09-006");
+const nextPublic=JSON.parse(read("tests/public-inputs/S09-006.v1.json"));
+t("S09-006 public input-only file exists",exists("tests/public-inputs/S09-006.v1.json"),true);
+t("S09-006 public payload identical to frozen fixture",JSON.stringify(nextPublic),JSON.stringify(nextCase));
+t("S09-006 public case id",nextPublic?.case_id,"S09-006");
+t("S09-006 1h closed candle count",nextPublic?.payload?.ohlcv_1h_closed?.length,110);
+t("S09-006 4h closed candle count",nextPublic?.payload?.ohlcv_4h_closed?.length,90);
+t("S09-006 private oracle precommit published",read("docs/stage-09-04-oracle-commitments.md").includes("feb8d8e2470e4e691e164fb04256bc4f4172f2b4534e3fcfcfd0464f34f86769"),true);
+t("S09-006 source pinned to corrected commit",read("docs/stage-09-04-oracle-commitments.md").includes("39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13"),true);
+t("S09-006 not executed",!actualRuns.runs.some(r=>r.run_id==="S09-006-R01"),true);
+
+
 
 for(const r of ledger.runs){
  const item=selected.find(c=>c.case_id===r.case_id);
