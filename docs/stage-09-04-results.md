@@ -1,5 +1,8 @@
 # Шаг 09.4 — R1/R2: план независимых прогонов и фактические результаты
 
+> **02.11.2026 — S09-005-R01 PRECOMMITTED, NOT_RUN:** S09-004-R01 принят 10/10 PASS после отдельной пользовательской аттестации нового Temporary Chat, [акт](stage-09-04-s09-004-r01-acceptance.md) и [actual-run journal](../tests/fixtures/stage-09/r1-r2-actual-runs.v1.json). **4/12 уникальных кейсов PASS/USER_ATTESTED**; исторические S09-003-R01/R02 FAIL_MINOR не изменены. Следующий P08-05: синтетический Bybit V5 HTTP403; Binance Spot Last=108 at 11:59:30; заявленный скриншот Bybit Perpetual без временной метки/байтов. Закрытый 4629-byte oracle S09-005-R01 создан ДО теста и его SHA-256 `8a9cd64a7da4b30bcef36deb96eac90e552b06ece37e249b9851633bee84c5dc` записан в [commitments](stage-09-04-oracle-commitments.md); source pinned `39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`. Этот SHA НЕ означает модельный PASS, тест ещё **NOT_RUN**. Весь 09.4 PARTIAL/PENDING INDEPENDENT EVIDENCE, 09.5–09.9 NOT STARTED.
+
+
 > **02.11.2026 — подтверждение S09-004:** пользователь отдельно подтвердил новый Temporary Chat вне Crypto Project без закрытого oracle или прежних оценок. Содержательный результат S09-004-R01 **10/10 PASS**, итог **PASS / USER_ATTESTED** (не технический session export). Текущее покрытие **4/12 уникальных кейсов**. Исторический S09-003-R01/R02 остаётся FAIL_MINOR; 09.4 PARTIAL, 09.5–09.9 NOT STARTED. Следующий независимый сценарий S09-005 — P08-05, отказ Bybit V5 HTTP 403 и несопоставимый Binance Spot Last с не датированным скриншотом Bybit Perpetual.
 
 
