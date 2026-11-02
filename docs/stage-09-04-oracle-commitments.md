@@ -98,3 +98,24 @@
 | Procedure | New Temporary Chat outside Crypto Project, exact original input with test clock, user copies complete init+answer, evaluator verifies original file hash before scoring |
 
 The private preimage was explicitly created in the active evaluator container **before** this commitment and should be backed up outside the test chat for repeatability. The previous R01 outcome remains `FAIL_MINOR` and cannot be reclassified retroactively by the R02 grade. No live trading and no change to PR Draft status.
+
+
+## S09-003-R03 — sealed oracle for post-fix BTC/SOL R1 regression (02.11.2026)
+
+> **PRE-REGISTERED / NOT_RUN.** The evaluator created and verified the original private oracle **before** publishing this SHA and **before** the independent model is invoked. Only the commitment is public; the private rubric, nonce and expected outputs must not be given to the test agent. This run tests **NEW fixed instructions**, not old R01/R02.
+
+| Property | Frozen value |
+|---|---|
+| Case, run, prompt | `S09-003`, `S09-003-R03`, `P08-03` |
+| **Tested source commit** | **`39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`** (the post-fix HEAD captured before this commitment; do not substitute later branch HEAD) |
+| Test fixture version/blob | `1` / `965c12afa0c4afc4c0b1698732e61c597d351b88` |
+| Synthetic test clock | 2026-10-20 12:00 Europe/Moscow; Bybit BTC and SOL Mark snapshots 11:59, OHLCV unavailable |
+| Original evaluator-only oracle | `S09-003-R03_PRIVATE_ORACLE.json`; local path `/mnt/data/S09-003-R03_PRIVATE_ORACLE.json` |
+| `sealed_at_utc` | `2026-11-02T15:59:26Z` |
+| Exact oracle bytes | 5998 bytes, UTF-8 JSON with a fresh private 256-bit random nonce |
+| **SHA-256 of original private file bytes** | **`175a20c135382dccafff45360e4d3477d1f346cbfd34d0bbe9d2ec7f007ba7df`** |
+| Scoring checks | 10 mandatory frozen checks, **contents withheld** |
+| Initial verdict | `NOT_RUN`; no independent model output has been received |
+| Evaluator/source limits | The same assistant prepared and will evaluate oracle: `evaluator_independence=LIMITED`. Actual new Temporary Chat / runtime still must be separately attested. |
+
+**Protocol:** retain the original private oracle outside the test chat (the user may store a backup); open a **fresh Temporary Chat outside Crypto Project**; ask it to explicitly read only the five normative GitHub Markdown documents at **the exact source commit above**, not documents containing stage-09 scoring/results; send the unchanged S09-003 synthetic prompt; copy full responses. **After** receiving the model reply, recompute the original private oracle file's SHA-256 and compare to this precommit, *then* evaluate. Do not change the original pinned inputs or reclassify S09-003-R01/R02 historical `FAIL_MINOR`. This is a content/synthetic test, not live-trading authorisation. 09.4 still `PARTIAL / PENDING INDEPENDENT EVIDENCE`; 09.5–09.9 `NOT STARTED`.
