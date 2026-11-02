@@ -1,5 +1,8 @@
 # Шаг 09.4 — R1/R2: план независимых прогонов и фактические результаты
 
+> **Подготовка S09-003-R03 / 02.11.2026:** после versioned исправления R1-status boundary закреплён **новый source commit `39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`** (НЕ использовать текущий branch HEAD). Evaluator-only `S09-003-R03_PRIVATE_ORACLE.json` **реально создан до test invocation**, SHA-256 `175a20c135382dccafff45360e4d3477d1f346cbfd34d0bbe9d2ec7f007ba7df` предварительно [опубликован](stage-09-04-oracle-commitments.md). **R03 NOT_RUN**, raw model reply отсутствует, вердикт не заявлен. Старые R01 и R02 остаются `FAIL_MINOR`; приняты по user attestation **2/12** уникальных кейсов; остальные уникальные не приняты. Этап 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`; 09.5–09.9 NOT STARTED.
+
+
 > **Последний статус 31.10.2026:** после двух S09-003 попыток с `FAIL_MINOR` R1-status labeling (обе 9/10) GitHub Connector **успешно применил отдельное версионированное исправление** четырёх нормативных документов и 10-проверочный статический регрессионный тест. [Акт внедрения](stage-09-04-validation.md) и [S09-003-R02 evaluation](stage-09-04-s09-003-r02-evaluation.md). **Обязательный независимый повторный S09-003-R03 по НОВОМ pinned commit не запускался**; результаты двух старых попыток не переписывать под исправленные инструкции. [Фактические runs](../tests/fixtures/stage-09/r1-r2-actual-runs.v1.json): 4 исполненных текста/runs, **только 2/12 уникальных кейсов приняты на уровне USER_ATTESTED**, S09-003 пока не принят; 9 остальных уникальных не запускались. Локально проверено 10/10 R1 regression и 236/236 09.4 preflight, это **не** независимые LLM runs. Этап `PARTIAL / PENDING INDEPENDENT EVIDENCE`, 09.5–09.9 NOT STARTED, PR Draft/Open.
 
 
