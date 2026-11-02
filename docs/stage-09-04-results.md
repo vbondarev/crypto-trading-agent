@@ -1,5 +1,8 @@
 # Шаг 09.4 — R1/R2: план независимых прогонов и фактические результаты
 
+> **02.11.2026 — подтверждение S09-004:** пользователь отдельно подтвердил новый Temporary Chat вне Crypto Project без закрытого oracle или прежних оценок. Содержательный результат S09-004-R01 **10/10 PASS**, итог **PASS / USER_ATTESTED** (не технический session export). Текущее покрытие **4/12 уникальных кейсов**. Исторический S09-003-R01/R02 остаётся FAIL_MINOR; 09.4 PARTIAL, 09.5–09.9 NOT STARTED. Следующий независимый сценарий S09-005 — P08-05, отказ Bybit V5 HTTP 403 и несопоставимый Binance Spot Last с не датированным скриншотом Bybit Perpetual.
+
+
 > **02.11.2026 — S09-004-R01 выполнен и оценён:** 10/10 mandatory checks **CONTENT PASS** на исправленном pinned commit `39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`; synthetic SOL Mark=100 at 11:41 против Test NOW 12:00 (19m > R1 ≤15m), форумный анонимный слух не признан событием/источником; нет выдуманной волатильности или причинности, R1-метка `INSUFFICIENT_DATA` допустима. Приватная 5880-byte oracle preimage повторно проверена SHA-256 `509987294553263b447adad19a90aac136979c4ca71ea94cd9912c896970b242` против ранее опубликованного хеша. [Оценка S09-004](stage-09-04-s09-004-r01-evaluation.md) записана; новый actual-run journal отражает `EXECUTED / CONTENT_PASS_10_OF_10 / FORMAL_INCONCLUSIVE_PENDING_USER_ATTESTATION`. **Пользователь ещё не подтвердил изоляцию именно этого R01** (новый Temporary Chat вне Crypto Project, без закрытого oracle/оценок), поэтому принятых **по-прежнему 3/12**. Независимая техническая аттестация и AUTO_LOADED Skills не доказаны. 09.4 PARTIAL / PENDING INDEPENDENT EVIDENCE, 09.5–09.9 NOT STARTED; прежние промежуточные строки ниже исторические.
 
 
