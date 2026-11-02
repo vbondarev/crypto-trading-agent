@@ -189,8 +189,8 @@
       "fixture_blob_sha": "965c12afa0c4afc4c0b1698732e61c597d351b88",
       "execution_status": "EXECUTED",
       "evidence_type": "LLM_BLIND",
-      "session_isolation": "NOT_YET_USER_ATTESTED_FOR_THIS_R01",
-      "independent_session": false,
+      "session_isolation": "NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED",
+      "independent_session": true,
       "oracle_hidden_from_test_agent": "NO_LEAK_OBSERVED;USER_ATTESTATION_PENDING",
       "agent_oracle_exposed": false,
       "oracle_sha256_public_commitment": "509987294553263b447adad19a90aac136979c4ca71ea94cd9912c896970b242",
@@ -204,15 +204,15 @@
       "raw_transcript_capture": "USER_PASTED_INIT_AND_MARKET_TEXT",
       "evaluator": "ASSISTANT_IN_DEVELOPMENT_CONVERSATION",
       "evaluator_independence": "LIMITED",
-      "evaluation_ref": "docs/stage-09-04-s09-004-r01-evaluation.md",
+      "evaluation_ref": "docs/stage-09-04-s09-004-r01-acceptance.md",
       "content_rubric_passed": 10,
       "content_rubric_total": 10,
       "failed_rubric_ids": [],
       "content_verdict": "PASS",
-      "conditional_verdict": "CONTENT_PASS_10_OF_10_FORMAL_INCONCLUSIVE_PENDING_NEW_TEMPORARY_CHAT_USER_ATTESTATION",
+      "conditional_verdict": "PASS_WITH_USER_ATTESTED_SESSION_AND_EVIDENCE_LIMITATIONS",
       "formal_independent_technical_attestation": false,
-      "formal_case_accepted": false,
-      "notes": "R1 synthetic source UNVERIFIED_FORUM; SOL Mark=100 at 11:41, 19m > 15m context freshness; news rumor and volatility correctly not verified, no trading status. User has yet to attest fresh isolated Temporary Chat with no oracle/history."
+      "formal_case_accepted": true,
+      "notes": "S09-004 accepted: user confirmed fresh Temporary Chat outside Crypto with no private oracle or prior evaluations; 10/10 content PASS; no independent session trace, no verified automatic Skills."
     }
   ]
 }
