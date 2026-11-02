@@ -1,5 +1,8 @@
 # Шаг 09.4 — журнал подготовки R1/R2 и self-review независимых испытаний
 
+> **Self-review источников на HEAD, 02.11.2026, после S09-004:** Source-backed `tests/stage-09-04-r1-r2-preflight-synthetic.mjs` повторно выполнен в изолированном JS-контексте с фактически считанными GitHub файлами: **264/264 PASS, 0 FAIL** (10 targeted mutations включены в общее число, NOT GitHub Actions/Node CI и NOT дополнительные LLM тесты). `plannedSyntheticCases=12`, `actualUserReportedRuns=6`, `acceptedUniqueCases=3`, `S09-004-R01 CONTENT_PASS_10/10 / FORMAL_PENDING_USER_SESSION_ATTESTATION`, `authenticatedSessionTraces=0`; неизменённый исторический baseline 12×NOT_RUN отдельно от append-only журнала. Ни реальные биржи, ни сделки не проверялись. Следующий этап пока не открыт.
+
+
 > **02.11.2026 / S09-004-R01 self-review:** публичный oracle precommit существует, исходный evaluator-only файл 5880 UTF-8 bytes хеширован по завершении ответа, SHA-256 совпал. Пять pinned GitHub Markdown получены по самоотчёту агента; tool-side Git Blob SHA предоставлены, но byte-complete independently NOT_VERIFIED; Skills AUTO_LOADED=NOT_VERIFIED. **10/10 content criteria PASS**: rumor UNVERIFIED_FORUM не превращён в объявление/каузальность, Mark=100 at 11:41 19m old exceeds 15m current R1 ceiling, no invented ATR/vol, correct descriptive status. [S09-004 audit](stage-09-04-s09-004-r01-evaluation.md) и [actual runs](../tests/fixtures/stage-09/r1-r2-actual-runs.v1.json) существуют. **FORMAL_INCONCLUSIVE до отдельной пользовательской аттестации Temporary Chat/no oracle**. Принятых уникальных 3/12, 6 фактически внесённых попыток, 0 authenticated technical trace; 09.4 PARTIAL, 09.5–09.9 NOT STARTED.
 
 
