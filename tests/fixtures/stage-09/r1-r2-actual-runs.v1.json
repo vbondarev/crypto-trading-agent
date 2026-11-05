@@ -34,7 +34,8 @@
       "content_verdict": "PASS",
       "conditional_verdict": "PASS_WITH_USER_ATTESTED_BLIND_SESSION_AND_EVIDENCE_LIMITATIONS",
       "formal_independent_technical_attestation": false,
-      "notes": "R01 was a separate exploratory Temporary Chat with no preregistered oracle. Not counted as oracle-scored run."
+      "notes": "R01 was a separate exploratory Temporary Chat with no preregistered oracle. Not counted as oracle-scored run. 2026-11-05 bookkeeping reconciliation: add explicit formal_case_accepted=true based solely on preexisting report header docs/stage-09-04-r02-evaluation.md (2026-10-20 user attestation, 9/9 PASS) and preexisting ledger data; no new test, no renewed private oracle verification, no technical session authentication.",
+      "formal_case_accepted": true
     },
     {
       "run_id": "S09-002-R02",
