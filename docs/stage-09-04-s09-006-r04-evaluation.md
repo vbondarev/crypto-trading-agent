@@ -44,3 +44,18 @@ All 90 four-hour price/volume tuples equal the first 90 one-hour tuples but time
 ## Scope / next action
 
 Do not move PR #1 out of Draft; no real market or execution. Do not change frozen fixture or R04 oracle. On receipt of user confirmation, append a **dated post-run attestation** and update journal/acceptance, explicitly noting absence of technical session authentication. Stage 09.4 stays partial until evidence recorded; 09.5+ not started.
+
+
+## Post-run independent-session attestation — 2026-11-05
+
+**User confirmation received after the first submitted response** in the development conversation: the S09-006-R04 answer was produced in a **new Temporary Chat outside Crypto Project**, was the **first full model answer**, and had **no corrections, regeneration, or hints about results of earlier tests**. This is a **user attestation**, not a technically authenticated ChatGPT session export. It does not change the original response text, private oracle bytes, or previously scored mandatory checks.
+
+- `session_isolation = NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED`
+- `first_response_unmodified = USER_ATTESTED`
+- `content_rubric = PASS (10/10)`
+- `oracle_precommitment_integrity = SHA256_VERIFIED`
+- `formal_case_accepted = true` **under the user-attested independent-test protocol**, not under technical-session attestation.
+- `formal_independent_technical_attestation = false`
+- `S09-006 = ACCEPTED_WITH_USER_ATTESTATION`; R01–R03 unchanged.
+
+A bookkeeping caveat: the actual-runs ledger has S09-001-R02 `PASS` (9/9) without an explicit `formal_case_accepted` field. Do not silently rewrite that historical record. The cumulative accepted-scenario total should distinguish the prior historically stated 5/12 from the number having explicit boolean acceptance in the machine-readable ledger, pending separate reconciliation.
