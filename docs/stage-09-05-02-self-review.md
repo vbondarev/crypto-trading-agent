@@ -1,6 +1,6 @@
 # Stage 09.5.2 — post-preparation critical self-review
 
-**2026-11-06 — SELF_REVIEW_PASS / PENDING USER ACCEPTANCE.**
+**2026-11-06 — SELF_REVIEW_PASS / USER_ACCEPTED** ([formal acceptance](stage-09-05-02-acceptance.md)).
 
 This is a **documentary and integrity** self-review by the same assistant authoring the oracle; it is not an independent externally authenticated audit. No test session or real account action has occurred.
 
@@ -37,4 +37,4 @@ This is a **documentary and integrity** self-review by the same assistant author
 - The five original private evaluator files are not safe to upload into any tested Temporary Chat. Backups are local copies, not guaranteed independent durable archival storage.
 - The public proof establishes *precommitment*, not future fulfillment of test criteria.
 
-**Verdict:** `09.5.2 IMPLEMENTED / SELF_REVIEW_PASS / PENDING_USER_ACCEPTANCE`. Do not start 09.5.3 without a distinct user authorization. PR Draft.
+**Verdict:** `09.5.2 COMPLETED / APPROVED / SELF_REVIEW_PASS`. [Formal acceptance](stage-09-05-02-acceptance.md) recorded. Do not start 09.5.3 without a distinct user authorization. PR Draft.
