@@ -1,6 +1,6 @@
 # Stage 09.5.1 — preflight: frozen source, fixture and traceability inventory
 
-**Date:** 2026-11-06. **Status:** `IMPLEMENTED / PENDING USER REVIEW`; no authorization to begin 09.5.2 or any independent test. The user explicitly authorized only 09.5.1 by saying “Разрешаю” after the published approved-plan gate.
+**Date:** 2026-11-06. **Status:** `COMPLETED / APPROVED` by explicit user decision; [formal acceptance](stage-09-05-01-acceptance.md). No authorization to begin 09.5.2 or any independent test. The user explicitly authorized only 09.5.1 by saying “Разрешаю” after the published approved-plan gate.
 
 ## 1. Source freeze and approved gate
 
@@ -87,4 +87,4 @@ Historical cross-stage reference `S09-012-R01` (P08-12) is **NOT a sixth 09.5 ru
 
 **Preflight documentary outcome:** `SOURCE_PIN_VERIFIED_BY_EXPLICIT_GITHUB_FETCH`, `FIXTURE_5_OF_5_MATCH`, `TRACEABILITY_REVIEWED`, `LLM_BLIND_0_OF_5`, `AUTO_SKILLS_RUNTIME_NOT_VERIFIED`.
 
-**Step status:** `09.5.1 IMPLEMENTED / PENDING USER ACCEPTANCE`. Only **after user acceptance** may the user separately authorize `09.5.2` to create private oracles and public commitments. Stage 09.5 as a whole remains `IN_PROGRESS`; PR Draft.
+**Step status:** `09.5.1 COMPLETED / APPROVED`. Formal [user acceptance](stage-09-05-01-acceptance.md) is recorded. **09.5.2 NOT_STARTED** and requires a separate user instruction to create private oracles or public commitments. Stage 09.5 remains `IN_PROGRESS`; PR Draft.
