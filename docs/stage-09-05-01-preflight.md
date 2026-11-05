@@ -19,7 +19,7 @@ Every listed file was returned by GitHub Connector's `fetch_file` with explicit 
 | Required file | Provider Git Blob SHA | Length UTF-16 units | Applies |
 |---|---|---:|---|
 | `AGENTS.md` | `48099db9ade40b3efe94f619119fd37eac7a4b33` | 34244 | ALL |
-| `docs/agent-operating-rules.md` | `62c33c1c6de5fbedbe16945b175a4ce71ea94cd` | 15451 | ALL |
+| `docs/agent-operating-rules.md` | `62c33c1c6de5fbedbe16945b175a4ce1d98f5cba` | 15451 | ALL |
 | `docs/data-freshness.md` | `2a2cc811340ba8414777fc2019ac41ceb6273a78` | 45131 | ALL |
 | `.agents/skills/data-verification/SKILL.md` | `6815b433d91135738210ce5993af30b2bf2c74fa` | 12523 | ALL |
 | `.agents/skills/market-analysis/SKILL.md` | `f458dbd67c4d26642f5ea46b3ed310c5fb5a1c02` | 15012 | ALL baseline |
