@@ -1,6 +1,6 @@
 # Stage 09.5.2 — sealed evaluator-only oracle preparation
 
-**Date:** 2026-11-06. **Status:** `IMPLEMENTED / PENDING USER ACCEPTANCE`.
+**Date:** 2026-11-06. **Status:** `COMPLETED / APPROVED` by [formal user acceptance](stage-09-05-02-acceptance.md).
 **No 09.5.3 independent run was launched.**
 
 ## Approval and boundaries
@@ -44,4 +44,4 @@ Commitment was subsequently re-fetched from GitHub. All five run IDs and SHA-256
 
 Private files exist in the current evaluation container only. Future session availability is not guaranteed unless their bytes are independently preserved, and their disclosure to a tested agent would invalidate the blind test. If an original oracle disappears or its digest disagrees with its precommitment, evaluate the corresponding future answer as `FORMAL_INCONCLUSIVE`; **never regenerate** an oracle after seeing it.
 
-**09.5.2 = IMPLEMENTED / PENDING USER ACCEPTANCE**. **09.5.3 = NOT_STARTED**. Only after formal acceptance and **separate new authorization** may any new Temporary Chat be initiated for S09-013. Stage 09.5 still in progress, PR #1 Draft.
+**09.5.2 = COMPLETED / APPROVED**. **09.5.3 = NOT_STARTED**. User acceptance is [recorded](stage-09-05-02-acceptance.md); **separate new authorization** is still required before any S09-013 Temporary Chat. Stage 09.5 still in progress, PR #1 Draft.
