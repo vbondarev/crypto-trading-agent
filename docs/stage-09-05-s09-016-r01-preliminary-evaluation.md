@@ -1,6 +1,6 @@
-# S09-016-R01 — preliminary sealed-oracle evaluation
+# S09-016-R01 — attested sealed-oracle evaluation
 
-**Date:** 2026-11-06. **Result:** `CONTENT_PASS_10_OF_10 / POST_RUN_ATTESTATION_PENDING`. **Formal case acceptance:** `false` until attestation. No new accepted journal entry yet.
+**Date:** 2026-11-06. **Result:** `CONTENT_PASS_10_OF_10 / FORMAL_ACCEPTED_USER_ATTESTED`. **Formal case acceptance:** `true` at USER_ATTESTED evidence tier; independent technical session trace unavailable.
 
 ## Integrity and frozen source
 - Source pin `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
@@ -27,6 +27,6 @@
 ## Provenance gate
 Complete response titled “Crypto Trading Agent — S09-016-R01” was supplied in the development conversation. Tested agent reports eight full pinned GitHub document reads; this remains self-reported and **does not** independently authenticate model/tool execution or automatic Skills loading.
 
-Pending an **explicit post-response user confirmation** of (1) new Temporary Chat outside Crypto Project, (2) first full unchanged response without regeneration/re-prompt, and (3) no private oracle, prior evaluations or grading hints supplied to tested agent. Until then `execution_status=USER_RESPONSE_SUBMITTED`, `formal_case_accepted=false`, no formally accepted 09.5.3 journal entry.
+The user **explicitly confirmed** all three post-response conditions by replying “Подтверждаю”: (1) a new Temporary Chat outside Crypto Project, (2) first full unchanged response without regeneration or additional queries, and (3) no private oracle, prior evaluations or grading hints supplied to tested agent. Therefore `execution_status=EXECUTED`, `formal_case_accepted=true`, evidence class `LLM_BLIND_USER_ATTESTED`; this is not technical session attestation.
 
-Other outcomes unchanged: S09-013 and S09-014 accepted; S09-015-R01 recorded USER_ATTESTED FAIL; S09-017 NOT_RUN. No trading or 09.5.4 audit.
+Other outcomes unchanged: S09-013 and S09-014 accepted; S09-015-R01 recorded USER_ATTESTED FAIL; **S09-016-R01 accepted**; S09-017 NOT_RUN. No trading or 09.5.4 audit.
