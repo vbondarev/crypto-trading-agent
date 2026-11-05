@@ -1,9 +1,9 @@
-# S09-015-R01 — preliminary sealed-oracle evaluation
+# S09-015-R01 — attested failed sealed-oracle evaluation
 
 **Date:** 2026-11-06.
 **Grade:** `CONTENT_FAIL_9_OF_10`.
-**Run provenance:** `USER_SUBMITTED / POST_RUN_ATTESTATION_PENDING`.
-**Formal case status:** `NOT_ACCEPTED` pending both full mandatory PASS and provenance; no repair/re-scoring of the initial answer by reprompting.
+**Run provenance:** `LLM_BLIND_USER_ATTESTED / NO_TECHNICAL_SESSION_EXPORT`.
+**Formal case status:** `NOT_ACCEPTED / ATTESTED_FAILED_ATTEMPT`; provenance has been user-attested, but the mandatory 10/10 PASS gate was not met. No repair/re-scoring of the initial answer by reprompting.
 
 ## Locked baseline and checksum
 - Normative source pin: `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
@@ -32,8 +32,8 @@
 The test agent's supplied answer itself reports that the normative portfolio-analysis/strategy-planning/recovery prompt files contain analogous arithmetic with the same figures. This may reduce the scenario's diagnostic value for unaided generalization, even though the computation and accounting are correct. This is an **independence limitation**, not a license to alter the locked rubric or dismiss E09.
 
 ## Provenance and next action
-The user pasted a long first-response candidate headed `Crypto Trading Agent — S09-015-R01`. They have **not yet separately attested** a new Temporary Chat outside Crypto Project, first complete unchanged output without regeneration, and no hidden oracle or previous evaluation hints. Tool reads (8/8) are self-reported; technical session trace and automatic Skills loading are not authenticated.
+The user pasted a long answer headed `Crypto Trading Agent — S09-015-R01` and **subsequently explicitly attested all three conditions** with “Подтверждаю”: new Temporary Chat outside Crypto Project; first complete unchanged answer without regeneration or additional queries; no hidden oracle, prior evaluation or expected-answer hints supplied. Tool reads (8/8) are self-reported; technical session trace and automatic Skills loading are not authenticated.
 
-Do **not** add `S09-015-R01` as a formally accepted case. Record the failed attempt in the stage 09.5 execution ledger only after user provenance attestation (or explicitly as unattested if attestation is unavailable), retaining `formal_case_accepted=false`. A repeat attempt, if subsequently authorized, must use a new run ID and must not overwrite R01 or change the original preregistered oracle retroactively.
+Record `S09-015-R01` as an executed, user-attested **failed attempt** in the stage 09.5 execution ledger, retaining `formal_case_accepted=false`, `content_rubric_passed=9`, and `failed_rubric_ids=["E09"]`. Do **not** count it as a formally accepted case. A repeat attempt, if subsequently authorized, must use a new run ID and must not overwrite R01 or change the original preregistered oracle retroactively.
 
 Current accepted new cases: `S09-013-R01` and `S09-014-R01` (2/5). Stage 09.5.3 remains in progress; S09-016–017 NOT_RUN. PR #1 remains Draft.
