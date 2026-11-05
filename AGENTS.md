@@ -1,5 +1,7 @@
 # AGENTS.md
 
+> **Актуальный статус 06.11.2026 (решение пользователя):** этап 09.4 закрыт `COMPLETED / APPROVED / USER_ATTESTED` — 12/12 уникальных synthetic scenarios; см. [closeout](docs/stage-09-04-closeout.md) и [final audit](docs/stage-09-04-final-audit.md). Только проектирование 09.5 разрешено; [план v2](docs/stage-09-05-plan.md) находится в `REVISED_V2 / PENDING USER APPROVAL`, 09.5.1–09.5.6 ещё не выполнялись. Принятые результаты не доказывают реальную безопасность или auto-loaded Skills; у S09-002 сохранено ограничение происхождения первого ответа. PR #1 Draft, нет live API/trades/READY. Старые датированные статусы далее — исторические.
+
 > **Этап 09, 31.10.2026:** 09.1–09.3 `COMPLETED/APPROVED`. Текущий 09.4 `PARTIAL/PENDING INDEPENDENT EVIDENCE`: **2/12** уникальных R1 кейсов `LLM_BLIND/USER_ATTESTED PASS` (S09-001-R02 9/9; S09-002-R02 10/10 по прежнему предзарегистрированному oracle). Две разные SOL-формулировки получены **в одном Temporary Chat** и считаются одним run, не двумя. Приватная oracle-preimage SOL недоступна для повторной SHA проверки сейчас; предыдущая проверка отражена только исторически. Preflight `209/209 LOCAL_JS PASS`, `AUTO_LOADED Skills=NOT_VERIFIED`. S09-003-R01 ещё `NOT_RUN`, oracle SHA публично зафиксирован, private backup отдельно. 09.5–09.9 `NOT STARTED`; PR Draft/Open, no live READY/orders.
 
 
