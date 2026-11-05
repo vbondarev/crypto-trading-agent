@@ -280,6 +280,42 @@
       "formal_independent_technical_attestation": false,
       "formal_case_accepted": false,
       "notes": "Original first response user-attested from independent Temporary Chat outside Crypto. R2 WAIT and conflicted 1h/4h OHLCV; no R3. No accessible sealed oracle preimage or pre-run SHA commitment, so not 10/10 or accepted. Follow-up S09-006-R02 requires sealed preregistration before rerun."
+    },
+    {
+      "run_id": "S09-006-R02",
+      "case_id": "S09-006",
+      "fixture_version": 1,
+      "prompt_id": "P08-06",
+      "policy_commit_sha": "39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13",
+      "fixture_blob_sha": "965c12afa0c4afc4c0b1698732e61c597d351b88",
+      "execution_status": "EXECUTED",
+      "evidence_type": "LLM_BLIND_USER_PASTED",
+      "session_isolation": "NEW_TEMPORARY_CHAT_REQUESTED_NOT_SEPARATELY_ATTESTED_R02",
+      "independent_session": false,
+      "agent_oracle_exposed": false,
+      "oracle_hidden_from_test_agent": "NO_LEAK_OBSERVED_NOT_TECHNICALLY_VERIFIED",
+      "oracle_sha256_public_commitment": "8a9d4bcb088a1d92a235f54da4288b20f7996e8086ee904231a01460e1e7539a",
+      "oracle_sha256_verified_against_private_file": true,
+      "oracle_sha256_verification_scope": "2026-11-05_ORIGINAL_3969_BYTES_EXACT_HASH_VERIFIED",
+      "model": "UNKNOWN",
+      "load_method": "EXPLICIT_GITHUB_MARKDOWN_SELF_REPORTED",
+      "skill_auto_loading": "NOT_VERIFIED",
+      "source_body_completeness": "USER_REPORTED_5_OF_5",
+      "raw_transcript_ref": "User-pasted first supplied market response in development conversation 2026-11-05, no authenticated session export",
+      "raw_transcript_capture": "USER_PASTED_MARKET_TEXT",
+      "evaluator": "ASSISTANT_IN_DEVELOPMENT_CONVERSATION",
+      "evaluator_independence": "LIMITED",
+      "evaluation_ref": "docs/stage-09-04-s09-006-r02-evaluation.md",
+      "content_rubric_passed": 9,
+      "content_rubric_total": 10,
+      "failed_rubric_ids": [
+        "E03"
+      ],
+      "content_verdict": "FAIL_MINOR",
+      "conditional_verdict": "CONTENT_FAIL_MINOR_UNCONFIRMED_BOUNDARY_BAR_FINALITY",
+      "formal_independent_technical_attestation": false,
+      "formal_case_accepted": false,
+      "notes": "Original private sealed oracle SHA verified. E03 mandatory boundary candle close at test now 12:00 MSK lacks independent finalization caveat; confident 0 unclosed bars. Remaining 9 checks PASS. R02 must not be accepted retroactively."
     }
   ]
 }
