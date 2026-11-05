@@ -1,8 +1,8 @@
 # Stage 09.5 — Portfolio & Recovery: execution plan v2
 
-> **Version 2 — 2026-11-06 — REVISED / PENDING USER APPROVAL. IMPLEMENTATION_NOT_STARTED.**
+> **Version 2 — 2026-11-06 — PLANNED / APPROVED. IMPLEMENTATION_NOT_STARTED.**
 >
-> This plan incorporates all twelve user-approved review findings `SR095-01`–`SR095-12` from [critical self-review v1](stage-09-05-plan-self-review.md). The user authorized **revising the plan and repeating its critical self-review only**. No 09.5.1 preflight, creation of private oracles, independent model test, modification of fixture, live API access, or trading is authorized.
+> The user explicitly approved this v2 plan and its [second critical self-review](stage-09-05-plan-v2-review.md), as recorded in the [formal plan approval](stage-09-05-plan-approval.md). **The same user instruction explicitly prohibits starting 09.5.1 until separately authorized.** All twelve original findings `SR095-01`–`SR095-12` were addressed. No 09.5.1 preflight, private oracle, fixture change, independent model run, live API access or trading is authorized.
 >
 > [Stage 09.4 closeout](stage-09-04-closeout.md) is `COMPLETED/APPROVED/USER_ATTESTED`. The approved [master scope](stage-09-plan.md) remains controlling. PR #1 stays **Draft/Open**, no merger or R3 READY.
 
@@ -149,4 +149,4 @@ Post-run user attestation changes **only mutable acceptance metadata via a new a
 
 ## 9. Decision requested
 
-**Current:** `REVISED_V2 / PENDING USER APPROVAL / IMPLEMENTATION_NOT_STARTED`. Present second critical self-review of the revised plan and receive explicit approval. After approval, **wait for separate authorization** to execute 09.5.1. Nothing in this plan authorizes 09.5.2–09.5.6, live account access, trades, real `READY`, or PR merge.
+**Accepted 2026-11-06:** `PLAN_09_5_V2_APPROVED / IMPLEMENTATION_NOT_STARTED`. The user approved v2 and its second critical self-review. [Approval record](stage-09-05-plan-approval.md) is controlling. **Stop: do not execute 09.5.1 until a distinct, explicit user instruction.** Nothing here authorizes 09.5.2–09.5.6, live account access, trading, real `READY`, or PR merge.
