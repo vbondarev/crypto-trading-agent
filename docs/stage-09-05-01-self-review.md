@@ -1,6 +1,6 @@
 # Stage 09.5.1 — post-implementation self-review
 
-**Date:** 2026-11-06. **Verdict:** `SELF_REVIEW_PASS / PENDING_USER_ACCEPTANCE` for documentary preflight. This is a critical self-review by the same assistant that compiled the preflight, not an external independent session/runtime audit.
+**Date:** 2026-11-06. **Verdict:** `SELF_REVIEW_PASS / USER_ACCEPTED` for documentary preflight; [formal approval](stage-09-05-01-acceptance.md). This is a critical self-review by the same assistant that compiled the preflight, not an external independent session/runtime audit.
 
 ## Evidence and checks
 
@@ -32,4 +32,4 @@ Report: [stage-09-05-01-preflight.md](stage-09-05-01-preflight.md). Immutable **
 4. User-attested provenance limitations from 09.4, especially S09-002 first-output discrepancy, remain historical.
 5. `09.5.2` sealed-oracle preregistration is explicitly **NOT_STARTED**; these documentary source pins do not authorize running any model case.
 
-**Gate decision:** `09.5.1 IMPLEMENTED / SELF_REVIEW_PASS / PENDING USER ACCEPTANCE`. The only next proposed step is explicit user review/acceptance of this preflight. After accepting, a **separate** user instruction is required to begin 09.5.2. PR #1 remains Draft; stage 09.5 as a whole remains in progress.
+**Gate decision:** `09.5.1 COMPLETED / APPROVED / SELF_REVIEW_PASS` following [user acceptance](stage-09-05-01-acceptance.md). A **separate** user instruction is still required to begin 09.5.2. PR #1 remains Draft; stage 09.5 as a whole remains in progress.
