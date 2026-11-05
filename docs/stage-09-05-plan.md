@@ -1,8 +1,8 @@
 # Stage 09.5 — Portfolio & Recovery: execution plan v2
 
-> **Version 2 — 2026-11-06 — PLANNED / APPROVED. Step 09.5.1 COMPLETED / APPROVED; 09.5.2–09.5.6 NOT_STARTED.**
+> **Version 2 — 2026-11-06 — PLANNED / APPROVED. Steps 09.5.1 and 09.5.2 COMPLETED / APPROVED; 09.5.3–09.5.6 NOT_STARTED.**
 >
-> The user explicitly approved this v2 plan and its [second critical self-review](stage-09-05-plan-v2-review.md), as recorded in the [formal plan approval](stage-09-05-plan-approval.md). **09.5.1 was separately authorized, completed and formally accepted; see [09.5.1 acceptance](stage-09-05-01-acceptance.md). A new user instruction is required before 09.5.2.** All twelve original findings `SR095-01`–`SR095-12` were addressed. 09.5.1 documentary preflight was performed and approved. No 09.5.2 sealed oracle creation, fixture change, independent model run, live API access or trading is authorized.
+> The user explicitly approved this v2 plan and its [second critical self-review](stage-09-05-plan-v2-review.md), as recorded in the [formal plan approval](stage-09-05-plan-approval.md). **09.5.1 was separately authorized, completed and formally accepted; see [09.5.1 acceptance](stage-09-05-01-acceptance.md). A new user instruction is required before 09.5.2.** All twelve original findings `SR095-01`–`SR095-12` were addressed. 09.5.1 documentary preflight was performed and approved. 09.5.2 sealed oracle preparation was separately authorized and accepted; no 09.5.3 independent model run, fixture change, live API access or trading is authorized.
 >
 > [Stage 09.4 closeout](stage-09-04-closeout.md) is `COMPLETED/APPROVED/USER_ATTESTED`. The approved [master scope](stage-09-plan.md) remains controlling. PR #1 stays **Draft/Open**, no merger or R3 READY.
 
@@ -149,4 +149,4 @@ Post-run user attestation changes **only mutable acceptance metadata via a new a
 
 ## 9. Decision requested
 
-**Accepted 2026-11-06:** `PLAN_09_5_V2_APPROVED / STEP_09_5_1_COMPLETED_APPROVED / STEP_09_5_2_NOT_STARTED`. The user approved v2 and its second critical self-review. [Approval record](stage-09-05-plan-approval.md) is controlling. **09.5.1 completed by separate authorization and formal acceptance; stop before 09.5.2 until another explicit user instruction.** Nothing here authorizes 09.5.2–09.5.6, live account access, trading, real `READY`, or PR merge.
+**Accepted 2026-11-06:** `PLAN_09_5_V2_APPROVED / STEPS_09_5_1_AND_09_5_2_COMPLETED_APPROVED / STEP_09_5_3_NOT_STARTED`. The user approved v2 and its second critical self-review. [Approval record](stage-09-05-plan-approval.md) is controlling. **09.5.1 completed by separate authorization and formal acceptance; [09.5.2 accepted](stage-09-05-02-acceptance.md); stop before 09.5.3 until another explicit user instruction.** Nothing here authorizes 09.5.2–09.5.6, live account access, trading, real `READY`, or PR merge.
