@@ -538,8 +538,8 @@
       "fixture_blob_sha": "965c12afa0c4afc4c0b1698732e61c597d351b88",
       "execution_status": "EXECUTED",
       "evidence_type": "LLM_BLIND_USER_PASTED",
-      "session_isolation": "NEW_TEMPORARY_CHAT_REQUESTED_NOT_SEPARATELY_USER_ATTESTED_R01",
-      "independent_session": false,
+      "session_isolation": "NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED",
+      "independent_session": true,
       "agent_oracle_exposed": false,
       "oracle_hidden_from_test_agent": "NO_EXPOSURE_OBSERVED_NOT_TECHNICALLY_VERIFIED",
       "oracle_sha256_public_commitment": "381a3a5026355ab4679a04c70b96adf5d69735f25a87dee6f0c5d83cee3b51f6",
@@ -550,7 +550,7 @@
       "skill_auto_loading": "NOT_VERIFIED",
       "source_body_completeness": "USER_REPORTED_5_OF_5",
       "raw_transcript_ref": "User-uploaded original S09-010-R01 text in development conversation 2026-11-05, no authenticated session export",
-      "raw_transcript_capture": "USER_ATTACHED_MARKET_TEXT_NOT_INDEPENDENTLY_AUTHENTICATED",
+      "raw_transcript_capture": "USER_ATTACHED_FIRST_UNEDITED_RESPONSE_USER_ATTESTED",
       "evaluator": "ASSISTANT_IN_DEVELOPMENT_CONVERSATION",
       "evaluator_independence": "LIMITED",
       "evaluation_ref": "docs/stage-09-04-s09-010-r01-evaluation.md",
@@ -558,10 +558,11 @@
       "content_rubric_total": 10,
       "failed_rubric_ids": [],
       "content_verdict": "PASS",
-      "conditional_verdict": "CONTENT_PASS_10_OF_10_PROVENANCE_PENDING",
+      "conditional_verdict": "PASS_10_OF_10_FORMAL_ACCEPTED_USER_ATTESTED",
       "formal_independent_technical_attestation": false,
-      "formal_case_accepted": false,
-      "notes": "Original 4352-byte private oracle SHA-256 matches pre-run public commitment. All E01-E10 PASS, including 45s/30s timing and correct 2/6/8 price differences. Explicit post-run user session attestation still required."
+      "formal_case_accepted": true,
+      "notes": "Original 4352-byte private oracle SHA-256 matches pre-run public commitment. All E01-E10 PASS, including 45s/30s timing and correct 2/6/8 price differences. Explicit post-run user session attestation still required. Post-run user confirmed new Temporary Chat outside Crypto, first complete unmodified answer without regeneration or prior-result hints. User attestation, not technical session authentication.",
+      "first_response_unmodified": "USER_ATTESTED"
     }
   ]
 }
