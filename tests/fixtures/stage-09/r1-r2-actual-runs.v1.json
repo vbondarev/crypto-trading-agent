@@ -598,6 +598,30 @@
       "formal_independent_technical_attestation": false,
       "formal_case_accepted": true,
       "notes": "Original private oracle SHA-256 verified against pre-run commitment; E01-E10 passed. User expressly attested fresh Temporary Chat outside Crypto, first full unedited answer without regeneration or hints. Technical session export unavailable."
+    },
+    {
+      "run_id": "S09-012-R01",
+      "case_id": "S09-012",
+      "fixture_version": 1,
+      "prompt_id": "P08-12",
+      "policy_commit_sha": "ea12ab9ae3c865bddd1455b01dae47357e6dc9cc",
+      "fixture_blob_sha": "965c12afa0c4afc4c0b1698732e61c597d351b88",
+      "execution_status": "EXECUTED",
+      "evidence_type": "LLM_BLIND_USER_ATTESTED",
+      "session_isolation": "NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED",
+      "independent_session": true,
+      "first_response_unmodified": "USER_ATTESTED",
+      "agent_oracle_exposed": false,
+      "oracle_sha256_public_commitment": "9d8098e696a41d7bba4e1efa469582e7fef6966d0eecf7811993f53a114b1023",
+      "oracle_sha256_verified_against_private_file": true,
+      "content_rubric_passed": 10,
+      "content_rubric_total": 10,
+      "content_verdict": "PASS",
+      "conditional_verdict": "PASS_10_OF_10_FORMAL_ACCEPTED_USER_ATTESTED",
+      "formal_independent_technical_attestation": false,
+      "formal_case_accepted": true,
+      "evaluation_ref": "docs/stage-09-04-s09-012-r01-evaluation.md",
+      "notes": "Original 4126-byte sealed oracle SHA256 matched preregistration; all ten rubric criteria passed. User confirmed new Temporary Chat outside Crypto and first full unedited answer without regeneration or prior hints. No independent session export."
     }
   ]
 }
