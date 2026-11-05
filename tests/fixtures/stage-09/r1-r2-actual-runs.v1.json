@@ -360,8 +360,8 @@
       "fixture_blob_sha": "965c12afa0c4afc4c0b1698732e61c597d351b88",
       "execution_status": "EXECUTED",
       "evidence_type": "LLM_BLIND_USER_PASTED",
-      "session_isolation": "NEW_TEMPORARY_CHAT_REQUESTED_R04_NOT_SEPARATELY_USER_ATTESTED",
-      "independent_session": false,
+      "session_isolation": "NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED",
+      "independent_session": true,
       "agent_oracle_exposed": false,
       "oracle_hidden_from_test_agent": "NO_EXPOSURE_OBSERVED_NOT_TECHNICALLY_VERIFIED",
       "oracle_sha256_public_commitment": "696d63684bac765aaaf08d7ce3ee3af2082c815fc355c1cc4caa87428e05080d",
@@ -380,10 +380,11 @@
       "content_rubric_total": 10,
       "failed_rubric_ids": [],
       "content_verdict": "PASS",
-      "conditional_verdict": "CONTENT_PASS_10_OF_10_PROVENANCE_PENDING",
+      "conditional_verdict": "PASS_10_OF_10_FORMAL_ACCEPTED_USER_ATTESTED",
       "formal_independent_technical_attestation": false,
-      "formal_case_accepted": false,
-      "notes": "Original private oracle file 3978B SHA256 matched preregistered commitment; all E01-E10 pass including E03. Await explicit user attestation of fresh Temporary Chat outside project and unmodified first response. No technical session export."
+      "formal_case_accepted": true,
+      "notes": "2026-11-05 post-run user attested fresh Temporary Chat outside Crypto, first complete unedited answer, no regeneration/corrections/prior-result hints. Original 3978B private oracle SHA-256 verified against preregistered commitment; E01-E10 PASS. Technical session attestation remains unavailable. Preserve prior R01-R03 verdicts.",
+      "first_response_unmodified": "USER_ATTESTED_2026-11-05"
     }
   ]
 }
