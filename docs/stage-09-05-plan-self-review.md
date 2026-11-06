@@ -1,0 +1,42 @@
+# Stage 09.5 — critical self-review before user approval
+
+**2026-11-06. Verdict:** `CHANGES_REQUIRED / PLAN_NOT_APPROVED`. This is a separate adversarial second pass over the draft, conducted by the same assistant which helped author it; it is **not** an external independent audit. No 09.5 execution, oracle generation or fixture modification has been authorized.
+
+**Reviewed from GitHub:** `docs/stage-09-05-plan.md` (blob `9308c5f7b1794637377475931ac1a758f1180b6e`), approved master `docs/stage-09-plan.md`, `docs/stage-09-test-contract.md`, `docs/stage-09-fixtures.md`, `docs/input-templates.md`, `docs/risk-management.md`, `docs/data-freshness.md`, unique `S09-012`–`S09-017` fixture entries, and 09.4 formal closeout. This audit assesses the **test plan**, not model behavior.
+
+## Critical findings
+
+| ID | Severity | Finding | Mandatory change before approval |
+|---|---|---|---|
+| SR095-01 | HIGH | No explicit requirement-by-case matrix for portfolio invariants, stages S0/S1/S2/S3, H01, AD-009 and risk prohibitions. Cases provide sparse inputs; the plan risks interpreting a correct refusal to quantify S3 as validated numerical stress coverage. | Add `normative rule → fixture → observable assertion → impossible-to-prove → target status` matrix; mark each S0–S3 component `ASSERTED/CONDITIONAL/NOT_EVALUABLE`, and `FR-038 NOT_PERFORMED` where history/IM/MM is missing. |
+| SR095-02 | HIGH | No precise gate linking failures of **mandatory negative protections** to blocked case/stage. `5/5 accepted + zero unresolved FAIL_CRITICAL` still permits subjective acceptance of FAIL_MAJOR/MINOR or missing criterion evidence. | Freeze per-case objective mandatory assertions, prohibition list and severity taxonomy, add `any mandatory criterion fail → no case acceptance`, explicit `FAIL_MAJOR/FAIL_CRITICAL` disposition and clean preregistered regression; all five new cases must have full mandatory PASS. |
+| SR095-03 | HIGH | Reusing S09-012 as 09.5 coverage is transparent but the original run was commissioned/evaluated under stage 09.4. Equating coverage transfer with a new dedicated independent RT04 run would overstate independence. | Keep dual counters: `6/6 P08-12..17 coverage = 1 prior accepted reference + 5 new runs`; `5/5 new 09.5 LLM runs`; separate evidence tier for prior cross-stage coverage; only new runs count toward 09.5 independent execution. |
+| SR095-04 | MEDIUM | Five baseline normative files plus 'relevant' skills are not enumerated by exact route/case. Different subjects may load different versions or omit portfolio-analysis, risk-assessment, strategy-planning. | Preflight freeze per-case Skill manifest with all exact repo paths, Git blob SHA and expected source version (at minimum 5 baseline docs plus applicable route Skills). Report explicitly `EXPLICIT_READ` and `AUTO_LOADED_NOT_VERIFIED`; abort/inconclusive on failed mandatory load. |
+| SR095-05 | MEDIUM | Separate ledger is suggested, yet not selected. Duplication, append-only violations and absent run IDs could emerge. | Choose `tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json` as canonical 09.5 journal, schema cross-linking prior 09.4 case S09-012 by `reference_run_id`, never copying it as a new run; immutable run IDs, unique key and audit of counters. |
+| SR095-06 | MEDIUM | Original oracle storage, backup, digest publication and post-run provenance capture lack explicit byte-for-byte and loss-handling protocol. | For each case, write original UTF-8 oracle bytes; independently hash in local container; confirm GitHub SHA commitment **commit exists before invocation**; verify original SHA immediately before scoring; missing/mismatch → `FORMAL_INCONCLUSIVE`, no reconstruction. Capture untouched first response and source/receipt timestamps; preserve original under named file/source reference. |
+| SR095-07 | MEDIUM | H01 recovery conditions are not precisely bounded: unrealized PnL is mark-based and fee/funding sums may be incomplete; `WAIT/HOLD/REDUCE/CLOSE` can be misinterpreted as unconditional advice or realized recovery. | Require signed `realized_gross + current_unrealized − known_fees − known_funding` **conditional marked-to-market estimate**, not guaranteed realized exit; account for missing accrued/exit fees, timestamp, series linkage and fill uncertainty; separate hypothetical portfolio-series net from realized closed-series net. |
+| SR095-08 | MEDIUM | S09-014 ambiguity: `virtual_in=GPSUSDT:0` yields a reachable fourth slot if executable, while order A/B do not include explicit instrument/ownership. Plan should not infer order B is GPS or A/B are same price/order. | Case oracle must explicitly require uncertain order-to-bot attribution, only documented identities/links, S0=3 and possible S2=4 conditional on reachable GPS IN; avoid counting FILLED A or doubling B `leavesQty=2`; unknown exclusivity treated conservatively. |
+| SR095-09 | MEDIUM | S09-013 displayed Cross `liqPrice=130`, Mark=100 looks numerically 30% away; a model could misleadingly certify FR-032 using a displayed one-position liquidation estimate without account MMR/T02. | Mandate distinguishing *arithmetic gap from displayed estimate* (if computed) from actual portfolio liquidation condition, independently verified mark and stress-proof. Without T02/MMR → `UNVERIFIED`, no READY. |
+| SR095-10 | LOW | S09-017's 1000→920 (8%) change might be confused with HWM drawdown or daily 3% stop; no history or causal attribution. | Explicit forbidden claims: proven 3% daily breach, HWM drawdown, realized loss, liquidation or violation based solely on two equity snapshots; require post-event synchronized T02 and event reason UNKNOWN. |
+| SR095-11 | MEDIUM | Plan does not commit a normalized common grader and severity review for evaluator drift after defects; same model authors/evaluates oracles, so independence remains limited. | Fix standardized evaluation record `expected, observed quote/line, PASS/FAIL/NOT_EVALUABLE, severity, confidence, evidence tier`; no changing frozen oracle post-answer; mark evaluator independence `LIMITED` and preserve contradictions. |
+| SR095-12 | LOW | Completion docs risk leaving root `README.md`/`AGENTS.md` older 09.4 statuses at the top even after formal 09.4 approval, confusing future pinned sessions and auditors. | After user approves amended plan, create latest-status preamble pointing to 09.4 closeout and 09.5 plan without rewriting historical chronology; avoid changing normative policy mid-run except with explicitly new pin. |
+
+## Corrected proposed execution gates
+
+1. **09.5.1**: assert source/contract/Skill manifests, frozen five cases, explicit route-to-rule matrix and already-accepted S09-012 reference; no test run.
+2. **09.5.2**: five immutable original sealed rubrics and backups; public hash published/verified before launch. Fix objective positive/negative assertions, threshold, scoring and status mapping. Keep original private bytes outside the agent.
+3. **09.5.3–4**: one fresh Temporary Chat per case, source-read self-report, first unmodified output, user provenance attestation, hash-verification and mandatory rubric scoring; use the chosen append-only journal with no duplicate case count.
+4. **09.5.5**: failures or unavailable original oracle/first answer → not accepted; record severity and specific revision, precommit a new separate rerun. Never patch historical evidence.
+5. **09.5.6**: `5/5 NEW accepted first-answer runs + 1 historic reference case`, audit all five reports, unique run IDs, all mandatory assertions, reproducible H01 arithmetic, event invalidation, and explicit `NOT_EVALUABLE` risk computations. User must separately approve stage 09.5 before 09.6.
+
+## Nonissues to preserve
+
+- The synthetic-only boundary, no real market or R3 READY, and PR #1 staying Draft are correct.
+- Using P08-12–17 and RT04/RT05 matches master plan.
+- S09-015 numeric `-15+10-1-2=-8` and S09-016 known subtotal `-18+5=-13` are correct **as bounded arithmetic**, not exit guarantees.
+- H02/H03 missing must be `NOT_CHECKED`, **not** automatically a block by itself; an explicitly known active H04 must not be ignored.
+- A stage 09.5 acceptance is not automatic permission to run 09.6 or amend stage 09 production release gates.
+
+## Decision
+
+**Recommend revising `docs/stage-09-05-plan.md` to v2 using SR095-01–SR095-12, then requesting explicit approval.** This review file captures the proposed corrections only; the current v1 plan stays pending and unchanged. No synthetic test was started.
