@@ -252,13 +252,18 @@
       "attestation_ref": "docs/stage-09-05-05-s09-015-r02-user-attestation.md",
       "content_rubric_passed": 10,
       "content_rubric_total": 10,
-      "content_rubric_score_qualification": "PROVISIONAL_BACKUP_BASED_NOT_FORMAL",
+      "content_rubric_score_qualification": "10_OF_10_BACKUP_VERIFIED_ORIGINAL_UNAVAILABLE_USER_APPROVED_EXCEPTION",
       "failed_rubric_ids": [],
-      "content_verdict": "PRELIMINARY_PASS",
-      "conditional_verdict": "FORMAL_INCONCLUSIVE_ORIGINAL_PRIVATE_ORACLE_NOT_ACCESSIBLE_USER_ATTESTED",
+      "content_verdict": "PASS_UNDER_EXCEPTION",
+      "conditional_verdict": "ACCEPTED_WITH_USER_APPROVED_BACKUP_EXCEPTION_CONTENT_PASS_10_OF_10",
       "formal_independent_technical_attestation": false,
-      "formal_case_accepted": false,
-      "notes": "R02 executed and user-attested. Preliminary 10/10 against precommitted ZIP backup; standalone original unavailable and could not be rehashed after answer. No formal case acceptance. Never restore original from ZIP and retrospectively claim original intact."
+      "formal_case_accepted": true,
+      "notes": "R02 executed and user-attested. Preliminary 10/10 against precommitted ZIP backup; standalone original unavailable and could not be rehashed after answer. No formal case acceptance. Never restore original from ZIP and retrospectively claim original intact. Subsequent user chose the backup-based procedural exception after 10/10 scoring and session attestation. Acceptance is explicitly lower-assurance; the original private file remains unavailable and original-file verification remains false. Preliminary FORMAL_INCONCLUSIVE is historical and not erased.",
+      "user_approved_procedural_exception": true,
+      "exception_scope": "S09-015-R02_ONLY",
+      "exception_ref": "docs/stage-09-05-05-s09-015-r02-backup-exception-approval.md",
+      "formal_acceptance_evidence_tier": "LLM_BLIND_USER_ATTESTED_WITH_BACKUP_EXCEPTION",
+      "original_oracle_integrity_gate": "NOT_SATISFIED_USER_APPROVED_WAIVER"
     }
   ],
   "audit_events": [
@@ -320,6 +325,22 @@
       "attestation_channel": "DEVELOPMENT_CONVERSATION",
       "attestation_user_message": "Подтверждаю",
       "result": "USER_ATTESTED_PRELIMINARY_CONTENT_10_OF_10_FORMAL_INCONCLUSIVE",
+      "date": "2026-11-08"
+    },
+    {
+      "case_id": "S09-015",
+      "run_id": "S09-015-R02",
+      "event": "USER_APPROVED_SEALED_BACKUP_PROCEDURAL_EXCEPTION",
+      "decision": "ACCEPTED_WITH_USER_APPROVED_BACKUP_EXCEPTION",
+      "original_private_file_rehash_verified": false,
+      "precommitted_backup_zip_hash_verified": true,
+      "content_rubric_passed": 10,
+      "content_rubric_total": 10,
+      "formal_case_accepted": true,
+      "assurance": "LOWER_THAN_STANDARD_ORIGINAL_FILE_VERIFIED",
+      "source": "USER_CHOSE_OPTION_2_IN_DEVELOPMENT_CONVERSATION",
+      "result": "S09-015_R02_FORMALLY_ACCEPTED_UNDER_DOCUMENTED_EXCEPTION_ONLY",
+      "report_ref": "docs/stage-09-05-05-s09-015-r02-backup-exception-approval.md",
       "date": "2026-11-08"
     }
   ]
