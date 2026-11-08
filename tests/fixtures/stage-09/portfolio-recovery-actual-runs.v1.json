@@ -214,6 +214,51 @@
       "formal_independent_technical_attestation": false,
       "formal_case_accepted": true,
       "notes": "All E01–E10 mandatory precommitted criteria passed. User subsequently attested new isolated Temporary Chat, first complete unchanged answer without regeneration or additional prompts, and no oracle/past grading exposure. No independent technical session evidence or live trading proof."
+    },
+    {
+      "case_id": "S09-015",
+      "run_id": "S09-015-R02",
+      "fixture_version": 2,
+      "prompt_id": "P08-15",
+      "family": "H01",
+      "synthetic_test_now_msk": "2026-10-20T12:00:00+03:00",
+      "policy_commit_sha": "1a0c12f7baba99d2b1dfb7b8afe18ef40034264c",
+      "fixture_blob_sha": "5cd4c2ef9c8fdfdc572e154d38868941ec253959",
+      "fixture_path": "tests/fixtures/stage-09/s09-015-r02-input.v2.json",
+      "fixture_commit_sha": "286be1317f79eb63fd4e43232c36da9646d45aeb",
+      "execution_status": "EXECUTED",
+      "evidence_type": "LLM_BLIND_USER_ATTESTED",
+      "session_isolation": "NEW_TEMPORARY_CHAT_OUTSIDE_CRYPTO_PROJECT_USER_ATTESTED",
+      "independent_session": true,
+      "first_response_unmodified": "USER_ATTESTED",
+      "agent_oracle_exposed": false,
+      "oracle_hidden_from_test_agent": "USER_ATTESTED_NOT_TECHNICALLY_VERIFIED",
+      "oracle_sha256_public_commitment": "a2f563e0eec0228f9c4a7c8895ebb0f4533b0c6b040e3c99296184aca929718c",
+      "oracle_sha256_verified_against_original_private_file": false,
+      "oracle_backup_zip_hash_verified": true,
+      "oracle_original_bytes": 4318,
+      "oracle_mandatory_criteria": 10,
+      "oracle_public_commit_sha": "b6d87e6b3d084f1ba05b8c72b09f610605b363b1",
+      "model": "UNKNOWN",
+      "load_method": "EXPLICIT_GITHUB_READ_SELF_REPORTED",
+      "skill_auto_loading": "NOT_VERIFIED",
+      "source_body_completeness": "USER_REPORTED_8_OF_8",
+      "raw_transcript_ref": "Full first user-pasted response headed Crypto Trading Agent — S09-015-R02 in development conversation; no authenticated session export",
+      "raw_transcript_capture": "USER_PASTED_FIRST_UNEDITED_RESPONSE_USER_ATTESTED",
+      "evaluator": "ASSISTANT_IN_DEVELOPMENT_CONVERSATION",
+      "evaluator_independence": "LIMITED",
+      "technical_session_attestation": false,
+      "evaluation_ref": "docs/stage-09-05-05-s09-015-r02-preliminary-evaluation.md",
+      "attestation_ref": "docs/stage-09-05-05-s09-015-r02-user-attestation.md",
+      "content_rubric_passed": 10,
+      "content_rubric_total": 10,
+      "content_rubric_score_qualification": "PROVISIONAL_BACKUP_BASED_NOT_FORMAL",
+      "failed_rubric_ids": [],
+      "content_verdict": "PRELIMINARY_PASS",
+      "conditional_verdict": "FORMAL_INCONCLUSIVE_ORIGINAL_PRIVATE_ORACLE_NOT_ACCESSIBLE_USER_ATTESTED",
+      "formal_independent_technical_attestation": false,
+      "formal_case_accepted": false,
+      "notes": "R02 executed and user-attested. Preliminary 10/10 against precommitted ZIP backup; standalone original unavailable and could not be rehashed after answer. No formal case acceptance. Never restore original from ZIP and retrospectively claim original intact."
     }
   ],
   "audit_events": [
@@ -266,6 +311,16 @@
       "attestation_user_message": "Подтверждаю",
       "result": "FORMAL_ACCEPTED_USER_ATTESTED",
       "date": "2026-11-06"
+    },
+    {
+      "case_id": "S09-015",
+      "run_id": "S09-015-R02",
+      "event": "USER_ATTESTATION_RECEIVED_ORIGINAL_ORACLE_GATE_UNRESOLVED",
+      "attestation": "New Temporary Chat outside Crypto; first complete unchanged output without regeneration or additional prompts; no sealed oracle, earlier grading or answer hints given.",
+      "attestation_channel": "DEVELOPMENT_CONVERSATION",
+      "attestation_user_message": "Подтверждаю",
+      "result": "USER_ATTESTED_PRELIMINARY_CONTENT_10_OF_10_FORMAL_INCONCLUSIVE",
+      "date": "2026-11-08"
     }
   ]
 }
