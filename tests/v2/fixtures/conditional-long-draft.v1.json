@@ -1,0 +1,359 @@
+{
+  "schema_version": "v2-stage04-synthetic.v1",
+  "synthetic": true,
+  "warning": "ALL MARKET AND INDICATOR VALUES SYNTHETIC USER-SUPPLIED / NO REAL TRADING / NOT READY",
+  "request_context": {
+    "request_id": "V2-SYN-002",
+    "as_of": "2026-10-20T12:00:00+03:00",
+    "user_goal": "BOT_PROPOSAL",
+    "instrument": {
+      "exchange": "Bybit",
+      "symbol": "HYPEUSDT",
+      "market_type": "USDT_PERPETUAL",
+      "settle_coin": "USDT",
+      "identity_status": "USER_SUPPLIED"
+    },
+    "horizon": "intraday",
+    "timeframes": [
+      "1h",
+      "4h"
+    ],
+    "preferred_platform": "VELES",
+    "risk_budget_usdt": 100,
+    "leverage_cap": 5,
+    "account_scope": null,
+    "existing_position": false
+  },
+  "evidence_records": [
+    {
+      "evidence_id": "E-101",
+      "subject": "HYPEUSDT",
+      "claim": "Synthetic model: Bybit HYPEUSDT last price 100 USDT at 12:00 Moscow",
+      "category": "MARKET",
+      "source_kind": "USER_SUPPLIED",
+      "source_name": "Synthetic exercise",
+      "source_ref": null,
+      "source_method": "USER_TEXT",
+      "access_status": "USER_SUPPLIED_UNVERIFIED",
+      "published_at": null,
+      "observed_at": "2026-10-20T12:00:00+03:00",
+      "retrieved_at": null,
+      "timezone": "Europe/Moscow",
+      "value": 100,
+      "unit": "USDT",
+      "market_identity": "Bybit USDT perpetual",
+      "quality": "SINGLE_SOURCE",
+      "independence_group": "synthetic-input",
+      "limitations": [
+        "Fictitious scenario, not exchange verified"
+      ],
+      "depends_on": []
+    },
+    {
+      "evidence_id": "E-102",
+      "subject": "HYPEUSDT",
+      "claim": "Synthetic model: BTC context positive, not independently verified",
+      "category": "MARKET",
+      "source_kind": "USER_SUPPLIED",
+      "source_name": "Synthetic exercise",
+      "source_ref": null,
+      "source_method": "USER_TEXT",
+      "access_status": "USER_SUPPLIED_UNVERIFIED",
+      "published_at": null,
+      "observed_at": "2026-10-20T12:00:00+03:00",
+      "retrieved_at": null,
+      "timezone": "Europe/Moscow",
+      "value": null,
+      "unit": null,
+      "market_identity": "Bybit USDT perpetual",
+      "quality": "SINGLE_SOURCE",
+      "independence_group": "synthetic-input",
+      "limitations": [
+        "Not independent BTC observation"
+      ],
+      "depends_on": []
+    }
+  ],
+  "market_evidence": {
+    "request_id": "V2-SYN-002",
+    "instrument": {
+      "exchange": "Bybit",
+      "symbol": "HYPEUSDT",
+      "market_type": "USDT_PERPETUAL",
+      "settle_coin": "USDT",
+      "identity_status": "USER_SUPPLIED"
+    },
+    "market_regime": "RISK_ON",
+    "btc_eth_context": [
+      "SYNTHETIC: BTC positive momentum only from user fixture"
+    ],
+    "sector_context": [],
+    "macro_events": [],
+    "coin_catalysts": [],
+    "social_observations": [],
+    "derivatives": [],
+    "evidence_ids": [
+      "E-101",
+      "E-102"
+    ],
+    "gaps": [
+      "No independently verified public sources",
+      "No authentic social/news posts"
+    ],
+    "conflicts": [],
+    "fetched_at": "2026-10-20T12:00:00+03:00",
+    "coverage": "PARTIAL"
+  },
+  "technical_evidence": {
+    "request_id": "V2-SYN-002",
+    "instrument": {
+      "exchange": "Bybit",
+      "symbol": "HYPEUSDT",
+      "market_type": "USDT_PERPETUAL",
+      "settle_coin": "USDT",
+      "identity_status": "USER_SUPPLIED"
+    },
+    "candles_by_timeframe": [
+      {
+        "timeframe": "1h",
+        "source_ids": [
+          "E-101"
+        ],
+        "count_closed": 110,
+        "last_closed_at": "2026-10-20T11:00:00+03:00",
+        "candle_completeness": "PARTIAL"
+      }
+    ],
+    "indicators": [
+      {
+        "name": "EMA50",
+        "parameters": {
+          "period": 50,
+          "timeframe": "1h"
+        },
+        "value": 98,
+        "computed_at": "2026-10-20T12:00:00+03:00",
+        "source_ids": [
+          "E-101"
+        ],
+        "validation": "USER_SUPPLIED"
+      }
+    ],
+    "trend_by_timeframe": [
+      {
+        "timeframe": "1h",
+        "direction": "UP",
+        "confidence": "LOW",
+        "reasons": [
+          "Synthetic 100>98 EMA50 from user fixture, not verified"
+        ]
+      }
+    ],
+    "levels": [],
+    "volatility": null,
+    "momentum": null,
+    "volume": null,
+    "invalidation": [],
+    "disagreements": [],
+    "gaps": [
+      "Raw OHLCV for 110 candles not provided; indicator not independently computed"
+    ]
+  },
+  "coin_profile": {
+    "request_id": "V2-SYN-002",
+    "instrument": {
+      "exchange": "Bybit",
+      "symbol": "HYPEUSDT",
+      "market_type": "USDT_PERPETUAL",
+      "settle_coin": "USDT",
+      "identity_status": "USER_SUPPLIED"
+    },
+    "snapshot_at": "2026-10-20T12:00:00+03:00",
+    "market_regime": {
+      "state": "RISK_ON",
+      "reasons": [
+        "Synthetic BTC context only"
+      ]
+    },
+    "coin_context": {
+      "sector": null,
+      "relative_strength": null,
+      "catalysts": [],
+      "tokenomics_flags": []
+    },
+    "social_news": {
+      "dominant_narratives": [],
+      "confirmed_events": [],
+      "rumors": [],
+      "coverage": "INSUFFICIENT"
+    },
+    "technical": {
+      "global_trend": {
+        "direction": "UNKNOWN",
+        "confidence": "INSUFFICIENT",
+        "rationale": [
+          "Missing validated 4h and 1d"
+        ]
+      },
+      "local_trend": {
+        "direction": "UP",
+        "confidence": "LOW",
+        "rationale": [
+          "User-supplied synthetic scenario, incomplete technical validation"
+        ]
+      },
+      "timeframes": [
+        "1h",
+        "4h"
+      ],
+      "key_levels": [],
+      "volatility": null,
+      "signals": []
+    },
+    "derivatives": {
+      "funding": null,
+      "open_interest": null,
+      "liquidations": null,
+      "interpretation": "NOT_CHECKED"
+    },
+    "bullish_factors": [
+      "Synthetic local EMA50 support only"
+    ],
+    "bearish_factors": [
+      "Data provenance gaps"
+    ],
+    "contradictions": [],
+    "scenarios": [
+      {
+        "name": "BULL",
+        "trigger": "Verified 1h momentum plus validated 4h support",
+        "invalidation": "Break of validated support",
+        "risk": "Volatility unknown"
+      },
+      {
+        "name": "BASE",
+        "trigger": "Await source confirmation",
+        "invalidation": "Validated trend contradicts synthetic signal",
+        "risk": "Evidence incomplete"
+      },
+      {
+        "name": "BEAR",
+        "trigger": "Verified downside break",
+        "invalidation": "Validated reversal",
+        "risk": "Unknown liquidity"
+      }
+    ],
+    "trend_decision": {
+      "direction": "MIXED",
+      "confidence": "LOW",
+      "rationale": [
+        "Local synthetic UP, global UNKNOWN and no independent corroboration"
+      ]
+    },
+    "evidence_refs": [
+      "E-101",
+      "E-102"
+    ],
+    "coverage_gaps": [
+      "No independent source confirmation",
+      "Missing validated multi-TF OHLCV",
+      "No social evidence"
+    ],
+    "last_material_event_at": null
+  },
+  "strategy_proposal": {
+    "strategy_id": "SYN-S002",
+    "coin_profile_ref": "V2-SYN-002",
+    "posture": "LONG",
+    "strategy_type": "GRID",
+    "rationale": [
+      "Only a conditional LONG study based on synthetic inputs"
+    ],
+    "alternatives": [
+      "Collect closed OHLCV and relevant source data"
+    ],
+    "entry_conditions": [
+      "Require validated Bybit linear OHLCV, risk checks and current P02"
+    ],
+    "invalidation_conditions": [
+      "Validated trend reverses"
+    ],
+    "proposed_bounds": {
+      "lower": null,
+      "upper": null
+    },
+    "profitability_claim": "NONE",
+    "risk_screen": {
+      "hard_vetoes": [],
+      "not_evaluable": [
+        "Full account T02",
+        "Cross MMR",
+        "Full grid reserve",
+        "Real worst loss"
+      ],
+      "model_status": "NOT_EVALUABLE"
+    },
+    "decision_status": "RECOMMENDED_CONDITIONAL",
+    "user_choice_required": true
+  },
+  "bot_configuration": {
+    "config_id": "SYN-C002",
+    "platform": "VELES",
+    "platform_variant": null,
+    "instrument": {
+      "exchange": "Bybit",
+      "symbol": "HYPEUSDT",
+      "market_type": "USDT_PERPETUAL",
+      "settle_coin": "USDT",
+      "identity_status": "USER_SUPPLIED"
+    },
+    "strategy_ref": "SYN-S002",
+    "form_evidence": {
+      "P01_source": "docs/platforms/veles.md",
+      "P02_verified_at": null,
+      "field_map_version": null
+    },
+    "input_budget": 100,
+    "leverage": 3,
+    "order_amounts": [],
+    "grid_steps": [],
+    "boundaries": {
+      "lower": null,
+      "upper": null
+    },
+    "entry_rules": [
+      "Conditional LONG only after source and user form checks"
+    ],
+    "exits": [],
+    "risk_checks": {
+      "hard_checks": [
+        "Planned leverage 3x does not exceed 5x cap in isolation"
+      ],
+      "missing": [
+        "Actual current P02",
+        "Real Bybit price and OHLCV",
+        "Full T02",
+        "Full grid sizing",
+        "Actual Cross liquidation"
+      ],
+      "not_evaluable": [
+        "Real bot worst loss",
+        "Account margin utilization",
+        "All future grid reserve"
+      ],
+      "model_status": "NOT_EVALUABLE"
+    },
+    "currency_units": "USDT",
+    "assumptions": [
+      "All market values synthetic and user-supplied",
+      "Budget 100 USDT illustrative; NOT an executable order plan"
+    ],
+    "mapping": [],
+    "readiness": "DRAFT",
+    "manual_steps": [
+      "Do not launch: verify price, portfolio and exact fields"
+    ],
+    "last_recheck_at": null,
+    "forbidden_automated_execution": true
+  }
+}
