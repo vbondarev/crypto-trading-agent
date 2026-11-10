@@ -19,3 +19,7 @@ Input: `RequestContext` with exchange, symbol, market_type, as_of and horizon. O
 
 ## Validation / dependency
 Schema references: `docs/v2/contracts/request-context.schema.json`, `evidence-record.schema.json`, `market-evidence.schema.json`. Canonical legacy references: `docs/data-sources.md`, `docs/data-freshness.md`, `.agents/skills/data-verification/SKILL.md`. Generated in isolated v2 branch for testing; no auto-loader proof.
+
+## Stage 04 end-to-end routing (inactive preview)
+
+Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Do **not** claim these documents confer live API/tool access or activate v2. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail. Legacy AGENTS.md remains active, untouched.
