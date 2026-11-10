@@ -33,13 +33,14 @@ Contracts cover required fields, typed objects/arrays, enums (market identity, p
 
 A separate isolated JavaScript tool run **fetched back all 16 newly created core JSON/Skill/test/adapter files** directly from GitHub at `feature/simplified-agent-v2`, parsed 7 JSON Schema documents and the fixture, recursively checked required types/enums/required fields, cross-reference IDs and adverse safety/status cases.
 
-**Observed:** `PASS`, **957 structural assertions** (recursive sub-property checks; not 957 independent tests), and **4/4 deliberately invalid mutations rejected**:
+**Observed:** `PASS`, **1,079 structural assertion invocations** (recursive sub-property checks; not 957 independent tests), and **5/5 deliberately invalid mutations rejected**:
 1. unsupported strategy posture `BUY_NOW`;
 2. `forbidden_automated_execution=false`;
 3. unsupported platform `UNKNOWN_BOT`;
-4. fabricated source access state `SCRAPED_FOR_SURE`.
+4. fabricated source access state `SCRAPED_FOR_SURE`;
+5. false `VERIFIED_FOR_MANUAL_REVIEW` with missing P02 and no passing risk model.
 
-Additional checks confirm **four new inactive Skill documents** and **two inactive platform adapter documents**, plus existence of the reproducible Node smoke script. The core fixture correctly avoids a bot READY when user has only marketless synthetic context; `P02_verified_at=null`, posture WAIT and readiness NEEDS_DATA.
+Additional checks confirm **four new inactive Skill documents** and **two inactive platform adapter documents**, plus existence of the reproducible Node smoke script. A post-review strengthening of the BotConfiguration JSON Schema adds a conditional `if/then` constraint: VERIFIED_FOR_MANUAL_REVIEW requires nonempty P01 and P02 evidence, risk model PASS, no missing/not-evaluable risk items and at least one mapped field. The smoke script was extended to check this condition and a fifth unsafe-status negative mutation; all 1,079 structural assertion invocations/5 negative mutations were rerun by the same isolated JavaScript read-back method. The core fixture correctly avoids a bot READY when user has only marketless synthetic context; `P02_verified_at=null`, posture WAIT and readiness NEEDS_DATA.
 
 **Crucial qualification:** Direct `git ls-remote` in the local shell failed due DNS resolution of github.com; therefore the committed `node tests/v2/contracts-smoke.mjs` **was NOT executed on a true checked-out filesystem**. The executed verification was an equivalent **connector-read-back isolated JavaScript structural test**, not the checked-in Node script, a formal standard JSON Schema validator, integration/runtime skills loader proof, independent LLM run, fresh-source ingestion, or bot backtest. Keep these evidence classes separate.
 
