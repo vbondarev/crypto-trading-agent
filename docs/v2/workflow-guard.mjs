@@ -48,6 +48,8 @@ export function inspectHandoff({request_context, evidence_records=[],market_evid
       if(!bot_configuration.form_evidence?.P01_source||!bot_configuration.form_evidence?.P02_verified_at)issues.push("P02_NOT_VERIFIED");
       if(bot_configuration.risk_checks?.model_status!=="PASS"||bot_configuration.risk_checks?.missing?.length||bot_configuration.risk_checks?.not_evaluable?.length)issues.push("RISK_UNVERIFIED");
       if(!bot_configuration.mapping?.length||bot_configuration.mapping.some(f=>f.verified_status!=="VERIFIED"||!f.source_ref))issues.push("UI_FIELDS_UNVERIFIED");
+      if(!options.account_evidence_verified||!options.platform_form_verified||!options.risk_calculations_verified||!options.required_stress_verified)issues.push("FINAL_VERIFICATION_NOT_ATTESTED");
+      if(!ids.size||!market_evidence?.evidence_ids?.length||!technical_evidence?.candles_by_timeframe?.some(c=>c.candle_completeness==="VERIFIED"&&c.count_closed>0))issues.push("REAL_MARKET_EVIDENCE_INSUFFICIENT");
       if(safeVeto||noTrade||issues.length||gaps.length)issues.push("UNSUPPORTED_READY");
     }
   }
