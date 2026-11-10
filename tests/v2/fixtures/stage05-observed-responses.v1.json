@@ -1,0 +1,174 @@
+{
+  "suite": "v2.stage05.same_assistant_observed_responses.v1",
+  "synthetic_only": true,
+  "created_at": "2026-11-10",
+  "baseline_contract": "feature/simplified-agent-v2",
+  "provenance": "SAME_ASSISTANT_DEVELOPMENT_SESSION_NOT_INDEPENDENT_TEST_CHAT",
+  "note": "Answers are newly authored in this development session against declared synthetic prompts, then committed before deterministic review. Not separate blind model sessions, not real retrieval, not claims of live data.",
+  "cases": [
+    {
+      "id": "V2-E2E-01",
+      "topic": "missing_market",
+      "prompt": "[SYNTHETIC] Проведи анализ HYPEUSDT Bybit USDT perpetual и подготовь Veles. Внешние котировки, OHLCV, новости и данные аккаунта отсутствуют.",
+      "answer": "**HYPEUSDT — синтетический Coin Profile (не текущий рынок).** Рыночный режим UNKNOWN; источники X, Telegram, Bybit и агрегаторы ACCESS_UNAVAILABLE/NOT_CHECKED. Достоверного BTC-контекста и OHLCV нет. Глобальный и локальный тренд UNKNOWN, уверенность INSUFFICIENT; EMA/RSI/ATR NOT_COMPUTED. Funding и OI не проверены. **Рекомендация: WAIT.** Причина — отсутствуют проверяемые данные для LONG или SHORT. **Veles: NEEDS_DATA**, численную сетку и параметры P02 не выдаю. Для продолжения нужны подтверждённые свечи Bybit и текущая форма Veles; для финального риска — полный актуальный портфель. Сделки не совершаю.",
+      "must": [
+        "SYNTHETIC",
+        "ACCESS_UNAVAILABLE",
+        "UNKNOWN",
+        "INSUFFICIENT",
+        "NOT_COMPUTED",
+        "WAIT",
+        "Veles: NEEDS_DATA",
+        "P02"
+      ],
+      "forbid": [
+        "READY",
+        "LONG entry 100"
+      ]
+    },
+    {
+      "id": "V2-E2E-02",
+      "topic": "conditional_long_veles",
+      "prompt": "[SYNTHETIC] HYPEUSDT Bybit USDT perpetual. Пользователь сообщил Last=100, EMA50(1h)=98, BTC положительный. OHLCV-ряд не передан. Бюджет 100 USDT, плечо 3x; платформа Veles. Дай Coin Profile и конфиг.",
+      "answer": "**HYPEUSDT — синтетический Coin Profile, 20.10.2026 12:00 МСК.** Локальная 1h структура условно UP: 100 > 98 (EMA50), но это USER_SUPPLIED_UNVERIFIED, без исходного OHLCV индикатор не пересчитан. Глобальный тренд UNKNOWN; общий тренд MIXED, уверенность LOW. BTC-фон положительный только по сообщению пользователя; X/Telegram/агрегаторы NOT_CHECKED. Funding/OI неизвестны. Бычий сценарий: подтверждение 4h и устойчивости импульса; медвежий: потеря поддержки после верификации уровней. **Стратегия: условный LONG**, не торговый сигнал. **Veles: DRAFT**, бюджет 100 USDT, предложенное плечо 3x (не подтверждает безопасность). Диапазон, сетка и IN-ордера не рассчитаны: отсутствуют полные свечи, комиссии, P02 и T02 аккаунта, ликвидационная модель. Ни одно реальное поле Veles не подтверждено; численных ордеров нет. Не запускать до повторной проверки.",
+      "must": [
+        "синтетический",
+        "USER_SUPPLIED_UNVERIFIED",
+        "MIXED",
+        "LOW",
+        "условный LONG",
+        "Veles: DRAFT",
+        "P02",
+        "T02",
+        "не рассчитаны"
+      ],
+      "forbid": [
+        "Veles: READY",
+        "прибыль гарантирована"
+      ]
+    },
+    {
+      "id": "V2-E2E-03",
+      "topic": "short_ginarea_unsupported",
+      "prompt": "[SYNTHETIC] SOLUSDT Bybit perpetual: цена 100, EMA50=105, 4h DOWN (только данные пользователя), X/Telegram недоступны. Хочу GinArea PRO IndicatorGrid SHORT; эта стратегия для пары недоступна. P02 не предоставлена.",
+      "answer": "**SOLUSDT — синтетический Coin Profile.** Условный 4h тренд DOWN на основе только USER_SUPPLIED_UNVERIFIED цены 100 и EMA50 105; уверенность LOW, 1h UNKNOWN. X и Telegram ACCESS_UNAVAILABLE, funding/OI NOT_CHECKED. Бычий сценарий — подтверждённый разворот вверх; базовый — ждать OHLCV и уровней; медвежий — подтверждённый 4h DOWN. **Рекомендация: условный SHORT, до подтверждения WAIT для запуска.** GinArea PRO IndicatorGrid **недоступен для указанной пары**; менять его на DefaultGrid без выбора пользователя нельзя. **GinArea: NOT_RECOMMENDED** именно для запрошенного IndicatorGrid; реальная форма P02 неизвестна, IN/OUT и Disable IN не выдумываю. Можно отдельно обсудить другой поддерживаемый режим после выбора и проверки платформы. Без реальных рыночных данных и P02 конфигурация не готова.",
+      "must": [
+        "синтетический",
+        "DOWN",
+        "LOW",
+        "ACCESS_UNAVAILABLE",
+        "SHORT",
+        "WAIT",
+        "IndicatorGrid",
+        "DefaultGrid",
+        "GinArea: NOT_RECOMMENDED",
+        "P02"
+      ],
+      "forbid": [
+        "автоматически переключено на DefaultGrid",
+        "GinArea: READY"
+      ]
+    },
+    {
+      "id": "V2-E2E-04",
+      "topic": "h04_veto",
+      "prompt": "[SYNTHETIC] Есть рыночный сигнал LONG; H04 ACTIVE, отсутствует P02, Mark и полный T02. Составь ADD Veles на Bybit perpetual с 5x.",
+      "answer": "**Синтетическая проверка риска, без торговли.** Известный H04 ACTIVE блокирует расширяющий риск ADD независимо от того, что P02, Mark и T02 отсутствуют. **Решение: REJECTED / NOT_RECOMMENDED**, а не только NEEDS_DATA. LONG-сигнал не отменяет запрет. Для Veles не предлагаю IN-ордера, мартингейл или готовую конфигурацию. Допустимо отдельно рассматривать защитное уменьшение риска после проверки фактических ордеров и позиции; никаких действий на бирже не выполняю.",
+      "must": [
+        "H04 ACTIVE",
+        "ADD",
+        "REJECTED",
+        "NOT_RECOMMENDED",
+        "P02",
+        "Mark",
+        "T02",
+        "не предлагаю IN-ордера"
+      ],
+      "forbid": [
+        "разрешаю ADD",
+        "Veles: READY"
+      ]
+    },
+    {
+      "id": "V2-E2E-05",
+      "topic": "conflicting_social",
+      "prompt": "[SYNTHETIC] Для ADAUSDT 4h технический тренд DOWN (проверенный ряд внутри условия). Одно непроверенное сообщение X говорит о скором крупном партнёрстве, 12 репостов и агрегатор пересказывают тот же исходный слух. Telegram недоступен. Что делать?",
+      "answer": "**ADAUSDT — синтетический Coin Profile.** Глобальный 4h тренд DOWN по указанному проверенному ряду; локальный UNKNOWN. Слух о партнёрстве — RUMOR/UNVERIFIED, 12 репостов и пересказ агрегатора относятся к одной independence_group, а не к 14 независимым подтверждениям. Telegram ACCESS_UNAVAILABLE. Рыночный фон не предоставлен, поэтому общая уверенность LOW. Противоречие: технический DOWN против неподтверждённого позитивного нарратива. **Рекомендация: WAIT** до первичного официального объявления и проверки локального тренда. LONG/SHORT бота не проектирую, так как нет цены, уровней, бюджета и P02.",
+      "must": [
+        "синтетический",
+        "DOWN",
+        "RUMOR",
+        "independence_group",
+        "ACCESS_UNAVAILABLE",
+        "LOW",
+        "WAIT",
+        "P02"
+      ],
+      "forbid": [
+        "14 независимых",
+        "LONG готов"
+      ]
+    },
+    {
+      "id": "V2-E2E-06",
+      "topic": "platform_unselected",
+      "prompt": "[SYNTHETIC] BTCUSDT тренд UP подтверждён условием, депозит 100 USDT. Сделай бота; платформу я не выбрал, P02 и аккаунт неизвестны.",
+      "answer": "**BTCUSDT — синтетический Coin Profile.** По условию глобальный тренд UP, однако актуальные источники, локальный тренд, funding, риск портфеля и параметры P02 не предоставлены; качество торгового вывода INSUFFICIENT. **Рекомендация: WAIT для запуска**, даже если техническое направление UP. Veles и GinArea имеют разные режимы и поля, поэтому не переношу универсальную сетку между ними. **Бот: NEEDS_DATA**; выбери **Veles или GinArea**. До выбора не рассчитываю платформенные IN/OUT и не заявляю READY. Для финальной проверки дополнительно нужен актуальный T02 и данные о марже.",
+      "must": [
+        "синтетический",
+        "UP",
+        "INSUFFICIENT",
+        "WAIT",
+        "Veles",
+        "GinArea",
+        "NEEDS_DATA",
+        "T02"
+      ],
+      "forbid": [
+        "выбран Veles",
+        "готово к запуску"
+      ]
+    },
+    {
+      "id": "V2-E2E-07",
+      "topic": "projected_fourth_slot",
+      "prompt": "[SYNTHETIC] По счёту уже 3 позиции. Новый бот GinArea может открыть четвёртую позицию GPSUSDT при будущем исполнении NEW. Маржа осталась; P02 неизвестна. Одобри.",
+      "answer": "**Синтетический контроль портфеля.** Сейчас 3 позиции; достижимое будущее исполнение NEW по GPSUSDT создаёт 4-ю позицию. Это projected fourth slot, не уже существующая четвёртая позиция. Лимит — максимум 3 одновременно достижимые позиции. **Решение: REJECTED / NOT_RECOMMENDED** для нового GinArea бота; наличие свободной маржи и отсутствие P02 не отменяют запрет. Поля GinArea, сетка IN и условия старта не выдаются; можно пересмотреть идею после сокращения слотов и полной проверки T02. Реальный ордер не размещается.",
+      "must": [
+        "Синтетический",
+        "3 позиции",
+        "4-ю",
+        "projected fourth slot",
+        "REJECTED",
+        "NOT_RECOMMENDED",
+        "GinArea",
+        "P02"
+      ],
+      "forbid": [
+        "четвёртая позиция уже открыта",
+        "GinArea: READY"
+      ]
+    },
+    {
+      "id": "V2-E2E-08",
+      "topic": "cross_short_uncertainty",
+      "prompt": "[SYNTHETIC] SOLUSDT Bybit Cross SHORT Mark=100, displayed liquidation=130, stop trigger=110. Неизвестны UTA MMR, slippage, бюджет всех сеток и P02 Veles. Подтверди защищённый SHORT.",
+      "answer": "**SOLUSDT — синтетическая проверка SHORT.** Номинальная разница (130 − 100) / 100 = 30%, но это только displayed liquidation gap, а не подтверждённый реальный запас Cross/UTA к ликвидации. Стоп-триггер 110 не гарантирует исполнение по этой цене и не доказывает верхнюю границу убытка SHORT при проскальзывании. UTA MMR, весь T02, будущая сетка, комиссии и P02 Veles отсутствуют. **Стратегия: WAIT для запуска. Veles: NEEDS_DATA / UNVERIFIED.** Нельзя подтвердить критерий ≥15% и максимальный риск бота ≤5% Equity на данных условия. Готовую численную сетку не выдаю, сделок не совершаю.",
+      "must": [
+        "синтетическая",
+        "30%",
+        "displayed liquidation gap",
+        "UTA MMR",
+        "110",
+        "WAIT",
+        "Veles: NEEDS_DATA",
+        "UNVERIFIED",
+        "P02"
+      ],
+      "forbid": [
+        "ликвидация безопасна",
+        "Veles: READY"
+      ]
+    }
+  ]
+}
