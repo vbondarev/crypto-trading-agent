@@ -1,0 +1,313 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vbondarev/crypto-trading-agent/blob/feature/simplified-agent-v2/docs/v2/contracts/bot-configuration.schema.json",
+  "title": "bot-configuration",
+  "description": "Crypto Trading Agent v2 draft architecture; not active for real trades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "config_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "VELES",
+        "GINAREA"
+      ]
+    },
+    "platform_variant": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instrument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exchange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market_type": {
+          "type": "string",
+          "enum": [
+            "USDT_PERPETUAL",
+            "SPOT",
+            "OTHER"
+          ]
+        },
+        "settle_coin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_status": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "USER_SUPPLIED",
+            "UNVERIFIED"
+          ]
+        }
+      },
+      "required": [
+        "exchange",
+        "symbol",
+        "market_type",
+        "identity_status"
+      ]
+    },
+    "strategy_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "form_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "P01_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "P02_verified_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "field_map_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "P01_source",
+        "P02_verified_at",
+        "field_map_version"
+      ]
+    },
+    "input_budget": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "leverage": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "order_amounts": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "grid_steps": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lower": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "upper": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": []
+    },
+    "entry_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risk_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hard_checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "missing": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "not_evaluable": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "model_status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "REJECTED",
+            "UNVERIFIED",
+            "NOT_EVALUABLE"
+          ]
+        }
+      },
+      "required": [
+        "hard_checks",
+        "missing",
+        "not_evaluable",
+        "model_status"
+      ]
+    },
+    "currency_units": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mapping": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ui_label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "form_key_if_verified": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "verified_status": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "DOCUMENTED_ONLY",
+              "UNVERIFIED"
+            ]
+          }
+        },
+        "required": [
+          "ui_label",
+          "value",
+          "verified_status"
+        ]
+      }
+    },
+    "readiness": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "NEEDS_DATA",
+        "NOT_RECOMMENDED",
+        "VERIFIED_FOR_MANUAL_REVIEW"
+      ]
+    },
+    "manual_steps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "last_recheck_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "forbidden_automated_execution": {
+      "type": "boolean",
+      "const": true
+    }
+  },
+  "required": [
+    "config_id",
+    "platform",
+    "instrument",
+    "strategy_ref",
+    "form_evidence",
+    "input_budget",
+    "leverage",
+    "order_amounts",
+    "grid_steps",
+    "boundaries",
+    "entry_rules",
+    "exits",
+    "risk_checks",
+    "currency_units",
+    "assumptions",
+    "mapping",
+    "readiness",
+    "manual_steps",
+    "forbidden_automated_execution"
+  ]
+}
