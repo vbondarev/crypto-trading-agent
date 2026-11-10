@@ -309,5 +309,68 @@
     "readiness",
     "manual_steps",
     "forbidden_automated_execution"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "readiness": {
+            "const": "VERIFIED_FOR_MANUAL_REVIEW"
+          }
+        },
+        "required": [
+          "readiness"
+        ]
+      },
+      "then": {
+        "properties": {
+          "form_evidence": {
+            "properties": {
+              "P01_source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "P02_verified_at": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "P01_source",
+              "P02_verified_at"
+            ]
+          },
+          "risk_checks": {
+            "properties": {
+              "model_status": {
+                "const": "PASS"
+              },
+              "missing": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "not_evaluable": {
+                "type": "array",
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "model_status",
+              "missing",
+              "not_evaluable"
+            ]
+          },
+          "mapping": {
+            "type": "array",
+            "minItems": 1
+          }
+        },
+        "required": [
+          "form_evidence",
+          "risk_checks",
+          "mapping"
+        ]
+      }
+    }
   ]
 }
