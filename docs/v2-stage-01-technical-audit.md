@@ -80,7 +80,7 @@ Verified existing tests:
 - `tests/stage-09-02-fixture-integrity-synthetic.mjs`: `417a1e317e499e9ea38e87ebe10f475bc3fc48fd`.
 - Public immutable `tests/fixtures/stage-09/inputs.v1.json`: `965c12afa0c4afc4c0b1698732e61c597d351b88`, 45 synthetically marked cases.
 - Frozen accepted `docs/stage-09-05-results.md`: `28e8ec6e8a83858133ca0951058db69ba966a3aa`.
-- Prior step `docs/stage-09-05-closeout.md`: `16e5939aa09a58041c16c5f83b111eaf066ab08b75` is **NOT** the correct blob; actual verified SHA is **`16e5939aa09a58041c7a483ee25352aaa6ebe85d`**. Always use the second actual fetched value.
+- Prior step `docs/stage-09-05-closeout.md`: verified Git Blob **`16e5939aa09a58041c7a483ee25352aaa6ebe85d`**, preserving user-approved Stage 09.5 closure.
 
 **Scope limitation:** scripts were fetched/read, **not executed**. Prior documented JS pass counts are historic reports, not claims of tests rerun today. The draft PR/09.4/09.5 evidence cannot be erased to improve apparent v2 metrics. 09.6.2 six sealed private commitments are historical prepared evidence; 09.6.3–09.9 remain not invoked, and their restart requires a new decision.
 
