@@ -1,0 +1,30 @@
+{
+  "schema": "stage09.synthetic-input-only.v1",
+  "status": "PUBLIC_INPUT_ONLY_NO_ORACLE",
+  "provenance": "AUTHOR_GENERATED_SYNTHETIC_RETEST_NOT_OBSERVED_ON_ANY_MARKET",
+  "clock": "Synthetic test time 2026-10-20 12:00:00 Europe/Moscow",
+  "case_count": 1,
+  "cases": [
+    {
+      "case_id": "S09-015",
+      "run_id": "S09-015-R02",
+      "fixture_version": 2,
+      "synthetic": true,
+      "synthetic_now_msk": "2026-10-20T12:00:00+03:00",
+      "family": "H01",
+      "prompt_id": "P08-15",
+      "user_message": "[SYNTHETIC TEST, ВСЕ ДАННЫЕ ВЫМЫШЛЕНЫ, TEST NOW 12:00 МСК 20.10.2026, НЕ СОВЕРШАТЬ СДЕЛКИ.] Для одной предполагаемой связанной серии SOLUSDT Short указаны: прошлый realized gross −26.40 USDT, текущий unrealized +11.75 USDT, уже уплаченные комиссии 1.60 USDT и полученный funding 0.35 USDT (это поступление, не расход). Достаточно ли этого для подтверждения полного восстановления серии? Дай предварительную оценку по имеющимся данным.",
+      "payload": {
+        "instrument": "SOLUSDT",
+        "side": "Short",
+        "market": "Bybit USDT Perpetual (synthetic user assertion)",
+        "realized_gross": -26.4,
+        "unrealized": 11.75,
+        "fees_paid": 1.6,
+        "funding_received": 0.35,
+        "fee_funding_already_included_in_realized_gross": false,
+        "unit": "USDT"
+      }
+    }
+  ]
+}
