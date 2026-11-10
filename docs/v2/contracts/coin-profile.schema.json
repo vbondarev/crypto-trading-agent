@@ -1,0 +1,448 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vbondarev/crypto-trading-agent/blob/feature/simplified-agent-v2/docs/v2/contracts/coin-profile.schema.json",
+  "title": "coin-profile",
+  "description": "Crypto Trading Agent v2 draft architecture; not active for real trades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instrument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exchange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market_type": {
+          "type": "string",
+          "enum": [
+            "USDT_PERPETUAL",
+            "SPOT",
+            "OTHER"
+          ]
+        },
+        "settle_coin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_status": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "USER_SUPPLIED",
+            "UNVERIFIED"
+          ]
+        }
+      },
+      "required": [
+        "exchange",
+        "symbol",
+        "market_type",
+        "identity_status"
+      ]
+    },
+    "snapshot_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "market_regime": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "RISK_ON",
+            "RISK_OFF",
+            "MIXED",
+            "UNKNOWN"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "state",
+        "reasons"
+      ]
+    },
+    "coin_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sector": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relative_strength": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "catalysts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tokenomics_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "sector",
+        "relative_strength",
+        "catalysts",
+        "tokenomics_flags"
+      ]
+    },
+    "social_news": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dominant_narratives": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "confirmed_events": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rumors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "coverage": {
+          "type": "string",
+          "enum": [
+            "COMPLETE_FOR_SCOPE",
+            "PARTIAL",
+            "INSUFFICIENT"
+          ]
+        }
+      },
+      "required": [
+        "dominant_narratives",
+        "confirmed_events",
+        "rumors",
+        "coverage"
+      ]
+    },
+    "technical": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "global_trend": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "direction": {
+              "type": "string",
+              "enum": [
+                "UP",
+                "DOWN",
+                "RANGE",
+                "MIXED",
+                "UNKNOWN"
+              ]
+            },
+            "confidence": {
+              "type": "string",
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "INSUFFICIENT"
+              ]
+            },
+            "rationale": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "direction",
+            "confidence",
+            "rationale"
+          ]
+        },
+        "local_trend": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "direction": {
+              "type": "string",
+              "enum": [
+                "UP",
+                "DOWN",
+                "RANGE",
+                "MIXED",
+                "UNKNOWN"
+              ]
+            },
+            "confidence": {
+              "type": "string",
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "INSUFFICIENT"
+              ]
+            },
+            "rationale": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "direction",
+            "confidence",
+            "rationale"
+          ]
+        },
+        "timeframes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "key_levels": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "volatility": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "signals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "global_trend",
+        "local_trend",
+        "timeframes",
+        "key_levels",
+        "signals"
+      ]
+    },
+    "derivatives": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "funding": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "open_interest": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "liquidations": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "interpretation": {
+          "type": "string",
+          "enum": [
+            "OBSERVED",
+            "ESTIMATE",
+            "NOT_CHECKED",
+            "UNVERIFIED"
+          ]
+        }
+      },
+      "required": [
+        "funding",
+        "open_interest",
+        "liquidations",
+        "interpretation"
+      ]
+    },
+    "bullish_factors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "bearish_factors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "BULL",
+              "BASE",
+              "BEAR"
+            ]
+          },
+          "trigger": {
+            "type": "string",
+            "minLength": 1
+          },
+          "invalidation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "risk": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name",
+          "trigger",
+          "invalidation",
+          "risk"
+        ]
+      }
+    },
+    "trend_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "type": "string",
+          "enum": [
+            "UP",
+            "DOWN",
+            "RANGE",
+            "MIXED",
+            "UNKNOWN"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "INSUFFICIENT"
+          ]
+        },
+        "rationale": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "direction",
+        "confidence",
+        "rationale"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "coverage_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "last_material_event_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "instrument",
+    "market_regime",
+    "coin_context",
+    "social_news",
+    "technical",
+    "derivatives",
+    "bullish_factors",
+    "bearish_factors",
+    "contradictions",
+    "scenarios",
+    "trend_decision",
+    "evidence_refs",
+    "coverage_gaps"
+  ]
+}
