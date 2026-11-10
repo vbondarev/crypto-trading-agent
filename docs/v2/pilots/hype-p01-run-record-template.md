@@ -8,13 +8,13 @@
 - model / chat kind: `NOT_RECORDED`
 - separate Temporary Chat outside Crypto Project: `NOT_VERIFIED`
 - v2 normative pin: `b7123d9cf19502bf4a890f1400027f30fa213434`
-- exact prompt and required 14 paths: `docs/v2/pilots/hype-p01-instructions.md` (but **copy prompt with manifest into new chat**, do not refer to this later file as pinned normative)
+- exact prompt and nine mandatory v2 paths and five conditional references: `docs/v2/pilots/hype-p01-instructions.md` (but **copy prompt with manifest into new chat**, do not refer to this later file as pinned normative)
 - user budget, current Veles P02, portfolio T02: `NOT_PROVIDED`
 
 ## Source loading (one line per actual document)
 | File path | exact ref | method/tool | fetch success | observed Git Blob SHA | evidence |
 |---|---|---|---|---|---|
-| _14 expected paths; do not write PASS without real reads_ | | | | | |
+| _nine mandatory paths; do not write PASS without real reads_ | | | | | |
 
 ## Public market/news/source retrieval
 | Source / market identity | actual URL/ref | published at | observed/retrieved at | access outcome | independent group | limitations |
