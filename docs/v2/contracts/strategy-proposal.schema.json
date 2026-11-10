@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vbondarev/crypto-trading-agent/blob/feature/simplified-agent-v2/docs/v2/contracts/strategy-proposal.schema.json",
+  "title": "strategy-proposal",
+  "description": "Crypto Trading Agent v2 draft architecture; not active for real trades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "strategy_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "coin_profile_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "posture": {
+      "type": "string",
+      "enum": [
+        "LONG",
+        "SHORT",
+        "WAIT"
+      ]
+    },
+    "strategy_type": {
+      "type": "string",
+      "enum": [
+        "GRID",
+        "INDICATOR",
+        "DCA",
+        "OTHER",
+        "NONE"
+      ]
+    },
+    "rationale": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "entry_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "invalidation_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "proposed_bounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lower": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "upper": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": []
+    },
+    "profitability_claim": {
+      "type": "string",
+      "enum": [
+        "NONE"
+      ]
+    },
+    "risk_screen": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hard_vetoes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "not_evaluable": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "model_status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "REJECTED",
+            "UNVERIFIED",
+            "NOT_EVALUABLE"
+          ]
+        }
+      },
+      "required": [
+        "hard_vetoes",
+        "not_evaluable",
+        "model_status"
+      ]
+    },
+    "decision_status": {
+      "type": "string",
+      "enum": [
+        "RECOMMENDED_CONDITIONAL",
+        "WAIT",
+        "NOT_RECOMMENDED",
+        "NEEDS_DATA"
+      ]
+    },
+    "user_choice_required": {
+      "type": "boolean",
+      "const": true
+    }
+  },
+  "required": [
+    "strategy_id",
+    "coin_profile_ref",
+    "posture",
+    "strategy_type",
+    "rationale",
+    "alternatives",
+    "entry_conditions",
+    "invalidation_conditions",
+    "profitability_claim",
+    "risk_screen",
+    "decision_status",
+    "user_choice_required"
+  ]
+}
