@@ -35,7 +35,24 @@ Document each actual source read with `path`, `ref`, `fetch status`, and (if ret
 >
 > Pinned policy commit SHA: `b7123d9cf19502bf4a890f1400027f30fa213434`.
 >
-> Работай только по **новым v2 Skills** и документам, перечисленным в `docs/v2/pilots/hype-p01-instructions.md`? **Нет:** этот файл создан позднее pinned commit, поэтому перечень необходимых 14 файлов приведён непосредственно в инструкции, сопровождающей этот запрос; используй список файлов, доступный в сообщении целиком. Если списка нет в новой сессии, запроси его до исследования.
+> Прежде чем анализировать рынок, прочитай **полное содержимое** через GitHub Connector строго с `ref=b7123d9cf19502bf4a890f1400027f30fa213434` этих файлов:
+>
+> - `.agents/skills/market-research-v2/SKILL.md`
+> - `.agents/skills/technical-analysis-v2/SKILL.md`
+> - `.agents/skills/strategy-synthesis-v2/SKILL.md`
+> - `.agents/skills/bot-configuration-v2/SKILL.md`
+> - `docs/v2/analytical-workflow.md`
+> - `docs/v2/source-acquisition-policy.md`
+> - `docs/v2/bot-handoff-policy.md`
+> - `docs/v2/coin-report-template.md`
+> - `docs/v2/adapters/veles.md`
+> - `docs/risk-management.md`
+> - `docs/data-freshness.md`
+> - `docs/data-sources.md`
+> - `docs/platforms/veles.md`
+> - `docs/platforms/configuration-contract.md`
+>
+> Если обязательные документы не удалось прочитать на этом commit, верни `INCONCLUSIVE_SOURCE_LOAD` и не выдавай ответ как полноценный пилот v2. Не используй старый `AGENTS.md` вместо v2.
 >
 > Проведи **реальный, актуальный на момент запроса** анализ `HYPEUSDT` на **Bybit USDT Perpetual (linear)**. Обязательно попытайся проверить доступные публичные биржевые рыночные данные, состояние BTC/ETH, новости и первичные источники проекта, открытые публикации X/Twitter, публичные Telegram-источники и деривативные агрегаторы (например CoinGlass/CoinAnk), **только если фактически доступен просмотр**.
 >
@@ -45,7 +62,7 @@ Document each actual source read with `path`, `ref`, `fetch status`, and (if ret
 >
 > В начале результата дай короткую **матрицу реально прочитанных нормативных документов** с pinned SHA и методами чтения. Для каждого существенного внешнего факта укажи конкретный источник и время публикации/наблюдения либо честно пометь отсутствие. В конце отдели критически недостающие данные от необязательных и обозначь один ближайший пользовательский шаг.
 
-**Operator note:** when pasting the pilot, paste the file manifest from the previous section **together** with the prompt. The test policy pin intentionally predates this pilot document. The pilot should not fetch its own later test documents as v2 normative source.
+**Operator note:** the quoted pilot prompt now contains the complete 14-file manifest and is self-contained. Copy it in full into the isolated chat. The test policy pin intentionally predates this pilot document; do not fetch later pilot documents as normative source.
 
 ## Capture and assessment process
 
