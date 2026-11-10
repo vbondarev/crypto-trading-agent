@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vbondarev/crypto-trading-agent/blob/feature/simplified-agent-v2/docs/v2/contracts/request-context.schema.json",
+  "title": "request-context",
+  "description": "Crypto Trading Agent v2 draft architecture; not active for real trades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of": {
+      "type": "string",
+      "minLength": 1
+    },
+    "user_goal": {
+      "type": "string",
+      "enum": [
+        "COIN_RESEARCH",
+        "BOT_PROPOSAL",
+        "POSITION_REVIEW",
+        "EXPLAIN"
+      ]
+    },
+    "instrument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exchange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market_type": {
+          "type": "string",
+          "enum": [
+            "USDT_PERPETUAL",
+            "SPOT",
+            "OTHER"
+          ]
+        },
+        "settle_coin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_status": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "USER_SUPPLIED",
+            "UNVERIFIED"
+          ]
+        }
+      },
+      "required": [
+        "exchange",
+        "symbol",
+        "market_type",
+        "identity_status"
+      ]
+    },
+    "horizon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timeframes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "preferred_platform": {
+      "type": "string",
+      "enum": [
+        "VELES",
+        "GINAREA",
+        "UNSELECTED"
+      ]
+    },
+    "risk_budget_usdt": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "leverage_cap": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "account_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "existing_position": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "request_id",
+    "as_of",
+    "user_goal",
+    "instrument",
+    "horizon",
+    "preferred_platform"
+  ]
+}
