@@ -19,7 +19,14 @@ function check(schema,value,path="$") {
   if(schema.enum)assert(schema.enum.includes(value),`${path}: enum ${String(value)}`);
   if(typeof value==="string"&&schema.minLength!==undefined)assert(value.length>=schema.minLength,`${path}: minLength`);
   if(typeof value==="number"&&schema.minimum!==undefined)assert(value>=schema.minimum,`${path}: minimum`);
+  if(Array.isArray(value)&&schema.minItems!==undefined)assert(value.length>=schema.minItems,`${path}: minItems`);
+  if(Array.isArray(value)&&schema.maxItems!==undefined)assert(value.length<=schema.maxItems,`${path}: maxItems`);
   if(Array.isArray(value)&&schema.items)for(const [i,v] of value.entries())check(schema.items,v,`${path}[${i}]`);
+  for(const branch of schema.allOf??[]) {
+    let applies=true;
+    if(branch.if){try{check(branch.if,value,path+".if")}catch{applies=false}}
+    if(applies&&branch.then)check(branch.then,value,path+".then");
+  }
   if(value&&typeof value==="object"&&!Array.isArray(value)) {
     for(const prop of schema.required??[]) assert(Object.hasOwn(value,prop),`${path}: missing ${prop}`);
     if(schema.additionalProperties===false)for(const key of Object.keys(value)) assert(Object.hasOwn(schema.properties??{},key),`${path}: unexpected ${key}`);
@@ -47,6 +54,7 @@ for (const [schema,datum] of [
  [schemas["bot-configuration"],{...fixture.bot_configuration,forbidden_automated_execution:false}],
  [schemas["request-context"],{...fixture.request_context,preferred_platform:"UNKNOWN_BOT"}],
  [schemas["evidence-record"],{...fixture.evidence_records[0],access_status:"SCRAPED_FOR_SURE"}],
+ [schemas["bot-configuration"],{...fixture.bot_configuration,readiness:"VERIFIED_FOR_MANUAL_REVIEW"}],
 ]){assert.throws(()=>check(schema,datum));checks++}
 // Semantic non-trading invariants (schema alone cannot enforce these).
 const forbidden=(f)=>f.bot_configuration.readiness==="VERIFIED_FOR_MANUAL_REVIEW"&&(!f.bot_configuration.form_evidence.P02_verified_at||f.bot_configuration.risk_checks.model_status!=="PASS");
