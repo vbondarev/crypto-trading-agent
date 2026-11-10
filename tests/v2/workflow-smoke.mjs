@@ -30,5 +30,9 @@ x=copy();x.bot_configuration.readiness="NOT_RECOMMENDED";run("valid explicit H04
 x=copy();x.bot_configuration.mapping=[{ui_label:"Unproven order size",value:100,verified_status:"UNVERIFIED"}];run("WAIT may not generate field map",x,{}, {issues:["EXECUTABLE_FIELD_MAP_ON_WAIT"]});
 x=copy();x.evidence_records.push(structuredClone(x.evidence_records[0]));run("duplicate evidence ids",x,{}, {issues:["DUPLICATE_OR_INVALID_EVIDENCE_ID"]});
 x=copy();x.evidence_records.push({...x.evidence_records[0],evidence_id:"E-002",source_kind:"COMPUTED",depends_on:["E-404"]});run("broken computed lineage",x,{}, {issues:["COMPUTED_DEPENDENCY_MISSING"]});
-assert.equal(cases,14);
+const conditional=read("tests/v2/fixtures/conditional-long-draft.v1.json");
+run("conditional LONG remains DRAFT with incomplete independently verified evidence",conditional,{}, {recommendation:"LONG",gaps:["MARKET_COVERAGE_INCOMPLETE","TECHNICAL_GAPS","UNVERIFIED_OR_UNAVAILABLE_EVIDENCE"]});
+assert.equal(conditional.bot_configuration.readiness,"DRAFT");
+assert.equal(conditional.bot_configuration.mapping.length,0);
+assert.equal(cases,15);
 console.log(`PASS ${cases} synthetic handoff / refusal cases; source acquisition, live risk and runtime LLM NOT TESTED`);
