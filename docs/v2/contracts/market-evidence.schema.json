@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vbondarev/crypto-trading-agent/blob/feature/simplified-agent-v2/docs/v2/contracts/market-evidence.schema.json",
+  "title": "market-evidence",
+  "description": "Crypto Trading Agent v2 draft architecture; not active for real trades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instrument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exchange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market_type": {
+          "type": "string",
+          "enum": [
+            "USDT_PERPETUAL",
+            "SPOT",
+            "OTHER"
+          ]
+        },
+        "settle_coin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_status": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "USER_SUPPLIED",
+            "UNVERIFIED"
+          ]
+        }
+      },
+      "required": [
+        "exchange",
+        "symbol",
+        "market_type",
+        "identity_status"
+      ]
+    },
+    "market_regime": {
+      "type": "string",
+      "enum": [
+        "RISK_ON",
+        "RISK_OFF",
+        "MIXED",
+        "UNKNOWN"
+      ]
+    },
+    "btc_eth_context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sector_context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "macro_events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "coin_catalysts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "social_observations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "derivatives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "fetched_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "coverage": {
+      "type": "string",
+      "enum": [
+        "COMPLETE_FOR_SCOPE",
+        "PARTIAL",
+        "INSUFFICIENT"
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "instrument",
+    "market_regime",
+    "evidence_ids",
+    "gaps",
+    "conflicts",
+    "fetched_at",
+    "coverage"
+  ]
+}
