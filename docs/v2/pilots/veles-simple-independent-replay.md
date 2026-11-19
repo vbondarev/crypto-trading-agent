@@ -211,6 +211,15 @@ VELES-SIMPLE-ADAPTER-02 was a fresh temporary session with the same type of upst
 
 ## P02 and pilot status
 
-`P02_BLOCKED_SIGN_IN / NO_TRADE_READY`. Veles displayed its sign-in page during the check. The current account editor was inaccessible. The public [Veles Simple-mode documentation](https://help.veles.finance/ru/platform/settings/trading-mode/) corroborates the semantics of the four controls. Current editor options, units and limits still need read-only observation in the same authorized session. No current P02 timestamp, field-map version or final readiness can be attributed to this observation.
+`P02_SIMPLE_FOUR_FIELDS_OBSERVED / NO_TRADE_READY`. Observed on 2026-11-19 at approximately 20:32 MSK (17:32 UTC) in one authenticated Veles session, in a new unsaved DCA editor for Bybit Futures, HYPE/USDT, LONG, order mode «Простой». Each dropdown was opened and read without choosing an order value. The range and step describe the displayed choices in this form.
+
+| UI label | Unit | Displayed choices | Count |
+| --- | --- | --- | ---: |
+| Перекрытие | % | 0.50–1.00 by 0.05, 1.00–3.00 by 0.10, 3–99 by 1 | 127 |
+| Сетка ордеров | orders | Integers 2–60 | 59 |
+| % мартингейла | % | Integers 1–500 | 500 |
+| Отступ | % or market option | «Маркет», 0.01–0.10 by 0.01, 0.10–1.00 by 0.05, 1.00–5.00 by 0.10, 5.00–10.00 by 0.50 | 79 |
+
+Intervals sharing an endpoint list it once. The observation verifies labels, displayed units and offered options for this editor context. It does not verify backend validation, rounding, order calculations or fill behavior. No settings were saved, and no bot was created or started. Source for field semantics: [Veles Simple-mode documentation](https://help.veles.finance/ru/platform/settings/trading-mode/).
 
 The pilot remains open. The two independent end-to-end runs did not demonstrate the positive handoff. The first isolated adapter response failed contract checks. The schema-guided repeat passed. Stage 06 remains pending.
