@@ -223,3 +223,108 @@ VELES-SIMPLE-ADAPTER-02 was a fresh temporary session with the same type of upst
 Intervals sharing an endpoint list it once. The observation verifies labels, displayed units and offered options for this editor context. It does not verify backend validation, rounding, order calculations or fill behavior. No settings were saved, and no bot was created or started. Source for field semantics: [Veles Simple-mode documentation](https://help.veles.finance/ru/platform/settings/trading-mode/).
 
 The pilot remains open. The two independent end-to-end runs did not demonstrate the positive handoff. The first isolated adapter response failed contract checks. The schema-guided repeat passed. Stage 06 remains pending.
+
+## HYPE-VELES-E2E-03 follow-up
+
+2026-11-19. Result `PASS_CONDITIONAL_HANDOFF / NO_TRADE_READY`. The first response in a fresh temporary session formulated its own synthetic `LONG` (`HYPE-VELES-E2E-03-S01`) and returned the linked Veles SIMPLE proposal `HYPE-VELES-E2E-03-C01` with `NEEDS_DATA`. The earlier WAIT outcomes remain valid for their inputs.
+
+The run supplied the same closed-bar series as run 02, plus separately supplied synthetic structure and market context. The fixture provided a breakout with two 1h closes above 103.46, higher 4h highs and lows, last breakout volume at 1.35 times the 20-bar median, ATR of 0.50, and supportive synthetic BTC context. The agent selected the trade direction itself. Neither a strategy nor a proposal was supplied. Python confirmed the generated bar invariants, aggregation counts and the reported EMA and closing-price values. The extra structure and context were scenario inputs.
+
+The agent reported reading all six requested workflow, strategy, handoff, adapter and schema files at `f731c9f033e54f61029eb206bfd1e653091e6e77`. All blob prefixes in the answer matched separate reads. The prompt did not include the canonical platform or risk dependencies in its file allowlist. The answer left the field map blank and treated the P02 input as a limited observation from a later date. This confirms the handoff to a non-executable proposal. The four dropdowns were separately verified in the P02 session documented above.
+
+Python checks on the transcribed first JSON passed for the structure in the pinned proposal schema, strategy linkage and non-execution safeguards. The proposal left sizing, order steps, boundaries and leverage unset. It reported `NOT_EVALUABLE` risk, kept automatic execution forbidden and described exits as analytical notes without executable TP or SL. No live verification or execution occurred. The positive handoff test is complete and ready for pilot acceptance. Stage 06 remains subject to separate approval.
+
+```json
+{
+  "config_id": "HYPE-VELES-E2E-03-C01",
+  "platform": "VELES",
+  "platform_variant": "SIMPLE",
+  "instrument": {
+    "exchange": "BYBIT",
+    "symbol": "HYPEUSDT",
+    "market_type": "USDT_PERPETUAL",
+    "settle_coin": "USDT",
+    "identity_status": "USER_SUPPLIED"
+  },
+  "strategy_ref": "HYPE-VELES-E2E-03-S01",
+  "form_evidence": {
+    "P01_source": null,
+    "P02_verified_at": null,
+    "field_map_version": null
+  },
+  "input_budget": 100,
+  "leverage": null,
+  "order_amounts": [],
+  "grid_steps": [],
+  "boundaries": {
+    "lower": null,
+    "upper": null
+  },
+  "entry_rules": [
+    "SYNTHETIC_ONLY",
+    "Conditional LONG from E03-BARS, E03-STRUCT, E03-MKT",
+    "Require confirmed retest and hold of 103.46",
+    "No entry on unconfirmed breakout",
+    "Cancel LONG thesis on confirmed breakdown below 103.01"
+  ],
+  "exits": [
+    "103.01 is analytical invalidation, not a verified stop order",
+    "No executable TP or SL validated"
+  ],
+  "risk_checks": {
+    "hard_checks": [
+      "Leverage must not exceed 5x",
+      "Account planned IM must not exceed 30% of verified Equity",
+      "Demonstrable bot worst loss must not exceed 5% of Equity",
+      "Maximum three reachable position slots",
+      "Full margin and transaction-cost reserve required",
+      "Applicable adverse Mark-to-liquidation distance at least 15%",
+      "Known Moscow-day loss >=3% or HWM DD >=15% blocks new risk",
+      "Active H04 blocks new risk"
+    ],
+    "missing": [
+      "Verified current Bybit Mark",
+      "Synchronized full T02",
+      "Current H04 and portfolio risk status",
+      "Verified P01 for Veles SIMPLE",
+      "Complete mode-matched P02",
+      "Cross maintenance-margin model",
+      "Instrument precision and minimum order quantity",
+      "Fee, funding, slippage and stress validation"
+    ],
+    "not_evaluable": [
+      "Portfolio initial-margin limit",
+      "Per-bot worst-case loss",
+      "Future grid reserve sufficiency",
+      "Mark-to-liquidation distance",
+      "Daily loss and HWM drawdown",
+      "Position-slot availability",
+      "Full stress and trade admission"
+    ],
+    "model_status": "NOT_EVALUABLE"
+  },
+  "currency_units": "Budget and margin: USDT; prices: USDT/HYPE; order notional: USDT",
+  "assumptions": [
+    "All market observations are synthetic user-provided inputs",
+    "E03-BARS are locally checked according to the test input, not independently fetched",
+    "E03-FORM is partial user-supplied evidence from an unsaved editor observed 2026-11-19 around 20:32 MSK",
+    "E03-FORM reports Overlap 0.5-99%, Grid 2-60, Martingale 1-500%, Offset Market or 0.01-10%",
+    "E03-FORM does not establish complete historical or current P01/P02 mapping",
+    "100 USDT is conditional budget, not verified account Equity",
+    "SIMPLE is user-selected; mode mapping is not independently verified",
+    "No numeric orders, grid settings or leverage are approved",
+    "Canonical risk and platform dependencies outside the six requested files were not read"
+  ],
+  "mapping": [],
+  "readiness": "NEEDS_DATA",
+  "manual_steps": [
+    "Keep proposal as synthetic read-only artifact",
+    "Verify P01 and complete matching Veles SIMPLE P02 before mapping fields",
+    "For any later real assessment verify current Mark, full T02, H04 and portfolio exposure",
+    "Calculate complete grid reserve, fees, worst loss and liquidation stress",
+    "Require independent manual review before any proposed live configuration"
+  ],
+  "last_recheck_at": null,
+  "forbidden_automated_execution": true
+}
+```
