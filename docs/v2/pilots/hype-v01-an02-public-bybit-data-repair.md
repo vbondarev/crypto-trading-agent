@@ -1,5 +1,23 @@
 # HYPE-V01 / AN-02 — public Bybit market-data acquisition repair and handoff
 
+## Current runbook — Python (2026-11-19)
+
+The Python collector extends the existing HYPEUSDT pilot script. Sections 1–5 below record the original Node.js implementation and its historical test status.
+
+Run from the repository root on `feature/simplified-agent-v2` with Python 3.12 (the verified version). The collector and tests use the standard library.
+
+```powershell
+python -m unittest discover -s tests/v2/pilots -p "test_collect_hype_r02_ohlcv.py" -v
+$capture = Join-Path $env:TEMP ('bybit-hype-' + [guid]::NewGuid().ToString('N'))
+python .\tests\v2\pilots\collect_hype_r02_ohlcv.py --out $capture
+```
+
+A successful run writes a ZIP next to the capture directory. It includes exact response bytes for server time, instrument metadata, ticker and four trade-price kline series, plus CSVs and a manifest with request and retrieval times, exchange response times, and SHA-256 for the data files. The ticker records Mark, Last and Index separately. The manifest labels them with the response time as a proxy for the individual quote times.
+
+The collector requires 250 or more contiguous time-eligible candles per interval and emits up to 300. It excludes open and recently elapsed bars, checks the latest expected bar against exchange time, and rejects a run spanning a change in the latest eligible candle. Elapsed time remains an eligibility check, with exchange finalization unverified. The clock and response freshness checks are acquisition checks. Evaluate freshness again at the time of analysis.
+
+**Verification:** 10 offline Python tests passed, including a complete synthetic capture and negative cases. The direct HYPEUSDT capture stopped at the first request to get server time at 13:57 MSK with DNS error `[Errno 11001] getaddrinfo failed`. The manifest recorded `ACCESS_UNAVAILABLE_OR_INVALID / NEEDS_DATA` and no snapshot archive was created. The fresh public snapshot and therefore the analytical rerun are pending.
+
 **Date:** 2026-11-14.
 **Authorization:** user's «Приниаю» reply accepting AN-01 and allowing repair; evidence in `docs/v2/pilots/hype-v01-an01-acceptance.md`.
 **Outcome:** `PUBLIC_READ_ONLY_COLLECTOR_COMMITTED / PUBLISHED_SOURCE_READBACK_VERIFIED / REAL_BYBIT_API_IN_THIS_SESSION_UNAVAILABLE / IN_REPO_SCRIPT_RUNTIME_NOT_YET_EXECUTED / USER_ACCEPTANCE_PENDING / NO_TRADE_READY`.
