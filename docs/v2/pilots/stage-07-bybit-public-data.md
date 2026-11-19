@@ -53,3 +53,33 @@ python tests/v2/pilots/replay_hype_stage07.py $archive --as-of 2026-11-19T11:24:
 | Штатная проверка | Завершилась с кодом 2. Браузер не предоставил числовой HTTP-статус, поэтому в манифесте `http_status: null`. Валидатор ожидает наблюдавшийся HTTP `200` для каждого ответа. |
 
 Архив служит доказательством комплектности и воспроизводимости браузерного снимка. Для штатной приёмки нужен новый запуск Python-сборщика в среде с разрешённым доступом к Bybit и успешный повтор штатным валидатором по свежему ZIP. Маркер этапа остаётся `STANDARD_CAPTURE_PENDING`, состояние торговой готовности — `NO_TRADE_READY`.
+
+## Штатный прогон из PowerShell
+
+Запустите блок целиком в PowerShell с разрешённым доступом к публичному API Bybit. Блок загружает две версии Python-скриптов из одного закреплённого коммита в новый временный каталог. Валидатор запускается сразу после сбора, с текущим временем. Для одного прогона нужны Python и доступ к `raw.githubusercontent.com` и `api.bybit.com`.
+
+```powershell
+$ref = '04792fe05f5c84813811ae1f436ffbd2e4cf4505'
+$base = "https://raw.githubusercontent.com/vbondarev/crypto-trading-agent/$ref/tests/v2/pilots"
+$stageDir = Join-Path $env:TEMP ('bybit-stage07-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $stageDir -ErrorAction Stop | Out-Null
+$collector = Join-Path $stageDir 'collect_hype_r02_ohlcv.py'
+$replay = Join-Path $stageDir 'replay_hype_stage07.py'
+Invoke-WebRequest -Uri "$base/collect_hype_r02_ohlcv.py" -OutFile $collector -ErrorAction Stop
+Invoke-WebRequest -Uri "$base/replay_hype_stage07.py" -OutFile $replay -ErrorAction Stop
+$capture = Join-Path $stageDir 'HYPEUSDT-Bybit'
+$archive = "$capture.zip"
+& python $collector --out $capture
+if ($LASTEXITCODE -ne 0) { throw 'Fresh Bybit capture failed.' }
+$reportJson = & python $replay $archive
+if ($LASTEXITCODE -ne 0) { throw 'ZIP failed the standard validator.' }
+$report = $reportJson | ConvertFrom-Json -ErrorAction Stop
+if ($report.public_data_status -ne 'COMPLETE_SNAPSHOT' -or
+    $report.ticker_replay_freshness -ne 'WITHIN_CAPTURE_WINDOW' -or
+    $report.readiness -ne 'NO_TRADE_READY') { throw "Snapshot did not pass acceptance: $($report.public_data_status) / $($report.ticker_replay_freshness)." }
+$reportJson | Set-Content -LiteralPath (Join-Path $stageDir 'stage07-replay.json') -Encoding UTF8 -ErrorAction Stop
+$report | Select-Object public_data_status, ticker_replay_freshness, server_anchor_utc, readiness
+Get-FileHash -LiteralPath $archive -Algorithm SHA256
+```
+
+Офлайн-контроль на закреплённом коммите подтвердил три случая. Исторический ZIP с текущим временем дал `NEEDS_DATA / OLDER_THAN_CAPTURE_WINDOW`. Браузерный ZIP штатный валидатор отклонил с кодом 2. Исторический ZIP с контрольным временем снимка дал `COMPLETE_SNAPSHOT / WITHIN_CAPTURE_WINDOW / NO_TRADE_READY`. В формальной приёмке используется только новый ZIP и штатная проверка с текущим временем.
