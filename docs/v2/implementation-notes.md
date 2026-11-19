@@ -11,3 +11,11 @@
 **Preview paths:** `.agents/skills/{market-research-v2,technical-analysis-v2,strategy-synthesis-v2,bot-configuration-v2}/SKILL.md`, `docs/v2/contracts/*.schema.json`, `docs/v2/adapters/{veles,ginarea}.md`, `docs/v2/coin-report-template.md`.
 
 **Status:** `IMPLEMENTED_IN_ISOLATED_BRANCH / NOT_ACTIVE / USER_REVIEW_PENDING`. No account access, real quotes, bot API, auto-load verification or live trade behavior.
+
+## Language policy for new development
+
+**User decision, 2026-11-19:** Python is the sole implementation language for future project code, including data collectors, validation and audit utilities, workflow guards, and automated tests. Implement new tools and functional changes in Python. Migrate any existing JavaScript utility or test that future work needs to extend to Python before extending it, and verify equivalent behavior before switching the documented run path.
+
+Existing Node.js scripts and test records are retained for historical reproducibility. The next AN-02 implementation change should extend the existing Python Bybit collector and verify parity with the current AN-02 checks before changing the pilot runbook.
+
+The agent itself continues to run in ChatGPT using GitHub-hosted instructions. Python is required only when running the supporting tools or tests. Markdown instructions and JSON contracts remain part of the project.
