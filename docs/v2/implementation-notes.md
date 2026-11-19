@@ -19,3 +19,15 @@
 Existing Node.js scripts and test records are retained for historical reproducibility. The next AN-02 implementation change should extend the existing Python Bybit collector and verify parity with the current AN-02 checks before changing the pilot runbook.
 
 The agent itself continues to run in ChatGPT using GitHub-hosted instructions. Python is required only when running the supporting tools or tests. Markdown instructions and JSON contracts remain part of the project.
+
+## Reproducing the Stage 06 handoff checks
+
+From the repository root, install the test dependency in the Python environment and run:
+
+```text
+python -m pip install -r tests/v2/requirements.txt
+python tests/v2/workflow_smoke.py
+python docs/v2/workflow_guard.py tests/v2/fixtures/conditional-long-draft.v1.json
+```
+
+The Python regression suite validates both existing fixtures against the seven Draft 2020-12 schemas and exercises the original handoff cases. New cases reject a numeric grid on WAIT, an unsupported readiness claim and a mismatched strategy reference. The standalone validator accepts a JSON handoff bundle in the same format as the fixtures. Exit code 0 means the schemas and handoff checks accepted the bundle. Exit code 1 signals schema or handoff violations, and 2 signals invalid input or usage. A valid draft can still report evidence gaps. All checks use supplied data and execution is disabled.
