@@ -93,8 +93,124 @@ Python checks against the pinned [BotConfigurationProposal schema](../contracts/
 }
 ```
 
+## Schema-guided repeat
+
+VELES-SIMPLE-ADAPTER-02 was a fresh temporary session with the same type of upstream conditional LONG and an explicit schema summary in the prompt. It returned `NEEDS_DATA` and `NOT_EVALUABLE` on its first response. Python structural checks against the pinned schema and draft safeguards passed for the transcribed object. The four fields remained `DOCUMENTED_ONLY` with null values. P02 and field-map version were unset, order amounts, steps and exits were empty, and automatic execution was prohibited. This passes the isolated adapter case with a schema supplied in the prompt. It does not prove automatic schema loading or an independent positive end-to-end handoff.
+
+```json
+{
+  "config_id": "VELES-SIMPLE-ADAPTER-02",
+  "platform": "VELES",
+  "platform_variant": "SIMPLE",
+  "instrument": {
+    "exchange": "Bybit",
+    "symbol": "HYPEUSDT",
+    "market_type": "USDT_PERPETUAL",
+    "settle_coin": "USDT",
+    "identity_status": "USER_SUPPLIED"
+  },
+  "strategy_ref": "S-ADP-02",
+  "form_evidence": {
+    "P01_source": "docs/platforms/veles.md",
+    "P02_verified_at": null,
+    "field_map_version": null
+  },
+  "input_budget": 100,
+  "leverage": null,
+  "order_amounts": [],
+  "grid_steps": [],
+  "boundaries": {
+    "lower": null,
+    "upper": null
+  },
+  "entry_rules": [
+    "Conditional LONG only",
+    "Entry prohibited until market and risk validation"
+  ],
+  "exits": [],
+  "risk_checks": {
+    "hard_checks": [
+      "No automated execution",
+      "No numeric grid parameters without verified inputs",
+      "No execution without completed risk validation"
+    ],
+    "missing": [
+      "P02",
+      "Mark",
+      "T02",
+      "H04",
+      "leverage",
+      "risk calculations",
+      "stress calculations"
+    ],
+    "not_evaluable": [
+      "position sizing",
+      "margin requirements",
+      "liquidation risk",
+      "grid boundaries",
+      "drawdown",
+      "stress resilience"
+    ],
+    "model_status": "NOT_EVALUABLE"
+  },
+  "currency_units": "USDT",
+  "assumptions": [
+    "Synthetic data only",
+    "Strategy status RECOMMENDED_CONDITIONAL",
+    "LONG is conditional, not executable",
+    "Budget is hypothetical",
+    "P01 documents labels and units only",
+    "No P02 verification available"
+  ],
+  "mapping": [
+    {
+      "ui_label": "Перекрытие",
+      "value": null,
+      "unit": "%",
+      "source_ref": "docs/platforms/veles.md#VL-11",
+      "verified_status": "DOCUMENTED_ONLY",
+      "form_key_if_verified": null
+    },
+    {
+      "ui_label": "Сетка ордеров",
+      "value": null,
+      "unit": "orders",
+      "source_ref": "docs/platforms/veles.md#VL-12",
+      "verified_status": "DOCUMENTED_ONLY",
+      "form_key_if_verified": null
+    },
+    {
+      "ui_label": "% Мартингейла",
+      "value": null,
+      "unit": "%",
+      "source_ref": "docs/platforms/veles.md#VL-13",
+      "verified_status": "DOCUMENTED_ONLY",
+      "form_key_if_verified": null
+    },
+    {
+      "ui_label": "Отступ первого ордера",
+      "value": null,
+      "unit": "%",
+      "source_ref": "docs/platforms/veles.md#VL-14",
+      "verified_status": "DOCUMENTED_ONLY",
+      "form_key_if_verified": null
+    }
+  ],
+  "readiness": "NEEDS_DATA",
+  "manual_steps": [
+    "Verify P02 field mappings",
+    "Obtain validated Mark, T02 and H04",
+    "Select leverage",
+    "Calculate position sizing and liquidation risk",
+    "Complete stress tests",
+    "Perform manual configuration review"
+  ],
+  "forbidden_automated_execution": true
+}
+```
+
 ## P02 and pilot status
 
 `P02_BLOCKED_SIGN_IN / NO_TRADE_READY`. Veles displayed its sign-in page during the check. The current account editor was inaccessible. The public [Veles Simple-mode documentation](https://help.veles.finance/ru/platform/settings/trading-mode/) corroborates the semantics of the four controls. Current editor options, units and limits still need read-only observation in the same authorized session. No current P02 timestamp, field-map version or final readiness can be attributed to this observation.
 
-The pilot remains open. The two independent end-to-end runs did not demonstrate the positive handoff. The isolated adapter response demonstrated conservative content but did not conform to the contract. Stage 06 remains pending.
+The pilot remains open. The two independent end-to-end runs did not demonstrate the positive handoff. The first isolated adapter response failed contract checks. The schema-guided repeat passed. Stage 06 remains pending.
