@@ -328,3 +328,9 @@ Python checks on the transcribed first JSON passed for the structure in the pinn
   "forbidden_automated_execution": true
 }
 ```
+
+## Pilot acceptance
+
+On 2026-11-19 the user confirmed acceptance of the synthetic HYPEUSDT / Veles SIMPLE pilot following the E2E-03 report (commit `3d58e6d1060e109620200ce6bd6fcaebfdfa0303`). Status: `PILOT_ACCEPTED / SYNTHETIC_ONLY / NO_TRADE_READY`.
+
+Acceptance covers the conditional LONG-to-NEEDS_DATA handoff and the separate observation of four P02 controls. In E2E-03 the field map was empty, risk remained `NOT_EVALUABLE`, and automatic execution was prohibited. Stage 06 cutover remains pending explicit approval under the [analytical workflow](../analytical-workflow.md).
