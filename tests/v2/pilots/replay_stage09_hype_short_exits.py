@@ -37,11 +37,11 @@ def get(url, params):
         return json.load(response)
 
 
-def market_payload(day, kind):
+def market_payload(day, kind, *, window=WEEK):
     if kind in sample.TIMEFRAMES:
-        return sample.collect(day, kind)
+        return sample.collect(day, kind, window=window)
     start = sample.utc_ms(day)
-    end = start + WEEK
+    end = start + window
     if kind == "tail":
         return get(sample.SOURCE, dict(category="linear", symbol=sample.SYMBOL, interval="15",
                                        start=end + HOUR, end=end + 9 * HOUR - 1, limit=32))
@@ -60,8 +60,8 @@ def collect(development=None):
     return captures
 
 
-def load_tail(payload, day):
-    start = sample.utc_ms(day) + WEEK + HOUR
+def load_tail(payload, day, *, window=WEEK):
+    start = sample.utc_ms(day) + window + HOUR
     end = start + 8 * HOUR
     result = payload["result"]
     rows = sorted(result["list"], key=lambda row: int(row[0]))
@@ -82,7 +82,7 @@ def load_tail(payload, day):
     return candles, digest
 
 
-def load_funding(payload, day):
+def load_funding(payload, day, *, window=WEEK):
     if payload["retCode"] != 0:
         raise ValueError(f"{day}: funding API failure")
     rows = sorted(payload["result"]["list"], key=lambda row: int(row["fundingRateTimestamp"]))
@@ -93,7 +93,7 @@ def load_funding(payload, day):
             or any(row["symbol"] != sample.SYMBOL for row in rows)
             or any(not rate.is_finite() for rate in rates.values())
             or any(t % QUARTER for t in times)
-            or times[0] > start or times[-1] < start + WEEK + HOUR
+            or times[0] > start or times[-1] < start + window + HOUR
             or any(not 0 < b - a <= 8 * HOUR for a, b in zip(times, times[1:]))):
         raise ValueError(f"{day}: funding coverage or identity failed")
     return rates, hashlib.sha256(json.dumps(rows, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
@@ -120,12 +120,13 @@ def proxy_counts(day, m15, hourly, h4, reference):
             "extra": len(proxy_times - reference_times)}
 
 
-def simulate(signal_end, bars, funding, grid):
+def simulate(signal_end, bars, funding, grid, *, stop_from_first_limit=False):
     first_bar = bars[signal_end + QUARTER]
     baseline = first_bar.opening
     first_limit = baseline * (1 + OFFSET)
     second_limit = first_limit * (1 + OVERLAP)
-    stop = baseline * (1 + STOP)
+    stop_base = first_limit if stop_from_first_limit else baseline
+    stop = stop_base * (1 + STOP)
     if grid and not first_limit < second_limit < stop:
         raise ValueError("Grid limits must be below the stop")
     if first_bar.high < first_limit:
@@ -169,7 +170,7 @@ def simulate(signal_end, bars, funding, grid):
                 net=entry_value - exit_value - fees + cash_funding)
 
 
-def simulate_window(signals, bars, funding, grid):
+def simulate_window(signals, bars, funding, grid, *, stop_from_first_limit=False):
     trades = []
     counts = Counter()
     busy_until = 0
@@ -178,7 +179,7 @@ def simulate_window(signals, bars, funding, grid):
         if t < busy_until:
             counts["overlap"] += 1
             continue
-        trade = simulate(t, bars, funding, grid)
+        trade = simulate(t, bars, funding, grid, stop_from_first_limit=stop_from_first_limit)
         if trade is None:
             counts["unfilled"] += 1
             continue
