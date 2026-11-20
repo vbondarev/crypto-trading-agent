@@ -27,17 +27,17 @@ def utc_ms(day):
     return int(datetime.fromisoformat(day).replace(tzinfo=timezone.utc).timestamp()) * 1000
 
 
-def bounds(day, interval):
+def bounds(day, interval, *, window=WEEK):
     start = utc_ms(day)
-    end = start + WEEK
+    end = start + window
     step = TIMEFRAMES[interval]
     if interval == "15":
         return start - 6 * QUARTER, end + HOUR
     return start - WARMUP * step, end
 
 
-def collect(day, interval):
-    start, end = bounds(day, interval)
+def collect(day, interval, *, window=WEEK):
+    start, end = bounds(day, interval, window=window)
     query = urlencode({
         "category": "linear", "symbol": SYMBOL, "interval": interval,
         "start": start, "end": end - 1, "limit": (end - start) // TIMEFRAMES[interval],
@@ -49,8 +49,8 @@ def collect(day, interval):
         return json.load(response)
 
 
-def read_bars(payload, day, interval):
-    start, end = bounds(day, interval)
+def read_bars(payload, day, interval, *, window=WEEK):
+    start, end = bounds(day, interval, window=window)
     step = TIMEFRAMES[interval]
     if payload["retCode"] != 0 or int(payload["time"]) < end:
         raise ValueError(f"{day} {interval}m: Bybit response or closing-time check failed")
@@ -84,11 +84,13 @@ def verify_aggregate(parent, children):
         raise ValueError(f"Cross-timeframe OHLC mismatch at {parent.end}")
 
 
-def replay_window(day, payloads):
+def replay_window(day, payloads, *, window=WEEK):
+    if window <= 0 or window % (4 * HOUR):
+        raise ValueError("Replay window must contain whole four-hour blocks")
     start = utc_ms(day)
-    end = start + WEEK
+    end = start + window
     quarter, hourly, four_hour = (
-        read_bars(payloads[label], day, label) for label in TIMEFRAMES
+        read_bars(payloads[label], day, label, window=window) for label in TIMEFRAMES
     )
     m15, hourly_bars, h4 = quarter[0], hourly[0], four_hour[0]
     for cutoff in range(start + 4 * HOUR, end + 1, 4 * HOUR):
@@ -117,7 +119,7 @@ def replay_window(day, payloads):
             })
 
     return {
-        "start_utc": day, "hours": WEEK // HOUR,
+        "start_utc": day, "hours": window // HOUR,
         "raw_breakdowns": close_breakdowns,
         "rejected_by_trend": close_breakdowns - results.total(),
         "qualified_breakdowns": results.total(),
