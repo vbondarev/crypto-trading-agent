@@ -120,7 +120,8 @@ def proxy_counts(day, m15, hourly, h4, reference):
             "extra": len(proxy_times - reference_times)}
 
 
-def simulate(signal_end, bars, funding, grid, *, stop_from_first_limit=False):
+def simulate(signal_end, bars, funding, grid, *, stop_from_first_limit=False,
+             fee=FEE, slippage=SLIPPAGE, limit_through=D(0)):
     first_bar = bars[signal_end + QUARTER]
     baseline = first_bar.opening
     first_limit = baseline * (1 + OFFSET)
@@ -129,7 +130,7 @@ def simulate(signal_end, bars, funding, grid, *, stop_from_first_limit=False):
     stop = stop_base * (1 + STOP)
     if grid and not first_limit < second_limit < stop:
         raise ValueError("Grid limits must be below the stop")
-    if first_bar.high < first_limit:
+    if first_bar.high < first_limit * (1 + limit_through):
         return None
     quantity = D(0)
     entry_value = D(0)
@@ -145,41 +146,42 @@ def simulate(signal_end, bars, funding, grid, *, stop_from_first_limit=False):
         rate = funding.get(bar.end - QUARTER, D(0))
         cash_funding += quantity * bar.opening * rate
         if quantity and bar.opening >= stop:
-            exit_price, reason = bar.opening * (1 + SLIPPAGE), "STOP"
+            exit_price, reason = bar.opening * (1 + slippage), "STOP"
             break
         added = False
-        while pending and bar.high >= pending[0][0]:
+        while pending and bar.high >= pending[0][0] * (1 + limit_through):
             price, size = pending.pop(0)
             quantity += size / price
             entry_value += size
             added = True
         if bar.high >= stop:
-            exit_price, reason = stop * (1 + SLIPPAGE), "STOP"
+            exit_price, reason = stop * (1 + slippage), "STOP"
             break
         target = entry_value / quantity * (1 - TAKE)
-        if not added and bar.low <= target:
+        if not added and bar.low <= target * (1 - limit_through):
             exit_price, reason = target, "TAKE"
             break
         if i == HOLD_BARS:
-            exit_price, reason = bar.close * (1 + SLIPPAGE), "TIME"
+            exit_price, reason = bar.close * (1 + slippage), "TIME"
             break
 
     exit_value = quantity * exit_price
-    fees = (entry_value + exit_value) * FEE
+    fees = (entry_value + exit_value) * fee
     return dict(end=bar.end, reason=reason, filled=entry_value, fees=fees, funding=cash_funding,
                 net=entry_value - exit_value - fees + cash_funding)
 
 
-def simulate_window(signals, bars, funding, grid, *, stop_from_first_limit=False):
+def simulate_window(signals, bars, funding, grid, *, stop_from_first_limit=False,
+                    fee=FEE, slippage=SLIPPAGE, limit_through=D(0), busy_until=0):
     trades = []
     counts = Counter()
-    busy_until = 0
     for signal in signals:
         t = signal["retest_end_ms"]
         if t < busy_until:
             counts["overlap"] += 1
             continue
-        trade = simulate(t, bars, funding, grid, stop_from_first_limit=stop_from_first_limit)
+        trade = simulate(t, bars, funding, grid, stop_from_first_limit=stop_from_first_limit,
+                         fee=fee, slippage=slippage, limit_through=limit_through)
         if trade is None:
             counts["unfilled"] += 1
             continue
