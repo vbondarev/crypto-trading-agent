@@ -1,4 +1,4 @@
-# Crypto Trading Agent v2 — end-to-end analytical workflow (candidate, NOT ACTIVE)
+# Crypto Trading Agent v2 — end-to-end analytical workflow (active on the v2 branch, synthetic only)
 
 **Stage 04.** One user request → market/context + source research → technical analysis → Coin Profile → LONG/SHORT/WAIT → a **draft** Veles/GinArea configuration where appropriate. This is a **text-only ChatGPT/GitHub orchestration contract**, not a live API collector, autonomous agent, bot executor, or backtest. Do not infer that any external account/source was actually reached.
 
@@ -82,4 +82,4 @@ Do not dump a seven-schema JSON object to the user by default. Evidence may be r
 
 ## 8. Evidence and implementation boundary
 
-The current repo contains *instructions and JSON contracts*, not a verified collector, independent social network credential, P02 snapshot or running model. Deterministic checks can validate route semantics on synthetic inputs, but **cannot validate real market truth**. Before any activation, Stage 05 must test concrete end-to-end model behavior and user-facing responses; Stage 06 needs explicit cutover approval. The legacy `AGENTS.md` remains active and unchanged.
+The [branch entry point](../../AGENTS.md) activates this workflow for synthetic analysis and non-executable drafts on `feature/simplified-agent-v2`. Deterministic checks validate handoff semantics on synthetic inputs. Live market validation, automatic instruction loading and trade readiness require their own evidence. See the [release-candidate startup checks](pilots/stage-09-portfolio-risk-verification.md#регрессия-и-запуск-кандидата-v2) for the current verification status.
