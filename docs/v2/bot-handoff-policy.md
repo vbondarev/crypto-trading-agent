@@ -1,4 +1,6 @@
-# v2 — strategy-to-Veles/GinArea conditional bot handoff (NOT ACTIVE)
+# v2 — strategy-to-Veles/GinArea conditional bot handoff (active on the v2 branch, synthetic only)
+
+The [v2 entry point](../../AGENTS.md) limits current handoffs to `DRAFT` or `NEEDS_DATA` when a draft is appropriate. The final-verification criteria below are retained for future validation. Current handoffs are `NO_TRADE_READY`.
 
 ## Gate 0: can a draft be produced?
 `StrategyProposal.posture` must be LONG or SHORT, and the relevant `CoinProfile` must be based on attributable valid market and technical evidence. `WAIT` or `NOT_RECOMMENDED` produces **no numeric grid**, only rationale and data needed.
