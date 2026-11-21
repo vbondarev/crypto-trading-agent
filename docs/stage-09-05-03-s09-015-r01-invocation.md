@@ -5,11 +5,11 @@
 ## 1. Source identity and pre-committed integrity
 
 - Repository: `vbondarev/crypto-trading-agent`; fixed source **commit** `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5` (never HEAD).
-- Fixed public input: `tests/fixtures/stage-09/inputs.v1.json`, Git Blob SHA `965c12afa0c4afc4c0b1698732e61c597d351b88`; case `S09-015`, prompt `P08-15`, fixture v1, entirely synthetic, clock `2026-10-20T12:00:00+03:00`.
+- Fixed public input: [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob SHA `965c12afa0c4afc4c0b1698732e61c597d351b88`; case `S09-015`, prompt `P08-15`, fixture v1, entirely synthetic, clock `2026-10-20T12:00:00+03:00`.
 - Private original: `S09-015-R01_PRIVATE_ORACLE.json`, 2982 raw UTF-8 bytes; SHA-256 `a3a038bc243645f1c162edfc2ff82012778ae7bcb09708a6677d4e18f02ad3c2`; original, separate backup and private ZIP entry rehashed locally and **all match**.
 - Public preregistration: [oracle SHA-256 commitments](stage-09-05-02-oracle-commitments.md) from GitHub commit `fffb5008761e91b84bec5d54d6165f6a1d8da00a`, **before** any S09-015 independent model execution.
 - Evaluator-only criteria, expected answers and nonce **must never** be shared with tested ChatGPT. This document contains the user's public synthetic fixture input only.
-- Current independent runs accepted in [canonical journal](../tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json): `S09-013-R01` and `S09-014-R01` (2/5, USER_ATTESTED). `S09-015-R01` is **NOT_RUN**.
+- Current independent runs accepted in [canonical journal](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json): `S09-013-R01` and `S09-014-R01` (2/5, USER_ATTESTED). `S09-015-R01` is **NOT_RUN**.
 
 ## 2. Mandatory pinned source manifest
 

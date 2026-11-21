@@ -21,7 +21,7 @@ Maintain both counters separately:
 
 ## 2. Frozen inputs and source/Skill manifest gate (SR095-04)
 
-Approved source fixture: `tests/fixtures/stage-09/inputs.v1.json` (original Git blob SHA `965c12afa0c4afc4c0b1698732e61c597d351b88`), synthetic test time `2026-10-20T12:00:00+03:00`. Do not edit it to make answers easier to grade.
+Approved source fixture: [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json) (original Git blob SHA `965c12afa0c4afc4c0b1698732e61c597d351b88`), synthetic test time `2026-10-20T12:00:00+03:00`. Do not edit it to make answers easier to grade.
 
 **The policy commit for 09.5 runs is to be pinned during 09.5.1 after v2 approval**, after changes to repository status preambles; then verify each file SHA at that exact immutable commit. Never substitute branch HEAD or infer normative file contents. As of this v2 review, these exact paths and blob hashes were actually read from branch `feature/initial-agent-mvp`; reverify them during authorized preflight.
 
@@ -91,7 +91,7 @@ For each criterion, archive `criterion_id, original_expected, forbidden_claims, 
 
 ## 5. Single canonical journal and immutable provenance (SR095-05, 06)
 
-**Canonical 09.5 actual-run journal:** `tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json` (**to create after execution authorization, not now**). 09.4 journal stays `tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`; planning fixture and baseline status not rewritten. 09.5 journal has metadata `schema, stage, provenance, fixture_git_blob, historical_coverage_reference, runs[]`; historical `S09-012-R01` is stored as **reference only** via `reference_run_id` and `reference_stage=09.4`, never as a new `runs[]` entry.
+**Canonical 09.5 actual-run journal:** [`tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json) (**to create after execution authorization, not now**). 09.4 journal stays [`tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/r1-r2-actual-runs.v1.json); planning fixture and baseline status not rewritten. 09.5 journal has metadata `schema, stage, provenance, fixture_git_blob, historical_coverage_reference, runs[]`; historical `S09-012-R01` is stored as **reference only** via `reference_run_id` and `reference_stage=09.4`, never as a new `runs[]` entry.
 
 Unique key for each run is `(stage, case_id, run_id)`; first attempt `S09-013-R01` etc. Every run is append-only (fixes via distinct corrective record; never delete or overwrite original observations). Required fields:
 `case_id, run_id, evidence_class, status, prompt_id, immutable_policy_sha, fixture_version, fixture_blob_sha, source_manifest_with_blob_shas, skills_load_mode, observed_file_lengths, fictional_test_time, actual_run_date_utc_if_known, first_full_unmodified_response_ref, raw_response_integrity_if_available, original_oracle_bytes_sha256, public_commit_sha_and_time, rehash_check, rubric_result_list, run_verdict, critical_defects, provenance_attestation_after_response, technical_session_attestation, evaluator_independence, formal_case_accepted, supersedes_run_id_if_applicable, evaluation_report_path`.

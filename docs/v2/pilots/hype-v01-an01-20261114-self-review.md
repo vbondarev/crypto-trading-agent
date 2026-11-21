@@ -7,7 +7,7 @@
 
 Reviewed `docs/v2/pilots/hype-v01-an01-20261114-analytical-source-test.md`, initial commit `3350a78df5b92209af95b5bc4b6582c9d60ca00d`, re-read through GitHub as Blob `e4224ad9228b195badc4319bf467c86298358177` with exact content. Pretest reference branch HEAD was `016a40b9c2424016b9487c685c6bd5ea80525d2c`, limited to `feature/simplified-agent-v2`.
 
-This was a **manual in-chat execution of the v2 written research/technical/source-handling instructions** using actual public website tool results. It was **not** a test invocation of a separately running agent; market data quality and vendor pages are not independently attested exchange API truth. `workflow-guard.mjs` was read but **not executed against full JSON Schema instances**. Reviewer and report author are the **same assistant**, not an independent verifier.
+This was a **manual in-chat execution of the v2 written research/technical/source-handling instructions** using actual public website tool results. It was **not** a test invocation of a separately running agent; market data quality and vendor pages are not independently attested exchange API truth. [`workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs) was read but **not executed against full JSON Schema instances**. Reviewer and report author are the **same assistant**, not an independent verifier.
 
 ## 2. Twelve structural, logical and safety checks
 
@@ -35,7 +35,7 @@ This was a **manual in-chat execution of the v2 written research/technical/sourc
 | SR-AN01-01 | HIGH | Official Bybit ticker, instruments and multi-timeframe kline retrieval failed through available public web tool; no native Mark | `BLOCKED_UPSTREAM_ACCESS`; implement/test an authorized public REST data path or inspect a public export |
 | SR-AN01-02 | HIGH | No sufficiently long and attributable closed Bybit candle history for EMA/RSI/MACD/ATR; secondary Binance spot data not equivalent | `NOT_COMPUTED`; do not issue numeric levels |
 | SR-AN01-03 | HIGH | Dynamic sites have upstream timestamp gaps and cached version differences | `TIME_UNVERIFIED/CONFLICT`; exclude exact current signal from them |
-| SR-AN01-04 | HIGH | Distinct v2 agent was not loaded; `workflow-guard.mjs` and JSON schemas were not exercised end to end | `INDEPENDENT_RUNTIME_NOT_TESTED`; separate executable validation required |
+| SR-AN01-04 | HIGH | Distinct v2 agent was not loaded; [`workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs) and JSON schemas were not exercised end to end | `INDEPENDENT_RUNTIME_NOT_TESTED`; separate executable validation required |
 | SR-AN01-05 | MEDIUM | User's earlier complaint that portfolio intake displaced market analysis is valid | Add explicit routing regression case: `COIN_RESEARCH` must never demand T02 absent account-specific goal |
 | SR-AN01-06 | MEDIUM | Social X/Telegram, issuer buyback/unlock claims lack direct independent observation in current session | Preserve gap; request dated first-party source only if material |
 | SR-AN01-07 | MEDIUM | Funding/OI from aggregators are not contemporaneous, may differ in units/coverage, and not proven native Bybit | Secondary derivatives context only; not a proof of position pressure or arbitrage |

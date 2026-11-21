@@ -6,7 +6,7 @@
 
 - Repository: `vbondarev/crypto-trading-agent`, working PR #1 on `feature/initial-agent-mvp`, Draft/Open/unmerged.
 - **Normative policy pinned Git commit:** `d8a162342cba57803ddbd0efdb1e53c373e9406e` — frozen in [the accepted 09.6.1 preflight](stage-09-06-01-preflight.md); after this commitment the branch HEAD will differ. Independently test against the **exact fixed SHA**, never by default branch HEAD.
-- Public input `tests/fixtures/stage-09/inputs.v1.json`: pinned **Git Blob** `965c12afa0c4afc4c0b1698732e61c597d351b88`. Its six unique relevant cases are `S09-018` to `S09-023`, fixture version 1, prompts P08-18–P08-23, each synthetic at `2026-10-20T12:00:00+03:00`.
+- Public input [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json): pinned **Git Blob** `965c12afa0c4afc4c0b1698732e61c597d351b88`. Its six unique relevant cases are `S09-018` to `S09-023`, fixture version 1, prompts P08-18–P08-23, each synthetic at `2026-10-20T12:00:00+03:00`.
 - Mandatory existing source file/Skill manifest (path + Git Blob SHA) is in [09.6.1 preflight](stage-09-06-01-preflight.md) and [09.6.1 self-review](stage-09-06-01-self-review.md). The speculative paths `docs/prompts/strategy-planning.md` and `docs/prompts/strategy-recommendation.md` are **NOT_FOUND** and **not** valid required sources; do not pretend they were fetched.
 - The six synthetic fixture inputs were not edited. No other case, normative policy or historical run was changed.
 

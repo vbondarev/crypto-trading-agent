@@ -170,7 +170,7 @@ The private preimage was explicitly created in the active evaluator container **
 | Case / run / prompt | `S09-006` / `S09-006-R01` / `P08-06` (fixture v1) |
 | Original immutable source commit | **`39ec1f2a0f04cd5762d4b095c9fe9cf3e0046f13`** (fixed instructions; NOT moving Git branch HEAD) |
 | Canonical fixture Git blob | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
-| Public input-only one-case blob | `cd2257345742bb28bc1352c304dc3226eeefab6d` (file: `tests/public-inputs/S09-006.v1.json`, created before this precommit) |
+| Public input-only one-case blob | `cd2257345742bb28bc1352c304dc3226eeefab6d` (file: [`tests/public-inputs/S09-006.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/public-inputs/S09-006.v1.json), created before this precommit) |
 | Public input-only file source commit | `672cbe20afec65d9fd9e1a1edb37b48e07af6031` (input-only resource pinned separately from agent instructions) |
 | Synthetic test clock | `2026-10-20T12:00:00+03:00` Moscow time |
 | Private oracle original filename | `/mnt/data/S09-006-R01_PRIVATE_ORACLE.json` (evaluator-only, not in GitHub) |

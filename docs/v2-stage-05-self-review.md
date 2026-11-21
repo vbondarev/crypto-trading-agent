@@ -8,7 +8,7 @@
 
 | Question | Outcome | Qualification |
 |---|---|---|
-| Are source and reply texts captured in immutable Git history? | YES | `tests/v2/fixtures/stage05-observed-responses.v1.json` original Git Blob `5248ca0fa0a50d0e050b6cbe19a985494148b467`; original capture commit `b9224ec3d5f1661f528750b9e4724dca856c5c0e` |
+| Are source and reply texts captured in immutable Git history? | YES | [`tests/v2/fixtures/stage05-observed-responses.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/fixtures/stage05-observed-responses.v1.json) original Git Blob `5248ca0fa0a50d0e050b6cbe19a985494148b467`; original capture commit `b9224ec3d5f1661f528750b9e4724dca856c5c0e` |
 | Are there eight unique user prompts and complete reply strings? | YES | V2-E2E-01..08; synthetic notices and no live market claims |
 | How many literal content criteria passed on first scoring? | **7/8 cases**, one false-negative | E2E-01 Russian `синтетический` vs expected uppercase English `SYNTHETIC` |
 | Did the answer itself change to force a pass? | NO | Original fixture unchanged; subsequent test-only change is visible at `2c0971e34121e6f372c7c81cf6c853bde1ec2d0d` |

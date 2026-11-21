@@ -33,9 +33,9 @@ Approved audit artifacts:
 | Scoped historical+new case coverage | **6/6** distinct IDs, with historic reference counted once |
 | Historical 09.4 source journal | **18 executions / 12 distinct accepted cases**; separate and unchanged |
 
-Canonical source journal: [portfolio-recovery actual runs v1](../tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json), audit-time Git Blob `99ee5edb616cb27391c2882ff93a5ed8c75c5e93`.
-09.4 historical journal: `tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`, Git Blob `437014ce0861d48a82c031de2206414864989f5d`.
-Original v1 fixture `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; v2 corrective fixture `tests/fixtures/stage-09/s09-015-r02-input.v2.json`, Git Blob `5cd4c2ef9c8fdfdc572e154d38868941ec253959`. No historical run, fixture or grading result was altered for this closeout.
+Canonical source journal: [portfolio-recovery actual runs v1](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json), audit-time Git Blob `99ee5edb616cb27391c2882ff93a5ed8c75c5e93`.
+09.4 historical journal: [`tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/r1-r2-actual-runs.v1.json), Git Blob `437014ce0861d48a82c031de2206414864989f5d`.
+Original v1 fixture [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; v2 corrective fixture [`tests/fixtures/stage-09/s09-015-r02-input.v2.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/s09-015-r02-input.v2.json), Git Blob `5cd4c2ef9c8fdfdc572e154d38868941ec253959`. No historical run, fixture or grading result was altered for this closeout.
 
 ## 3. Final interpretation of the R02 exception
 

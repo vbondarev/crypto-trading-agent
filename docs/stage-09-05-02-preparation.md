@@ -7,7 +7,7 @@
 
 The user explicitly authorized 09.5.2 after formal 09.5.1 acceptance. This step exclusively creates **five private evaluator-only original rubrics and exact backups** and pre-registers **public SHA-256 commitments**. No fixture modifications, tests, run logs, price requests, account reads or trades.
 
-Normative source pinned to `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`, verified at [09.5.1 preflight](stage-09-05-01-preflight.md) and [acceptance](stage-09-05-01-acceptance.md). Frozen fixture is `tests/fixtures/stage-09/inputs.v1.json`, Git Blob SHA `965c12afa0c4afc4c0b1698732e61c597d351b88`.
+Normative source pinned to `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`, verified at [09.5.1 preflight](stage-09-05-01-preflight.md) and [acceptance](stage-09-05-01-acceptance.md). Frozen fixture is [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob SHA `965c12afa0c4afc4c0b1698732e61c597d351b88`.
 
 ## Created artifact inventory
 

@@ -1,5 +1,7 @@
 # HYPE-V01 / AN-02 — public Bybit market-data acquisition repair and handoff
 
+> The Node.js commands below apply to the [archived snapshot `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Current v2 checks use Python.
+
 ## Current runbook — Python (2026-11-19)
 
 The Python collector extends the existing HYPEUSDT pilot script. Sections 1–5 below record the original Node.js implementation and its historical test status.
@@ -36,7 +38,7 @@ These methods do not require an exchange wallet API key. Bybit market `kline` us
 
 ## 2. Implemented feature-branch artifact
 
-`scripts/v2/bybit-public-market.mjs` (Node.js ≥18, no external NPM packages; read-only public methods, fixed official host) is committed to `feature/simplified-agent-v2`.
+[`scripts/v2/bybit-public-market.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/scripts/v2/bybit-public-market.mjs) (Node.js ≥18, no external NPM packages; read-only public methods, fixed official host) is committed to `feature/simplified-agent-v2`.
 
 **Public endpoint allowlist:** `/v5/market/time`, `/v5/market/instruments-info`, `/v5/market/tickers`, `/v5/market/kline`; it rejects arbitrary account/trade endpoints. Request symbols are validated as uppercase USDT pairs. No Bybit credentials, REST signing, authentication headers, local user account file, trading/transfer methods or browser session.
 

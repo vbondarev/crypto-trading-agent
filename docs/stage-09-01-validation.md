@@ -1,5 +1,7 @@
 # Шаг 09.1 — протокол реализации и self-review контракта независимых испытаний
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Актуально 20.10.2026: `COMPLETED / APPROVED` по отдельному решению пользователя.** Записи ниже фиксируют ход реализации. 09.2 отдельно разрешён и выполняется; 09.3–09.9 NOT STARTED.
 
 > **Исторический статус на момент реализации: `IMPLEMENTED / PENDING USER REVIEW`.** План 09.1–09.9 утверждён пользователем, шаг 09.1 выполнен по отдельному разрешению «Принимаю. Дальше.». **09.2–09.9 NOT STARTED**. Это документальный/синтетический шаг: independent LLM_BLIND runs **0**.
@@ -7,7 +9,7 @@
 ## 1. Результаты шага
 
 - [Контракт независимого тестирования](stage-09-test-contract.md) — типы доказательств, изоляция oracle от тестируемого агента, `PREPARE → FREEZE → INVOKE → CAPTURE → EVALUATE → FIX/REGRESS`, mandatory run ledger, трассировка RT01–RT10/FR/Skills/P08, правила `PASS/FAIL_*/INCONCLUSIVE/NOT_RUN`, приоритет критичных нарушений.
-- [Воспроизводимый тест](../tests/stage-09-01-test-contract-synthetic.mjs) — source-bound нормативные проверки и детерминированные вымышленные записи, включая **7/7** выявляемых in-memory source mutation (считаются **внутри** общего числа).
+- [Воспроизводимый тест](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-01-test-contract-synthetic.mjs) — source-bound нормативные проверки и детерминированные вымышленные записи, включая **7/7** выявляемых in-memory source mutation (считаются **внутри** общего числа).
 - [Утверждённый план 09](stage-09-plan.md) и актуальная [ревизия принятого этапа 08](stage-08-review.md). Остальные действия 09.2–09.9 **не запускались**.
 
 **Ключевое нововведение относительно этапа 08:** требование к `LLM_BLIND` как к действительному отдельному диалогу с исходным prompt/source SHA, полным неизменённым ответом и oracle, закрытым от модели **до** завершения ответа. Публичный GitHub — не безопасное место для заранее опубликованного ожидаемого ответа теста.
@@ -58,6 +60,6 @@ node tests/stage-09-01-test-contract-synthetic.mjs
 
 ## 6. Формальная приёмка 09.1 и разрешение 09.2 — 20.10.2026
 
-**Решение пользователя:** «Принимаю. Дальше.» после предъявления `09.1` и self-review. **09.1 `COMPLETED / APPROVED`** в документально-синтетических пределах: [контракт испытаний](stage-09-test-contract.md), [проверка](../tests/stage-09-01-test-contract-synthetic.mjs), **144/144 локальных V8 checks PASS**, включая 7 source-bound mutations, **11/11** существующих ссылочных целей.
+**Решение пользователя:** «Принимаю. Дальше.» после предъявления `09.1` и self-review. **09.1 `COMPLETED / APPROVED`** в документально-синтетических пределах: [контракт испытаний](stage-09-test-contract.md), [проверка](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-01-test-contract-synthetic.mjs), **144/144 локальных V8 checks PASS**, включая 7 source-bound mutations, **11/11** существующих ссылочных целей.
 
 Отдельно разрешено реализовать **только 09.2 — каталог synthetic fixtures**, с изоляцией oracle от публичного GitHub и без blind-run. **09.3–09.9 NOT STARTED**, весь этап 09 ещё не принят, никакого real `READY` и торговых действий. RV-02/03/04/06, TV-01–TV-04, FR-038 с реальным Bybit Mark остаются открыты. PR #1 сохраняется Open/Draft/unmerged.

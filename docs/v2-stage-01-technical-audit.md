@@ -73,12 +73,12 @@ The earlier 09.6 preflight's candidate paths `docs/prompts/strategy-planning.md`
 ### 2.4 Actual regression and historic evidence (do not delete)
 
 Verified existing tests:
-- `tests/stage-07-09-composition-synthetic.mjs`: `8e4b702b8f4fe3dd20f4a122c1558af234ff0fa4`.
-- `tests/stage-07-09-policy-contract-synthetic.mjs`: `9613ecf4a40aa00f4d306b6395e70af43c3b538f`.
-- `tests/stage-07-09-mutation-synthetic.mjs`: `293c4678855cc16ae30ccae5b3e16f472d212395`.
-- `tests/stage-08-09-integration-synthetic.mjs`: `1f5cca763ff7268ce9bc3b423227717976548535`.
-- `tests/stage-09-02-fixture-integrity-synthetic.mjs`: `417a1e317e499e9ea38e87ebe10f475bc3fc48fd`.
-- Public immutable `tests/fixtures/stage-09/inputs.v1.json`: `965c12afa0c4afc4c0b1698732e61c597d351b88`, 45 synthetically marked cases.
+- [`tests/stage-07-09-composition-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-09-composition-synthetic.mjs): `8e4b702b8f4fe3dd20f4a122c1558af234ff0fa4`.
+- [`tests/stage-07-09-policy-contract-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-09-policy-contract-synthetic.mjs): `9613ecf4a40aa00f4d306b6395e70af43c3b538f`.
+- [`tests/stage-07-09-mutation-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-09-mutation-synthetic.mjs): `293c4678855cc16ae30ccae5b3e16f472d212395`.
+- [`tests/stage-08-09-integration-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-09-integration-synthetic.mjs): `1f5cca763ff7268ce9bc3b423227717976548535`.
+- [`tests/stage-09-02-fixture-integrity-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-02-fixture-integrity-synthetic.mjs): `417a1e317e499e9ea38e87ebe10f475bc3fc48fd`.
+- Public immutable [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json): `965c12afa0c4afc4c0b1698732e61c597d351b88`, 45 synthetically marked cases.
 - Frozen accepted `docs/stage-09-05-results.md`: `28e8ec6e8a83858133ca0951058db69ba966a3aa`.
 - Prior step `docs/stage-09-05-closeout.md`: verified Git Blob **`16e5939aa09a58041c7a483ee25352aaa6ebe85d`**, preserving user-approved Stage 09.5 closure.
 

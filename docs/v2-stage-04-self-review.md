@@ -1,8 +1,10 @@
 # Crypto Trading Agent v2 — Stage 04 adversarial self-review
 
+> The Node.js commands below apply to the [archived snapshot `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Current v2 checks use Python.
+
 **Date:** 2026-11-10. **Finding:** `SELF_REVIEW_PASS_WITH_RUNTIME_AND_LIVE_DATA_LIMITATIONS / USER_ACCEPTANCE_PENDING / NOT_ACTIVATED`.
 
-This is a second-pass critique by the **same** development assistant, not an independent model-run grader. The reviewed deliverables are [Stage 04 workflow results](v2-stage-04-results.md), `docs/v2/analytical-workflow.md`, source acquisition and bot handoff policies, four inactive v2 Skills, `docs/v2/workflow-guard.mjs`, two synthetic fixtures and `tests/v2/workflow-smoke.mjs`.
+This is a second-pass critique by the **same** development assistant, not an independent model-run grader. The reviewed deliverables are [Stage 04 workflow results](v2-stage-04-results.md), `docs/v2/analytical-workflow.md`, source acquisition and bot handoff policies, four inactive v2 Skills, [`docs/v2/workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs), two synthetic fixtures and [`tests/v2/workflow-smoke.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/workflow-smoke.mjs).
 
 ## 1. Review checklist
 
@@ -40,7 +42,7 @@ This is a second-pass critique by the **same** development assistant, not an ind
 
 **SR-0401 / HIGH implementation limitation — no actual collectors:** Stage 04 implements a coherent *on-demand text-first agent procedure* and handoff validator, not external connector integration. Before claiming a fully operational analyst, run a real ChatGPT source-retrieval session for the selected coin and record what sources were actually reachable, with a real timestamp and identities. No invented sources.
 
-**SR-0402 / MEDIUM — semantic checks beyond schema:** Incomplete access, bad publisher identity, forged evidence links, source independence and technical warmup require real verification and not only JSON shape checks. The separate `workflow-guard.mjs` is defense-in-depth, not a cryptographic oracle or exchange authority.
+**SR-0402 / MEDIUM — semantic checks beyond schema:** Incomplete access, bad publisher identity, forged evidence links, source independence and technical warmup require real verification and not only JSON shape checks. The separate [`workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs) is defense-in-depth, not a cryptographic oracle or exchange authority.
 
 **SR-0403 / MEDIUM — real Node & JSON Schema checks:** The GitHub read-back test body was executed in V8 with test doubles, not in the repo's actual Node runtime. The original test and guard were loaded from pinned returned GitHub file content; 15 cases passed. Stage 05 should execute `node tests/v2/workflow-smoke.mjs` and `node tests/v2/contracts-smoke.mjs` in a real checkout and run full 2020-12 schema validation with Ajv or equivalent. Until then, retain `NODE_CHECKOUT_NOT_RUN`.
 

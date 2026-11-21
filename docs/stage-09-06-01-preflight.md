@@ -40,7 +40,7 @@ Every **existing** file below was fetched by GitHub Connector `fetch_file` with 
 
 ## 3. Frozen synthetic fixture integrity and six-case inventory
 
-Input `tests/fixtures/stage-09/inputs.v1.json`, original Git Blob **`965c12afa0c4afc4c0b1698732e61c597d351b88`**, `schema=stage09.synthetic-input-only.v1`, total **45** entries; exactly one instance of each case `S09-018` through `S09-023`. Each case is `fixture_version=1`, `synthetic=true`, `synthetic_now_msk=2026-10-20T12:00:00+03:00`, with sequential `prompt_id=P08-18..P08-23`. **No fixture mutation** and no use of real market inputs.
+Input [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), original Git Blob **`965c12afa0c4afc4c0b1698732e61c597d351b88`**, `schema=stage09.synthetic-input-only.v1`, total **45** entries; exactly one instance of each case `S09-018` through `S09-023`. Each case is `fixture_version=1`, `synthetic=true`, `synthetic_now_msk=2026-10-20T12:00:00+03:00`, with sequential `prompt_id=P08-18..P08-23`. **No fixture mutation** and no use of real market inputs.
 
 | Case/prompt | Exact fixture evidence | Route/Skill focus | Expected observable risk boundary |
 |---|---|---|---|

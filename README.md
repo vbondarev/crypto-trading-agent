@@ -36,6 +36,8 @@ python tests/v2/pilots/test_stage09_portfolio_risk.py
 
 [Итоги этапа 06 v2](docs/v2/stage-06-closeout.md), [история первоначального MVP](docs/development-roadmap.md) и [предыдущая редакция README](https://github.com/vbondarev/crypto-trading-agent/blob/c724f7f066e130ccc2257f85e4330497a61c7b21/README.md).
 
+Архив прежних JS-скриптов и тестовых данных доступен в [снимке `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670).
+
 ## Лицензия
 
 [Apache License 2.0](LICENSE).

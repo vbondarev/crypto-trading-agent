@@ -2,7 +2,7 @@
 
 **2026-11-06: FORMAL_ACCEPTED / USER_ATTESTED; CONTENT_PASS 10/10.**
 
-Normative commit: `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`. Fixture: `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, S09-014/P08-14, synthetic test time 2026-10-20 12:00 MSK.
+Normative commit: `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`. Fixture: [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, S09-014/P08-14, synthetic test time 2026-10-20 12:00 MSK.
 
 Precommitted evaluator-only oracle: 3140 bytes, SHA-256 `f64b4e352d50bbe5d3d283d6bead4bf2bd52948a001212656839c82dc028c985`, published before test at commit `fffb5008761e91b84bec5d54d6165f6a1d8da00a`. Original and its separately kept backup and archived copy matched commitment. Private rubric text is not included.
 

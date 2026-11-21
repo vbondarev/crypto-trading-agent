@@ -1,5 +1,7 @@
 # Шаг 09.2 — валидация каталога синтетических сценариев
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Актуально 20.10.2026: 09.2 `COMPLETED / APPROVED` по отдельному решению пользователя.** Шаг 09.3 разрешён к реализации, но не принят; 09.4–09.9 NOT STARTED. Исторический статус на момент реализации — `IMPLEMENTED / PENDING USER REVIEW`. Пользователь отдельно принял 09.1 и разрешил только 09.2. План этапа 09 утверждён. Шаги 09.3–09.9 NOT STARTED. PR #1 Open/Draft/unmerged.
 
 ## 1. Фактически созданные артефакты
@@ -7,9 +9,9 @@
 | Путь | Содержимое |
 |---|---|
 | [`docs/stage-09-fixtures.md`](stage-09-fixtures.md) | Каталог, coverage T01–T06/P08, запрет публичной oracle, инструкция чистого вызова |
-| [`tests/fixtures/stage-09/inputs.v1.json`](../tests/fixtures/stage-09/inputs.v1.json) | **45** обезличенных полностью синтетических INPUT-only кейсов в 8 семействах; 41/41 P08 и 4 дополнительных |
-| [`tests/stage-09-02-export-agent-input.mjs`](../tests/stage-09-02-export-agent-input.mjs) | Экспорт только `user_message`/`payload` одного случая, без метаинформации |
-| [`tests/stage-09-02-fixture-integrity-synthetic.mjs`](../tests/stage-09-02-fixture-integrity-synthetic.mjs) | Детерминированная проверка структуры, времён, закрытых свечей, T-шаблонов и отсутствия полей oracle |
+| [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json) | **45** обезличенных полностью синтетических INPUT-only кейсов в 8 семействах; 41/41 P08 и 4 дополнительных |
+| [`tests/stage-09-02-export-agent-input.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-02-export-agent-input.mjs) | Экспорт только `user_message`/`payload` одного случая, без метаинформации |
+| [`tests/stage-09-02-fixture-integrity-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-02-fixture-integrity-synthetic.mjs) | Детерминированная проверка структуры, времён, закрытых свечей, T-шаблонов и отсутствия полей oracle |
 
 **Заведомо отсутствует:** фактически закрытый индивидуальный oracle или `expected verdict`, реальный ChatGPT blind-run, сырой LLM transcript, фактическая P02, Bybit API/ордер. До independent runs oracle следует отдельно подготовить и хранить в среде, реально недоступной проверяемому агенту; в публичный PR его не добавлять.
 
@@ -64,6 +66,6 @@ node tests/stage-09-02-export-agent-input.mjs S09-032
 
 ## 6. Формальная приёмка 09.2 и разрешение выполнить 09.3 — 20.10.2026
 
-**Прямое решение пользователя:** «Принимаю. Дальше.» после предъявления итогового результата 09.2. Формально принят **09.2 `COMPLETED / APPROVED`**, строго как каталог **45** публичных **INPUT-only** синтетических фикстур с **41/41** P08 и восемью семействами, [скриптом проверки](../tests/stage-09-02-fixture-integrity-synthetic.mjs), экспортом входа и [каталогом](stage-09-fixtures.md). Повторное исполнение текущего JS в изолированном V8 с чтением точных GitHub-текстов подтвердило **311/311 PASS**, восемь in-memory mutations включены в число. Это не реальный Node checkout/CI, LLM blind-run или доказательство закрытого oracle.
+**Прямое решение пользователя:** «Принимаю. Дальше.» после предъявления итогового результата 09.2. Формально принят **09.2 `COMPLETED / APPROVED`**, строго как каталог **45** публичных **INPUT-only** синтетических фикстур с **41/41** P08 и восемью семействами, [скриптом проверки](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-02-fixture-integrity-synthetic.mjs), экспортом входа и [каталогом](stage-09-fixtures.md). Повторное исполнение текущего JS в изолированном V8 с чтением точных GitHub-текстов подтвердило **311/311 PASS**, восемь in-memory mutations включены в число. Это не реальный Node checkout/CI, LLM blind-run или доказательство закрытого oracle.
 
 Разрешено отдельно реализовать **только 09.3** — проверку источников GitHub, фактически прочитанных Skills и доступности независимой тестовой среды; **09.4–09.9 NOT STARTED**, PR #1 Open/Draft/unmerged. Приёмка 09.2 не даёт полномочий публиковать private oracle, запрашивать приватную P02/T02, торговать, выдавать реальный `READY` или сливать PR. Открыты RV-02/03/04/06, TV-01–TV-04 и real Bybit Mark F/A/H/R FR-038.

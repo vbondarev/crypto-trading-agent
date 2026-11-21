@@ -147,7 +147,7 @@
 | GA39 | F/A/H/R H заменена синтетическим графиком | FR-038 `NOT_PERFORMED`, no READY |
 | GA40 | Пользователь принимает шаг проекта 08.7 | Не выбирать GinArea для сделки и не начинать 08.8 |
 
-**GA01–GA40 — нормативные эталоны, не 40 независимых LLM-диалогов**. Локальный [JS-тест 08.7](../../tests/stage-08-07-ginarea-handoff-synthetic.mjs) проверяет фикстуры и source-bound guards; [протокол](../stage-08-07-validation.md) фиксирует только фактически исполненное.
+**GA01–GA40 — нормативные эталоны, не 40 независимых LLM-диалогов**. Локальный [JS-тест 08.7](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-07-ginarea-handoff-synthetic.mjs) проверяет фикстуры и source-bound guards; [протокол](../stage-08-07-validation.md) фиксирует только фактически исполненное.
 
 ## 7. Условия приёмки
 

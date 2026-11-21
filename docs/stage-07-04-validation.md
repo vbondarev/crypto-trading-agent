@@ -1,6 +1,8 @@
 # Этап 07.4 — Portfolio Analysis Skill: протокол приёмки
 
-> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** Пользователь **«Принимаю. Дальше.»** формально [принял 07.3](stage-07-03-validation.md#7-формальная-приёмка-073-и-разрешение-074--19102026), разрешив реализацию **07.4**. Созданы [третий реальный Skill `.agents/skills/portfolio-analysis/SKILL.md`](../.agents/skills/portfolio-analysis/SKILL.md) и [воспроизводимый синтетический JS-файл](../tests/stage-07-04-portfolio-analysis-synthetic.mjs); его **77/77 локальных тестов PA01–PA77 фактически выполнены, 0 FAIL** на точном исходнике, повторно полученном из GitHub. **07.4 принят 19.10.2026; 07.5 отдельно разрешён к реализации**, его результат требует собственной приёмки; PR #1 остаётся Open/Draft, не сливать.
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
+> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** Пользователь **«Принимаю. Дальше.»** формально [принял 07.3](stage-07-03-validation.md#7-формальная-приёмка-073-и-разрешение-074--19102026), разрешив реализацию **07.4**. Созданы [третий реальный Skill `.agents/skills/portfolio-analysis/SKILL.md`](../.agents/skills/portfolio-analysis/SKILL.md) и [воспроизводимый синтетический JS-файл](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-04-portfolio-analysis-synthetic.mjs); его **77/77 локальных тестов PA01–PA77 фактически выполнены, 0 FAIL** на точном исходнике, повторно полученном из GitHub. **07.4 принят 19.10.2026; 07.5 отдельно разрешён к реализации**, его результат требует собственной приёмки; PR #1 остаётся Open/Draft, не сливать.
 
 ## 1. Основания, реальные документы и границы наблюдений
 
@@ -38,7 +40,7 @@
 
 ## 3. Фактически выполненные тесты PA01–PA77
 
-Файл [`tests/stage-07-04-portfolio-analysis-synthetic.mjs`](../tests/stage-07-04-portfolio-analysis-synthetic.mjs) предназначен для Node.js ≥18 (`node tests/stage-07-04-portfolio-analysis-synthetic.mjs`) и **читает настоящий Skill при наличии клона репозитория**. Во время разработки его **сохранённый в GitHub исходник повторно прочитан и выполнен в изолированном V8** с подстановкой фактического содержимого созданного `SKILL.md`, а относительные пути проверены по структуре GitHub (не реальной файловой системе checkout). **77/77 PASS, 0 FAIL**, `bybitAccount=false`, `liveSkill=false`, `ready=false`.
+Файл [`tests/stage-07-04-portfolio-analysis-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-04-portfolio-analysis-synthetic.mjs) предназначен для Node.js ≥18 (`node tests/stage-07-04-portfolio-analysis-synthetic.mjs`) и **читает настоящий Skill при наличии клона репозитория**. Во время разработки его **сохранённый в GitHub исходник повторно прочитан и выполнен в изолированном V8** с подстановкой фактического содержимого созданного `SKILL.md`, а относительные пути проверены по структуре GitHub (не реальной файловой системе checkout). **77/77 PASS, 0 FAIL**, `bybitAccount=false`, `liveSkill=false`, `ready=false`.
 
 **Эти тесты НЕ проверяют** полноту настоящего T02, реальную семантику всех статусов/очередностей Bybit, actual post-fill ledger, liquidation, fee conversion, полноценное H01 сопоставление нескольких аккаунтов, биржевую точность Decimal или работу настоящего ChatGPT Skill runtime. Функции из JS — специально упрощённые учебные модели.
 

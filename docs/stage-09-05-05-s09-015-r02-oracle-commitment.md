@@ -21,9 +21,9 @@ This file contains **only non-secret public metadata, version pins, and a crypto
 | `.agents/skills/risk-assessment/SKILL.md` | `44661e995d2a5277eb034c8a0e97bef9223de50a` |
 | `.agents/skills/strategy-planning/SKILL.md` | `ce7d5fb44ace79f5564a8c175fb0b2b6d4011ef1` |
 
-- **NEW public fixture:** `tests/fixtures/stage-09/s09-015-r02-input.v2.json`, Git Blob SHA `5cd4c2ef9c8fdfdc572e154d38868941ec253959`. Exactly one case `S09-015`, unique `run_id=S09-015-R02`, `fixture_version=2`, prompt `P08-15`, synthetic test time `2026-10-20T12:00:00+03:00`.
+- **NEW public fixture:** [`tests/fixtures/stage-09/s09-015-r02-input.v2.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/s09-015-r02-input.v2.json), Git Blob SHA `5cd4c2ef9c8fdfdc572e154d38868941ec253959`. Exactly one case `S09-015`, unique `run_id=S09-015-R02`, `fixture_version=2`, prompt `P08-15`, synthetic test time `2026-10-20T12:00:00+03:00`.
 - Fixture was committed at `286be1317f79eb63fd4e43232c36da9646d45aeb`, **before** this oracle commitment and **before** any tested first response. User data only; no private oracles.
-- The original frozen `tests/fixtures/stage-09/inputs.v1.json` remains Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88` and is NOT the input for R02.
+- The original frozen [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json) remains Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88` and is NOT the input for R02.
 
 ## Sealed evaluator-only original oracle — public commitment
 

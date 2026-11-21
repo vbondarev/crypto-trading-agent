@@ -1,5 +1,7 @@
 # Шаг 09.3 — протокол проверки runtime, GitHub и семи Skills
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Актуально 20.10.2026: шаг 09.3 `COMPLETED / APPROVED`** по отдельному решению пользователя «Принимаю. Дальше.» после предъявления self-review. Это принятие **ограниченной документально-инфраструктурной проверки**, не подтверждение независимой загрузки Skills. Разрешена реализация **только 09.4**; 09.5–09.9 NOT STARTED. Сведения ниже о PENDING — история.
 
 
@@ -13,7 +15,7 @@
 | Seven Skill frontmatter | `---`, `name/description`, разделы use/not use, запрет ложного READY, связанные документы | **PASS DOC / LOCAL_JS** |
 | Relative Skill links | Файловые относительные ссылки семи body проверены против текущего известного набора PR-путей | **0 missing file targets**. Внешние URL, anchors и semantically correct targets не подтверждались |
 | [Node.js environment](stage-09-runtime-validation.md#1-предмет-проверки-и-пять-отдельных-утверждений) | Контейнерные `node --version`, `git --version`, `git ls-remote ...` | **Node v22.16.0, Git 2.47.3 доступны**, но `git ls-remote` завершился `Could not resolve host: github.com`; **Node checkout/CI NOT_RUN** |
-| [Test script](../tests/stage-09-03-runtime-audit-synthetic.mjs) | Реально исполненный JS в изолированном V8 с adapter reads, known PR paths | **128/128 PASS, 0 FAIL**; **7** source-pin mutations уже входят в 128 |
+| [Test script](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-03-runtime-audit-synthetic.mjs) | Реально исполненный JS в изолированном V8 с adapter reads, known PR paths | **128/128 PASS, 0 FAIL**; **7** source-pin mutations уже входят в 128 |
 | Independent ChatGPT session | Новый независимый диалог, отсутствие истории разработки, закрытый oracle, raw transcript | **NOT_RUN (0)** |
 | Automatic Skills discovery | Агент сам обнаружил `.agents/skills/*/SKILL.md` без ручной загрузки | **NOT_VERIFIED**; явное прочтение GitHub не равно автоматической загрузке |
 | Real data/trading | Bybit/P02/T02, Cross/MMR, Short loss, historical Mark, actual `READY` | **NOT_RUN / NOT_VERIFIED** |
@@ -51,9 +53,9 @@ node tests/stage-09-03-runtime-audit-synthetic.mjs
 
 | Локальный JS/V8 набор | Результат | Включённые в это число in-memory mutations |
 |---|---:|---:|
-| 09.1 — [test contract](../tests/stage-09-01-test-contract-synthetic.mjs) | **144/144 PASS** | 7 |
-| 09.2 — [fixture integrity](../tests/stage-09-02-fixture-integrity-synthetic.mjs) | **311/311 PASS** | 8 |
-| 09.3 — [runtime source audit](../tests/stage-09-03-runtime-audit-synthetic.mjs) | **128/128 PASS** | 7 |
+| 09.1 — [test contract](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-01-test-contract-synthetic.mjs) | **144/144 PASS** | 7 |
+| 09.2 — [fixture integrity](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-02-fixture-integrity-synthetic.mjs) | **311/311 PASS** | 8 |
+| 09.3 — [runtime source audit](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-03-runtime-audit-synthetic.mjs) | **128/128 PASS** | 7 |
 | **Итого** | **583/583 PASS, 0 FAIL** | 22 внутри 583; не суммировать отдельно |
 
 В каждом прогоне исходный `.mjs` выполнялся в изолированном JavaScript/V8 с read/exists адаптером, предоставляющим **точные тексты фактически прочитанных файлов GitHub** и проверенные пути по списку изменённых файлов PR. Это не `node` в полноценном checkout, не independent LLM test. Первый пробный повторный вызов 09.1 оказался неполным по содержимому файлов адаптера (`docs/stage-09-01-validation.md` не был загружен), а не провалом normative assertions; при полном списке реально пройдено **144/144**. Это дополнительно подчёркивает, что корректная эмуляция не является самостоятельным подтверждением Node CI.

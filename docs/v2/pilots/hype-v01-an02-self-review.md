@@ -6,7 +6,7 @@
 ## 1. Tested scope / exact artifacts
 
 - AN-01 acceptance of constrained trial, user message «Приниаю»: `docs/v2/pilots/hype-v01-an01-acceptance.md`, Git Blob `2ea5329464b3e2cabdfb55bb52986de663122dcd`.
-- Public read-only Node.js source: `scripts/v2/bybit-public-market.mjs`, created at `1eee69b9a52211df64fca891358a4cdc2b280071`; readback Git Blob `c53568ecebbd0729fac60fd2dafa5f23088ce890` matched authored source.
+- Public read-only Node.js source: [`scripts/v2/bybit-public-market.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/scripts/v2/bybit-public-market.mjs), created at `1eee69b9a52211df64fca891358a4cdc2b280071`; readback Git Blob `c53568ecebbd0729fac60fd2dafa5f23088ce890` matched authored source.
 - Windows PowerShell runbook and quality gates: `docs/v2/pilots/hype-v01-an02-public-bybit-data-repair.md`, created at `c6d24c20c5e49c31283c2016fc5fc1c16e19dea4`; Git Blob `781b197c151d5606182ba26735671b9b999c37bc` and content matched.
 - Official Bybit V5 docs verified for `time`, `tickers`, `instruments-info` and `kline` public request/response structures; docs are not live quotes.
 

@@ -1,6 +1,6 @@
 # Шаг 09.4 — наблюдения фактических пользовательских пробных прогонов
 
-> **20.10.2026: ONE USER-REPORTED CANDIDATE S09-001; FORMAL INDEPENDENT `LLM_BLIND` 0/12.** Содержимое данной страницы — диагностическое наблюдение после получения ответа пользователя, **не** подлинный закрытый pre-registered oracle и не формальный `PASS`. Исходный `NOT_RUN` manifest [12 запланированных случаев](../tests/fixtures/stage-09/r1-r2-run-ledger.v1.json) не изменяется. Весь 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`.
+> **20.10.2026: ONE USER-REPORTED CANDIDATE S09-001; FORMAL INDEPENDENT `LLM_BLIND` 0/12.** Содержимое данной страницы — диагностическое наблюдение после получения ответа пользователя, **не** подлинный закрытый pre-registered oracle и не формальный `PASS`. Исходный `NOT_RUN` manifest [12 запланированных случаев](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/r1-r2-run-ledger.v1.json) не изменяется. Весь 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE`.
 
 ## S09-001 — пользовательский отчёт об отдельном диалоге
 

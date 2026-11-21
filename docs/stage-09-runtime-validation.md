@@ -1,5 +1,7 @@
 # Шаг 09.3 — проверка тестовой среды, GitHub-источников и загрузки Skills
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Последующее решение 20.10.2026:** пользователь отдельно принял **09.3 `COMPLETED / APPROVED`** ([акт](stage-09-03-validation.md#5-формальная-приёмка-093-и-разрешение-094--20102026)) **в ограниченных source/runtime/documentary границах**. [09.4](stage-09-04-results.md) подготовлен, но **LLM_BLIND 0/12, PENDING INDEPENDENT EVIDENCE**. Auto Skill loader `NOT_VERIFIED`; 09.5–09.9 NOT STARTED. Предыдущая строка о pending 09.3 — история.
 
 > **Статус (20.10.2026): `IMPLEMENTED / PENDING USER REVIEW`.** [09.2 формально принят](stage-09-02-validation.md#6-формальная-приёмка-092-и-разрешение-выполнить-093--20102026). Исполняется **только** 09.3; 09.4–09.9 **NOT STARTED**. **`LLM_BLIND = 0`**, реальный Bybit / GinArea / Veles / `READY = NOT_VERIFIED`. PR #1 Open/Draft/unmerged.
@@ -42,7 +44,7 @@
 2. **PREPARE_PRIVATE_ORACLE**: отдельный оценщик создаёт oracle и хранит **вне публичного GitHub, в недоступной испытуемому агенту среде**. При отсутствии такого разделения честная отметка `oracle_isolation=NOT_VERIFIED`, запрет статуса `LLM_BLIND`.
 3. **START_FRESH**: пользователь/оператор запускает действительно новый диалог без истории разработки и без oracle. Реальное состояние Memory/Project context фиксируется как `KNOWN` или `UNKNOWN`; новый чат в общем Project **сам по себе не гарантирует изоляции**. При сомнениях — `LLM_IN_SESSION/PARTIAL`, а не `LLM_BLIND`.
 4. **LOAD**: сначала предоставить/прочитать [AGENTS.md](../AGENTS.md), затем исходники применимых Skill-файлов с подтверждёнными путями и blob SHA. `AGENTS.md` и Skill bodies — документы, а не исполняемый trading runtime. Если auto-loader не подтверждён, переход к `EXPLICIT_LOAD_FALLBACK` с отдельной отметкой; **не** записывать `AUTO_LOADED`.
-5. **PRESENT_INPUT_ONLY**: взять единственный `case_id` из [45 INPUT-only фикстур](../tests/fixtures/stage-09/inputs.v1.json), экспортировать `user_message` и `payload` штатным [экспортёром](../tests/stage-09-02-export-agent-input.mjs); **не** передавать ожидаемый verdict, oracle, internal `family/prompt_id/case_id`, user secrets.
+5. **PRESENT_INPUT_ONLY**: взять единственный `case_id` из [45 INPUT-only фикстур](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), экспортировать `user_message` и `payload` штатным [экспортёром](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-02-export-agent-input.mjs); **не** передавать ожидаемый verdict, oracle, internal `family/prompt_id/case_id`, user secrets.
 6. **CAPTURE_RAW**: записать неотредактированный полный ответ, `run_id`, фактический environment, модель (если известна), source SHA, ошибки чтения, реально наблюдаемые `SKILL_READ`; только затем открыть oracle отдельному оценщику и применить EV01–EV08 из [контракта 09.1](stage-09-test-contract.md).
 7. **RECHECK**: при изменении source, fixture, модели, состояния счёта/платформы, инсценированном событии AD-009 сравнения становятся отдельными версиями и/или reruns. Ни пользовательская приёмка этапа, ни `git clone`, ни `LLM_BLIND` не разрешают открывать/закрывать сделки.
 
@@ -65,7 +67,7 @@ node tests/stage-09-02-export-agent-input.mjs S09-032
 
 Для реального Node-подтверждения сохранить stdout/stderr и SHA HEAD, не доверять одному `PASS`. **На момент составления протокола полный checkout не был доступен из контейнера из-за DNS**; реальный запуск `node tests/...` в настоящем checkout **не заявляется**.
 
-**Отдельная детерминированная проверка 09.3** [локальным JS-модулем](../tests/stage-09-03-runtime-audit-synthetic.mjs) подтверждает структуру документов/путей, актуальный список Skills и допустимую классификацию evidence. Это `LOCAL_JS`, не независимое LLM исполнение.
+**Отдельная детерминированная проверка 09.3** [локальным JS-модулем](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-09-03-runtime-audit-synthetic.mjs) подтверждает структуру документов/путей, актуальный список Skills и допустимую классификацию evidence. Это `LOCAL_JS`, не независимое LLM исполнение.
 
 ## 5. Критерии приёмки только 09.3
 

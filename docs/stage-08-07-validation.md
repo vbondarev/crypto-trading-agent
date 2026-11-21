@@ -1,5 +1,7 @@
 # Шаг 08.7 — протокол GinArea PRO handoff и проверки пользовательской P02
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Текущий статус: `COMPLETED / APPROVED` (20.10.2026)** по прямому решению пользователя «Пинимаю. Дальше.»; ранее отмеченный `PENDING USER REVIEW` ниже — историческое состояние. 08.8 разрешён только к реализации.
 
 > **Статус: `IMPLEMENTED / PENDING USER REVIEW` (20.10.2026).** 08.6 отдельно формально принят прямым решением пользователя «Принимаю. Дальше.». Разрешён **только 08.7**, не его автоматическая приёмка. **08.8 `NOT STARTED`**, PR #1 Open/Draft.
@@ -7,7 +9,7 @@
 ## 1. Артефакты и источники
 
 - [Шесть коротких копируемых P08-30–P08-35, 40 нормативных GA01–GA40](prompts/ginarea-configuration.md).
-- [Синтетический JS test suite 08.7](../tests/stage-08-07-ginarea-handoff-synthetic.mjs).
+- [Синтетический JS test suite 08.7](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-07-ginarea-handoff-synthetic.mjs).
 - [Пользовательская формальная приёмка 08.6](stage-08-06-validation.md#5-формальная-приёмка-086-и-разрешение-087--20102026).
 - [GinArea Skill](../.agents/skills/ginarea-configuration/SKILL.md), [P01 каталог GD01–GD40](platforms/ginarea.md), [P01/P02 vs T02](platforms/platform-validation.md), [неэквивалентность Veles/GinArea](platforms/configuration-contract.md), [риск](risk-management.md).
 
@@ -88,4 +90,4 @@ node tests/stage-08-07-ginarea-handoff-synthetic.mjs
 
 ## 6. Исправление маршрута GinArea, выявленное в self-review 08.8 — 20.10.2026
 
-При сквозной сверке [контракта RT01–RT10](workflows/interaction-contract.md) и документальных промптов GinArea замечено **5 некорректных меток `RT07`** в P08-30–P08-34: в утверждённом контракте `RT07` — **Veles**, а `RT08` — **GinArea PRO**. В `docs/prompts/ginarea-configuration.md` все пять пометок исправлены на `RT08`. P08-35 оставлен в `RT09`, поскольку это финальный R3-аудит. В `tests/stage-08-07-ginarea-handoff-synthetic.mjs` слабая проверка наличия любой метки `RT` заменена точным сравнением: P08-30–P08-34 требуют `RT08`, P08-35 — `RT09`. После исправления **08.7 268/268 PASS** и **08.8 258/258 PASS** в локальной JS/V8 среде. Согласованные GinArea поля, риски и user-CHOICE не изменялись; формальная приёмка 08.7 остаётся документально-синтетической, не реальным Runtime READY.
+При сквозной сверке [контракта RT01–RT10](workflows/interaction-contract.md) и документальных промптов GinArea замечено **5 некорректных меток `RT07`** в P08-30–P08-34: в утверждённом контракте `RT07` — **Veles**, а `RT08` — **GinArea PRO**. В `docs/prompts/ginarea-configuration.md` все пять пометок исправлены на `RT08`. P08-35 оставлен в `RT09`, поскольку это финальный R3-аудит. В [`tests/stage-08-07-ginarea-handoff-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-07-ginarea-handoff-synthetic.mjs) слабая проверка наличия любой метки `RT` заменена точным сравнением: P08-30–P08-34 требуют `RT08`, P08-35 — `RT09`. После исправления **08.7 268/268 PASS** и **08.8 258/258 PASS** в локальной JS/V8 среде. Согласованные GinArea поля, риски и user-CHOICE не изменялись; формальная приёмка 08.7 остаётся документально-синтетической, не реальным Runtime READY.

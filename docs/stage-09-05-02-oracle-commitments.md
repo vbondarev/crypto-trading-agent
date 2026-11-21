@@ -10,7 +10,7 @@
 
 - Repository: `vbondarev/crypto-trading-agent`.
 - Pinned **normative source commit SHA** (frozen and verified during approved 09.5.1 preflight): `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
-- Synthetic public fixture: `tests/fixtures/stage-09/inputs.v1.json`, Git blob `965c12afa0c4afc4c0b1698732e61c597d351b88`.
+- Synthetic public fixture: [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git blob `965c12afa0c4afc4c0b1698732e61c597d351b88`.
 - Fixture clock: `2026-10-20T12:00:00+03:00`, `SYNTHETIC_ONLY`.
 - 09.5.1 preflight: [source and Skill manifest](stage-09-05-01-preflight.md) and [formal acceptance](stage-09-05-01-acceptance.md).
 - Five original private evaluator-only files created at `2026-11-05T22:43:58.343332+00:00` (same instant corresponds to 2026-11-06 01:43:58 MSK). Each has 10 frozen mandatory evaluation criteria, an independent random nonce and evaluator-only source metadata. File lengths below are **raw UTF-8 bytes**.

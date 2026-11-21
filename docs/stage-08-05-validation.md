@@ -1,5 +1,7 @@
 # Шаг 08.5 — протокол риск-решения и пользовательского выбора стратегии
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Актуальный статус: `COMPLETED / APPROVED` (20.10.2026)** по прямому решению пользователя «Принимаю. Дальше.», в документально-синтетических границах. Ранее указанный `PENDING USER REVIEW` — историческая запись перед приёмкой.
 
 > **Статус: `IMPLEMENTED / PENDING USER REVIEW` (20.10.2026).** Пользователь формально принял 08.4 с незавершённой на момент приёмки общей регрессией, разрешив реализацию **08.5**, но не его автоматическую приёмку. **08.6 `NOT STARTED`**, PR #1 Open/Draft.
@@ -7,7 +9,7 @@
 ## 1. Артефакты
 
 - [Шесть копируемых промптов P08-18–P08-23, сравнительная матрица и 40 нормативных RD01–RD40](prompts/risk-strategy-decision.md).
-- [Воспроизводимые синтетические JS-проверки](../tests/stage-08-05-risk-strategy-synthetic.mjs).
+- [Воспроизводимые синтетические JS-проверки](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-05-risk-strategy-synthetic.mjs).
 - [Формальная приёмка 08.4 и запись о переносе регрессии](stage-08-04-validation.md#6-формальная-приёмка-084-и-разрешение-085--20102026).
 - [Источники FR-027–FR-040](risk-management.md), [risk-assessment Skill](../.agents/skills/risk-assessment/SKILL.md), [strategy-planning Skill](../.agents/skills/strategy-planning/SKILL.md), [portfolio-analysis Skill](../.agents/skills/portfolio-analysis/SKILL.md), [RT01–RT10](workflows/interaction-contract.md).
 

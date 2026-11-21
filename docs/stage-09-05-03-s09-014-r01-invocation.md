@@ -5,7 +5,7 @@
 ## Pre-invocation integrity and sources
 
 - Repository: `vbondarev/crypto-trading-agent`; immutable **normative source SHA**: `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`. Do **not** use default-branch HEAD.
-- Frozen public input: `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, `case_id=S09-014`, `prompt_id=P08-14`, fixture v1, all inputs synthetic.
+- Frozen public input: [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, `case_id=S09-014`, `prompt_id=P08-14`, fixture v1, all inputs synthetic.
 - Public oracle SHA-256: `f64b4e352d50bbe5d3d283d6bead4bf2bd52948a001212656839c82dc028c985`; original private evaluator-only file `S09-014-R01_PRIVATE_ORACLE.json`, 3140 raw UTF-8 bytes, 10 sealed mandatory criteria. The [public precommitment](stage-09-05-02-oracle-commitments.md) was recorded at commit `fffb5008761e91b84bec5d54d6165f6a1d8da00a` **before any independent model invocation**.
 - Integrity rechecked on the original local private bytes, separate local backup and saved private ZIP archive: all three SHA-256 values identical to the public commitment. **The private criteria/nonce are not published here and must never be supplied to tested agent.**
 - Stage 09.5 current accepted count: **1/5 new cases** (`S09-013-R01` accepted USER_ATTESTED). `S09-014-R01` remains `NOT_RUN`; other cases `S09-015`–`S09-017` likewise `NOT_RUN`.

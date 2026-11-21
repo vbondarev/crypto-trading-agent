@@ -1,5 +1,7 @@
 # Crypto Trading Agent v2 — Stage 03 implementation report
 
+> The Node.js commands below apply to the [archived snapshot `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Current v2 checks use Python.
+
 **Date:** 2026-11-10. **Decision:** `IMPLEMENTED_IN_ISOLATED_BRANCH / STRUCTURAL_SMOKE_PASS / SELF_REVIEW_PENDING / USER_ACCEPTANCE_PENDING / NOT_ACTIVATED`.
 
 ## 1. Authorization and untouched production boundary
@@ -26,7 +28,7 @@ Contracts cover required fields, typed objects/arrays, enums (market identity, p
 
 ### Test artifacts
 - `tests/v2/fixtures/incomplete-hype.v1.json`: explicitly synthetic cross-contract fixture, unavailable social evidence, no OHLCV, UNKNOWN trend, WAIT, NEEDS_DATA Veles bot, no executable fields.
-- `tests/v2/contracts-smoke.mjs`: dependency-free, runnable on a real checkout with `node tests/v2/contracts-smoke.mjs`; implements a structural subset of used JSON Schema keywords, cross-evidence references, manual-only assertions, and four negative mutations.
+- [`tests/v2/contracts-smoke.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/contracts-smoke.mjs): dependency-free, runnable on a real checkout with `node tests/v2/contracts-smoke.mjs`; implements a structural subset of used JSON Schema keywords, cross-evidence references, manual-only assertions, and four negative mutations.
 - `docs/v2/implementation-notes.md`: controls, limits and no activation.
 
 ## 3. Actual executed checks (scope-limited)

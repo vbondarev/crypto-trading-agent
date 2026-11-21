@@ -1,6 +1,6 @@
 # Этап 07.5 — Risk Assessment Skill: протокол проверки
 
-> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** Пользователь «Принимаю. Дальше.» [принял 07.4](stage-07-04-validation.md#7-формальная-приёмка-074-и-разрешение-075--19102026) и разрешил 07.5. Создан [четвёртый настоящий Skill `.agents/skills/risk-assessment/SKILL.md`](../.agents/skills/risk-assessment/SKILL.md), плюс [воспроизводимый синтетический тест](../tests/stage-07-05-risk-assessment-synthetic.mjs): **91/91 локальная синтетическая проверка RA01–RA91 реально выполнена**, 0 FAIL в последнем прогоне сохранённого кода. **07.5 впоследствии принят пользователем 19.10.2026; 07.6 отдельно разрешён.** Draft [PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1) остаётся Open/Draft, не сливать.
+> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** Пользователь «Принимаю. Дальше.» [принял 07.4](stage-07-04-validation.md#7-формальная-приёмка-074-и-разрешение-075--19102026) и разрешил 07.5. Создан [четвёртый настоящий Skill `.agents/skills/risk-assessment/SKILL.md`](../.agents/skills/risk-assessment/SKILL.md), плюс [воспроизводимый синтетический тест](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-05-risk-assessment-synthetic.mjs): **91/91 локальная синтетическая проверка RA01–RA91 реально выполнена**, 0 FAIL в последнем прогоне сохранённого кода. **07.5 впоследствии принят пользователем 19.10.2026; 07.6 отдельно разрешён.** Draft [PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1) остаётся Open/Draft, не сливать.
 
 ## 1. Область, источники и доказательства
 
@@ -28,7 +28,7 @@
 
 ## 3. Фактически выполненные локальные тесты RA01–RA91
 
-В [JS-файле](../tests/stage-07-05-risk-assessment-synthetic.mjs) приведены чистые учебные функции проверки порогов `marginGate/leverageGate/slotsGate/reserveGate/liquidationGate/botLossGate/equityDD/dayLoss/hBlock/validStress/inputGate` и иные вспомогательные модели, плюс **91 заранее заданное тестовое ожидание**. Сохранённый код извлечён из GitHub и исполнен в изолированном JavaScript/V8 с подстановкой фактического тела Skill; ссылки проверялись по изменённым файлам того же GitHub PR. На финальном прогоне **91/91 PASS, 0 FAIL**.
+В [JS-файле](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-05-risk-assessment-synthetic.mjs) приведены чистые учебные функции проверки порогов `marginGate/leverageGate/slotsGate/reserveGate/liquidationGate/botLossGate/equityDD/dayLoss/hBlock/validStress/inputGate` и иные вспомогательные модели, плюс **91 заранее заданное тестовое ожидание**. Сохранённый код извлечён из GitHub и исполнен в изолированном JavaScript/V8 с подстановкой фактического тела Skill; ссылки проверялись по изменённым файлам того же GitHub PR. На финальном прогоне **91/91 PASS, 0 FAIL**.
 
 Первый прогон показал **90/91** из-за технического отличия `-0` от `0` при `Object.is` в тесте равной Long/Short-синтетики; тест нормализован, логика ограничений не менялась. После исправления был заново прочитан и запущен сохранённый файл — **91/91**. Отдельный `node` в клоне/CI, полноценный Bybit risk engine, другой ChatGPT blind-run и независимые тесты обнаружения Skills **не выполнялись**.
 
@@ -99,7 +99,7 @@
 | A06 — FR-037/038 | F/A/H/R отдельно названы; H на реальных Mark **не проведён** |
 | A07 — FR-039/040 | Условия отказа, safer alternatives, запрет ложного READY |
 | A08 — использование данных 07.2/07.4 | Относительные ссылки, TTL и source provenance, но реальной интеграции runtime нет |
-| A09 — воспроизводимые проверки | [JS](../tests/stage-07-05-risk-assessment-synthetic.mjs) **91/91 локально PASS**, 36 документальных эталонов отдельно |
+| A09 — воспроизводимые проверки | [JS](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-05-risk-assessment-synthetic.mjs) **91/91 локально PASS**, 36 документальных эталонов отдельно |
 | A10 — gate приёмки | **07.5 `COMPLETED / APPROVED`; 07.6 разрешён отдельной командой** |
 
 ## 6. Незакрытые риски, предлагаемый вердикт

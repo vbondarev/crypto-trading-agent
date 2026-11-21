@@ -1,6 +1,8 @@
 # Этап 07.8 — GinArea Configuration Skill: протокол документально-синтетической проверки
 
-> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** По команде «Принимаю. Дальше.» пользователь формально [принял 07.7](stage-07-07-validation.md#6-формальная-приёмка-077-и-разрешение-078--19102026) и отдельно разрешил создать 07.8. Созданы **седьмой настоящий Skill** [`.agents/skills/ginarea-configuration/SKILL.md`](../.agents/skills/ginarea-configuration/SKILL.md) и [синтетические JS-проверки](../tests/stage-07-08-ginarea-configuration-synthetic.mjs): **102/102 фактически исполненных локальных проверок GA01–GA102 PASS**, 0 FAIL последнего прогона. Дополнительно документированы **36 нормативных сценариев GC01–GC36**, не независимые обращения ChatGPT. **07.8 принят пользователем 19.10.2026; 07.9 отдельно разрешён к реализации**. [PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1) Open/Draft, не сливать.
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
+> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** По команде «Принимаю. Дальше.» пользователь формально [принял 07.7](stage-07-07-validation.md#6-формальная-приёмка-077-и-разрешение-078--19102026) и отдельно разрешил создать 07.8. Созданы **седьмой настоящий Skill** [`.agents/skills/ginarea-configuration/SKILL.md`](../.agents/skills/ginarea-configuration/SKILL.md) и [синтетические JS-проверки](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-08-ginarea-configuration-synthetic.mjs): **102/102 фактически исполненных локальных проверок GA01–GA102 PASS**, 0 FAIL последнего прогона. Дополнительно документированы **36 нормативных сценариев GC01–GC36**, не независимые обращения ChatGPT. **07.8 принят пользователем 19.10.2026; 07.9 отдельно разрешён к реализации**. [PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1) Open/Draft, не сливать.
 
 ## 1. Исходные требования, источники и доказательные ограничения
 
@@ -32,7 +34,7 @@
 
 ## 3. Фактически исполненные проверки GA01–GA102
 
-[Воспроизводимый JS-файл](../tests/stage-07-08-ginarea-configuration-synthetic.mjs) предназначен для `node tests/stage-07-08-ginarea-configuration-synthetic.mjs` (Node ≥18, checkout той же ветки). Во время разработки **сохранённый исходник был повторно прочитан из GitHub** и исполнен в изолированном JavaScript/V8 с **реальным текстом созданного Skill из GitHub**, а existence относительных ссылок проверен по GitHub списку файлов. **102/102 PASS, 0 FAIL** в итоговом прогоне.
+[Воспроизводимый JS-файл](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-08-ginarea-configuration-synthetic.mjs) предназначен для `node tests/stage-07-08-ginarea-configuration-synthetic.mjs` (Node ≥18, checkout той же ветки). Во время разработки **сохранённый исходник был повторно прочитан из GitHub** и исполнен в изолированном JavaScript/V8 с **реальным текстом созданного Skill из GitHub**, а existence относительных ссылок проверен по GitHub списку файлов. **102/102 PASS, 0 FAIL** в итоговом прогоне.
 
 Первый прогон показал **101/102**: учебное значение `0.1×1.5` в обычном JS Number представилось как `0.15000000000000002` вместо точного `0.15`. В механическую проверку добавлено нормализованное округление; **торговая математика и принятые риск-лимиты не менялись**. Для боевого пересчёта нужен Decimal и реальные qtyStep/tickSize, обычный JS Number здесь не является production decimal engine.
 

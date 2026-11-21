@@ -44,7 +44,7 @@ Every listed file was returned by GitHub Connector's `fetch_file` with explicit 
 
 ## 3. Frozen fixture identity and exact synthetic cases
 
-Input file `tests/fixtures/stage-09/inputs.v1.json`: Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; schema `stage09.synthetic-input-only.v1`, author-generated synthetic input and **no oracle**. Parsed JSON: **45** total cases; exactly one per each S09-013–017; all `fixture_version=1`, `synthetic=true`, test time `2026-10-20T12:00:00+03:00`, and requested prompt IDs P08-13–17. No fixture edits.
+Input file [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json): Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; schema `stage09.synthetic-input-only.v1`, author-generated synthetic input and **no oracle**. Parsed JSON: **45** total cases; exactly one per each S09-013–017; all `fixture_version=1`, `synthetic=true`, test time `2026-10-20T12:00:00+03:00`, and requested prompt IDs P08-13–17. No fixture edits.
 
 | New case | Family, prompt | Exact frozen input features | Hard observable preflight boundary |
 |---|---|---|---|

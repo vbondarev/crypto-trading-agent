@@ -7,13 +7,13 @@
 | Item | Locked identity | Evidence |
 |---|---|---|
 | New policy source commit | `1a0c12f7baba99d2b1dfb7b8afe18ef40034264c` | GitHub complete fetch of 8 normative sources after Option B |
-| V2 synthetic fixture | `tests/fixtures/stage-09/s09-015-r02-input.v2.json` | Exactly one S09-015 / R02 / P08-15 input; created in commit `286be1317f79eb63fd4e43232c36da9646d45aeb` |
+| V2 synthetic fixture | [`tests/fixtures/stage-09/s09-015-r02-input.v2.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/s09-015-r02-input.v2.json) | Exactly one S09-015 / R02 / P08-15 input; created in commit `286be1317f79eb63fd4e43232c36da9646d45aeb` |
 | V2 fixture Git Blob | `5cd4c2ef9c8fdfdc572e154d38868941ec253959` | GitHub read-back matched |
 | NEW sealed original private oracle | `S09-015-R02_PRIVATE_ORACLE.json` | 4318 UTF-8 bytes, 10 frozen mandatory criteria and independent nonce, in evaluator-only local storage |
 | Private oracle original SHA256 | `a2f563e0eec0228f9c4a7c8895ebb0f4533b0c6b040e3c99296184aca929718c` | Recomputed independently for local original, separate local backup and independent private ZIP member, all 3 identical |
 | Public commitment | `docs/stage-09-05-05-s09-015-r02-oracle-commitment.md` | GitHub commit `b6d87e6b3d084f1ba05b8c72b09f610605b363b1` created after fixture and **before any R02 model run**, public read-back SHA verified |
 | Original source pin of R01 | `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5` | Not used as R02 policy pin; historical source kept unchanged |
-| Old source fixture | `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88` | Re-fetched and unchanged |
+| Old source fixture | [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88` | Re-fetched and unchanged |
 | Canonical actual-run journal | Git Blob `01b414463f36a233cadc0c7a8d777a3db853f23c` | Unchanged, R02 not recorded |
 
 ## Self-review and design checks

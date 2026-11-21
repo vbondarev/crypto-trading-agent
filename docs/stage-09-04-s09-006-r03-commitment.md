@@ -23,7 +23,7 @@
 1. Preserve original private oracle bytes in evaluator-only storage; do not expose grading rules or R01/R02 answers to tested agent.
 2. Start a **new** Temporary Chat outside Crypto project, not the R01/R02 sessions.
 3. Explicitly read normative files from **exact pinned post-fix commit** in this record. Any HEAD or old pinned commit invalidates the policy comparison; report exact Git blobs.
-4. Submit ONLY the public `S09-006` case's original `user_message` and `payload` from `tests/fixtures/stage-09/inputs.v1.json`; no historical output, oracle, evaluation or hints.
+4. Submit ONLY the public `S09-006` case's original `user_message` and `payload` from [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json); no historical output, oracle, evaluation or hints.
 5. Save full first unedited agent response (including any tool errors) and its initialization report, attest session status.
 6. Before evaluation, re-hash original private oracle; hash MUST equal published commitment; if missing/mismatch, `FORMAL_INCONCLUSIVE` (do not create a substitute).
 7. Score with sealed mandatory checks, append outcome to separate actual-runs journal. Static checks are not independent LLM results.

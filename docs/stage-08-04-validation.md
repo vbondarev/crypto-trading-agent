@@ -1,5 +1,7 @@
 # Шаг 08.4 — валидация промптов портфеля и H01 recovery
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Текущий статус 20.10.2026: `COMPLETED / APPROVED`** по прямому решению пользователя «Принимаю. Дальше.» с сохранением открытого пункта регрессии 08.1–08.4 и аудита ссылок на момент приёмки. Следующий **08.5 разрешён к реализации**, но не принят. Исторический статус `PENDING USER REVIEW` ниже оставлен как исходный результат.
 
 > **Статус: `IMPLEMENTED / PENDING USER REVIEW` (20.10.2026).** 08.3 принят пользователем командой «Принимаю. Дальше.»; отдельно разрешён 08.4, но он ещё не принят. **08.5 `NOT STARTED`**, PR #1 Open/Draft.
@@ -7,7 +9,7 @@
 ## 1. Проверяемые артефакты
 
 - [Шесть копируемых промптов P08-12–P08-17 и 36 нормативных PR01–PR36](prompts/portfolio-recovery.md).
-- [Локальный синтетический JS-тест](../tests/stage-08-04-portfolio-recovery-synthetic.mjs).
+- [Локальный синтетический JS-тест](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-04-portfolio-recovery-synthetic.mjs).
 - [Приёмка предыдущего шага 08.3](stage-08-03-validation.md#6-формальная-приёмка-083-и-разрешение-084--20102026).
 - [Принятые Skills](../.agents/skills/portfolio-analysis/SKILL.md), [risk-assessment](../.agents/skills/risk-assessment/SKILL.md), [strategy-planning](../.agents/skills/strategy-planning/SKILL.md), [data-verification](../.agents/skills/data-verification/SKILL.md), [правила S0–S3 / H01](risk-management.md) и [контракт диалога](workflows/interaction-contract.md).
 
@@ -17,7 +19,7 @@
 
 ## 3. Фактическое выполнение проверки 20.10.2026
 
-Актуальное содержимое [промптов](prompts/portfolio-recovery.md), [синтетического скрипта](../tests/stage-08-04-portfolio-recovery-synthetic.mjs), [плана](stage-08-plan.md), [диалогового контракта](workflows/interaction-contract.md), четырёх Skill bodies из GitHub `feature/initial-agent-mvp` и список путей PR прочитаны повторно. Скрипт выполнен в **изолированном JavaScript/V8** с файловым адаптером (`node:fs` и `existsSync` имитировались по точным полученным исходникам/именам файлов). Проверка через реальный `node` на полном checkout и CI **не** выполнялась.
+Актуальное содержимое [промптов](prompts/portfolio-recovery.md), [синтетического скрипта](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-04-portfolio-recovery-synthetic.mjs), [плана](stage-08-plan.md), [диалогового контракта](workflows/interaction-contract.md), четырёх Skill bodies из GitHub `feature/initial-agent-mvp` и список путей PR прочитаны повторно. Скрипт выполнен в **изолированном JavaScript/V8** с файловым адаптером (`node:fs` и `existsSync` имитировались по точным полученным исходникам/именам файлов). Проверка через реальный `node` на полном checkout и CI **не** выполнялась.
 
 | Группа | Фактический результат |
 |---|---|

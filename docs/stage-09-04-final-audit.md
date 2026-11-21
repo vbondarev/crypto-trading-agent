@@ -5,8 +5,8 @@
 Twelve specified cases `S09-001` through `S09-012` of synthetic fixture v1 were tested and are now **12/12 FORMAL_ACCEPTED_USER_ATTESTED** at the agreed evidence tier. **Stage 09.4 READY_FOR_USER_CLOSEOUT**, not a certification of technical session isolation or real-market trading safety. PR #1 remains open and Draft. This report does not authorize real Bybit interaction, R3 bot activation or autonomous execution.
 
 ## Source controls
-- Fixture `tests/fixtures/stage-09/inputs.v1.json` SHA-1 Git blob: `965c12afa0c4afc4c0b1698732e61c597d351b88`, unchanged throughout the final twelve.
-- Historic `NOT_RUN` planning baseline was intentionally not rewritten. Actual evidence maintained separately in append-only `tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`.
+- Fixture [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json) SHA-1 Git blob: `965c12afa0c4afc4c0b1698732e61c597d351b88`, unchanged throughout the final twelve.
+- Historic `NOT_RUN` planning baseline was intentionally not rewritten. Actual evidence maintained separately in append-only [`tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/r1-r2-actual-runs.v1.json).
 - Public commitment documents and their private-oracle original SHA-256 digests were established ahead of the corresponding assessed responses. Each accepted record documents oracle verification at time of evaluation; this aggregate report relies on those records, not universal rehash of every historical oracle in today's runtime.
 - Total runs preserved **18**, of which **12 accepted** and **6 not accepted**. Each accepted record belongs to a distinct case ID and references a retrievable GitHub evaluation/acceptance document.
 

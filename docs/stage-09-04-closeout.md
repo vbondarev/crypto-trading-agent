@@ -5,7 +5,7 @@
 The user explicitly approved the complete [stage 09.4 aggregate audit](stage-09-04-final-audit.md), including its recorded evidence limitations, and authorized **planning stage 09.5 only**, not execution of independent 09.5 runs.
 
 ## Evidence accepted
-- Exact unique cases: S09-001 through S09-012, **12/12 accepted**, based on the separate [actual-run journal](../tests/fixtures/stage-09/r1-r2-actual-runs.v1.json).
+- Exact unique cases: S09-001 through S09-012, **12/12 accepted**, based on the separate [actual-run journal](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/r1-r2-actual-runs.v1.json).
 - **18** preserved historical actual runs, including 12 accepted and 6 not accepted; all 12 accepted records point to retrievable evaluation documents.
 - Input fixture Git blob remains `965c12afa0c4afc4c0b1698732e61c597d351b88`.
 - The original `NOT_RUN` planning baseline was not rewritten.

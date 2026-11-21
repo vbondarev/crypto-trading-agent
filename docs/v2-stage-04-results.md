@@ -1,5 +1,7 @@
 # Crypto Trading Agent v2 — Stage 04 implementation results
 
+> The Node.js commands below apply to the [archived snapshot `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Current v2 checks use Python.
+
 **Date:** 2026-11-10. **Status:** `STAGE_04_IMPLEMENTED / SYNTHETIC_HANDOFF_CHECKS_PASS / SELF_REVIEW_PENDING / USER_ACCEPTANCE_PENDING / NOT_ACTIVATED`.
 
 ## Authorization and scope
@@ -14,19 +16,19 @@ The user accepted Stage 03 and its self-review, authorized **Stage 04 only**: im
 2. `docs/v2/source-acquisition-policy.md` — source priority (Bybit identity, BTC/ETH, original project X/Telegram/news and independent analytics), independent publisher deduplication, real access states, rumors, timestamps, source conflicts, derivatives estimates.
 3. `docs/v2/bot-handoff-policy.md` — selected-platform-only mode/field mapping, P01 documentation vs actual user P02, missing account/model gates, full grid/cost/reserve checks, known hard veto priority.
 4. All **four** inactive v2 Skills `market-research-v2`, `technical-analysis-v2`, `strategy-synthesis-v2`, `bot-configuration-v2` now explicitly refer to those three docs. They remain `NOT ACTIVE`; **legacy seven Skills unchanged**.
-5. `docs/v2/workflow-guard.mjs` — **pure synchronous deterministic nontrading handoff guard** for already-supplied structured records. Checks cross-module request/instrument IDs, evidence references/duplicates, missing or falsely verified evidence, invalid computed dependencies, indicator absence, WAIT+field map, platform/strategy mismatch, known hard veto, unsupported manual-review readiness. It **does not fetch data, compute market indicators, choose trading direction, calculate actual portfolio risk or place orders**.
-6. `tests/v2/workflow-smoke.mjs` — **15 synthetic** negative/refusal/conditional-draft integration cases (including known H04 veto and false P02-ready), and original existing `tests/v2/fixtures/incomplete-hype.v1.json` unchanged.
+5. [`docs/v2/workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs) — **pure synchronous deterministic nontrading handoff guard** for already-supplied structured records. Checks cross-module request/instrument IDs, evidence references/duplicates, missing or falsely verified evidence, invalid computed dependencies, indicator absence, WAIT+field map, platform/strategy mismatch, known hard veto, unsupported manual-review readiness. It **does not fetch data, compute market indicators, choose trading direction, calculate actual portfolio risk or place orders**.
+6. [`tests/v2/workflow-smoke.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/workflow-smoke.mjs) — **15 synthetic** negative/refusal/conditional-draft integration cases (including known H04 veto and false P02-ready), and original existing `tests/v2/fixtures/incomplete-hype.v1.json` unchanged.
 7. `tests/v2/fixtures/conditional-long-draft.v1.json` — a second cross-contract synthetic scenario: **user-supplied, unverified** market+technical data indicate tentative local UP; overall trend MIXED/LOW, posture `LONG` only conditionally, Veles proposal `DRAFT` with **no fabricated mapping or future order grid**, because real P02/account/Bybit data unavailable.
 
 ## Tests actually executed
 
-The committed guard and committed test source were **fetched back via GitHub connector** from `feature/simplified-agent-v2`; actual `inspectHandoff` function was evaluated in a fresh isolated V8 JS execution, and the actual committed `tests/v2/workflow-smoke.mjs` test body was run with its Node `fs` and `assert` dependencies adapted to in-memory test doubles loaded from the two original committed fixture files. **Result: 15/15 test cases PASS and 59 actual assertion calls.** This is **not** equivalent to a verified `node tests/v2/workflow-smoke.mjs` execution in a Git checkout.
+The committed guard and committed test source were **fetched back via GitHub connector** from `feature/simplified-agent-v2`; actual `inspectHandoff` function was evaluated in a fresh isolated V8 JS execution, and the actual committed [`tests/v2/workflow-smoke.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/workflow-smoke.mjs) test body was run with its Node `fs` and `assert` dependencies adapted to in-memory test doubles loaded from the two original committed fixture files. **Result: 15/15 test cases PASS and 59 actual assertion calls.** This is **not** equivalent to a verified `node tests/v2/workflow-smoke.mjs` execution in a Git checkout.
 
 A separate recursive structural test fetched **all 7 published JSON Schema Draft 2020-12** documents and both synthetic fixtures; checked types, enums, required fields, minima, conditional `if/then` used for config readiness, and cross-file evidence references. **Result: both fixtures PASS; 1,496 structural assertion invocations** (not 1,496 independent scenarios). This was a **subset structural validator, not a full standards-compliant JSON Schema engine**.
 
 Recorded source Git Blob proofs during read-back:
-- `docs/v2/workflow-guard.mjs`: `0509c5c709666aa53cd0222fa2f2334ddbe92a41`.
-- `tests/v2/workflow-smoke.mjs`: `43afc271da54c15581ef95adb466b3ce575faed7`.
+- [`docs/v2/workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs): `0509c5c709666aa53cd0222fa2f2334ddbe92a41`.
+- [`tests/v2/workflow-smoke.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/workflow-smoke.mjs): `43afc271da54c15581ef95adb466b3ce575faed7`.
 - `tests/v2/fixtures/incomplete-hype.v1.json`: `6dd8d2c8ee10622b6e1ba9ed77eeabfdbcb91e02`.
 - `tests/v2/fixtures/conditional-long-draft.v1.json`: `1683d19fa910b26e218f92354984662a9801aacd`.
 

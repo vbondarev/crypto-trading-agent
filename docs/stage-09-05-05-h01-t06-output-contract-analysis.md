@@ -60,4 +60,4 @@ Recommend **Option B**, conditional on separate user approval, with a genuinely 
 ## Decision and gate
 `09.5.5_NORMATIVE_COVERAGE_ANALYZED / CHANGE_PROPOSED_NOT_APPLIED / R02_NOT_RUN`.
 
-No attempt to modify original R01, existing sealed oracle commitments, original frozen `inputs.v1.json`, 09.4 or 09.5 actual-run logs. Existing state **5 executed, 4 formally accepted, 1 mandatory FAIL**; PR #1 remains Draft. Request explicit approval of Option A or B before editing normative files or preparing the new test.
+No attempt to modify original R01, existing sealed oracle commitments, original frozen [`inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), 09.4 or 09.5 actual-run logs. Existing state **5 executed, 4 formally accepted, 1 mandatory FAIL**; PR #1 remains Draft. Request explicit approval of Option A or B before editing normative files or preparing the new test.

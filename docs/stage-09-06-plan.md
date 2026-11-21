@@ -11,7 +11,7 @@
 
 ## 1. Current preregistered input inventory (six unique synthetic cases)
 
-Frozen original public input source `tests/fixtures/stage-09/inputs.v1.json` Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, synthetic test clock `2026-10-20T12:00:00+03:00`. Cases are existing source inputs only, with **no 09.6 run executed**. Do not silently rewrite the original v1 fixture.
+Frozen original public input source [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json) Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, synthetic test clock `2026-10-20T12:00:00+03:00`. Cases are existing source inputs only, with **no 09.6 run executed**. Do not silently rewrite the original v1 fixture.
 
 | Case | Prompt | Intended behavior to test | Mandatory negative claim |
 |---|---|---|---|

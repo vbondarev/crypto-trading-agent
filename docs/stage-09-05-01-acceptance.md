@@ -15,7 +15,7 @@ This authorizes recording the acceptance of **09.5.1 only**, and explicitly **do
 
 - [Frozen-source preflight](stage-09-05-01-preflight.md) with immutable normative source pin `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
 - [Post-implementation critical self-review](stage-09-05-01-self-review.md), documentary `SELF_REVIEW_PASS`. One initially miscopied SHA was corrected and all **18/18** listed provider-reported Git blob hashes and JavaScript UTF-16 file lengths rechecked against fresh file fetches using the exact source pin.
-- Input fixture `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, contains precisely five planned new cases `S09-013`–`S09-017` with fixed test time and P08-13–17. It was **not modified**.
+- Input fixture [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, contains precisely five planned new cases `S09-013`–`S09-017` with fixed test time and P08-13–17. It was **not modified**.
 - `S09-012-R01` remains historical cross-stage coverage under 09.4, **not** a new 09.5 execution. Stage 09.4 recorded 12 accepted cases in 18 historical runs.
 - RT04/RT05, T02–T05, AD-009, H01, S0–S3 and applicable FR negative gates traced to the five cases. Full numerical S3/FR-038 remain `NOT_EVALUABLE / NOT_PERFORMED`.
 

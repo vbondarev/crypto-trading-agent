@@ -6,7 +6,7 @@
 |---|---|
 | Scenario / run | `S09-012` / `S09-012-R01` |
 | Fixture version / prompt | `v1` / `P08-12` |
-| Public source | `tests/fixtures/stage-09/inputs.v1.json` |
+| Public source | [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json) |
 | **Pinned normative policy commit** | **`ea12ab9ae3c865bddd1455b01dae47357e6dc9cc`** |
 | Fixture Git blob | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
 | Evaluator-only original file | `S09-012-R01_PRIVATE_ORACLE.json` |

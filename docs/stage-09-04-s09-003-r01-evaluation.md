@@ -40,5 +40,5 @@
 
 - `S09-003-R01=EXECUTED / CONTENT_FAIL_MINOR / BLIND_SESSION_NOT_ATTESTED`, `formal_case_accepted=false`. **Прогресс принимаемых уникальных кейсов остаётся 2/12** (S09-001-R02, S09-002-R02).
 - Отмечено повторение того же класса EV07 ошибки из первого диагностического S09-001-R01; **возможная систематическая неоднозначность R1/торговых статусов**. Не скрывать её behind `INSUFFICIENT_DATA`, и не изменять исходный immutable pinned commit задним числом. Нужен отдельный проверяемый corrective patch с новой source version *или* новый независимый R02 повторный прогон на том же fixed commit для оценки стохастики (без подсказки правильного статуса тестируемому).
-- Не менять исторический базовый план `12×NOT_RUN` задним числом; фактический результат хранить в append-only `tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`.
+- Не менять исторический базовый план `12×NOT_RUN` задним числом; фактический результат хранить в append-only [`tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/r1-r2-actual-runs.v1.json).
 - Не переходить к 09.5, пока весь 09.4 не принят. Ни реальных торговых команд, ни подтверждённой автоматической загрузки Skills.

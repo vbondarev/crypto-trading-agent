@@ -1,5 +1,7 @@
 # Шаг 08.8 — протокол отчётных шаблонов и инкрементального RECHECK
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Актуальный статус: `COMPLETED / APPROVED` (20.10.2026)** по прямому решению пользователя «Принимаю. Дальше.». Исторические `PENDING USER REVIEW` ниже относятся к состоянию до приёмки; только шаг 08.9 разрешён к реализации.
 
 > **Статус: `IMPLEMENTED / PENDING USER REVIEW` (20.10.2026).** 08.7 принят пользователем отдельным решением «Пинимаю. Дальше.», разрешена только реализация 08.8; **08.9 `NOT STARTED`**. PR #1 Open/Draft.
@@ -7,7 +9,7 @@
 ## 1. Артефакты
 
 - [Шесть шаблонов P08-36–P08-41, RC01–RC10 dependency map, RF01–RF40](workflows/report-templates.md).
-- [Тесты report/RECHECK 08.8](../tests/stage-08-08-report-templates-synthetic.mjs).
+- [Тесты report/RECHECK 08.8](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-08-report-templates-synthetic.mjs).
 - [Формальная приёмка 08.7](stage-08-07-validation.md#5-формальная-приёмка-087-и-разрешение-088--20102026).
 - [RT01–RT10 и ASK/ANALYZE/CHOOSE/RECHECK/STOP](workflows/interaction-contract.md), [freshness AD-009](data-freshness.md), [T01–T06](input-templates.md), [FR gates](risk-management.md), [принятые промпты 08.2–08.7](stage-08-plan.md).
 

@@ -16,7 +16,7 @@
 
 **User decision, 2026-11-19:** Python is the sole implementation language for future project code, including data collectors, validation and audit utilities, workflow guards, and automated tests. Implement new tools and functional changes in Python. Migrate any existing JavaScript utility or test that future work needs to extend to Python before extending it, and verify equivalent behavior before switching the documented run path.
 
-Existing Node.js scripts and test records are retained for historical reproducibility. The next AN-02 implementation change should extend the existing Python Bybit collector and verify parity with the current AN-02 checks before changing the pilot runbook.
+The earlier Node.js scripts and test records are available for historical reproducibility in the [archived snapshot `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). The next AN-02 implementation change should extend the existing Python Bybit collector and verify parity with the current AN-02 checks before changing the pilot runbook.
 
 The agent itself continues to run in ChatGPT using GitHub-hosted instructions. Python is required only when running the supporting tools or tests. Markdown instructions and JSON contracts remain part of the project.
 

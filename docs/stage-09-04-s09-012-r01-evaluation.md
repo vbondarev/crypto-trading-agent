@@ -37,4 +37,4 @@ User explicitly confirmed this was the first full, unedited answer from a fresh 
 - `oracle_integrity=SHA256_VERIFIED`
 - `trading_authorization=NONE`
 
-Record is appended to `tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`. Stage 09.4 requires full aggregate audit before closure, and PR #1 remains Draft until explicitly reviewed.
+Record is appended to [`tests/fixtures/stage-09/r1-r2-actual-runs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/r1-r2-actual-runs.v1.json). Stage 09.4 requires full aggregate audit before closure, and PR #1 remains Draft until explicitly reviewed.

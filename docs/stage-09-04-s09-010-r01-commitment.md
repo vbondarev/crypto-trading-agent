@@ -5,7 +5,7 @@
 | Metadata | Frozen value |
 |---|---|
 | Scenario / run | `S09-010` / `S09-010-R01` |
-| Public fixture / prompt | `tests/fixtures/stage-09/inputs.v1.json`, `P08-10`, version 1 |
+| Public fixture / prompt | [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), `P08-10`, version 1 |
 | Pinned normative policy commit | **`10ed0743ee2e62654261ebf8b7205851bd5f23e8`** |
 | Fixture Git blob SHA | `965c12afa0c4afc4c0b1698732e61c597d351b88` |
 | Private evaluator-only filename | `S09-010-R01_PRIVATE_ORACLE.json` |

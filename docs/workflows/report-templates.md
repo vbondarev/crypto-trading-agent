@@ -166,7 +166,7 @@ Decision priority for an action: **confirmed hard veto ⇒ `REJECTED`** even whe
 | RF39 | GitHub 403, нужный Skill не прочитан | `NOT_LOADED`, partial fallback, не фиктивный R3 |
 | RF40 | Пользователь согласовал отчёт 08.8 | Это не разрешение на 08.9, real orders или PR merge |
 
-RF01–RF40 — **нормативные ожидания, не 40 независимых прогонов ChatGPT**. В [JS-синтетических тестах](../../tests/stage-08-08-report-templates-synthetic.mjs) используются вымышленные сценарии и source-bound проверки. Фактические результаты фиксирует [протокол/self-review 08.8](../stage-08-08-validation.md).
+RF01–RF40 — **нормативные ожидания, не 40 независимых прогонов ChatGPT**. В [JS-синтетических тестах](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-08-report-templates-synthetic.mjs) используются вымышленные сценарии и source-bound проверки. Фактические результаты фиксирует [протокол/self-review 08.8](../stage-08-08-validation.md).
 
 ## 7. Приёмка и дальнейшие этапы
 

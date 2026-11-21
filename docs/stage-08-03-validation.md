@@ -1,5 +1,7 @@
 # Шаг 08.3 — проверка R2 технических сценариев Long/Short
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Текущий статус: `COMPLETED / APPROVED` (20.10.2026)** по прямому решению пользователя «Принимаю. Дальше.», в документальных и синтетических границах. Ранее зафиксированный `PENDING USER REVIEW` ниже — исторический статус; реальная торговая готовность не доказана.
 
 > **Статус: `IMPLEMENTED / PENDING USER REVIEW` (20.10.2026).** 08.2 принят командой пользователя «Принимаю. Дальше.»; разрешена реализация **только 08.3**, не финальная приёмка. 08.4 `NOT STARTED`, PR #1 Open/Draft.
@@ -7,7 +9,7 @@
 ## 1. Артефакты и границы
 
 - [Шесть коротких промптов P08-06–P08-11, правила R2 и нормативные случаи TS01–TS36](prompts/technical-scenario.md).
-- [Синтетические JS-тесты технического сценария](../tests/stage-08-03-technical-scenario-synthetic.mjs).
+- [Синтетические JS-тесты технического сценария](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-03-technical-scenario-synthetic.mjs).
 - [Ранее принятый контракт диалогов RT01–RT10](workflows/interaction-contract.md), [Market Analysis Skill](../.agents/skills/market-analysis/SKILL.md), [Data Verification Skill](../.agents/skills/data-verification/SKILL.md), [Strategy Planning Skill](../.agents/skills/strategy-planning/SKILL.md).
 - [Формальная приёмка 08.2](stage-08-02-validation.md#6-формальная-приёмка-082-и-разрешение-083--20102026).
 

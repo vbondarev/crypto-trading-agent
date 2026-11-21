@@ -7,9 +7,9 @@
 The user accepted Stage 04 and its self-review and authorized Stage 05 compact end-to-end tests: agent answers, Coin Profile, unavailable sources, LONG/SHORT/WAIT, Veles/GinArea, safety constraints. All writes stayed in `feature/simplified-agent-v2`. Active `AGENTS.md`, `README.md`, original Skills, accepted historical test records, and Draft PR #1 were not changed.
 
 **Three explicitly different evidence tiers:**
-1. **Same-assistant actual textual responses:** I composed **eight complete Russian-language answer artifacts in this very development session**, each against a fixed synthetic prompt, then committed the unchanged response text to `tests/v2/fixtures/stage05-observed-responses.v1.json` before the deterministic rubric check. They are **real written candidate answers**, *not* independent externally launched Temporary Chat/LLM model executions, not blind tests and not proof of actual automatic Skill routing.
-2. **Deterministic semantic-substring regression:** `tests/v2/response-regression.mjs` verifies 84 literal mandatory/forbidden strings (case-local requirements), prompt labels and distinct cases. This is **not** an external semantic grader and may miss a wrong inference that uses the right keywords.
-3. **Existing synthetic software guard:** `tests/v2/workflow-smoke.mjs` and `docs/v2/workflow-guard.mjs` were re-fetched as actual committed blobs and their source evaluated in isolated V8 with memory-backed test-file/Node assert substitutes. **15/15 cases and 59 assertion calls PASS**. This is **not** `node` run on a true Git checkout and not a runtime LLM agent evaluation.
+1. **Same-assistant actual textual responses:** I composed **eight complete Russian-language answer artifacts in this very development session**, each against a fixed synthetic prompt, then committed the unchanged response text to [`tests/v2/fixtures/stage05-observed-responses.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/fixtures/stage05-observed-responses.v1.json) before the deterministic rubric check. They are **real written candidate answers**, *not* independent externally launched Temporary Chat/LLM model executions, not blind tests and not proof of actual automatic Skill routing.
+2. **Deterministic semantic-substring regression:** [`tests/v2/response-regression.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/response-regression.mjs) verifies 84 literal mandatory/forbidden strings (case-local requirements), prompt labels and distinct cases. This is **not** an external semantic grader and may miss a wrong inference that uses the right keywords.
+3. **Existing synthetic software guard:** [`tests/v2/workflow-smoke.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/workflow-smoke.mjs) and [`docs/v2/workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs) were re-fetched as actual committed blobs and their source evaluated in isolated V8 with memory-backed test-file/Node assert substitutes. **15/15 cases and 59 assertion calls PASS**. This is **not** `node` run on a true Git checkout and not a runtime LLM agent evaluation.
 
 There was **no live market, X, Telegram, CoinGlass/CoinAnk or private Bybit account retrieval**, no actual indicators calculated from Bybit OHLCV, no actual Veles/GinArea P02 inspection, no independent agent session, and no trading/bot execution.
 
@@ -33,8 +33,8 @@ Responses do not contain numeric verified executable grid values because synthet
 ## 3. Retested existing workflow guard
 
 Executed source from:
-- `docs/v2/workflow-guard.mjs` Git Blob `0509c5c709666aa53cd0222fa2f2334ddbe92a41`.
-- `tests/v2/workflow-smoke.mjs` Git Blob `43afc271da54c15581ef95adb466b3ce575faed7`.
+- [`docs/v2/workflow-guard.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/docs/v2/workflow-guard.mjs) Git Blob `0509c5c709666aa53cd0222fa2f2334ddbe92a41`.
+- [`tests/v2/workflow-smoke.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/v2/workflow-smoke.mjs) Git Blob `43afc271da54c15581ef95adb466b3ce575faed7`.
 - `tests/v2/fixtures/incomplete-hype.v1.json` Git Blob `6dd8d2c8ee10622b6e1ba9ed77eeabfdbcb91e02`.
 - `tests/v2/fixtures/conditional-long-draft.v1.json` Git Blob `1683d19fa910b26e218f92354984662a9801aacd`.
 

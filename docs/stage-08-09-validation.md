@@ -1,5 +1,7 @@
 # Шаг 08.9 — протокол сквозной интеграционной ревизии этапа 08
 
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
 > **Позднейшее решение 20.10.2026:** [этап 08 полностью принят](stage-08-review.md#9-формальная-приёмка-этапа-08-и-разрешение-планирования-09--20102026) в документально-синтетических границах. Разрешён проект [плана 09](stage-09-plan.md), но он ещё ожидает утверждения; 09.1 NOT STARTED. Записи ниже отражают статус на момент самой приёмки 08.9.
 
 > **Актуальный статус 20.10.2026:** **08.9 `COMPLETED / APPROVED`** по отдельной команде пользователя «Принимаю. Дальше.». **Этап 08 `PENDING FORMAL STAGE ACCEPTANCE`; этап 09 `NOT STARTED`**. Приёмка 08.9 не является приёмкой этапа 08, разрешением на этап 09, merge, реальный `READY` или ордера. PR #1 Open/Draft/unmerged.
@@ -7,7 +9,7 @@
 ## 1. Артефакты
 
 - [Интеграционная ревизия и карта 41 промпта / RT01–RT10](stage-08-review.md).
-- [Синтетические сквозные проверки W08-01–W08-14](../tests/stage-08-09-integration-synthetic.mjs).
+- [Синтетические сквозные проверки W08-01–W08-14](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-09-integration-synthetic.mjs).
 - [Приёмка 08.8 и разрешение 08.9](stage-08-08-validation.md#5-формальная-приёмка-088-и-разрешение-089--20102026).
 - [Исходные контракты RT, AD-009, risk FR](workflows/interaction-contract.md), [план этапа](stage-08-plan.md), [07 Skills](stage-07-skills-contract.md).
 
@@ -77,7 +79,7 @@ node tests/stage-08-09-integration-synthetic.mjs
 
 По новой команде пользователя «Выполни шаг 08.9» проведена повторная документально-синтетическая ревизия без пользовательской приёмки шага и без перехода к 09.
 
-- 14 исходных Markdown-контрактов/промпт-групп и `tests/stage-08-09-integration-synthetic.mjs` заново получены из `feature/initial-agent-mvp` через GitHub connector. Текущие пути проверялись по списку 99 changed PR files + `LICENSE`.
+- 14 исходных Markdown-контрактов/промпт-групп и [`tests/stage-08-09-integration-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-09-integration-synthetic.mjs) заново получены из `feature/initial-agent-mvp` через GitHub connector. Текущие пути проверялись по списку 99 changed PR files + `LICENSE`.
 - Исходный JS-модуль исполнен в изолированном V8 с эмулированными `readFileSync/existsSync` (включая Node-подобную нормализацию `docs/../`). **Итог исходной версии до исправления и после исправления: 232/232 PASS, 0 FAIL.** Это **не** реальный Node checkout/CI, независимые ChatGPT blind-runs или Bybit/P02.
 - Все **7/7** исходных `.agents/skills/*/SKILL.md` повторно отдельно получены из GitHub: подтверждены непустые тела, frontmatter и ссылки на нормативные docs; фактическая автоматическая загрузка Skills живым ChatGPT по-прежнему **NOT_VERIFIED**.
 - **Выявлено и исправлено одно документальное уточнение:** в [W08-06](stage-08-review.md#5-сквозная-синтетическая-матрица-w08-01w08-14) активный H04 и просьба ADD ранее имели только маршрут `RT04`. Теперь явно указаны `RT03/RT04/RT07–RT09` по намерению и стадии диалога: запрет на новый риск **сквозной** и всегда даёт `REJECTED`. Нормативные пороги FR, модели риска и скрипт тестов не менялись; дополнительная статическая проверка строки W08-06 подтвердила сохранение `REJECTED`.
@@ -104,7 +106,7 @@ OPEN: RV-02 Cross MMR, RV-03 strict Short upper loss, RV-04 actual user P02, RV-
 
 ## 6. Постприёмочная регрессия на согласованных статусах — 20.10.2026
 
-После отдельной формальной приёмки 08.9 и синхронизации `AGENTS.md`, `README.md`, `docs/stage-08-plan.md`, `docs/development-roadmap.md` и `docs/stage-08-review.md` обновлён один status-guard в `tests/stage-08-09-integration-synthetic.mjs`: теперь он **проверяет именно `08.9 COMPLETED / APPROVED` при сохранении `этап 08 PENDING FORMAL STAGE ACCEPTANCE`**, вместо устаревшего `08.9 PENDING USER REVIEW`.
+После отдельной формальной приёмки 08.9 и синхронизации `AGENTS.md`, `README.md`, `docs/stage-08-plan.md`, `docs/development-roadmap.md` и `docs/stage-08-review.md` обновлён один status-guard в [`tests/stage-08-09-integration-synthetic.mjs`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-09-integration-synthetic.mjs): теперь он **проверяет именно `08.9 COMPLETED / APPROVED` при сохранении `этап 08 PENDING FORMAL STAGE ACCEPTANCE`**, вместо устаревшего `08.9 PENDING USER REVIEW`.
 
 **Фактический повторный запуск обновлённого модуля в изолированном JS/V8 на GitHub-исходниках:** **232/232 PASS, 0 FAIL**, 14 W08 и 21 целевая mutation включены в общее число. Относительные пути нормализованы эмулятором `existsSync`; в качестве списка существующих путей использованы 99 файлов PR и `LICENSE`. Реальный `node` checkout/CI, blind-run ChatGPT, real Bybit/P02/READY **не выполнялись**. Прежние **1746/1746** являются историческим снимком и не переобъявляются новой сквозной регрессией.
 

@@ -5,7 +5,7 @@
 ## Immutable public inputs
 
 - Normative fixed commit: `1a0c12f7baba99d2b1dfb7b8afe18ef40034264c`.
-- Public v2 fixture: `tests/fixtures/stage-09/s09-015-r02-input.v2.json`, commit `286be1317f79eb63fd4e43232c36da9646d45aeb`, Git Blob `5cd4c2ef9c8fdfdc572e154d38868941ec253959`.
+- Public v2 fixture: [`tests/fixtures/stage-09/s09-015-r02-input.v2.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/s09-015-r02-input.v2.json), commit `286be1317f79eb63fd4e43232c36da9646d45aeb`, Git Blob `5cd4c2ef9c8fdfdc572e154d38868941ec253959`.
 - New evaluator-only preregistration: `docs/stage-09-05-05-s09-015-r02-oracle-commitment.md`, committed before testing at `b6d87e6b3d084f1ba05b8c72b09f610605b363b1`.
 - Original private oracle's preregistered hash: `a2f563e0eec0228f9c4a7c8895ebb0f4533b0c6b040e3c99296184aca929718c`, length **4318 bytes**, 10 mandatory criteria.
 

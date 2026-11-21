@@ -5,7 +5,7 @@
 
 ## Integrity and provenance
 - Source pin: `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
-- Fixture: `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; S09-013, P08-13, v1, synthetic now 2026-10-20 12:00 MSK.
+- Fixture: [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; S09-013, P08-13, v1, synthetic now 2026-10-20 12:00 MSK.
 - Original private sealed oracle `S09-013-R01_PRIVATE_ORACLE.json`: **3219 UTF-8 bytes**. Original SHA-256 rechecked during evaluation: `47ae74e6046b472e8a0f731471b11532ca802e546a9534d74bfac71ff5433efa`. Matches previously committed [public hash](stage-09-05-02-oracle-commitments.md), preregistered at commit `fffb5008761e91b84bec5d54d6165f6a1d8da00a` before tested response. **Private oracle and nonce are not public.**
 - Raw response: complete text titled “Crypto Trading Agent — S09-013-R01”, supplied directly by user in the development chat after [first-run prompt](stage-09-05-03-s09-013-r01-invocation.md). No independent immutable session export or direct access to test-chat internal tool trace.
 - **Post-run explicit user attestation**: “Подтверждаю” to all three requested conditions: newly created Temporary Chat **outside Crypto Project**, **first complete unchanged answer** without regenerating or reprompting, and **no private oracle/prior evaluations/hints supplied**.

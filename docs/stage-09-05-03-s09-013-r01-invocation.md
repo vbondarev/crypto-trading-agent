@@ -7,7 +7,7 @@
 ## Source and integrity gates
 
 - Pinned normative source commit: `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
-- Public fixture `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, case `S09-013`, prompt `P08-13`.
+- Public fixture [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, case `S09-013`, prompt `P08-13`.
 - Public pre-run SHA-256 commitment exists before invoking tested model: [stage-09-05-02-oracle-commitments.md](stage-09-05-02-oracle-commitments.md), precommit commit `fffb5008761e91b84bec5d54d6165f6a1d8da00a`.
 - The private evaluator-only **original** S09-013-R01 oracle's SHA-256 was locally rechecked **before invocation** and equals the preregistered public hash. Original/backup are private and must not be given to the model.
 - Source reads by the **development** agent do not prove reads by the **isolated** test agent. The test agent must obtain and report complete reads independently.

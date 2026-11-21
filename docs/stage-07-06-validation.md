@@ -1,6 +1,8 @@
 # Этап 07.6 — Strategy Planning Skill: протокол проверки
 
-> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** Пользователь «Принимаю. Дальше.» формально [принял 07.5](stage-07-05-validation.md#7-формальная-приёмка-075-и-разрешение-076--19102026) и отдельно разрешил 07.6. Созданы **пятый настоящий Skill** [`.agents/skills/strategy-planning/SKILL.md`](../.agents/skills/strategy-planning/SKILL.md) и [локальные синтетические проверки](../tests/stage-07-06-strategy-planning-synthetic.mjs): **99/99 фактически выполненных локальных JavaScript-проверок SP01–SP99, 0 FAIL**. Дополнительно сформулированы **36 нормативных документальных сценариев ST01–ST36**, не являющихся независимыми ответами ChatGPT. **07.6 впоследствии принят пользователем 19.10.2026; 07.7 отдельно разрешён к реализации.** [PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1) остаётся Open/Draft, не сливать.
+> Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
+
+> **Статус `COMPLETED / APPROVED` (приёмка пользователя 19.10.2026).** Пользователь «Принимаю. Дальше.» формально [принял 07.5](stage-07-05-validation.md#7-формальная-приёмка-075-и-разрешение-076--19102026) и отдельно разрешил 07.6. Созданы **пятый настоящий Skill** [`.agents/skills/strategy-planning/SKILL.md`](../.agents/skills/strategy-planning/SKILL.md) и [локальные синтетические проверки](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-06-strategy-planning-synthetic.mjs): **99/99 фактически выполненных локальных JavaScript-проверок SP01–SP99, 0 FAIL**. Дополнительно сформулированы **36 нормативных документальных сценариев ST01–ST36**, не являющихся независимыми ответами ChatGPT. **07.6 впоследствии принят пользователем 19.10.2026; 07.7 отдельно разрешён к реализации.** [PR #1](https://github.com/vbondarev/crypto-trading-agent/pull/1) остаётся Open/Draft, не сливать.
 
 ## 1. Основания и реализованная область
 
@@ -29,7 +31,7 @@
 
 ## 2. Фактически выполненные локальные проверки SP01–SP99
 
-[Тестовый файл](../tests/stage-07-06-strategy-planning-synthetic.mjs) предназначен для `node tests/stage-07-06-strategy-planning-synthetic.mjs` (Node.js ≥18 в checkout). При разработке **сохранённый файл был получен из GitHub и выполнен** в изолированном JavaScript/V8 окружении с подстановкой точного текста Skill из той же feature-ветки. Для проверки существования ссылок использовался список файлов GitHub, **не независимая файловая система checkout**. Прямого запуска Node/CI, настоящего Skill runtime, реального Bybit API или независимого ChatGPT blind-run **не было**.
+[Тестовый файл](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-06-strategy-planning-synthetic.mjs) предназначен для `node tests/stage-07-06-strategy-planning-synthetic.mjs` (Node.js ≥18 в checkout). При разработке **сохранённый файл был получен из GitHub и выполнен** в изолированном JavaScript/V8 окружении с подстановкой точного текста Skill из той же feature-ветки. Для проверки существования ссылок использовался список файлов GitHub, **не независимая файловая система checkout**. Прямого запуска Node/CI, настоящего Skill runtime, реального Bybit API или независимого ChatGPT blind-run **не было**.
 
 Первый прогон: **98/99**, один тест обнаружил неявные ID FR-043/044/045 при содержательном описании требований. В текст Skill добавлен явный блок трассировки каждого **FR-041–FR-046**. Повторный прогон сохранённого исходника: **99/99 PASS, 0 FAIL**.
 

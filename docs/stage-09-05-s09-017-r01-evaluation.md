@@ -4,7 +4,7 @@
 
 ## Frozen test sources and integrity
 - Immutable normative SHA `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
-- Public synthetic fixture `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; case `S09-017`, prompt `P08-17`, v1, fixed test time `2026-10-20T12:00:00+03:00`.
+- Public synthetic fixture [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`; case `S09-017`, prompt `P08-17`, v1, fixed test time `2026-10-20T12:00:00+03:00`.
 - Original private oracle `S09-017-R01_PRIVATE_ORACLE.json`, **3008 bytes**, SHA-256 `760b4f44c77d715923b1da77f4917cc214c3495753c49375bc0eb0c1afb4e2fb`.
 - SHA-256 recalculated after the user response on original private bytes, separate private backup, and member of stored private ZIP: all three identical to public precommitment in `docs/stage-09-05-02-oracle-commitments.md`, published at commit `fffb5008761e91b84bec5d54d6165f6a1d8da00a` before independent S09-017 invocation.
 - The hidden rubric and nonce remain evaluator-only; neither are included in this report or the independent test prompt.

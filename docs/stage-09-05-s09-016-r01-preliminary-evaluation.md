@@ -4,7 +4,7 @@
 
 ## Integrity and frozen source
 - Source pin `d76434098a911b2a3cd3cc0fb45bfc5c15db8cc5`.
-- Fixture `tests/fixtures/stage-09/inputs.v1.json`, Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, `S09-016`, `P08-16`, v1, synthetic now 2026-10-20 12:00 MSK.
+- Fixture [`tests/fixtures/stage-09/inputs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/inputs.v1.json), Git Blob `965c12afa0c4afc4c0b1698732e61c597d351b88`, `S09-016`, `P08-16`, v1, synthetic now 2026-10-20 12:00 MSK.
 - Original private oracle `S09-016-R01_PRIVATE_ORACLE.json` 3009 UTF-8 bytes, SHA256 `b1d9eb4ef68c8b37348903c4d29469f97ed77bd94163642d9b6f83914b1c1daf`.
 - Original, private backup and ZIP entry match byte-for-byte and SHA256. Public [preregistration](stage-09-05-02-oracle-commitments.md) matches, created at commit `fffb5008761e91b84bec5d54d6165f6a1d8da00a` before the model run. No private nonce or sealed original rubric included.
 

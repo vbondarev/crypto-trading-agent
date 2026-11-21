@@ -13,7 +13,7 @@
 | SR095-02 HIGH | **CLOSED** | §§4.2–4.3 require every frozen mandatory item PASS or the case is unaccepted; FAIL_CRITICAL/MAJOR blocking rules, separate agent versus evaluator outcomes and direct quote evidence |
 | SR095-03 HIGH | **CLOSED** | §§1/3/5/6 dual counters: `S09-012-R01` is 09.4 historic reference only; precisely five new 09.5 executions |
 | SR095-04 MEDIUM | **CLOSED FOR PLANNING** | §2 lists exact paths and fetched Git blob SHA values for five baseline documents plus portfolio-analysis, risk-assessment and strategy-planning Skills; §6 freezes/rechecks per run during future authorized 09.5.1 |
-| SR095-05 MEDIUM | **CLOSED** | §5 names one canonical journal `portfolio-recovery-actual-runs.v1.json`, unique (stage,case,run) keys, external reference to historical S09-012 and no raw-run rewrites |
+| SR095-05 MEDIUM | **CLOSED** | §5 names one canonical journal [`portfolio-recovery-actual-runs.v1.json`](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/fixtures/stage-09/portfolio-recovery-actual-runs.v1.json), unique (stage,case,run) keys, external reference to historical S09-012 and no raw-run rewrites |
 | SR095-06 MEDIUM | **CLOSED** | §5 demands byte-identical original private oracle plus backup, published SHA before first response, verified preregistration commit, original file rehash before scoring and no recreation on mismatch |
 | SR095-07 MEDIUM | **CLOSED** | §§3–4 H01 `-8` conditional series net versus actual realized exit, `-13` subtotal with missing fees/funding, no guaranteed recovery |
 | SR095-08 MEDIUM | **CLOSED** | S09-014 unknown A/B ownership, distinct order identities, FILLED A not pending, NEW B leaves counted once, GPS fourth slot conditional |
