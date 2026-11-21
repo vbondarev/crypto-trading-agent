@@ -1,4 +1,4 @@
-# v2 — research-source selection and reconciliation (NOT ACTIVE)
+# v2 — research-source selection and reconciliation
 
 Use this as a narrow operational companion to the canonical `docs/data-sources.md` and `docs/data-freshness.md`. It grants **no** API, connector, privileged or paid access.
 
@@ -13,6 +13,15 @@ Use this as a narrow operational companion to the canonical `docs/data-sources.m
 | Independent news | Distinct original reporting and full event/time details | Syndicated clones are one provenance group |
 | Derivatives | Official funding/OI where comparable; supported CoinGlass/CoinAnk view with time/model | Liquidation heatmap and inferred liquidation pools are estimates, not actual exchange fills |
 | Platform fields | Selected mode's current official P01 plus actual user P02 | Do not invent form fields or treat a help page as current account UI |
+
+## Public Bybit data for technical analysis
+
+For a current Bybit USDT perpetual analysis, first request market data from `https://api.bybit.com` with the tools available in the session. Use public `GET` requests without authentication. The access status reflects actual responses in that session.
+
+1. Verify the requested uppercase symbol via [Instruments Info](https://bybit-exchange.github.io/docs/v5/market/instrument). Pass `category=linear` and the exact symbol, and verify `contractType=LinearPerpetual` and `settleCoin=USDT`.
+2. Request [Kline](https://bybit-exchange.github.io/docs/v5/market/kline) with that category and symbol. Choose intervals and history length for the requested horizon and indicator warm-up. For 15m, 1h, 4h and 1d use `15`, `60`, `240` and `D`. Use [Bybit server time](https://bybit-exchange.github.io/docs/v5/market/time) to bound a current analysis. For a requested historical analysis, use the specified cutoff. Exclude bars whose interval has not closed by the cutoff, sort by opening time and check continuity and OHLCV validity before computing indicators.
+3. If a ticker is needed, request [Tickers](https://bybit-exchange.github.io/docs/v5/market/tickers) and label Last, Mark and Index separately. Record the endpoint and parameters, market, retrieval time, analysis cutoff, and time of the latest closed candle. Validate usable JSON and `retCode=0` before treating anything as observed.
+4. Record HTTP, connection and API failures as access gaps. Keep any validated subset and report partial coverage. If essential rows are unavailable, ask for an export of the same contract and intervals, or explain which indicators could not be computed. A user-supplied historical snapshot or synthetic fixture stays a separate input with its own cutoff and provenance.
 
 ## Quality and ambiguity
 - Every important claim points to `EvidenceRecord`: source name, exact observed/retrieved/published time (when obtainable), instrument, method, independent-group and `access_status`.

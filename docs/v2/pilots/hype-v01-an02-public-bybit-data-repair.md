@@ -6,7 +6,7 @@
 
 The Python collector extends the existing HYPEUSDT pilot script. Sections 1–5 below record the original Node.js implementation and its historical test status.
 
-Run from the repository root on `feature/simplified-agent-v2` with Python 3.12 (the verified version). The collector and tests use the standard library.
+Run from the root of the selected repository version with Python 3.12 (the verified version). The collector and tests use the standard library.
 
 ```powershell
 python -m unittest discover -s tests/v2/pilots -p "test_collect_hype_r02_ohlcv.py" -v
@@ -50,11 +50,12 @@ These methods do not require an exchange wallet API key. Bybit market `kline` us
 
 ## 3. Windows PowerShell runbook (user's own PC, no API keys)
 
-**Prerequisite:** Node.js 18 or newer and Git installed. Existing local repository users should fetch the `feature/simplified-agent-v2` branch; otherwise clone only that branch:
+Historical reproduction uses Node.js 18 or newer and a copy of the archived repository snapshot.
 
 ```powershell
-git clone --branch feature/simplified-agent-v2 --single-branch https://github.com/vbondarev/crypto-trading-agent.git
+git clone --no-checkout https://github.com/vbondarev/crypto-trading-agent.git
 cd crypto-trading-agent
+git switch --detach b554dd967a6a83ba85f0c1c95484e2c4f48c9670
 node --version
 node .\scripts\v2\bybit-public-market.mjs --self-test
 node .\scripts\v2\bybit-public-market.mjs --symbol HYPEUSDT --out "$env:TEMP\bybit-hype-public"
@@ -66,7 +67,7 @@ node .\scripts\v2\bybit-public-market.mjs --symbol HYPEUSDT --out "$env:TEMP\byb
 Compress-Archive -Path "$env:TEMP\bybit-hype-public\*" -DestinationPath "$env:TEMP\bybit-hype-public.zip" -Force
 ```
 
-If local repo exists, `git fetch origin feature/simplified-agent-v2` followed by a safe checkout of the desired branch is preferable to cloning a duplicate. Do not copy script into an active bot runtime or commit exported snapshots. No `Downloads` path is assumed (Windows may redirect it); using `$env:TEMP` avoids that issue.
+With an existing clone, use a separate worktree at the same archived commit. Do not copy script into an active bot runtime or commit exported snapshots. No `Downloads` path is assumed (Windows may redirect it); using `$env:TEMP` avoids that issue.
 
 The user may upload `bybit-hype-public.zip` here for source-level review. It contains **public** market data only. It should never contain private Bybit API keys, UID, balance, orders, positions or authentication headers.
 

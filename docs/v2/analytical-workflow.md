@@ -1,6 +1,6 @@
-# Crypto Trading Agent v2 — end-to-end analytical workflow (active on the v2 branch, synthetic only)
+# Crypto Trading Agent v2 — end-to-end analytical workflow
 
-**Stage 04.** One user request → market/context + source research → technical analysis → Coin Profile → LONG/SHORT/WAIT → a **draft** Veles/GinArea configuration where appropriate. This is a **text-only ChatGPT/GitHub orchestration contract**, not a live API collector, autonomous agent, bot executor, or backtest. Do not infer that any external account/source was actually reached.
+**Stage 04.** One user request → market/context + source research → technical analysis → Coin Profile → LONG/SHORT/WAIT → a **draft** Veles/GinArea configuration where appropriate. The agent can request public market data during a user-initiated session. Report actual source coverage and use the same evidence gates for public, historical and synthetic inputs.
 
 ## 1. Entry routing
 
@@ -19,7 +19,7 @@ A. **market-research-v2** (source registry `docs/data-sources.md`):
 5. Compare BTC regime, individual asset drivers, funding/OI/liquidation *estimates*. Preserve conflict or `PARTIAL/INSUFFICIENT` coverage.
 
 B. **technical-analysis-v2**:
-1. Verify price-source identity and closed OHLCV timeframe/warmup before EMA/SMA/RSI/MACD/ATR, volume, levels, multi-TF trends or numerical entry bands. Unavailable history ⇒ `NOT_COMPUTED`, no synthesized fake indicator values.
+1. For a current Bybit analysis, obtain candle data yourself from the public API using the [source-acquisition policy](source-acquisition-policy.md). Verify price-source identity and closed OHLCV timeframe/warmup before EMA/SMA/RSI/MACD/ATR, volume, levels, multi-TF trends or numerical entry bands. Unavailable history ⇒ `NOT_COMPUTED`, no synthesized fake indicator values.
 2. Resolve 15m/1h vs 4h/1d conflicts as `MIXED` or conditional scenarios rather than a forced trend. Record last closed candle and source IDs.
 3. Produce `TechnicalEvidenceBundle` with real limits and `EvidenceRecord` references. Any event invalidating snapshots triggers AD-009 RECHECK.
 
@@ -56,7 +56,7 @@ Then:
 1. Choose **one** platform adapter: `docs/v2/adapters/veles.md` OR `docs/v2/adapters/ginarea.md`. Respect exact mode availability, UI label/units and P01-vs-P02 source distinction.
 2. Size first IN and **all** reachable future grid orders with USDT notional vs margin clearly differentiated. Include fees/funding/slippage; state assumptions and reserve math.
 3. Apply canonical `docs/risk-management.md`: leverage ≤5×, account IM ≤30% Equity, one-bot defensible worst loss ≤5% Equity, max three reachable positions, full reserve, verified applicable ≥15% Mark liquidation distance, known day-loss ≥3%, HWM DD ≥15% and H04 block risk additions. Missing full T02/MMR/P02 does **not** permit real READY.
-4. Return `DRAFT|NEEDS_DATA|NOT_RECOMMENDED|VERIFIED_FOR_MANUAL_REVIEW`; even the last is a manual review handoff, **not** automatic execution or a guarantee of a live risk model.
+4. Return `DRAFT`, `NEEDS_DATA` or `NOT_RECOMMENDED` in the current mode. Public market data do not verify account risk or confer trade readiness.
 
 **Known veto precedence:** active H04 or known hard-limit breach ⇒ reject new exposure regardless of P02 gaps. For unavailable P02/portfolio before approval, output **safe draft with missing fields**, not manufactured UI settings. If user has an existing position use optional legacy portfolio-analysis and H01/T05 only as needed.
 
@@ -82,4 +82,4 @@ Do not dump a seven-schema JSON object to the user by default. Evidence may be r
 
 ## 8. Evidence and implementation boundary
 
-The [branch entry point](../../AGENTS.md) activates this workflow for synthetic analysis and non-executable drafts. Use `feature/simplified-agent-v2` before v2 is merged and `main` after the merge. Deterministic checks validate handoff semantics on synthetic inputs. Live market validation, automatic instruction loading and trade readiness require their own evidence. See the [release-candidate startup checks](pilots/stage-09-portfolio-risk-verification.md#регрессия-и-запуск-кандидата-v2) for the current verification status.
+The [repository entry point](../../AGENTS.md) activates this workflow for public-market analysis, historical and synthetic inputs, and non-executable drafts. Use the repository version selected for the session and read the instructions at the same commit throughout the scenario. Deterministic checks validate handoff semantics on synthetic inputs. Live market validation, automatic instruction loading and trade readiness require their own evidence. See the [release-candidate startup checks](pilots/stage-09-portfolio-risk-verification.md#регрессия-и-запуск-кандидата-v2) for the current verification status.

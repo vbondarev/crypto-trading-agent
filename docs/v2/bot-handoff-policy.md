@@ -1,4 +1,4 @@
-# v2 — strategy-to-Veles/GinArea conditional bot handoff (active on the v2 branch, synthetic only)
+# v2 — strategy-to-Veles/GinArea conditional bot handoff
 
 The [v2 entry point](../../AGENTS.md) limits current handoffs to `DRAFT` or `NEEDS_DATA` when a draft is appropriate. The final-verification criteria below are retained for future validation. Current handoffs are `NO_TRADE_READY`.
 
