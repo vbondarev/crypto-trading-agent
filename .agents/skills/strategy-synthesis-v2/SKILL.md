@@ -2,7 +2,7 @@
 name: strategy-synthesis-v2
 description: Synthesize research and technical evidence into a coin profile, LONG/SHORT/WAIT recommendation and non-weakening risk screening.
 ---
-# Strategy Synthesis (v2 preview, NOT ACTIVE)
+# Strategy Synthesis (v2)
 **Trigger:** user wants integrated coin outlook, trend portrait, possible strategy and bot feasibility.
 
 ## Inputs / output
@@ -20,6 +20,6 @@ Input: `RequestContext`, `MarketEvidenceBundle`, `TechnicalEvidenceBundle`, opti
 ## Validation / dependency
 Schemas: `docs/v2/contracts/{request-context,market-evidence,technical-evidence,coin-profile,strategy-proposal}.schema.json`. Canonical **unchanged** risk source `docs/risk-management.md`, `.agents/skills/risk-assessment/SKILL.md`, `.agents/skills/portfolio-analysis/SKILL.md`, `.agents/skills/strategy-planning/SKILL.md`; AD-009 applies. Never conflate a v2 prose gate with real Cross/UTA modeling or F/A/H/R stress proof.
 
-## Stage 04 end-to-end routing (inactive preview)
+## End-to-end routing
 
-Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Do **not** claim these documents confer live API/tool access or activate v2. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail. Legacy AGENTS.md remains active, untouched.
+Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Use the active v2 route in the root `AGENTS.md`. Record source access from actual responses. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail.
