@@ -82,4 +82,4 @@ Do not dump a seven-schema JSON object to the user by default. Evidence may be r
 
 ## 8. Evidence and implementation boundary
 
-The [branch entry point](../../AGENTS.md) activates this workflow for synthetic analysis and non-executable drafts on `main`. Deterministic checks validate handoff semantics on synthetic inputs. Live market validation, automatic instruction loading and trade readiness require their own evidence. See the [release-candidate startup checks](pilots/stage-09-portfolio-risk-verification.md#регрессия-и-запуск-кандидата-v2) for the current verification status.
+The [branch entry point](../../AGENTS.md) activates this workflow for synthetic analysis and non-executable drafts. Use `feature/simplified-agent-v2` before v2 is merged and `main` after the merge. Deterministic checks validate handoff semantics on synthetic inputs. Live market validation, automatic instruction loading and trade readiness require their own evidence. See the [release-candidate startup checks](pilots/stage-09-portfolio-risk-verification.md#регрессия-и-запуск-кандидата-v2) for the current verification status.

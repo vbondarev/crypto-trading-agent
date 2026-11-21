@@ -32,7 +32,7 @@
 
 ## Результаты прогона 09.2–09.5
 
-Проверен исходный код ветки на коммите `f26694612e9b02c1cdd3ff1f76cbb03225dd9759`. В [офлайн-прогоне](../../../tests/v2/pilots/test_stage09_portfolio_risk.py) 17 тестов прошли на Python 3.12 с `jsonschema` 4.17.3. Для воспроизведения из корня репозитория:
+Проверен исходный код ветки на коммите `f26694612e9b02c1cdd3ff1f76cbb03225dd9759`. В [офлайн-прогоне](../../../tests/v2/pilots/test_stage09_portfolio_risk.py) 17 тестов прошли на Python 3.12 с `jsonschema` 4.17.3. Исторические команды для проверки на указанном коммите:
 
 ```text
 python -m pip install jsonschema==4.17.3
@@ -603,7 +603,7 @@ python tests/v2/pilots/test_stage09_portfolio_risk.py
 
 ## Шаг 3. Инструкция аналитического выпуска v2
 
-**Проверенный способ запуска:** новый сеанс Codex Cloud с доступом на чтение GitHub. Для новых сценариев явно прочитай `AGENTS.md` из `main` и закрепи SHA на весь сценарий. Проверенный прогон выполнен в ветке `feature/simplified-agent-v2`. Версия инструкций для воспроизведения — [`47d6d9901ca6b9de7d02db91fd52bd8cd2156b54`](https://github.com/vbondarev/crypto-trading-agent/tree/47d6d9901ca6b9de7d02db91fd52bd8cd2156b54). Результаты исторических реплеев и Python-скрипт зафиксированы в последующих коммитах ветки v2.
+**Проверенный способ запуска:** новый сеанс Codex Cloud с доступом на чтение GitHub. Для новых сценариев явно прочитай `AGENTS.md` из `feature/simplified-agent-v2` до слияния v2 или из `main` после слияния и закрепи SHA на весь сценарий. Проверенный прогон выполнен в ветке `feature/simplified-agent-v2`. Версия инструкций для воспроизведения — [`47d6d9901ca6b9de7d02db91fd52bd8cd2156b54`](https://github.com/vbondarev/crypto-trading-agent/tree/47d6d9901ca6b9de7d02db91fd52bd8cd2156b54). Результаты исторических реплеев и Python-скрипт зафиксированы в последующих коммитах ветки v2.
 
 Для воспроизведения исторического облачного прогона используй этот запрос.
 
@@ -611,10 +611,17 @@ python tests/v2/pilots/test_stage09_portfolio_risk.py
 
 Контрольные примеры — `S09-REL-V01` (WAIT), `S09-REL-V02` (LONG / Veles SIMPLE), `GINA-CLOUD-01` (SHORT / GinArea PRO Default Grid), `TREE-R1` и `TREE-R2` (исторические срезы и последующие модельные проверки). Отдельная регрессия при выпуске повторно дала 17/17 штатных тестов Python.
 
+Штатная проверка текущей версии из корня репозитория:
+
 ```powershell
-python -m pip install jsonschema==4.17.3
+python -m pip install -r tests/v2/requirements.txt
 python tests/v2/pilots/test_stage09_portfolio_risk.py
-python tests/v2/pilots/replay_tree_execution.py
+```
+
+Для офлайн-повтора TREEUSDT подставь путь к сохранённому JSON со сырыми ответами Bybit. Верхний уровень содержит ключи `TREE-R1` и `TREE-R2`, внутри каждого случая — интервалы `60` и `240`. Режим `--capture` читает только этот файл.
+
+```powershell
+python tests/v2/pilots/replay_tree_execution.py --capture "path/to/tree-execution-capture.json"
 ```
 
 Аналитический выпуск пригоден для проверенного облачного маршрута, синтетических сценариев и исторических реплеев с условными черновиками. Реальный счёт, торговые настройки к исполнению и автоматизация ордеров остаются вне приёмки.

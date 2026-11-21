@@ -1,16 +1,18 @@
-# Дорожная карта разработки
+# История разработки первоначального MVP
 
-> **Актуально 31.10.2026:** 09.1–09.3 `COMPLETED/APPROVED`; 09.4 `PARTIAL/PENDING INDEPENDENT EVIDENCE`. **2/12 `LLM_BLIND/USER_ATTESTED`** уникальных кейсов приняты: S09-001 9/9 и S09-002 10/10. Регенерации SOL были в одном Temporary Chat и не удваивают счётчик. `209/209` source-backed LOCAL_JS preflight, 10 mutations входят в число 209. Приватный исходник старого SOL oracle недоступен для rehash; следующий S09-003-R01 pre-registered SHA/backup есть, но `NOT_RUN`. 09.5–09.9 `NOT STARTED`, no live READY/trading.
+Этот документ описывает этапы первоначального MVP. Исходный снимок до перехода на v2 сохранён в [коммите `0333a6a`](https://github.com/vbondarev/crypto-trading-agent/commit/0333a6a34f2c9d0537ed080ebaf91af4261fc63c). Порядок запуска v2 и текущий режим описаны в [README](../README.md).
+
+> **Исторический статус на 31.10.2026:** 09.1–09.3 `COMPLETED/APPROVED`; 09.4 `PARTIAL/PENDING INDEPENDENT EVIDENCE`. **2/12 `LLM_BLIND/USER_ATTESTED`** уникальных кейсов приняты: S09-001 9/9 и S09-002 10/10. Регенерации SOL были в одном Temporary Chat и не удваивают счётчик. `209/209` source-backed LOCAL_JS preflight, 10 mutations входят в число 209. Приватный исходник старого SOL oracle недоступен для rehash; следующий S09-003-R01 pre-registered SHA/backup есть, но `NOT_RUN`. 09.5–09.9 `NOT STARTED`, no live READY/trading.
 
 
-> **Актуально на 20.10.2026:** 09.1–09.3 `COMPLETED / APPROVED`; 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE` — **S09-001-R02 9/9 oracle content PASS / user-attested Temporary Chat**, ещё 11 кейсов не проверены; `190/190` локальных preflight assertions и 10 mutations внутри. S09-002-R01 oracle SHA опубликован **до** теста, запуск ещё `NOT_RUN`. Следующие 09.5–09.9 не начаты. Старые строки ниже документируют историю развития.
+> **Исторический статус на 20.10.2026:** 09.1–09.3 `COMPLETED / APPROVED`; 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE` — **S09-001-R02 9/9 oracle content PASS / user-attested Temporary Chat**, ещё 11 кейсов не проверены; `190/190` локальных preflight assertions и 10 mutations внутри. S09-002-R01 oracle SHA опубликован **до** теста, запуск ещё `NOT_RUN`. Следующие 09.5–09.9 не начаты. Старые строки ниже документируют историю развития.
 
 
 ## Цель
 
 Поэтапно подготовить текстовый репозиторий инструкций для персонального торгового агента ChatGPT. **Один Draft PR на всю первоначальную версию**, но каждый этап обсуждается и проверяется отдельно.
 
-## Этапы
+## Этапы первоначального MVP
 
 | № | Этап | Состояние | Результат |
 |---|---|---|---|
@@ -22,7 +24,7 @@
 | 06 | Описать Veles и GinArea | **Завершён и утверждён 16.10.2026 (06.1–06.8); RV/TV открыты** | [План этапа 06](stage-06-plan.md): подтверждённые поля, режимы и ограничения платформ |
 | 07 | Подготовить специализированные Skills | **COMPLETED / APPROVED (07.1–07.9, 19.10.2026); реальный READY не доказан** | [Проект плана](stage-07-plan.md): семь специализированных Skills и девять отдельных шагов |
 | 08 | Подготовить фиксированные пользовательские промпты и сценарии | **Этап 08 `COMPLETED / APPROVED` (все 08.1–08.9), 20.10.2026; документально-синтетические ограничения OPEN** | [План 08.1–08.9](stage-08-plan.md): пользовательские промпты, workflows и форматы результатов |
-| 09 | Проверить на обезличенных тестовых случаях | **09.1–09.3 `COMPLETED / APPROVED`; 09.4 `PARTIAL / PENDING INDEPENDENT EVIDENCE` (12 NOT_RUN, preflight 166/166); 09.5–09.9 NOT STARTED** | [План](stage-09-plan.md), [09.4 R1/R2](stage-09-04-results.md), [протокол](stage-09-04-validation.md) |
+| 09 | Проверить на обезличенных тестовых случаях | **09.1–09.5 приняты в документальном и синтетическом объёме. 09.6.2 подготовлен, 09.6.3 не запускался.** | [План](stage-09-plan.md), [приёмка 09.4](stage-09-04-closeout.md), [приёмка 09.5](stage-09-05-closeout.md), [статус 09.6.2](stage-09-06-02-self-review.md) |
 | 10 | Провести испытание кейса TREEUSDT с Veles | Не начат | Отчёт в чате и исправления инструкций |
 
 ## После приёмки 09.3 — подготовка R1/R2 и ограничение доказательности 09.4 (20.10.2026)
