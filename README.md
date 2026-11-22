@@ -37,6 +37,7 @@
 
 ## Документация
 
+- [Эталонный промт анализа рынка](docs/prompts/reference-market-analysis.md).
 - [Порядок анализа](docs/v2/analytical-workflow.md).
 - [Правила подготовки и передачи черновика](docs/v2/bot-handoff-policy.md).
 - [Проверенный порядок запуска и протокол приёмки v2](docs/v2/pilots/stage-09-portfolio-risk-verification.md#шаг-3-инструкция-аналитического-выпуска-v2).
