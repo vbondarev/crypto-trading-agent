@@ -1,9 +1,6 @@
----
-name: risk-assessment
-description: Evaluate whole-portfolio Bybit USDT perpetual risk, mandatory FR-027–FR-040 limits, current and future margin, averaging reserves, liquidation distance, bot worst-loss bounds, Moscow-day blocks and four F/A/H/R stress families. Use for position changes, bot strategies and R3 safety gates; never mistake synthetic passes for real trading READY.
----
-
 # Risk Assessment — Crypto Trading Agent
+
+> Domain reference for the current agent. Follow the workflow in [AGENTS.md](../../AGENTS.md) when using this material.
 
 ## When to use
 
@@ -19,19 +16,19 @@ description: Evaluate whole-portfolio Bybit USDT perpetual risk, mandatory FR-02
 
 ## Normative sources — read actual branch/commit contents as needed
 
-- [Global operating boundaries](../../../AGENTS.md)
-- [Risk requirements FR-027–FR-040, FR-050 and FR-052](../../../docs/requirements.md)
-- [Adopted stage-05 risk model, S0–S3, Cross, Short and four stress families](../../../docs/risk-management.md)
-- [Stage-05 validation and unresolved RV-02/RV-03](../../../docs/risk-validation.md)
-- [Data age and invalidation AD-009 / R1/R2/R3](../../../docs/data-freshness.md)
-- [Minimal input templates T01–T06](../../../docs/input-templates.md)
-- [Data quality, source conflicts and TV-01–TV-04](../../../docs/data-validation.md)
-- [Full account, orders and bot reservations in stage 06](../../../docs/platforms/platform-synthetic-tests.md)
-- [Stage-06 final gaps, P01/P02 and platform boundaries](../../../docs/stage-06-review.md)
-- [Stage-07 selection/priority contract](../../../docs/stage-07-skills-contract.md)
-- [Cross-cutting status policy](../../../docs/agent-operating-rules.md)
-- [Data Verification Skill — if actually available](../data-verification/SKILL.md)
-- [Portfolio Analysis Skill — if actually available](../portfolio-analysis/SKILL.md)
+- [Global operating boundaries](../../AGENTS.md)
+- [Risk requirements FR-027–FR-040, FR-050 and FR-052](../requirements.md)
+- [Adopted stage-05 risk model, S0–S3, Cross, Short and four stress families](../risk-management.md)
+- [Stage-05 validation and unresolved RV-02/RV-03](../risk-validation.md)
+- [Data age and invalidation AD-009 / R1/R2/R3](../data-freshness.md)
+- [Minimal input templates T01–T06](../input-templates.md)
+- [Data quality, source conflicts and TV-01–TV-04](../data-validation.md)
+- [Full account, orders and bot reservations in stage 06](../platforms/platform-synthetic-tests.md)
+- [Stage-06 final gaps, P01/P02 and platform boundaries](../stage-06-review.md)
+- [Stage-07 selection/priority contract](../stage-07-skills-contract.md)
+- [Cross-cutting status policy](../agent-operating-rules.md)
+- [Data Verification Skill — if actually available](data-verification.md)
+- [Portfolio Analysis Skill — if actually available](portfolio-analysis.md)
 
 These links point to approved *documents*; do not claim they automatically loaded the sibling Skill. Bybit's official [Wallet Balance](https://bybit-exchange.github.io/docs/v5/account/wallet-balance), [Position Info](https://bybit-exchange.github.io/docs/v5/position) and [Get Instruments](https://bybit-exchange.github.io/docs/v5/market/instrument) are reference documentation, **not proof of user's actual Cross, risk tier, collateral, orders or fills**.
 
@@ -78,7 +75,7 @@ Maintain `S0=CURRENT_PORTFOLIO`, `S1=PENDING_ORDERS`, `S2=FILLED_LEVELS` for eve
 
 ## 4. Cross/Isolated and Short loss — no manufactured assurances
 
-- For **Isolated**, use approved [§6–§7](../../../docs/risk-management.md) with verified tier, exact quantities, fees, Mark, maintenance, margin addition and exchange contract. Stop trigger price **does not guarantee exit price**; liquidation threshold can change.
+- For **Isolated**, use approved [§6–§7](../risk-management.md) with verified tier, exact quantities, fees, Mark, maintenance, margin addition and exchange contract. Stop trigger price **does not guarantee exit price**; liquidation threshold can change.
 - For **Cross/UTA**, the **whole account** contributes margin/collateral/liabilities. Require explicit account context, actual MMR/IMR, shared losses, tier rules and coherent adverse paths. A displayed `liqPrice` is only estimated. Without verified full account and scenario-specific account MMR, **FR-032 and FR-030 remain `UNVERIFIED`**; RV-02 cannot be waived by documentation.
 - A Short position has **no simple finite gross upward price bound**. Claiming a hard bot-loss bound needs credible and verifiable bounds on full Buy-to-cover execution, gap/slippage, remaining IN, fees/funding and Cross interaction. **RV-03 OPEN** unless evidence closes it; synthetic adverse prices only provide *scenario losses*, not a guaranteed maximum.
 - `L_bot` is not initial order margin, not displayed bot "Profit" and not a generic stop distance. Verify `bot_alias`, execution/allocation, current and complete future grid, fees, funding, exit types, own vs other bots, and net conversion.

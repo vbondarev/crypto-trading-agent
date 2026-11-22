@@ -1,9 +1,6 @@
----
-name: ginarea-configuration
-description: Prepare and audit user-selected GinArea PRO configurations for Bybit USDT perpetuals from verified P02 fields; validate Default/Auto/Dynamic/Indicator/DCA compatibility, IN/OUT grids, Instop, sticky Disable IN, PnL, exchange positions and strict full-portfolio risk. Do not copy Veles fields or claim live READY.
----
-
 # GinArea Configuration — Crypto Trading Agent
+
+> Domain reference for the current agent. Follow the workflow in [AGENTS.md](../../AGENTS.md) when using this material.
 
 ## When to use
 
@@ -20,23 +17,23 @@ description: Prepare and audit user-selected GinArea PRO configurations for Bybi
 
 ## Approved normative references (links relative to this Skill)
 
-- [Project restrictions and current RV/TV blockers](../../../AGENTS.md)
-- [GinArea P01: GD01–GD40, C-G01–C-G10 and lifecycle E01–E18](../../../docs/platforms/ginarea.md)
-- [GinArea compatibility and 06.4 limitations](../../../docs/platform-06-04-validation.md)
-- [GinArea 06.5 lifecycle validation](../../../docs/platform-06-05-validation.md)
-- [Different platforms are not isomorphic: 06.6](../../../docs/platforms/configuration-contract.md)
-- [Actual P01/P02 proof and account T02](../../../docs/platforms/platform-validation.md)
-- [FR-047–FR-053, FR-027–FR-040](../../../docs/requirements.md)
-- [Freshness R1/R2/R3, AD-009](../../../docs/data-freshness.md)
-- [T01–T06: all-account T02, bot T04 and actual P02](../../../docs/input-templates.md)
-- [Risk stage 05: S0–S3, Cross, Short, F/A/H/R](../../../docs/risk-management.md)
-- [Stage-06 review and outstanding P02/RV/TV](../../../docs/stage-06-review.md)
-- [Skills routing contract](../../../docs/stage-07-skills-contract.md)
-- [Data Verification Skill — only if actually accessible](../data-verification/SKILL.md)
-- [Market Analysis Skill — only if actually accessible](../market-analysis/SKILL.md)
-- [Portfolio Analysis Skill — only if actually accessible](../portfolio-analysis/SKILL.md)
-- [Risk Assessment Skill — only if actually accessible](../risk-assessment/SKILL.md)
-- [Strategy Planning Skill — only if actually accessible](../strategy-planning/SKILL.md)
+- [Project restrictions and current RV/TV blockers](../../AGENTS.md)
+- [GinArea P01: GD01–GD40, C-G01–C-G10 and lifecycle E01–E18](../platforms/ginarea.md)
+- [GinArea compatibility and 06.4 limitations](../platform-06-04-validation.md)
+- [GinArea 06.5 lifecycle validation](../platform-06-05-validation.md)
+- [Different platforms are not isomorphic: 06.6](../platforms/configuration-contract.md)
+- [Actual P01/P02 proof and account T02](../platforms/platform-validation.md)
+- [FR-047–FR-053, FR-027–FR-040](../requirements.md)
+- [Freshness R1/R2/R3, AD-009](../data-freshness.md)
+- [T01–T06: all-account T02, bot T04 and actual P02](../input-templates.md)
+- [Risk stage 05: S0–S3, Cross, Short, F/A/H/R](../risk-management.md)
+- [Stage-06 review and outstanding P02/RV/TV](../stage-06-review.md)
+- [Skills routing contract](../stage-07-skills-contract.md)
+- [Data Verification Skill — only if actually accessible](data-verification.md)
+- [Market Analysis Skill — only if actually accessible](market-analysis.md)
+- [Portfolio Analysis Skill — only if actually accessible](portfolio-analysis.md)
+- [Risk Assessment Skill — only if actually accessible](risk-assessment.md)
+- [Strategy Planning Skill — only if actually accessible](strategy-planning.md)
 
 Official GinArea reference pages (not proof of personal P02 or bot state):
 [Bybit UTA/Cross/One-Way/Hedge conditions](https://help.ginarea.org/connection/exchangesetup/),

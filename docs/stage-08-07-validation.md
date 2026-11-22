@@ -11,7 +11,7 @@
 - [Шесть коротких копируемых P08-30–P08-35, 40 нормативных GA01–GA40](prompts/ginarea-configuration.md).
 - [Синтетический JS test suite 08.7](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-07-ginarea-handoff-synthetic.mjs).
 - [Пользовательская формальная приёмка 08.6](stage-08-06-validation.md#5-формальная-приёмка-086-и-разрешение-087--20102026).
-- [GinArea Skill](../.agents/skills/ginarea-configuration/SKILL.md), [P01 каталог GD01–GD40](platforms/ginarea.md), [P01/P02 vs T02](platforms/platform-validation.md), [неэквивалентность Veles/GinArea](platforms/configuration-contract.md), [риск](risk-management.md).
+- [GinArea Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/ginarea-configuration/SKILL.md), [P01 каталог GD01–GD40](platforms/ginarea.md), [P01/P02 vs T02](platforms/platform-validation.md), [неэквивалентность Veles/GinArea](platforms/configuration-contract.md), [риск](risk-management.md).
 
 Независимо проверены публичные официальные страницы GinArea 20.10.2026: [Bybit UTA/Cross/One-Way/Default-Hedge](https://help.ginarea.org/connection/exchangesetup/), [sticky Disable IN](https://help.ginarea.org/ru/settings/disablein/), [Indicator Grid условия](https://help.ginarea.org/ru/strategies/indicatorgrid/), [шаг и множитель](https://help.ginarea.org/ru/settings/gridsettings/). Это **P01 публичные сведения**, **не** P02 конкретного пользователя.
 

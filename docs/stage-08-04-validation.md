@@ -11,7 +11,7 @@
 - [Шесть копируемых промптов P08-12–P08-17 и 36 нормативных PR01–PR36](prompts/portfolio-recovery.md).
 - [Локальный синтетический JS-тест](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-04-portfolio-recovery-synthetic.mjs).
 - [Приёмка предыдущего шага 08.3](stage-08-03-validation.md#6-формальная-приёмка-083-и-разрешение-084--20102026).
-- [Принятые Skills](../.agents/skills/portfolio-analysis/SKILL.md), [risk-assessment](../.agents/skills/risk-assessment/SKILL.md), [strategy-planning](../.agents/skills/strategy-planning/SKILL.md), [data-verification](../.agents/skills/data-verification/SKILL.md), [правила S0–S3 / H01](risk-management.md) и [контракт диалога](workflows/interaction-contract.md).
+- [Принятые Skills](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/portfolio-analysis/SKILL.md), [risk-assessment](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/risk-assessment/SKILL.md), [strategy-planning](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/strategy-planning/SKILL.md), [data-verification](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/data-verification/SKILL.md), [правила S0–S3 / H01](risk-management.md) и [контракт диалога](workflows/interaction-contract.md).
 
 ## 2. Сценарии и методика
 

@@ -1,6 +1,6 @@
 # Veles adapter (v2 design candidate, NOT ACTIVE)
 
-Canonical source: `docs/platforms/veles.md`, `.agents/skills/veles-configuration/SKILL.md` and `docs/platforms/configuration-contract.md`. This document is a **routing/checklist** and does not claim that user-specific P02 UI has been observed.
+Canonical source: `docs/platforms/veles.md`, `docs/reference/veles-configuration.md` and `docs/platforms/configuration-contract.md`. This document is a **routing/checklist** and does not claim that user-specific P02 UI has been observed.
 
 ## Source and mode
 - Platform must be **explicitly selected VELES**, Bybit linear USDT contract verified.

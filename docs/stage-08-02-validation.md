@@ -10,7 +10,7 @@
 
 - [Пять коротких копируемых R1-промптов, формат ответа и MO01–MO24](prompts/market-overview.md).
 - [Детерминированные JS-тесты 08.2](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-02-market-overview-synthetic.mjs).
-- [Формальная приёмка 08.1](stage-08-01-validation.md#6-формальная-приёмка-081-и-разрешение-082--20102026), [контракт RT01–RT10](workflows/interaction-contract.md), [R1/AD-009](data-freshness.md), [Market Analysis Skill](../.agents/skills/market-analysis/SKILL.md), [Data Verification Skill](../.agents/skills/data-verification/SKILL.md), [план 08](stage-08-plan.md).
+- [Формальная приёмка 08.1](stage-08-01-validation.md#6-формальная-приёмка-081-и-разрешение-082--20102026), [контракт RT01–RT10](workflows/interaction-contract.md), [R1/AD-009](data-freshness.md), [Market Analysis Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/market-analysis/SKILL.md), [Data Verification Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/data-verification/SKILL.md), [план 08](stage-08-plan.md).
 
 Не реализованы Bybit API/сторонняя агрегация, бот-интеграции, код торгового движка и подключённое LLM-исполнение. Входные рыночные цены/таймстампы тестового модуля **вымышлены** и не имеют отношения к настоящему рынку.
 

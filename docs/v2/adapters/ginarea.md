@@ -1,6 +1,6 @@
 # GinArea PRO adapter (v2 design candidate, NOT ACTIVE)
 
-Canonical source: `docs/platforms/ginarea.md`, `.agents/skills/ginarea-configuration/SKILL.md` and `docs/platforms/configuration-contract.md`. This is a checklist, not a claim of observed current P02.
+Canonical source: `docs/platforms/ginarea.md`, `docs/reference/ginarea-configuration.md` and `docs/platforms/configuration-contract.md`. This is a checklist, not a claim of observed current P02.
 
 ## Source and strategy availability
 - User explicitly selects `GINAREA`, verify Bybit linear USDT and exact variant `Default|Auto|Dynamic|Indicator|DCA` **as actually offered** in selected market/account.

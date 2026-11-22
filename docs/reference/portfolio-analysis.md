@@ -1,9 +1,6 @@
----
-name: portfolio-analysis
-description: Reconcile the full Bybit USDT perpetual portfolio across account snapshots, One-Way/Hedge positions, Cross/Isolated collateral, active and conditional orders, partial fills, Veles/GinArea bots, future IN grids and linked trade PnL. Use for portfolio exposure reviews, averaging, recovery and R3 risk handoff, not standalone trade approval.
----
-
 # Portfolio Analysis — Crypto Trading Agent
+
+> Domain reference for the current agent. Follow the workflow in [AGENTS.md](../../AGENTS.md) when using this material.
 
 ## When to use
 
@@ -22,20 +19,20 @@ description: Reconcile the full Bybit USDT perpetual portfolio across account sn
 
 All relative paths resolve **from this Skill directory**, not GitHub root:
 
-- [AGENTS: security and strict limits](../../../AGENTS.md)
-- [FR-018–FR-026, FR-027–FR-040, FR-050–FR-053](../../../docs/requirements.md)
-- [Freshness, invalidation and R1/R2/R3](../../../docs/data-freshness.md)
-- [T01–T06 snapshot requirements](../../../docs/input-templates.md)
-- [Data sources and scope](../../../docs/data-sources.md)
-- [Source conflicts and TV-01–TV-04](../../../docs/data-validation.md)
-- [Stage 05 full-portfolio risk and H01/H02/H03/H04](../../../docs/risk-management.md)
-- [Risk/account/IN cross-platform model from 06.7](../../../docs/platforms/platform-synthetic-tests.md)
-- [Veles positions, cancellation and pending orders](../../../docs/platforms/veles.md)
-- [GinArea PRO IN/OUT/Disable IN](../../../docs/platforms/ginarea.md)
-- [P01/P02 platform scope](../../../docs/platforms/platform-validation.md)
-- [07.1 Skills routing contract](../../../docs/stage-07-skills-contract.md)
-- [Data Verification Skill, if actually accessible](../data-verification/SKILL.md)
-- [Operating rules and final statuses](../../../docs/agent-operating-rules.md)
+- [AGENTS: security and strict limits](../../AGENTS.md)
+- [FR-018–FR-026, FR-027–FR-040, FR-050–FR-053](../requirements.md)
+- [Freshness, invalidation and R1/R2/R3](../data-freshness.md)
+- [T01–T06 snapshot requirements](../input-templates.md)
+- [Data sources and scope](../data-sources.md)
+- [Source conflicts and TV-01–TV-04](../data-validation.md)
+- [Stage 05 full-portfolio risk and H01/H02/H03/H04](../risk-management.md)
+- [Risk/account/IN cross-platform model from 06.7](../platforms/platform-synthetic-tests.md)
+- [Veles positions, cancellation and pending orders](../platforms/veles.md)
+- [GinArea PRO IN/OUT/Disable IN](../platforms/ginarea.md)
+- [P01/P02 platform scope](../platforms/platform-validation.md)
+- [07.1 Skills routing contract](../stage-07-skills-contract.md)
+- [Data Verification Skill, if actually accessible](data-verification.md)
+- [Operating rules and final statuses](../agent-operating-rules.md)
 
 Official Bybit API references for interpreting **actual returned fields** (documentation is not user data): [UTA wallet balance](https://bybit-exchange.github.io/docs/v5/account/wallet-balance), [position list](https://bybit-exchange.github.io/docs/v5/position), [active/conditional and recent closed orders](https://bybit-exchange.github.io/docs/v5/order/open-order), [order history](https://bybit-exchange.github.io/docs/v5/order/order-list), [execution list](https://bybit-exchange.github.io/docs/v5/execution/list). Public documentation does **not** establish that a private endpoint was called, the user has permissions, or the result covers every account/subaccount.
 

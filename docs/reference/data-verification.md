@@ -1,9 +1,6 @@
----
-name: data-verification
-description: Verify provenance, market identity, timestamps, freshness, completeness and conflicts in cryptocurrency data. Use for Bybit USDT perpetual prices, OHLCV, screenshots, HTTP 403, account snapshots, Veles/GinArea forms and R1/R2/R3 analysis before trading decisions.
----
-
 # Data verification — Crypto Trading Agent
+
+> Domain reference for the current agent. Follow the workflow in [AGENTS.md](../../AGENTS.md) when using this material.
 
 ## When to use
 
@@ -22,16 +19,16 @@ description: Verify provenance, market identity, timestamps, freshness, complete
 
 The paths below are **relative to this Skill directory**. Read their actual contents from the **specified GitHub branch/commit** or another verified mounted copy; do not claim they were automatically loaded.
 
-- [Primary freshness and conflict rules — R1/R2/R3; AD-009](../../../docs/data-freshness.md)
-- [Source availability, applicability, fallbacks and data categories](../../../docs/data-sources.md)
-- [Evidence classes, validation and TV-01–TV-04](../../../docs/data-validation.md)
-- [Minimal input requests T01–T06](../../../docs/input-templates.md)
-- [Cross-cutting operating rules](../../../docs/agent-operating-rules.md)
-- [P01/P02 — platform help is not actual user form](../../../docs/platforms/platform-validation.md)
-- [Final configuration evidence contract](../../../docs/platforms/configuration-contract.md)
-- [Accepted scope and open issues after stage 06](../../../docs/stage-06-review.md)
-- [Full FR-001–FR-053](../../../docs/requirements.md)
-- [Global repository instructions](../../../AGENTS.md)
+- [Primary freshness and conflict rules — R1/R2/R3; AD-009](../data-freshness.md)
+- [Source availability, applicability, fallbacks and data categories](../data-sources.md)
+- [Evidence classes, validation and TV-01–TV-04](../data-validation.md)
+- [Minimal input requests T01–T06](../input-templates.md)
+- [Cross-cutting operating rules](../agent-operating-rules.md)
+- [P01/P02 — platform help is not actual user form](../platforms/platform-validation.md)
+- [Final configuration evidence contract](../platforms/configuration-contract.md)
+- [Accepted scope and open issues after stage 06](../stage-06-review.md)
+- [Full FR-001–FR-053](../requirements.md)
+- [Global repository instructions](../../AGENTS.md)
 
 **Precedence:** runtime/system/developer instructions and hard safety constraints → user's adopted FR/AD limits → AGENTS and approved policy documents → this Skill → examples. In a meaningful document conflict: identify it and return `UNVERIFIED`; do not silently loosen a gate.
 

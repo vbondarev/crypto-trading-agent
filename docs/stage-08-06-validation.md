@@ -10,7 +10,7 @@
 
 - [Шесть пользовательских промптов P08-24–P08-29, правила Veles P01/P02/T02, 40 VH01–VH40](prompts/veles-configuration.md).
 - [Воспроизводимый синтетический JS-модуль Veles](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-06-veles-handoff-synthetic.mjs).
-- [Утверждённый Veles Skill](../.agents/skills/veles-configuration/SKILL.md), [каталог VL-01–VL-25 и VV01–VV34](platforms/veles.md), [контракт P01 vs P02](platforms/platform-validation.md), [риски и преобразование](platforms/configuration-contract.md), [предшествующий результат 08.5](stage-08-05-validation.md).
+- [Утверждённый Veles Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/veles-configuration/SKILL.md), [каталог VL-01–VL-25 и VV01–VV34](platforms/veles.md), [контракт P01 vs P02](platforms/platform-validation.md), [риски и преобразование](platforms/configuration-contract.md), [предшествующий результат 08.5](stage-08-05-validation.md).
 
 ## 2. Область тестирования
 

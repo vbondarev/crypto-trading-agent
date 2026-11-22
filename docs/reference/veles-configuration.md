@@ -1,9 +1,6 @@
----
-name: veles-configuration
-description: Prepare and audit Veles bot settings for a user-selected Bybit USDT perpetual strategy using actual P02 form evidence, source-backed SIMPLE/CUSTOM/SIGNAL fields, IN grid, TP/SL/BE, position adoption, exchange orders and strict portfolio risk gates. Use only after Veles and strategy are selected; never treat documentation or synthetic tests as live READY.
----
-
 # Veles Configuration — Crypto Trading Agent
+
+> Domain reference for the current agent. Follow the workflow in [AGENTS.md](../../AGENTS.md) when using this material.
 
 ## When to use
 
@@ -19,22 +16,22 @@ description: Prepare and audit Veles bot settings for a user-selected Bybit USDT
 
 ## Read approved source files, with paths relative to this Skill
 
-- [Global policy, statuses and sequential user approval](../../../AGENTS.md)
-- [Veles approved P01 catalogue VL-01–VL-25, 06.3 states/exits and VV01–VV34](../../../docs/platforms/veles.md)
-- [Veles 06.3 validation limits](../../../docs/platform-06-03-validation.md)
-- [Common but NON-equivalent platform configuration contract](../../../docs/platforms/configuration-contract.md)
-- [P01 vs P02 vs T02 and proof levels](../../../docs/platforms/platform-validation.md)
-- [FR-047–FR-053 and all risk requirements](../../../docs/requirements.md)
-- [Live data TTL and event invalidation AD-009](../../../docs/data-freshness.md)
-- [T01–T06 and real P02 capture](../../../docs/input-templates.md)
-- [Risk S0–S3, Cross RV-02 / Short RV-03 and F/A/H/R](../../../docs/risk-management.md)
-- [Stage 06 unverified UI/margin and final limits](../../../docs/stage-06-review.md)
-- [Stage 07 route and selection contract](../../../docs/stage-07-skills-contract.md)
-- [Data Verification Skill when actually available](../data-verification/SKILL.md)
-- [Market Analysis Skill when actually available](../market-analysis/SKILL.md)
-- [Portfolio Analysis Skill when actually available](../portfolio-analysis/SKILL.md)
-- [Risk Assessment Skill when actually available](../risk-assessment/SKILL.md)
-- [Strategy Planning Skill when actually available](../strategy-planning/SKILL.md)
+- [Global policy, statuses and sequential user approval](../../AGENTS.md)
+- [Veles approved P01 catalogue VL-01–VL-25, 06.3 states/exits and VV01–VV34](../platforms/veles.md)
+- [Veles 06.3 validation limits](../platform-06-03-validation.md)
+- [Common but NON-equivalent platform configuration contract](../platforms/configuration-contract.md)
+- [P01 vs P02 vs T02 and proof levels](../platforms/platform-validation.md)
+- [FR-047–FR-053 and all risk requirements](../requirements.md)
+- [Live data TTL and event invalidation AD-009](../data-freshness.md)
+- [T01–T06 and real P02 capture](../input-templates.md)
+- [Risk S0–S3, Cross RV-02 / Short RV-03 and F/A/H/R](../risk-management.md)
+- [Stage 06 unverified UI/margin and final limits](../stage-06-review.md)
+- [Stage 07 route and selection contract](../stage-07-skills-contract.md)
+- [Data Verification Skill when actually available](data-verification.md)
+- [Market Analysis Skill when actually available](market-analysis.md)
+- [Portfolio Analysis Skill when actually available](portfolio-analysis.md)
+- [Risk Assessment Skill when actually available](risk-assessment.md)
+- [Strategy Planning Skill when actually available](strategy-planning.md)
 
 ### Official Veles P01 help — documentary sources, not proof of the user's P02
 
@@ -66,7 +63,7 @@ Before drafting parameters record:
 
 ## 2. Only verified Veles settings; no imaginary form items
 
-Use [VL-01–VL-25](../../../docs/platforms/veles.md) as the **documentary whitelist**, refining it **only** when user P02 confirms additional/current controls:
+Use [VL-01–VL-25](../platforms/veles.md) as the **documentary whitelist**, refining it **only** when user P02 confirms additional/current controls:
 
 | UI concept documented in Veles P01 | Meaning / validation |
 |---|---|

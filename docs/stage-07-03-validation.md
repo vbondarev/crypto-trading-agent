@@ -2,12 +2,12 @@
 
 > Команды Node.js ниже относятся к [архивному снимку `b554dd9`](https://github.com/vbondarev/crypto-trading-agent/tree/b554dd967a6a83ba85f0c1c95484e2c4f48c9670). Для текущей версии v2 используются проверки Python.
 
-> **Статус `COMPLETED / APPROVED` (приёмка 19.10.2026).** Пользователь «Принимаю. Дальше.» [принял 07.2](stage-07-02-validation.md#6-формальная-приёмка-072-и-разрешение-073--19102026) и отдельно разрешил 07.3. Создан **второй настоящий Skill** [`.agents/skills/market-analysis/SKILL.md`](../.agents/skills/market-analysis/SKILL.md) и [воспроизводимый синтетический тестовый файл](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-03-market-analysis-synthetic.mjs). **61/61 локальных синтетических проверок MA01–MA61 — PASS (0 FAIL)**. **07.4 разрешён к реализации отдельным решением пользователя от 19.10.2026**; его результат ожидает самостоятельной приёмки.
+> **Статус `COMPLETED / APPROVED` (приёмка 19.10.2026).** Пользователь «Принимаю. Дальше.» [принял 07.2](stage-07-02-validation.md#6-формальная-приёмка-072-и-разрешение-073--19102026) и отдельно разрешил 07.3. Создан **второй настоящий Skill** [`.agents/skills/market-analysis/SKILL.md`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/market-analysis/SKILL.md) и [воспроизводимый синтетический тестовый файл](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-03-market-analysis-synthetic.mjs). **61/61 локальных синтетических проверок MA01–MA61 — PASS (0 FAIL)**. **07.4 разрешён к реализации отдельным решением пользователя от 19.10.2026**; его результат ожидает самостоятельной приёмки.
 
 ## 1. Связанные нормы и источники
 
 - [План этапа 07, шаг 07.3](stage-07-plan.md), [контракт Skills 07.1](stage-07-skills-contract.md), [FR-001–FR-017](requirements.md) и [общие правила](agent-operating-rules.md).
-- [Data Verification Skill 07.2](../.agents/skills/data-verification/SKILL.md), [правила R1/R2/R3 и AD-009](data-freshness.md), [реестр доступности](data-sources.md), [проверка качества](data-validation.md), [T01–T06](input-templates.md).
+- [Data Verification Skill 07.2](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/data-verification/SKILL.md), [правила R1/R2/R3 и AD-009](data-freshness.md), [реестр доступности](data-sources.md), [проверка качества](data-validation.md), [T01–T06](input-templates.md).
 - [Bybit V5 Kline](https://bybit-exchange.github.io/docs/v5/market/kline) — свечи в порядке **reverse-by-startTime**, последняя незакрытая строка содержит изменяющийся Last; для USDT linear торговый `volume` в базе, `turnover` — в котируемой валюте.
 - [Bybit V5 Open Interest](https://bybit-exchange.github.io/docs/v5/market/open-interest) — `openInterest` и `singleOpenInterest` имеют **разные определения**; требуется точный интервал, сравнимые единицы и временные точки.
 - [Bybit Funding Rate History](https://bybit-exchange.github.io/docs/v5/market/history-fund-rate) и [Instruments Info](https://bybit-exchange.github.io/docs/v5/market/instrument) — историческая ставка не равна прогнозу; спецификация инструмента может меняться.
@@ -113,6 +113,6 @@
 
 ## 7. Формальная приёмка 07.3 и разрешение 07.4 — 19.10.2026
 
-**Прямое решение пользователя:** «Принимаю. Дальше.» — **07.3 `COMPLETED / APPROVED`** в документальных и синтетических границах: второй настоящий [Market Analysis Skill](../.agents/skills/market-analysis/SKILL.md), 32 нормативных ME01–ME32 и 61/61 локальных синтетических проверок. **«Дальше» отдельно разрешает создать 07.4 Portfolio Analysis Skill**, но не означает предварительную приёмку его результатов или команду к шагу 07.5.
+**Прямое решение пользователя:** «Принимаю. Дальше.» — **07.3 `COMPLETED / APPROVED`** в документальных и синтетических границах: второй настоящий [Market Analysis Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/market-analysis/SKILL.md), 32 нормативных ME01–ME32 и 61/61 локальных синтетических проверок. **«Дальше» отдельно разрешает создать 07.4 Portfolio Analysis Skill**, но не означает предварительную приёмку его результатов или команду к шагу 07.5.
 
 Сохраняются все недоказанные реальные T02/P02, Cross MMR и верхний Short loss (RV-02/RV-03), RV-04/RV-06, TV-01–TV-04, полноценный FR-038 F/V/H/R, отсутствие подтверждённого runtime Skills и live `READY`. PR #1 остаётся Open/Draft, не сливать.

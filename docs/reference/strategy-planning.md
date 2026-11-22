@@ -1,9 +1,6 @@
----
-name: strategy-planning
-description: Compare evidence-based NEW, ADD, HOLD, WAIT, REDUCE, CLOSE and RECOVER scenarios for Bybit USDT perpetual trades, including Long/Short direction, full portfolio risk, net PnL recovery and user choice. Use for R2 preliminary planning and post-risk-gate strategy selection; never silently select a bot platform or grant READY.
----
-
 # Strategy Planning — Crypto Trading Agent
+
+> Domain reference for the current agent. Follow the workflow in [AGENTS.md](../../AGENTS.md) when using this material.
 
 ## When to use
 
@@ -21,20 +18,20 @@ description: Compare evidence-based NEW, ADD, HOLD, WAIT, REDUCE, CLOSE and RECO
 
 All relative paths below resolve **from this Skill folder**:
 
-- [Global project policy and hard safety limits](../../../AGENTS.md)
-- [FR-041–FR-046 plus requirements for market, risk and platform selection](../../../docs/requirements.md)
-- [Market facts and alternatives FR-001–FR-017](../../../docs/agent-operating-rules.md)
-- [Data quality and mode-specific R1/R2/R3 freshness](../../../docs/data-freshness.md)
-- [Minimal T01–T06 input templates](../../../docs/input-templates.md)
-- [Risk S0–S3, H01 series, Cross/Short and stress families](../../../docs/risk-management.md)
-- [Documented unresolved risk limitations after stage 05](../../../docs/risk-validation.md)
-- [Platform 06.7 ownership, remaining IN and projected slot checks](../../../docs/platforms/platform-synthetic-tests.md)
-- [Actual P01 documentation vs personal P02 form](../../../docs/platforms/platform-validation.md)
-- [Stage 07 contract and decision routes](../../../docs/stage-07-skills-contract.md)
-- [Data Verification Skill — only if actually accessible](../data-verification/SKILL.md)
-- [Market Analysis Skill — only if actually accessible](../market-analysis/SKILL.md)
-- [Portfolio Analysis Skill — only if actually accessible](../portfolio-analysis/SKILL.md)
-- [Risk Assessment Skill — only if actually accessible](../risk-assessment/SKILL.md)
+- [Global project policy and hard safety limits](../../AGENTS.md)
+- [FR-041–FR-046 plus requirements for market, risk and platform selection](../requirements.md)
+- [Market facts and alternatives FR-001–FR-017](../agent-operating-rules.md)
+- [Data quality and mode-specific R1/R2/R3 freshness](../data-freshness.md)
+- [Minimal T01–T06 input templates](../input-templates.md)
+- [Risk S0–S3, H01 series, Cross/Short and stress families](../risk-management.md)
+- [Documented unresolved risk limitations after stage 05](../risk-validation.md)
+- [Platform 06.7 ownership, remaining IN and projected slot checks](../platforms/platform-synthetic-tests.md)
+- [Actual P01 documentation vs personal P02 form](../platforms/platform-validation.md)
+- [Stage 07 contract and decision routes](../stage-07-skills-contract.md)
+- [Data Verification Skill — only if actually accessible](data-verification.md)
+- [Market Analysis Skill — only if actually accessible](market-analysis.md)
+- [Portfolio Analysis Skill — only if actually accessible](portfolio-analysis.md)
+- [Risk Assessment Skill — only if actually accessible](risk-assessment.md)
 
 A sibling link does not demonstrate that ChatGPT actually loaded or invoked that Skill. If inaccessible, follow the approved policy documents and disclose the missing integration. Do not change FR/RV/TV rules.
 

@@ -1,8 +1,8 @@
 ---
-name: market-research-v2
+name: market-research
 description: Evidence-based crypto market, social/news and derivatives research for the selected coin; produce a verifiable MarketEvidenceBundle, never invent access or quotes.
 ---
-# Market Research (v2)
+# Market Research
 **Trigger:** user requests market context, coin research, social narratives or bot analysis.
 
 ## Inputs / output
@@ -18,8 +18,8 @@ Input: `RequestContext` with exchange, symbol, market_type, as_of and horizon. O
 7. Return concise context with citations/evidence IDs, `coverage=COMPLETE_FOR_SCOPE|PARTIAL|INSUFFICIENT`, `gaps`, `conflicts` and time of report. Do not select LONG/SHORT, fill bot fields, trade or claim real READY.
 
 ## Validation / dependency
-Schema references: `docs/v2/contracts/request-context.schema.json`, `evidence-record.schema.json`, `market-evidence.schema.json`. Canonical legacy references: `docs/data-sources.md`, `docs/data-freshness.md`, `.agents/skills/data-verification/SKILL.md`. Generated in isolated v2 branch for testing; no auto-loader proof.
+Schema references: `docs/v2/contracts/request-context.schema.json`, `evidence-record.schema.json`, `market-evidence.schema.json`. Domain references: `docs/data-sources.md`, `docs/data-freshness.md`, `docs/reference/data-verification.md`.
 
 ## End-to-end routing
 
-Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Use the active v2 route in the root `AGENTS.md`. Record source access from actual responses. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail.
+Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Follow the active workflow in the root `AGENTS.md`. Record source access from actual responses. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail.

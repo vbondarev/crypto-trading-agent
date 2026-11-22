@@ -16,13 +16,13 @@
 
 | Этап | Фактический Skill | Локальные тесты **повторно исполнены** 07.9 | Приёмка прежнего шага |
 |---|---|---:|---|
-| 07.2 | [`data-verification`](../.agents/skills/data-verification/SKILL.md) | **80/80 PASS** | Принят |
-| 07.3 | [`market-analysis`](../.agents/skills/market-analysis/SKILL.md) | **61/61 PASS** | Принят |
-| 07.4 | [`portfolio-analysis`](../.agents/skills/portfolio-analysis/SKILL.md) | **77/77 PASS** | Принят |
-| 07.5 | [`risk-assessment`](../.agents/skills/risk-assessment/SKILL.md) | **91/91 PASS** | Принят |
-| 07.6 | [`strategy-planning`](../.agents/skills/strategy-planning/SKILL.md) | **99/99 PASS** | Принят |
-| 07.7 | [`veles-configuration`](../.agents/skills/veles-configuration/SKILL.md) | **92/92 PASS** | Принят |
-| 07.8 | [`ginarea-configuration`](../.agents/skills/ginarea-configuration/SKILL.md) | **102/102 PASS** | Принят решением пользователя, запустившим 07.9 |
+| 07.2 | [`data-verification`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/data-verification/SKILL.md) | **80/80 PASS** | Принят |
+| 07.3 | [`market-analysis`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/market-analysis/SKILL.md) | **61/61 PASS** | Принят |
+| 07.4 | [`portfolio-analysis`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/portfolio-analysis/SKILL.md) | **77/77 PASS** | Принят |
+| 07.5 | [`risk-assessment`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/risk-assessment/SKILL.md) | **91/91 PASS** | Принят |
+| 07.6 | [`strategy-planning`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/strategy-planning/SKILL.md) | **99/99 PASS** | Принят |
+| 07.7 | [`veles-configuration`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/veles-configuration/SKILL.md) | **92/92 PASS** | Принят |
+| 07.8 | [`ginarea-configuration`](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/ginarea-configuration/SKILL.md) | **102/102 PASS** | Принят решением пользователя, запустившим 07.9 |
 | **Итого 07.2–07.8** | **7 реальных файлов Skills** | **602/602 PASS** | **Документально/синтетически** |
 
 Дополнительно: [контракт 07.1](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-07-01-contract-synthetic.mjs) повторно исполнен — **52/52 PASS**. Новый композиционный тест 07.9 — **142/142 PASS**, охватывает **17 синтетических вариантов маршрутизации**. **Совокупно повторно исполнено 796/796 отдельных локальных assertions** (52 + 602 + 142), но **не 796 независимых испытаний реального ChatGPT**. Документальные нормативные сценарии [07.1–07.8](stage-07-plan.md) **не прибавлены** к этому числу.

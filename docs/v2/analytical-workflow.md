@@ -11,14 +11,14 @@
 
 ## 2. Acquisition: two evidence streams; no fabricated tools
 
-A. **market-research-v2** (source registry `docs/data-sources.md`):
+A. **market-research** (source registry `docs/data-sources.md`):
 1. Confirm symbol, exchange, instrument type and observation time.
 2. Inspect reachable **official** Bybit market/instrument data and broad BTC/ETH/sector/macro context when relevant. Capture literal provenance in `EvidenceRecord`.
 3. Look for coin/project announcements, tokenomics/unlocks and verified project/issuer posts from X/Twitter and Telegram, then independent original news and aggregators (CoinGlass, CoinAnk etc.) when reachable.
 4. Keep `published_at`, `observed_at`, `retrieved_at`; distinguish `OBSERVED`, `USER_SUPPLIED_UNVERIFIED`, `ACCESS_UNAVAILABLE`, `NOT_CHECKED`. Syndication and copied datasets are a **single independence group**. Rumors and numeric sentiment metrics without a real sample are not confirmed.
 5. Compare BTC regime, individual asset drivers, funding/OI/liquidation *estimates*. Preserve conflict or `PARTIAL/INSUFFICIENT` coverage.
 
-B. **technical-analysis-v2**:
+B. **technical-analysis**:
 1. For a current Bybit analysis, obtain candle data yourself from the public API using the [source-acquisition policy](source-acquisition-policy.md). Verify price-source identity and closed OHLCV timeframe/warmup before EMA/SMA/RSI/MACD/ATR, volume, levels, multi-TF trends or numerical entry bands. Unavailable history ⇒ `NOT_COMPUTED`, no synthesized fake indicator values.
 2. Resolve 15m/1h vs 4h/1d conflicts as `MIXED` or conditional scenarios rather than a forced trend. Record last closed candle and source IDs.
 3. Produce `TechnicalEvidenceBundle` with real limits and `EvidenceRecord` references. Any event invalidating snapshots triggers AD-009 RECHECK.
@@ -36,7 +36,7 @@ Before the next phase, check:
 
 ## 4. Synthesis → Coin Profile
 
-**strategy-synthesis-v2** combines only supported evidence from both bundles, assigning:
+**strategy-synthesis** combines only supported evidence from both bundles, assigning:
 - Broad risk regime (BTC/ETH/sector), coin-specific catalysts, tokenomics and social/news coverage, derivatives limitations.
 - Technical **global** and **local** trend `UP/DOWN/RANGE/MIXED/UNKNOWN`; key levels only if computed/verified.
 - BULL/BASE/BEAR paths, triggers/invalidation, bullish/bearish drivers, contradictions and qualitative confidence (`HIGH/MEDIUM/LOW/INSUFFICIENT`). No invented profit probabilities.
@@ -47,7 +47,7 @@ Before the next phase, check:
 
 ## 5. Strategy → bot handoff
 
-**bot-configuration-v2** runs only when:
+**bot-configuration** runs only when:
 - user requests bot planning; platform is VELES or GINAREA (otherwise ask choice, do not invent mode);
 - `StrategyProposal` is not WAIT/NOT_RECOMMENDED and not blocked by known hard risk; user trade purpose/budget known for numeric sizing;
 - verified price/volatility evidence supports grid ranges and order sizing.
@@ -58,7 +58,7 @@ Then:
 3. Apply canonical `docs/risk-management.md`: leverage ≤5×, account IM ≤30% Equity, one-bot defensible worst loss ≤5% Equity, max three reachable positions, full reserve, verified applicable ≥15% Mark liquidation distance, known day-loss ≥3%, HWM DD ≥15% and H04 block risk additions. Missing full T02/MMR/P02 does **not** permit real READY.
 4. Return `DRAFT`, `NEEDS_DATA` or `NOT_RECOMMENDED` in the current mode. Public market data do not verify account risk or confer trade readiness.
 
-**Known veto precedence:** active H04 or known hard-limit breach ⇒ reject new exposure regardless of P02 gaps. For unavailable P02/portfolio before approval, output **safe draft with missing fields**, not manufactured UI settings. If user has an existing position use optional legacy portfolio-analysis and H01/T05 only as needed.
+**Known veto precedence:** active H04 or known hard-limit breach ⇒ reject new exposure regardless of P02 gaps. For unavailable P02/portfolio before approval, output **safe draft with missing fields**, not manufactured UI settings. If user has an existing position use the [portfolio-analysis reference](../reference/portfolio-analysis.md) and H01/T05 only as needed.
 
 ## 6. User-facing response contract
 

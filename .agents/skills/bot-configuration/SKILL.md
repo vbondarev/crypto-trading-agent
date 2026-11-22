@@ -1,8 +1,8 @@
 ---
-name: bot-configuration-v2
+name: bot-configuration
 description: Produce a conditional manual-entry Veles or GinArea configuration using separate verified platform field mappings and strict portfolio/risk gates.
 ---
-# Bot Configuration (v2)
+# Bot Configuration
 **Trigger:** user requests a Veles or GinArea bot for a selected symbol and strategy, or audits a current bot.
 
 ## Inputs / output
@@ -18,8 +18,8 @@ Input: `RequestContext`, `CoinProfile`, `StrategyProposal`, user budget, account
 7. AD-009 triggers recheck on price/Mark, fill, orders, Equity, margin, bot edit/restart or P02 form updates. No real bot orders, API credentials or autonomous operations.
 
 ## Validation / dependency
-Schemas: `docs/v2/contracts/{request-context,coin-profile,strategy-proposal,bot-configuration}.schema.json`. Adapters: `docs/v2/adapters/{veles,ginarea}.md`. Canonical legacy sources: `docs/platforms/configuration-contract.md` and two existing platform Skills; no actual P02 verified by this repository artifact.
+Schemas: `docs/v2/contracts/{request-context,coin-profile,strategy-proposal,bot-configuration}.schema.json`. Adapters: `docs/v2/adapters/{veles,ginarea}.md`. Domain references: `docs/platforms/configuration-contract.md` and the matching platform reference in `docs/reference/`; no actual P02 verified by this repository artifact.
 
 ## End-to-end routing
 
-Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Use the active v2 route in the root `AGENTS.md`. Record source access from actual responses. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail.
+Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Follow the active workflow in the root `AGENTS.md`. Record source access from actual responses. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail.

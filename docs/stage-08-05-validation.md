@@ -11,7 +11,7 @@
 - [Шесть копируемых промптов P08-18–P08-23, сравнительная матрица и 40 нормативных RD01–RD40](prompts/risk-strategy-decision.md).
 - [Воспроизводимые синтетические JS-проверки](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-05-risk-strategy-synthetic.mjs).
 - [Формальная приёмка 08.4 и запись о переносе регрессии](stage-08-04-validation.md#6-формальная-приёмка-084-и-разрешение-085--20102026).
-- [Источники FR-027–FR-040](risk-management.md), [risk-assessment Skill](../.agents/skills/risk-assessment/SKILL.md), [strategy-planning Skill](../.agents/skills/strategy-planning/SKILL.md), [portfolio-analysis Skill](../.agents/skills/portfolio-analysis/SKILL.md), [RT01–RT10](workflows/interaction-contract.md).
+- [Источники FR-027–FR-040](risk-management.md), [risk-assessment Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/risk-assessment/SKILL.md), [strategy-planning Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/strategy-planning/SKILL.md), [portfolio-analysis Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/portfolio-analysis/SKILL.md), [RT01–RT10](workflows/interaction-contract.md).
 
 ## 2. Методика и обязательные ограничения
 

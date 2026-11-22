@@ -10,7 +10,7 @@
 
 - [Шесть коротких промптов P08-06–P08-11, правила R2 и нормативные случаи TS01–TS36](prompts/technical-scenario.md).
 - [Синтетические JS-тесты технического сценария](https://github.com/vbondarev/crypto-trading-agent/blob/b554dd967a6a83ba85f0c1c95484e2c4f48c9670/tests/stage-08-03-technical-scenario-synthetic.mjs).
-- [Ранее принятый контракт диалогов RT01–RT10](workflows/interaction-contract.md), [Market Analysis Skill](../.agents/skills/market-analysis/SKILL.md), [Data Verification Skill](../.agents/skills/data-verification/SKILL.md), [Strategy Planning Skill](../.agents/skills/strategy-planning/SKILL.md).
+- [Ранее принятый контракт диалогов RT01–RT10](workflows/interaction-contract.md), [Market Analysis Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/market-analysis/SKILL.md), [Data Verification Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/data-verification/SKILL.md), [Strategy Planning Skill](https://github.com/vbondarev/crypto-trading-agent/blob/0333a6a34f2c9d0537ed080ebaf91af4261fc63c/.agents/skills/strategy-planning/SKILL.md).
 - [Формальная приёмка 08.2](stage-08-02-validation.md#6-формальная-приёмка-082-и-разрешение-083--20102026).
 
 ## 2. Нормативная и механическая проверка

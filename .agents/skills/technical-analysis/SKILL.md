@@ -1,8 +1,8 @@
 ---
-name: technical-analysis-v2
+name: technical-analysis
 description: Calculate and interpret validated multi-timeframe cryptocurrency technical evidence, indicators and structure without invented market data.
 ---
-# Technical Analysis (v2)
+# Technical Analysis
 **Trigger:** selected coin trend/indicator/level analysis for user research or future bot design.
 
 ## Inputs / output
@@ -17,7 +17,7 @@ Input: `RequestContext`, verified Bybit instrument, closed OHLCV or attributable
 6. Recheck source freshness and AD-009 after an instrument/price/material event change. Return gaps and confidence reasons. Never declare configuration safety or issue live trading actions.
 
 ## Validation / dependency
-Schemas: `docs/v2/contracts/request-context.schema.json`, `evidence-record.schema.json`, `technical-evidence.schema.json`. Canonical sources: `.agents/skills/market-analysis/SKILL.md`, `docs/data-freshness.md`, `docs/prompts/technical-scenario.md`.
+Schemas: `docs/v2/contracts/request-context.schema.json`, `evidence-record.schema.json`, `technical-evidence.schema.json`. Canonical sources: `docs/reference/market-analysis.md`, `docs/data-freshness.md`, `docs/prompts/technical-scenario.md`.
 
 ## End-to-end routing
 

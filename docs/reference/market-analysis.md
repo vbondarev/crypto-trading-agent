@@ -1,15 +1,12 @@
----
-name: market-analysis
-description: Analyze BTC and altcoin market context, multi-timeframe trend, closed OHLCV, EMA/SMA/RSI/ATR, volume, volatility, derivatives, liquidity, news and conditional scenarios. Use for R1 market overviews or R2 preliminary Bybit USDT perpetual market analysis, never final bot approval.
----
-
 # Market Analysis — Crypto Trading Agent
+
+> Domain reference for the current agent. Follow the workflow in [AGENTS.md](../../AGENTS.md) when using this material.
 
 ## When to use
 
 - The user requests a **BTC / altcoin market overview**, relative strength, technical trend, volatility, levels, derivatives context or market catalysts.
 - An R2 preliminary Long/Short scenario needs evidence-based market conditions, alternative outcomes and invalidation—not a ready-to-enter trade.
-- A broader portfolio/strategy workflow requests the **market-analysis** component. Verify time-sensitive data with [data-verification](../data-verification/SKILL.md) **when that Skill is actually available/read**; a hyperlink alone does not prove execution.
+- A broader portfolio/strategy workflow requests the **market-analysis** component. Verify time-sensitive data with [data-verification](data-verification.md) **when that Skill is actually available/read**; a hyperlink alone does not prove execution.
 
 ## When **not** to use
 
@@ -20,16 +17,16 @@ description: Analyze BTC and altcoin market context, multi-timeframe trend, clos
 
 ## Read approved references **as needed** (paths relative to this folder)
 
-- [Global AGENTS and strict boundaries](../../../AGENTS.md)
-- [FR-001–FR-017 market and technical requirements](../../../docs/requirements.md)
-- [Verification rules R1/R2/R3, freshness, closed candles and AD-009](../../../docs/data-freshness.md)
-- [Actual source access and safe fallbacks](../../../docs/data-sources.md)
-- [Source quality, conflicts and known TV limits](../../../docs/data-validation.md)
-- [Minimal T01–T06 requests](../../../docs/input-templates.md)
-- [Operating rules and reporting](../../../docs/agent-operating-rules.md)
-- [Selection / execution contract for Skills](../../../docs/stage-07-skills-contract.md)
-- [Risk guards and FR-038 stress requirements](../../../docs/risk-management.md)
-- [Current project limitations](../../../docs/stage-06-review.md)
+- [Global AGENTS and strict boundaries](../../AGENTS.md)
+- [FR-001–FR-017 market and technical requirements](../requirements.md)
+- [Verification rules R1/R2/R3, freshness, closed candles and AD-009](../data-freshness.md)
+- [Actual source access and safe fallbacks](../data-sources.md)
+- [Source quality, conflicts and known TV limits](../data-validation.md)
+- [Minimal T01–T06 requests](../input-templates.md)
+- [Operating rules and reporting](../agent-operating-rules.md)
+- [Selection / execution contract for Skills](../stage-07-skills-contract.md)
+- [Risk guards and FR-038 stress requirements](../risk-management.md)
+- [Current project limitations](../stage-06-review.md)
 
 For external public facts, consult **current primary/official material when accessible**, including [Bybit V5 Kline](https://bybit-exchange.github.io/docs/v5/market/kline), [Open Interest](https://bybit-exchange.github.io/docs/v5/market/open-interest), [Funding History](https://bybit-exchange.github.io/docs/v5/market/history-fund-rate), [Instruments Info](https://bybit-exchange.github.io/docs/v5/market/instrument). Reading API documentation does **not** mean a price was successfully retrieved. Use only data actually returned; log the source/market/times and explicit failures (e.g., HTTP 403).
 
