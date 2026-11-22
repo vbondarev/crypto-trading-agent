@@ -1,0 +1,25 @@
+---
+name: bot-configuration
+description: Produce a conditional manual-entry Veles or GinArea configuration using separate verified platform field mappings and strict portfolio/risk gates.
+---
+# Bot Configuration
+**Trigger:** user requests a Veles or GinArea bot for a selected symbol and strategy, or audits a current bot.
+
+## Inputs / output
+Input: `RequestContext`, `CoinProfile`, `StrategyProposal`, user budget, account evidence as needed, platform choice, P01 documentation and user-current P02 for final verification. Output: `BotConfigurationProposal` in `docs/v2/contracts/bot-configuration.schema.json`.
+
+## Procedure
+1. If strategy decision is WAIT or a known hard risk gate is breached, return NOT_RECOMMENDED, without manufactured settings. If platform is unselected, show concise comparison and ask user to choose before providing platform-specific fields.
+2. For VELES use only `docs/v2/adapters/veles.md` and legacy source `docs/platforms/veles.md`; for GINAREA use `docs/v2/adapters/ginarea.md` and legacy source `docs/platforms/ginarea.md`. Mode compatibility and exact UI label/units must be verified independently; no silent IndicatorGrid→DefaultGrid switch.
+3. Separate deposit/equity, notional, initial margin, order size, percent and contract quantity. Compute grid amount/steps, prospective fills and TP/SL/BE from verified evidence; record mathematical assumptions and fees/funding/slippage buffer. Missing budget or valid price data ⇒ NEEDS_DATA, no invented numbers.
+4. For a **final account-level** assessment require synchronized full T02, current Mark, complete orders and future grid, platform P02 and validated risk/liq model. An overview or preliminary draft must **not** demand private account evidence by default.
+5. All applicable hard gates from `strategy-synthesis` and canonical `docs/risk-management.md` apply; known breach ⇒ NOT_RECOMMENDED/REJECTED, missing evidence ⇒ NEEDS_DATA/UNVERIFIED. Existing active bot/position Stop/Pause/Disable IN/Cancel ≠ actual exchange Close/fill.
+6. Set `readiness=DRAFT|NEEDS_DATA|NOT_RECOMMENDED` according to the evidence and risk gates. The active route stays in `NO_TRADE_READY`. Final account-level verification requires separate acceptance under `docs/v2/bot-handoff-policy.md`.
+7. AD-009 triggers recheck on price/Mark, fill, orders, Equity, margin, bot edit/restart or P02 form updates. No real bot orders, API credentials or autonomous operations.
+
+## Validation / dependency
+Schemas: `docs/v2/contracts/{request-context,coin-profile,strategy-proposal,bot-configuration}.schema.json`. Adapters: `docs/v2/adapters/{veles,ginarea}.md`. Domain references: `docs/platforms/configuration-contract.md` and the matching platform reference in `docs/reference/`; no actual P02 verified by this repository artifact.
+
+## End-to-end routing
+
+Follow the single-request workflow in `docs/v2/analytical-workflow.md`, including shared RequestContext/EvidenceRecord identity, source accessibility checks, partial-data handling, AD-009 event invalidation and downstream risk status. For source acquisition use `docs/v2/source-acquisition-policy.md`; for platform handoff use `docs/v2/bot-handoff-policy.md`. Follow the active workflow in the root `AGENTS.md`. Record source access from actual responses. If the end-to-end workflow contradicts canonical `docs/risk-management.md` or actual Veles/GinArea P02, the canonical hard-safety/platform constraints prevail.

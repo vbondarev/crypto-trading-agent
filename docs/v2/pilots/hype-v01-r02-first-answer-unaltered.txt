@@ -1,0 +1,468 @@
+# HYPE-V01-R02 — отчёт корректирующего теста
+
+Синтетические данные проверены
+
+Режим: `ISOLATED SYNTHETIC / NO TRADES`\
+Репозиторий: `vbondarev/crypto-trading-agent`\
+Pinned commit: `b7123d9cf19502bf4a890f1400027f30fa213434`\
+Время синтетического сценария: 20.10.2026, 09:00 UTC (12:00 МСК).
+
+Проверка выполняется исключительно над вымышленными данными. Ни одна цена из теста не является актуальной котировкой HYPEUSDT или подтверждённой котировкой Bybit.
+
+## 1. Проверка входного ZIP
+
+Контрольная сумма SHA-256 совпала полностью.
+
+`HYPE-V01-SYNTHETIC.zip`
+
+`9e925caddbf62206b7237d60c4ec0971ca2fc6cd91c064070bf83b3b9416a872`
+
+Прочитаны `manifest.json`, `synthetic/test-cases.json` и все четыре CSV. Проверены размеры и SHA-256 CSV, временные интервалы, отсутствие пропусков и перекрытий, завершённость свечей, корректность OHLC и неотрицательность объёмов.
+
+| Таймфрейм | Свечей | Последнее закрытие UTC | Результат  |
+| --------- | ------ | ---------------------- | ---------- |
+| 15m       | 300    | 20.10, 09:00           | &#x20;PASS |
+| 1h        | 300    | 20.10, 09:00           | &#x20;PASS |
+| 4h        | 300    | 20.10, 08:00           | &#x20;PASS |
+| 1d        | 300    | 20.10, 00:00           | &#x20;PASS |
+
+### Независимый пересчёт индикаторов
+
+EMA рассчитаны по рекуррентной формуле с начальным SMA соответствующего периода. RSI14 — по Wilder, с первоначальным средним за 14 изменений цены.
+
+| TF  | Close  | EMA20  | EMA50  | EMA200 | RSI14  |
+| --- | ------ | ------ | ------ | ------ | ------ |
+| 15m | 75,000 | 74,851 | 74,758 | 74,275 | 63,534 |
+| 1h  | 75,000 | 74,679 | 74,367 | 73,717 | 63,284 |
+| 4h  | 74,852 | 74,169 | 73,633 | 69,027 | 62,277 |
+| 1d  | 74,933 | 71,740 | 66,602 | 54,464 | 80,927 |
+
+Все значения согласуются с manifest в пределах точности его округления.
+
+Важное противоречие: четыре таймфрейма демонстрируют бычье расположение EMA20 выше EMA50 выше EMA200, но дневной RSI14 ≈ 80,9 указывает на выраженный риск перегрева. Таким образом, техническая направленность вверх не равнозначна подтверждённому безопасному LONG-входу.
+
+## 2. Фактические чтения GitHub
+
+Все 14 файлов успешно прочитаны методом `fetch_file` через подключённый GitHub с явным `ref=b7123d9cf19502bf4a890f1400027f30fa213434` и `encoding=utf-8`.
+
+Приведены именно SHA Git Blob, возвращённые GitHub, а не SHA commit или локально придуманные идентификаторы.
+
+| Документ                                        | Git Blob SHA                             | Чтение   |
+| ----------------------------------------------- | ---------------------------------------- | -------- |
+| market-research-v2/SKILL.md                     | de45204b02fbf84aae96dba8eee831101c7a767f | &#x20;OK |
+| technical-analysis-v2/SKILL.md                  | e7f1c7e6336e41f535d8ac16ab2e5b0ea8a623ca | &#x20;OK |
+| strategy-synthesis-v2/SKILL.md                  | d81b0449da8e6470a8428fb18d0e173054a839c7 | &#x20;OK |
+| bot-configuration-v2/SKILL.md                   | c0acdeaaa586371fac8497bf119919eb8caa11a7 | &#x20;OK |
+| docs/v2/analytical-workflow\.md                 | 2d2dde8d7a8e400633c2cb4598252cf2b09cec58 | &#x20;OK |
+| docs/v2/source-acquisition-policy.md            | bb4659984bd4a14dbb65f76d6b02ee0fa92a7a11 | &#x20;OK |
+| docs/v2/bot-handoff-policy.md                   | b73308b31deb53aed8544d3a147b5fb6d3fb4a3b | &#x20;OK |
+| docs/v2/coin-report-template.md                 | 5344a5c52b43a258eb3077a2dbb1b6c863e0dcba | &#x20;OK |
+| docs/v2/adapters/veles.md                       | e19cb8b32ef8f5430fb0603bec8a04d4df949bbf | &#x20;OK |
+| docs/v2/contracts/strategy-proposal.schema.json | 59db0de12477388f93cacee48314ef70eaaa10a3 | &#x20;OK |
+| docs/v2/contracts/bot-configuration.schema.json | 0fb510fd07d33f78da3e05c5dd187b6bd6b4cb40 | &#x20;OK |
+| docs/risk-management.md                         | 741e53f25baa77cd49a46e562858f8faf502acee | &#x20;OK |
+| docs/platforms/veles.md                         | 01f796302267ce05129abcaefef484f7009aaadb | &#x20;OK |
+| docs/platforms/configuration-contract.md        | 31a4ab98223ae29baadc73701daad3bf3d7a409b | &#x20;OK |
+
+Пути первых четырёх файлов расположены в `.agents/skills/`, названия в таблице сокращены для читаемости.
+
+Ошибок чтения GitHub не было. Обе нормативные схемы получены полностью — 3 074 и 7 623 байта соответственно. Их локальные копии дополнительно проверены вычислением Git Blob SHA: результаты совпали с ответами GitHub побайтно.
+
+Ограничения доказательности: документы содержат нормативные правила и каталог P01, но не дают реального P02, T02, доступа к Bybit, подтверждённой биржевой спецификации HYPEUSDT или фактического исполнения Veles. Источники живого рынка намеренно не запрашивались.
+
+## 3. Synthetic Coin Profile
+
+Глобальный тренд
+
+UP
+
+Локальный тренд
+
+UP
+
+Уверенность в направлении
+
+MEDIUM (synthetic only)
+
+Готовность к входу
+
+Не подтверждена
+
+Бычья структура EMA присутствует на всех четырёх интервалах, однако перегретый дневной RSI и отсутствие независимого рыночного контекста ограничивают силу вывода.
+
+| Сценарий | Условие                                                                                       | Интерпретация                                   |
+| -------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| BULL     | Локальные EMA сохраняют восходящее расположение, дневной RSI охлаждается без потери структуры | Возможность повторно рассмотреть LONG-кандидата |
+| BASE     | Консолидация и снижение импульса при сохранении среднесрочной структуры                       | WAIT до подтверждения входа                     |
+| BEAR     | Потеря поддержки 1h/4h EMA и ухудшение структуры закрытий                                     | LONG-гипотеза инвалидируется                    |
+
+Для BULL существенная инвалидация — потеря подтверждённой бычьей структуры; для BASE — выход из консолидации без качественного подтверждения; для BEAR — восстановление восходящей структуры. Вероятности и целевые цены не выдумываются.
+
+BTC/ETH, макроконтекст, фундаментальные события, новости, X/Telegram, funding, OI и ликвидационные зоны не исследовались по условию теста. Поэтому реальная полнота Coin Profile остаётся недостаточной.
+
+## 4. Итоги сценариев A/B
+
+| Проверка                   | V01-A             | V01-B                 |
+| -------------------------- | ----------------- | --------------------- |
+| Техническая структура      | UP                | UP                    |
+| `posture`                  | `LONG`            | `LONG`                |
+| Интерпретация              | Условный кандидат | Кандидат заблокирован |
+| `risk_screen.model_status` | `NOT_EVALUABLE`   | `REJECTED`            |
+| `decision_status`          | `NEEDS_DATA`      | `NOT_RECOMMENDED`     |
+| `risk_checks.model_status` | `NOT_EVALUABLE`   | `REJECTED`            |
+| `readiness`                | `NEEDS_DATA`      | `NOT_RECOMMENDED`     |
+| Реальный вход              | Запрещён          | Запрещён              |
+| Числовая сетка             | Отсутствует       | Отсутствует           |
+
+Для V01-A проверен положительный маршрут формирования типизированного предварительного кандидата, а не маршрут получения торгового допуска. Статус `LONG` описывает техническую гипотезу. Окончательный вход не подтверждён.
+
+Для V01-B инъекция `H04=ACTIVE` создаёт безусловный запрет на новый или дополнительный риск в рамках синтетического сценария. Отсутствие P02/T02, истории H02/H03 либо данных о разблокировке не ослабляет этот запрет.
+
+## 5. Учебная математика Veles DCA
+
+Рассматривается только Veles DCA и гипотетический режим `CUSTOM / Свой`. Это не отдельный GRID-бот и не проверенная пользовательская форма.
+
+Вымышленный расчёт · бюджет 100 USDT · плечо 3×
+
+IN 1
+
+## 4
+
+USDT margin
+
+12 USDT
+
+номинал
+
+IN 2
+
+## 4
+
+USDT margin
+
+12 USDT
+
+номинал
+
+IN 3
+
+## 4
+
+USDT margin
+
+12 USDT
+
+номинал
+
+Итого гипотетическая IM
+
+# 12 USDT
+
+Суммарный номинал
+
+# 36 USDT
+
+Для каждого IN учебная формула: `nominal = 4 × 3 = 12 USDT`. При типовом линейном контракте количество базового актива рассчитывалось бы как `quantity = 12 / actual_execution_price`, с учётом спецификации контракта. Но реальные цены исполнения, `qtyStep`, минимальный номинал и округление неизвестны.
+
+Полный резерв: минимум 12 USDT расчётной маржи плюс комиссии, потенциальные funding, проскальзывание и дополнительный запас. Поэтому 12 USDT — не доказанный достаточный резерв, а бюджет 100 USDT — не подтверждённая реальная Equity.
+
+Не рассчитаны и не признаны пройденными проверки нагрузки на весь счёт ≤30% Equity, худшего убытка бота ≤5% Equity, расстояния до ликвидации ≥15%, числа занятых слотов ≤3 и полного будущего резерва. Гипотетическое плечо 3× формально ниже нормативного потолка 5×, но это не доказывает безопасность.
+
+## 6. P02 и отсутствующие доказательства
+
+В будущем для отдельно разрешённой ручной проверки потребуются скриншоты актуальной формы Veles, содержащие:
+
+1. Привязку биржи без раскрытия ключей, рынок USDT Perpetual, фактический выбор HYPEUSDT в селекторе и версию/тип редактора.
+2. Режим `Свой`, сторону Long, тип маржи и отображаемые условия применимости выбранного режима.
+3. Все строки отдельных IN, их точные подписи, единицы измерения, разрешённые значения и ограничения.
+4. Разделы условий открытия, выходов, TP/SL и текущие видимые настройки, с временем получения и признаками неполных вкладок.
+
+P02 не заменяет свежий синхронизированный T02/T03/T04 и Mark; эти данные нужны лишь для будущей отдельной финальной проверки риска. Сейчас они не запрашиваются.
+
+Каждый элемент P01 mapping в типизированном выходе имеет `verified_status=DOCUMENTED_ONLY` и `form_key_if_verified=null`. Для B mapping пустой, поскольку формировать настройку при активном H04 нельзя.
+
+## 7. Результат машинной проверки контрактов
+
+4 из 4 объектов прошли программную JSON Schema validation.
+
+Проверка реально выполнена в Python с `jsonschema 4.26.0`, через `Draft202012Validator`, после подтверждения точного Git Blob SHA каждой схемы. Проверены оба `StrategyProposal` и оба `BotConfigurationProposal`, а также дополнительные межобъектные инварианты: `strategy_ref`, идентичность инструмента, нулевые P02-поля, отсутствие числовых сеток и ограничения mapping.
+
+| Объект                           | JSON Schema |
+| -------------------------------- | ----------- |
+| V01-A / StrategyProposal         | &#x20;PASS  |
+| V01-A / BotConfigurationProposal | &#x20;PASS  |
+| V01-B / StrategyProposal         | &#x20;PASS  |
+| V01-B / BotConfigurationProposal | &#x20;PASS  |
+
+Граница подтверждения: это настоящая программная проверка структурного соответствия схемам, а не доказательство корректности рыночного прогноза, реального риска Bybit, поведения Veles или готовности бота.
+
+Созданные файлы:
+
+- Типизированные результаты HYPE-V01-R02.json
+- Отчёт проверки входных данных и индикаторов.json
+
+Один следующий шаг: ручная приёмка результатов R02 по таблице статусов, нормативным условиям и файлу JSON. Без запуска этапа 06, изменения GitHub, PR #1, действующего агента или активации v2.
+
+## 8. Полный типизированный JSON
+
+Ниже — один объект с четырьмя валидированными предложениями. Числовые IN присутствуют только как учебная арифметика в текстовом поле `assumptions` V01-A, не как исполнимая сетка.
+
+```
+{
+  "run_id": "HYPE-V01-R02",
+  "policy_sha": "b7123d9cf19502bf4a890f1400027f30fa213434",
+  "fixture_sha256": "9e925caddbf62206b7237d60c4ec0971ca2fc6cd91c064070bf83b3b9416a872",
+  "synthetic_only": true,
+  "cases": {
+    "V01-A": {
+      "StrategyProposal": {
+        "strategy_id": "HYPE-V01-A-STRATEGY",
+        "coin_profile_ref": "HYPE-V01-SYNTHETIC-COIN-PROFILE",
+        "posture": "LONG",
+        "strategy_type": "DCA",
+        "rationale": [
+          "SYNTHETIC_ONLY: 300 closed OHLCV for 15m, 1h, 4h and 1d; no actual Bybit observation.",
+          "EMA20 > EMA50 > EMA200 across all four timeframes supports a technical uptrend hypothesis.",
+          "Daily RSI14 Wilder = 80.927 signals overheating; local RSI14 ~62-64 does not establish an entry.",
+          "BTC/ETH, issuer/news, social, funding, OI, liquidation, real Bybit Mark and account evidence absent.",
+          "LONG is a technical candidate ONLY, not a validated order or positive trading permission."
+        ],
+        "alternatives": [
+          "WAIT until cooled daily momentum and real market/account evidence are verified.",
+          "BEAR case: loss of synthetic 1h/4h EMA structure; no automatic SHORT."
+        ],
+        "entry_conditions": [
+          "No entry in this test. Require a new verified market snapshot, closed-candle confirmation and a non-overheated/revalidated setup.",
+          "Before any real decision: P02, complete T02/T03/T04, Mark, instrument rules and risk-model PASS."
+        ],
+        "invalidation_conditions": [
+          "Sustained loss of 1h/4h EMA50 or material structural reversal in new verified data.",
+          "Daily RSI heat without a supported trigger or any new hard risk veto."
+        ],
+        "proposed_bounds": {
+          "lower": null,
+          "upper": null
+        },
+        "profitability_claim": "NONE",
+        "risk_screen": {
+          "hard_vetoes": [],
+          "not_evaluable": [
+            "Verified real account Equity/initial margin and 30% portfolio IM cap",
+            "Bot worst-case loss <=5% Equity including gaps, fees and all IN",
+            "Adverse Mark-to-liquidation distance >=15% using applicable account/MMR model",
+            "Three-position limit and full reserve across all open/pending/future orders",
+            "Real H02/H03/H04 status, daily 3% and HWM 15% history",
+            "Actual P02 selected-mode UI, contract lot rules and current Mark/price basis"
+          ],
+          "model_status": "NOT_EVALUABLE"
+        },
+        "decision_status": "NEEDS_DATA",
+        "user_choice_required": true
+      },
+      "BotConfigurationProposal": {
+        "config_id": "HYPE-V01-A-VELES-DCA-DRAFT",
+        "platform": "VELES",
+        "platform_variant": "CUSTOM (Свой; HYPOTHETICAL ONLY)",
+        "instrument": {
+          "exchange": "BYBIT_LABEL_ONLY",
+          "symbol": "HYPEUSDT",
+          "market_type": "USDT_PERPETUAL",
+          "settle_coin": "USDT",
+          "identity_status": "UNVERIFIED"
+        },
+        "strategy_ref": "HYPE-V01-A-STRATEGY",
+        "form_evidence": {
+          "P01_source": "docs/platforms/veles.md@b7123d9cf19502bf4a890f1400027f30fa213434 (V-01/V-02 documentary references)",
+          "P02_verified_at": null,
+          "field_map_version": null
+        },
+        "input_budget": 100,
+        "leverage": 3,
+        "order_amounts": [],
+        "grid_steps": [],
+        "boundaries": {
+          "lower": null,
+          "upper": null
+        },
+        "entry_rules": [
+          "NO LIVE ENTRY: positive route is a synthetic technical candidate, pending full evidence and separate user decision."
+        ],
+        "exits": [
+          "No actual TP, SL, BE, liquidation or stop-fill guarantee is specified."
+        ],
+        "risk_checks": {
+          "hard_checks": [
+            "A: no hard veto established by the synthetic fixture; this is NOT proof that the real account is clear.",
+            "Hypothetical 3x is <= policy 5x but the actual account leverage was NOT checked."
+          ],
+          "missing": [
+            "Actual user P02 for VELES CUSTOM mode and symbol selector",
+            "Full synchronized T02/T03/T04, Mark, Equity, positions, active orders and complete future IN",
+            "Bybit instrument rules, risk tiers, applicable margin mode/MMR and costs"
+          ],
+          "not_evaluable": [
+            "Verified real account Equity/initial margin and 30% portfolio IM cap",
+            "Bot worst-case loss <=5% Equity including gaps, fees and all IN",
+            "Adverse Mark-to-liquidation distance >=15% using applicable account/MMR model",
+            "Three-position limit and full reserve across all open/pending/future orders",
+            "Real H02/H03/H04 status, daily 3% and HWM 15% history",
+            "Actual P02 selected-mode UI, contract lot rules and current Mark/price basis"
+          ],
+          "model_status": "NOT_EVALUABLE"
+        },
+        "currency_units": "USDT (fictional margin/notional); quantity in HYPE units cannot be validated",
+        "assumptions": [
+          "SYNTHETIC_ONLY; test budget 100 USDT is NOT verified real account Equity.",
+          "EDUCATIONAL ONLY: three hypothetical independent IN margin portions 4+4+4=12 USDT at 3x imply nominal 12+12+12=36 USDT, before costs, not an order_amounts payload.",
+          "Illustrative IM allocation: 4 USDT each; 12 USDT all future IN total; full required reserve >12 USDT after unknown fees, funding and slippage buffer.",
+          "Illustrative quantity for each IN would equal 12 USDT divided by its OWN validated execution price (and adjusted for the actual contract multiplier/lot rules); real quantity unknown.",
+          "CUSTOM/Свой is a hypothetical mode assumption; P01 DOCUMENTED_ONLY is NOT actual P02."
+        ],
+        "mapping": [
+          {
+            "ui_label": "Режим торговли",
+            "form_key_if_verified": null,
+            "value": "Свой — hypothetical; P02 not observed",
+            "unit": null,
+            "source_ref": "docs/platforms/veles.md@b7123d9cf19502bf4a890f1400027f30fa213434",
+            "verified_status": "DOCUMENTED_ONLY"
+          },
+          {
+            "ui_label": "Тип торговли",
+            "form_key_if_verified": null,
+            "value": "Long — technical candidate only",
+            "unit": null,
+            "source_ref": "docs/platforms/veles.md@b7123d9cf19502bf4a890f1400027f30fa213434",
+            "verified_status": "DOCUMENTED_ONLY"
+          },
+          {
+            "ui_label": "Депозит",
+            "form_key_if_verified": null,
+            "value": null,
+            "unit": "UI unit not verified",
+            "source_ref": "docs/platforms/veles.md@b7123d9cf19502bf4a890f1400027f30fa213434",
+            "verified_status": "DOCUMENTED_ONLY"
+          }
+        ],
+        "readiness": "NEEDS_DATA",
+        "manual_steps": [
+          "Do not create, configure, activate or trade a real bot from this synthetic draft.",
+          "For future review obtain P02 captures for the actual CUSTOM mode and full P01/P02 mapping; verify real T02/Mark, exchange rules, fee/risk model and H04 first."
+        ],
+        "last_recheck_at": null,
+        "forbidden_automated_execution": true
+      }
+    },
+    "V01-B": {
+      "injected_H04": "ACTIVE",
+      "StrategyProposal": {
+        "strategy_id": "HYPE-V01-B-STRATEGY",
+        "coin_profile_ref": "HYPE-V01-SYNTHETIC-COIN-PROFILE",
+        "posture": "LONG",
+        "strategy_type": "DCA",
+        "rationale": [
+          "SYNTHETIC_ONLY: 300 closed OHLCV for 15m, 1h, 4h and 1d; no actual Bybit observation.",
+          "EMA20 > EMA50 > EMA200 across all four timeframes supports a technical uptrend hypothesis.",
+          "Daily RSI14 Wilder = 80.927 signals overheating; local RSI14 ~62-64 does not establish an entry.",
+          "BTC/ETH, issuer/news, social, funding, OI, liquidation, real Bybit Mark and account evidence absent.",
+          "SYNTHETIC H04=ACTIVE is injected; existing technical uptrend does not override hard risk veto."
+        ],
+        "alternatives": [
+          "No NEW or ADD risk while injected H04 remains ACTIVE.",
+          "Risk reduction is a separate possible review, never an automatic trade."
+        ],
+        "entry_conditions": [
+          "NO NEW / ADD entries while synthetic H04=ACTIVE."
+        ],
+        "invalidation_conditions": [
+          "H04 remains ACTIVE until separately demonstrated unlock and normalized risk; no presumed unlock."
+        ],
+        "proposed_bounds": {
+          "lower": null,
+          "upper": null
+        },
+        "profitability_claim": "NONE",
+        "risk_screen": {
+          "hard_vetoes": [
+            "SYNTHETIC_INJECTION: H04=ACTIVE forbids NEW/ADD exposure"
+          ],
+          "not_evaluable": [
+            "Verified real account Equity/initial margin and 30% portfolio IM cap",
+            "Bot worst-case loss <=5% Equity including gaps, fees and all IN",
+            "Adverse Mark-to-liquidation distance >=15% using applicable account/MMR model",
+            "Three-position limit and full reserve across all open/pending/future orders",
+            "Real H02/H03/H04 status, daily 3% and HWM 15% history",
+            "Actual P02 selected-mode UI, contract lot rules and current Mark/price basis"
+          ],
+          "model_status": "REJECTED"
+        },
+        "decision_status": "NOT_RECOMMENDED",
+        "user_choice_required": true
+      },
+      "BotConfigurationProposal": {
+        "config_id": "HYPE-V01-B-VELES-VETO",
+        "platform": "VELES",
+        "platform_variant": "CUSTOM (Свой; HYPOTHETICAL ONLY)",
+        "instrument": {
+          "exchange": "BYBIT_LABEL_ONLY",
+          "symbol": "HYPEUSDT",
+          "market_type": "USDT_PERPETUAL",
+          "settle_coin": "USDT",
+          "identity_status": "UNVERIFIED"
+        },
+        "strategy_ref": "HYPE-V01-B-STRATEGY",
+        "form_evidence": {
+          "P01_source": "docs/platforms/veles.md@b7123d9cf19502bf4a890f1400027f30fa213434 (V-01/V-02 documentary references)",
+          "P02_verified_at": null,
+          "field_map_version": null
+        },
+        "input_budget": null,
+        "leverage": null,
+        "order_amounts": [],
+        "grid_steps": [],
+        "boundaries": {
+          "lower": null,
+          "upper": null
+        },
+        "entry_rules": [
+          "NEW and ADD exposure forbidden under injected H04=ACTIVE."
+        ],
+        "exits": [
+          "No TP/SL, numeric levels or automated close; separate risk-reduction review only."
+        ],
+        "risk_checks": {
+          "hard_checks": [
+            "SYNTHETIC_INJECTION: H04=ACTIVE is a controlling hard veto even with missing P02/T02."
+          ],
+          "missing": [
+            "Real P02 remains unverified; no live configuration has been prepared.",
+            "Real T02/Mark/instrument rules remain unavailable; no release of synthetic H04 is implied."
+          ],
+          "not_evaluable": [
+            "Verified real account Equity/initial margin and 30% portfolio IM cap",
+            "Bot worst-case loss <=5% Equity including gaps, fees and all IN",
+            "Adverse Mark-to-liquidation distance >=15% using applicable account/MMR model",
+            "Three-position limit and full reserve across all open/pending/future orders",
+            "Real H02/H03/H04 status, daily 3% and HWM 15% history",
+            "Actual P02 selected-mode UI, contract lot rules and current Mark/price basis"
+          ],
+          "model_status": "REJECTED"
+        },
+        "currency_units": "USDT; no executable amounts/steps/levels/quantity",
+        "assumptions": [
+          "Same fictional OHLCV portrait as V01-A; H04=ACTIVE is an explicit synthetic test override, not an observed account fact.",
+          "No numerical grid or order amounts may be issued under active H04."
+        ],
+        "mapping": [],
+        "readiness": "NOT_RECOMMENDED",
+        "manual_steps": [
+          "No NEW/ADD execution, live bot configuration or activation.",
+          "In a future real review, verify documented H04 unlock separately before revisiting P02/T02; never presume unlock."
+        ],
+        "last_recheck_at": null,
+        "forbidden_automated_execution": true
+      }
+    }
+  }
+}
+```

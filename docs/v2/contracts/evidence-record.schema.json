@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vbondarev/crypto-trading-agent/blob/feature/simplified-agent-v2/docs/v2/contracts/evidence-record.schema.json",
+  "title": "evidence-record",
+  "description": "Crypto Trading Agent v2 draft architecture; not active for real trades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "MARKET",
+        "SOCIAL",
+        "NEWS",
+        "DERIVATIVES",
+        "ONCHAIN",
+        "TECHNICAL",
+        "PLATFORM",
+        "ACCOUNT"
+      ]
+    },
+    "source_kind": {
+      "type": "string",
+      "enum": [
+        "EXCHANGE_PRIMARY",
+        "PROJECT_PRIMARY",
+        "PUBLIC_POST",
+        "NEWS_ORIGINAL",
+        "AGGREGATOR",
+        "USER_SUPPLIED",
+        "COMPUTED"
+      ]
+    },
+    "source_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_method": {
+      "type": "string",
+      "enum": [
+        "ACTUAL_PUBLIC_WEB",
+        "DOCUMENTED_API",
+        "CONNECTED_TOOL",
+        "USER_TEXT",
+        "DERIVED"
+      ]
+    },
+    "access_status": {
+      "type": "string",
+      "enum": [
+        "OBSERVED",
+        "USER_SUPPLIED_UNVERIFIED",
+        "ACCESS_UNAVAILABLE",
+        "NOT_CHECKED"
+      ]
+    },
+    "published_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "retrieved_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timezone": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "market_identity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quality": {
+      "type": "string",
+      "enum": [
+        "VERIFIED_SOURCE",
+        "SINGLE_SOURCE",
+        "CONFLICTED",
+        "STALE",
+        "ESTIMATE",
+        "UNKNOWN"
+      ]
+    },
+    "independence_group": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "evidence_id",
+    "subject",
+    "claim",
+    "category",
+    "source_kind",
+    "source_name",
+    "source_method",
+    "access_status",
+    "quality",
+    "independence_group"
+  ]
+}

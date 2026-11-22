@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vbondarev/crypto-trading-agent/blob/feature/simplified-agent-v2/docs/v2/contracts/technical-evidence.schema.json",
+  "title": "technical-evidence",
+  "description": "Crypto Trading Agent v2 draft architecture; not active for real trades.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instrument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exchange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market_type": {
+          "type": "string",
+          "enum": [
+            "USDT_PERPETUAL",
+            "SPOT",
+            "OTHER"
+          ]
+        },
+        "settle_coin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_status": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "USER_SUPPLIED",
+            "UNVERIFIED"
+          ]
+        }
+      },
+      "required": [
+        "exchange",
+        "symbol",
+        "market_type",
+        "identity_status"
+      ]
+    },
+    "candles_by_timeframe": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "timeframe": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "count_closed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "last_closed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "candle_completeness": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "PARTIAL",
+              "INSUFFICIENT"
+            ]
+          }
+        },
+        "required": [
+          "timeframe",
+          "source_ids",
+          "count_closed",
+          "candle_completeness"
+        ]
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "computed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "validation": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "USER_SUPPLIED",
+              "NOT_COMPUTED",
+              "NOT_VERIFIED"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "parameters",
+          "value",
+          "source_ids",
+          "validation"
+        ]
+      }
+    },
+    "trend_by_timeframe": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "timeframe": {
+            "type": "string",
+            "minLength": 1
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "UP",
+              "DOWN",
+              "RANGE",
+              "MIXED",
+              "UNKNOWN"
+            ]
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "INSUFFICIENT"
+            ]
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "timeframe",
+          "direction",
+          "confidence",
+          "reasons"
+        ]
+      }
+    },
+    "levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "price": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "SUPPORT",
+              "RESISTANCE",
+              "INVALIDATION",
+              "OTHER"
+            ]
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "price",
+          "type",
+          "method",
+          "source_ids"
+        ]
+      }
+    },
+    "volatility": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "momentum": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "volume": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "invalidation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "disagreements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "request_id",
+    "instrument",
+    "candles_by_timeframe",
+    "indicators",
+    "trend_by_timeframe",
+    "levels",
+    "disagreements",
+    "gaps"
+  ]
+}
