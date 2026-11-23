@@ -68,7 +68,7 @@ Use [VL-01–VL-25](../platforms/veles.md) as the **documentary whitelist**, ref
 | UI concept documented in Veles P01 | Meaning / validation |
 |---|---|
 | `Название бота`, `API-ключ (Привязка)`, `Торговая пара` | User-readable bot alias, **pre-existing** connection selector (never reveal key), exact available Bybit pair |
-| `Тип торговли`, `Режим торговли`, `Тип маржи` | Long/Short; `Простой`/`Свой`/`Сигнал`; `Изолированная`/`Кросс-маржа`, with verified compatibility |
+| `Тип торговли`, `Режим торговли`, `Тип маржи` | Long/Short; `Простой`/`Свой`/`Сигнал`; `Изолированная`/`Кросс-маржа`, with verified compatibility. Use the [DCA trading modes reference](veles-dca-trading-modes.md) for order fields and preset evidence. |
 | `Депозит`, `Плечо`, `Реинвест` | **Bot planned budget**, leverage multiplier and conditional re-invest setting. Deposit is **not** E0, account available balance, Isolated IM or hard worst-loss cap; re-invest changes reachable future budget |
 | `Перекрытие изменения цены`, `Сетка ордеров (количество)`, `% Мартингейла` | SIMPLE coverage %, order count and **percent** volume-growth parameter; not GinArea step/multiplier. Exact formula/default/min/max **UI and model dependent** |
 | `Отступ первого ордера`, `Логарифмическое распределение цен`, `Частичное выставление сетки`, `Подтяжка сетки ордеров` | Entry offset/market behavior; non-linear placement; physically placed limit vs future virtual orders; pull-up can cancel unfilled entry setups. Don't guess fill order/default |
