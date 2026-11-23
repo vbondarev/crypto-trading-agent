@@ -5,6 +5,7 @@ Canonical source: `docs/platforms/veles.md`, `docs/reference/veles-configuration
 ## Source and mode
 - Platform must be **explicitly selected VELES**, Bybit linear USDT contract verified.
 - Order modes `SIMPLE`, `CUSTOM` and `SIGNAL` differ. Treat the entry indicator tab and the choice of a preset or individual filters as separate inputs. For DCA entry conditions, follow the reference for the chosen tab: [«Простые индикаторы»](../../reference/veles-dca-simple-indicators.md) or [«Гибкие индикаторы»](../../reference/veles-dca-flexible-indicators.md). Explain documented behavior without requiring P02 for an overview. For flexible filters, report argument and group settings separately from any unverified event order or reset.
+- Read the [DCA take-profit reference](../../reference/veles-dca-take-profit.md) for exit fields and their evidence. Report the order mode, the shared indicator type and the take-profit mode separately. For exit simulation, record when the take-profit becomes active, its price basis and volume, and how averaging affects it.
 - Never convert GinArea `Disable IN`, `Instop` or its grid-mode values into Veles fields.
 
 ## Mapping procedure
