@@ -4,7 +4,7 @@ Canonical source: `docs/platforms/veles.md`, `docs/reference/veles-configuration
 
 ## Source and mode
 - Platform must be **explicitly selected VELES**, Bybit linear USDT contract verified.
-- Order modes `SIMPLE`, `CUSTOM` and `SIGNAL` differ. Treat the entry indicator tab and the choice of a preset or individual filters as separate inputs. For questions about «Простые индикаторы», read the [Veles DCA simple indicators reference](../../reference/veles-dca-simple-indicators.md). Explain documented behavior without requiring P02 for an overview.
+- Order modes `SIMPLE`, `CUSTOM` and `SIGNAL` differ. Treat the entry indicator tab and the choice of a preset or individual filters as separate inputs. For DCA entry conditions, follow the reference for the chosen tab: [«Простые индикаторы»](../../reference/veles-dca-simple-indicators.md) or [«Гибкие индикаторы»](../../reference/veles-dca-flexible-indicators.md). Explain documented behavior without requiring P02 for an overview. For flexible filters, report argument and group settings separately from any unverified event order or reset.
 - Never convert GinArea `Disable IN`, `Instop` or its grid-mode values into Veles fields.
 
 ## Mapping procedure
