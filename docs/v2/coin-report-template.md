@@ -27,7 +27,7 @@ Global trend (4h/1d if available); local trend (15m/1h if available); OHLCV/indi
 BULL / BASE / BEAR *conditional* paths, trigger, invalidation, risk; avoid unsupported price targets.
 
 ## 6. Trading interpretation
-Recommendation: LONG / SHORT / WAIT; alternatives, why; confidence not a profit probability. Explain **trend ≠ trade**.
+Lead with LONG / SHORT / WAIT, entry-decision coverage, observed reason and next action. For a missing required observation give the exact slice to recover. Then give alternatives, why; confidence not a profit probability. Explain **trend ≠ trade**.
 
 ## 7. Veles or GinArea proposal (only if requested and platform selected)
 Specify mode, IN/OUT, grid/range, order amount and unit, entry/exit rules, costs and reserves using **actual evidence-backed** P01/P02 fields. Include `risk_screen`, missing proof, `DRAFT|NEEDS_DATA|NOT_RECOMMENDED|VERIFIED_FOR_MANUAL_REVIEW` with exact reasons. If known hard risk breach, state REJECTED and omit executable grid; final only with verified form and full relevant portfolio. Never claim placed order.
