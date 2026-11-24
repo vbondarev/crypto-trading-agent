@@ -22,6 +22,8 @@ INTERVAL_MS = {
     "1d": DAY_MS,
     "1w": 7 * DAY_MS,
 }
+# Bybit weeks open at Monday 00:00 UTC. The Unix epoch was a Thursday.
+INTERVAL_ORIGIN_MS = {"1w": 4 * DAY_MS}
 CANDLE_FIELDS = ("start_ms", "open", "high", "low", "close", "volume_base")
 
 
@@ -45,8 +47,7 @@ def read_candles(data, interval, as_of):
         raise ValueError("Cutoff must include a timezone")
 
     duration = INTERVAL_MS[interval]
-    # Bybit weeks open at Monday 00:00 UTC. The Unix epoch was a Thursday.
-    origin = 4 * DAY_MS if interval == "1w" else 0
+    origin = INTERVAL_ORIGIN_MS.get(interval, 0)
     reader = csv.DictReader(io.StringIO(data.decode("utf-8-sig"), newline=""))
     if not set(CANDLE_FIELDS).issubset(reader.fieldnames or []):
         raise ValueError(f"Expected CSV columns: {', '.join(CANDLE_FIELDS)}")
@@ -131,14 +132,25 @@ def calculate(candles):
     }
 
 
-def analyze_csv(data, interval, as_of):
+def analyze_csv(data, interval, as_of, *, require_latest=False):
     candles = read_candles(data, interval, as_of)
+    duration = INTERVAL_MS[interval]
+    last_close = candles[-1].start_ms + duration
+    if require_latest:
+        origin = INTERVAL_ORIGIN_MS.get(interval, 0)
+        # A candle whose close equals the cutoff is ineligible.
+        before_cutoff = (as_of - EPOCH - timedelta(microseconds=1)) // timedelta(milliseconds=1)
+        expected_close = origin + ((before_cutoff - origin) // duration) * duration
+        if last_close != expected_close:
+            raise ValueError(f"Latest expected {interval} candle is missing: "
+                             f"expected close {utc_time(expected_close)}, "
+                             f"last CSV close {utc_time(last_close)}")
     return {
         "interval": interval,
         "as_of_utc": as_of.astimezone(timezone.utc).isoformat(),
         "candle_count": len(candles),
         "first_open_utc": utc_time(candles[0].start_ms),
-        "last_close_utc": utc_time(candles[-1].start_ms + INTERVAL_MS[interval]),
+        "last_close_utc": utc_time(last_close),
         "input_sha256": hashlib.sha256(data).hexdigest(),
         **calculate(candles),
     }
@@ -150,9 +162,12 @@ def main():
     parser.add_argument("--interval", required=True, choices=INTERVAL_MS)
     parser.add_argument("--as-of", required=True, type=datetime.fromisoformat,
                         help="trusted cutoff in ISO 8601 with Z or an explicit UTC offset")
+    parser.add_argument("--require-latest", action="store_true",
+                        help="require the last expected close strictly before the cutoff")
     args = parser.parse_args()
     try:
-        result = analyze_csv(args.csv.read_bytes(), args.interval, args.as_of)
+        result = analyze_csv(args.csv.read_bytes(), args.interval, args.as_of,
+                             require_latest=args.require_latest)
         output = json.dumps(result, indent=2, allow_nan=False)
     except (OSError, ValueError, OverflowError, csv.Error) as exc:
         parser.error(str(exc))

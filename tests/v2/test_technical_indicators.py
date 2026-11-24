@@ -83,7 +83,7 @@ class CaptureTests(unittest.TestCase):
             path.write_bytes(data)
             result = subprocess.run(
                 [sys.executable, str(CALCULATOR), str(path), "--interval", "1h",
-                 "--as-of", "2026-11-18T06:01:00+03:00"],
+                 "--as-of", "2026-11-18T06:01:00+03:00", "--require-latest"],
                 capture_output=True, text=True, check=True,
             )
         output = json.loads(result.stdout)
@@ -108,11 +108,32 @@ class CaptureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "non-finite"):
             indicators.analyze_csv(csv_for([bad]), "1h", cutoff)
 
+    def test_require_latest_at_and_just_after_cutoff_boundary(self):
+        first = indicators.Candle(START_MS, 100, 101, 99, 100, 10)
+        second = indicators.Candle(START_MS + indicators.INTERVAL_MS["15m"], 101, 102, 100, 101, 10)
+        partial = csv_for([first])
+        complete = csv_for([first, second])
+        boundary = START + timedelta(minutes=30)
+        after_boundary = boundary + timedelta(microseconds=1)
+
+        output = indicators.analyze_csv(partial, "15m", boundary, require_latest=True)
+        self.assertEqual(output["last_close_utc"], "2026-11-16T00:15:00.000Z")
+        with self.assertRaisesRegex(ValueError, "candle close must precede the cutoff"):
+            indicators.analyze_csv(complete, "15m", boundary, require_latest=True)
+        with self.assertRaisesRegex(
+            ValueError,
+            r"expected close 2026-11-16T00:30:00\.000Z, last CSV close 2026-11-16T00:15:00\.000Z",
+        ):
+            indicators.analyze_csv(partial, "15m", after_boundary, require_latest=True)
+        self.assertEqual(indicators.analyze_csv(partial, "15m", after_boundary)["close"], 100)
+        output = indicators.analyze_csv(complete, "15m", after_boundary, require_latest=True)
+        self.assertEqual(output["last_close_utc"], "2026-11-16T00:30:00.000Z")
+
     def test_weekly_alignment_and_timezone(self):
         candle = candles_for_prices([100])[0]
         data = csv_for([candle])
         cutoff = START + timedelta(weeks=1, seconds=1)
-        output = indicators.analyze_csv(data, "1w", cutoff)
+        output = indicators.analyze_csv(data, "1w", cutoff, require_latest=True)
         self.assertEqual(output["last_close_utc"], "2026-11-23T00:00:00.000Z")
         with self.assertRaisesRegex(ValueError, "align"):
             indicators.analyze_csv(csv_for(candles_for_prices([100, 101])[1:]), "1w", cutoff)
