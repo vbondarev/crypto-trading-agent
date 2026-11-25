@@ -68,12 +68,12 @@ Use [VL-01–VL-25](../platforms/veles.md) as the **documentary whitelist**, ref
 | UI concept documented in Veles P01 | Meaning / validation |
 |---|---|
 | `Название бота`, `API-ключ (Привязка)`, `Торговая пара` | User-readable bot alias, **pre-existing** connection selector (never reveal key), exact available Bybit pair |
-| `Тип торговли`, `Режим торговли`, `Тип маржи` | Long/Short; `Простой`/`Свой`/`Сигнал`; `Изолированная`/`Кросс-маржа`, with verified compatibility |
+| `Тип торговли`, `Режим торговли`, `Тип маржи` | Long/Short; `Простой`/`Свой`/`Сигнал`; `Изолированная`/`Кросс-маржа`, with verified compatibility. Use the [DCA trading modes reference](veles-dca-trading-modes.md) for order fields and preset evidence. |
 | `Депозит`, `Плечо`, `Реинвест` | **Bot planned budget**, leverage multiplier and conditional re-invest setting. Deposit is **not** E0, account available balance, Isolated IM or hard worst-loss cap; re-invest changes reachable future budget |
 | `Перекрытие изменения цены`, `Сетка ордеров (количество)`, `% Мартингейла` | SIMPLE coverage %, order count and **percent** volume-growth parameter; not GinArea step/multiplier. Exact formula/default/min/max **UI and model dependent** |
 | `Отступ первого ордера`, `Логарифмическое распределение цен`, `Частичное выставление сетки`, `Подтяжка сетки ордеров` | Entry offset/market behavior; non-linear placement; physically placed limit vs future virtual orders; pull-up can cancel unfilled entry setups. Don't guess fill order/default |
 | `Включать позицию на бирже в сделку` | Conditional **takeover** of a pre-existing futures position, represented by virtual **`POSITION -1`**. This is **not** a newly executed exchange IN |
-| `Условия открытия сделки`, `Тейк-профит`, `Стоп-лосс` | Entry filters and exit groups; exact nested labels, indicators and options depend on current P02/strategy |
+| `Условия открытия сделки`, `Тейк-профит`, `Стоп-лосс` | Entry filters and exit groups. Entry indicator mode and filter presets are separate from the order mode. See the Veles DCA references for [simple indicators](veles-dca-simple-indicators.md) and [flexible indicators](veles-dca-flexible-indicators.md). Use the [take-profit reference](veles-dca-take-profit.md) for exit modes, fields and evidence. Exact account-specific controls depend on P02. |
 | `Остановить бота после N сделок`, `Протестировать`, `Предпросмотр`, `Создать / Обновить бота` | Stop after N *completed trades*; preview/backtest and save controls are **actions**, not risk-adjustment fields or confirmations of exchange order placement |
 
 - `Свой` / **CUSTOM**: user-defined per-order **offset and size shares** only after units/source are shown; do not treat a stated “% volume” as USDT or assert default quantities.
