@@ -54,9 +54,10 @@ Before the next phase, check:
 
 Then:
 1. Choose **one** platform adapter: `docs/v2/adapters/veles.md` OR `docs/v2/adapters/ginarea.md`. Respect exact mode availability, UI label/units and P01-vs-P02 source distinction.
-2. Size first IN and **all** reachable future grid orders with USDT notional vs margin clearly differentiated. Include fees/funding/slippage; state assumptions and reserve math.
-3. Apply canonical `docs/risk-management.md`: leverage ≤5×, account IM ≤30% Equity, one-bot defensible worst loss ≤5% Equity, max three reachable positions, full reserve, verified applicable ≥15% Mark liquidation distance, known day-loss ≥3%, HWM DD ≥15% and H04 block risk additions. Missing full T02/MMR/P02 does **not** permit real READY.
-4. Return `DRAFT`, `NEEDS_DATA` or `NOT_RECOMMENDED` in the current mode. Public market data do not verify account risk or confer trade readiness.
+2. For Veles with an unspecified mode, leave the build-up plan and order count open until [all three modes have been evaluated](../../.agents/skills/bot-configuration/SKILL.md#veles-mode-selection) against the same market thesis, protection requirements and risk ceilings.
+3. Size first IN and **all** reachable future grid orders with USDT notional vs margin clearly differentiated. Include fees/funding/slippage; state assumptions and reserve math.
+4. Apply canonical `docs/risk-management.md`: leverage ≤5×, account IM ≤30% Equity, one-bot defensible worst loss ≤5% Equity, max three reachable positions, full reserve, verified applicable ≥15% Mark liquidation distance, known day-loss ≥3%, HWM DD ≥15% and H04 block risk additions. Missing full T02/MMR/P02 does **not** permit real READY.
+5. Return `DRAFT`, `NEEDS_DATA` or `NOT_RECOMMENDED` in the current mode. Public market data do not verify account risk or confer trade readiness.
 
 **Known veto precedence:** active H04 or known hard-limit breach ⇒ reject new exposure regardless of P02 gaps. For unavailable P02/portfolio before approval, output **safe draft with missing fields**, not manufactured UI settings. If user has an existing position use the [portfolio-analysis reference](../reference/portfolio-analysis.md) and H01/T05 only as needed.
 
