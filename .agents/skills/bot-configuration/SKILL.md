@@ -17,6 +17,14 @@ Input: `RequestContext`, `CoinProfile`, `StrategyProposal`, user budget, account
 6. Set `readiness=DRAFT|NEEDS_DATA|NOT_RECOMMENDED` according to the evidence and risk gates. The active route stays in `NO_TRADE_READY`. Final account-level verification requires separate acceptance under `docs/v2/bot-handoff-policy.md`.
 7. AD-009 triggers recheck on price/Mark, fill, orders, Equity, margin, bot edit/restart or P02 form updates. No real bot orders, API credentials or autonomous operations.
 
+## Veles mode selection
+
+When a Veles mode is unspecified, use the same market thesis, first-entry confirmation, exit and invalidation rules, protection requirements and known budget and loss ceilings for all candidates. Identify unknown ceilings. Keep the order count and build-up plan open until the comparison.
+
+- Evaluate a suitable automatic grid in SIMPLE and a suitable single order or manual grid in CUSTOM. In SIGNAL, assess whether new market evidence after the first entry could justify adding exposure. For a viable signal add, check the indicator, timeframe, execution and cancellation conditions, minimum indent and its basis, order share and execution reserve.
+- For each mode, show its best supported candidate or the specific obstacle. Check documented fields and actual form evidence separately. Assess protection after each fill, including partial fills, the greatest reachable exposure, compliance with shared ceilings and execution costs. Actual exposure and budget use may vary by mode.
+- Select the mode and order count after comparing the candidates. When outcomes are comparable, prefer fewer execution dependencies. If a material field or behavior remains unverified, state the conditional result and the verification it depends on. Apply the existing risk and readiness gates.
+
 ## Validation / dependency
 Schemas: `docs/v2/contracts/{request-context,coin-profile,strategy-proposal,bot-configuration}.schema.json`. Adapters: `docs/v2/adapters/{veles,ginarea}.md`. Domain references: `docs/platforms/configuration-contract.md` and the matching platform reference in `docs/reference/`; no actual P02 verified by this repository artifact.
 
